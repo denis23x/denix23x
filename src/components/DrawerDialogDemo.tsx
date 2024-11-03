@@ -1,6 +1,5 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
 	Dialog,
@@ -20,8 +19,6 @@ import {
 	DrawerTitle,
 	DrawerTrigger,
 } from "@/components/ui/drawer"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import {useIsMobile} from "@/hooks/use-mobile";
 import {ReactNode} from "react";
 
@@ -45,7 +42,7 @@ export function DrawerDialogDemo({children}: ModalProps) {
 					<DialogHeader>
 						<DialogTitle>Edit profile</DialogTitle>
 						<DialogDescription>
-							Make changes to your profile here. Click save when you're done.
+							Description
 						</DialogDescription>
 					</DialogHeader>
 					<div>
@@ -66,7 +63,7 @@ export function DrawerDialogDemo({children}: ModalProps) {
 				<DrawerHeader className="text-left">
 					<DrawerTitle>Edit profile</DrawerTitle>
 					<DrawerDescription>
-						Make changes to your profile here. Click save when you're done.
+						Description
 					</DrawerDescription>
 				</DrawerHeader>
 				<div>

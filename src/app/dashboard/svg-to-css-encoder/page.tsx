@@ -1,12 +1,10 @@
 "use client"
 
-import {Textarea} from "@/components/ui/textarea";
 import {useEffect, useState} from "react";
 import {AutosizeTextarea} from "@/components/ui/autosize-textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import {toast} from "sonner";
-import {ChevronRightIcon} from "@radix-ui/react-icons";
 import {FileCode2, FileImage} from "lucide-react";
 import {DrawerDialogDemo} from "@/components/DrawerDialogDemo";
 import {
@@ -42,7 +40,7 @@ export default function Page() {
         toast.success("Text copied to clipboard!")
 
       })
-      .catch((error) => {
+      .catch(() => {
         toast("Failed to copy text")
       });
   };
