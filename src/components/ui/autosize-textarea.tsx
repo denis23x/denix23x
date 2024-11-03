@@ -1,6 +1,5 @@
 'use client';
 import * as React from 'react';
-import { cn } from '@/lib/utils';
 import { useImperativeHandle } from 'react';
 import {Textarea} from "@/components/ui/textarea";
 
@@ -31,7 +30,7 @@ export const useAutosizeTextArea = ({
 			}
 			textAreaRef.style.height = `${minHeight + offsetBorder}px`;
 			const scrollHeight = textAreaRef.scrollHeight;
-			// We then set the height directly, outside of the render loop
+			// We then set the height directly, outside the render loop
 			// Trying to set this with state or a ref will product an incorrect value.
 			if (scrollHeight > maxHeight) {
 				textAreaRef.style.height = `${maxHeight}px`;
@@ -39,7 +38,7 @@ export const useAutosizeTextArea = ({
 				textAreaRef.style.height = `${scrollHeight + offsetBorder}px`;
 			}
 		}
-	}, [textAreaRef, triggerAutoSize]);
+	}, [textAreaRef, triggerAutoSize]); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
 export type AutosizeTextAreaRef = {
@@ -84,7 +83,7 @@ export const AutosizeTextarea = React.forwardRef<AutosizeTextAreaRef, AutosizeTe
 
 		React.useEffect(() => {
 			setTriggerAutoSize(value as string);
-		}, [props?.defaultValue, value]);
+		}, [props?.defaultValue, value]); // eslint-disable-line react-hooks/exhaustive-deps
 
 		return (
 			<Textarea
