@@ -1,6 +1,14 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"],
+  "extends": [
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "ignorePatterns": ["**/components/ui/**/*.tsx"],
   "rules": {
+    "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-empty-object-type": "off"
   }
 }
