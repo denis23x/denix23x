@@ -40,16 +40,19 @@ export default memo(function MemoizedPalette({ color }: PaletteProps) {
 		<ul className={"flex flex-wrap gap-2"}>
 			{Object.keys(colorPalette).map((number: string) => (
 				<li className={"flex flex-col items-center gap-2"} key={number}>
-					<Button
-						className={"size-14"}
+					<div
+						className={"flex items-center justify-center rounded-md shadow border size-14"}
 						style={{ background: colorPalette[number] }}
-						size={"icon"}
-						variant={"outline"}
+					>
+						<span className={`font-xs font-mono ${colorContrast(colorPalette[number])}`}>{number}</span>
+					</div>
+					<Button
+						variant={"ghost"}
+						className={"text-[10px] font-mono leading-none text-muted-foreground h-auto p-0"}
 						onClick={() => handleCopy(colorPalette[number])}
 					>
-						<span className={colorContrast(colorPalette[number])}>{number}</span>
+						{colorPalette[number]}
 					</Button>
-					<small className={"text-[10px] font-mono leading-none text-muted-foreground"}>{colorPalette[number]}</small>
 				</li>
 			))}
 		</ul>
