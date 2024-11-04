@@ -30,9 +30,14 @@ export default function Page() {
 		<div className={"flex flex-1 flex-col gap-4 p-4 pt-0"}>
 			<h1 className={"scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl"}>SVG to CSS Encoder</h1>
 			<p className={"leading-7"}>
-				This tool transforms SVG code into a Data URI format, creating an encoded URL that can be used directly as a
-				background-image in CSS. Essentially, it lets you embed SVG images directly within your stylesheets, eliminating
-				the need to host separate image files and reducing server requests for faster loading times.
+				This tool transforms <strong>SVG</strong> code into a <strong>Data URI format</strong>, creating an encoded{" "}
+				<strong>URL</strong> that can be used directly as a{" "}
+				<code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+					background-image
+				</code>{" "}
+				in <strong>CSS</strong>. Essentially, it lets you embed <strong>SVG</strong> images directly within your
+				stylesheets, eliminating the need to host separate image files and reducing server requests for faster loading
+				times.
 			</p>
 			<fieldset className={"grid w-full gap-2"}>
 				<Label className={"flex items-center gap-1"} htmlFor={"svg-input"}>
