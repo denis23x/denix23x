@@ -86,8 +86,6 @@ export default function Page() {
 			<div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"}>
 				<MemoizedHarmony color={color} harmony={"analogous"} />
 				<MemoizedHarmony color={color} harmony={"complementary"} />
-				<MemoizedHarmony color={color} harmony={"split-complementary"} />
-				<MemoizedHarmony color={color} harmony={"double-split-complementary"} />
 				<MemoizedHarmony color={color} harmony={"rectangle"} />
 				<MemoizedHarmony color={color} harmony={"tetradic"} />
 				<MemoizedHarmony color={color} harmony={"triadic"} />

@@ -39,8 +39,8 @@ const data = {
 					url: "/dashboard/color-converter",
 				},
 				{
-					title: "Settings",
-					url: "#",
+					title: "Placeholder Image",
+					url: "/dashboard/placeholder-image",
 				},
 			],
 		},

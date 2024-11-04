@@ -25,18 +25,6 @@ export default memo(function MemoizedHarmony({ color, harmony }: HarmonyProps) {
 		complementary: {
 			label: "Complementary",
 			output: colord(color)
-				.harmonies("complementary")
-				.map((c: Colord) => c.toHex()),
-		},
-		"split-complementary": {
-			label: "Split Complementary",
-			output: colord(color)
-				.harmonies("split-complementary")
-				.map((c: Colord) => c.toHex()),
-		},
-		"double-split-complementary": {
-			label: "Double Split Complementary",
-			output: colord(color)
 				.harmonies("double-split-complementary")
 				.map((c: Colord) => c.toHex()),
 		},

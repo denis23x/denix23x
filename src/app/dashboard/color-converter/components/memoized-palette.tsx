@@ -49,9 +49,7 @@ export default memo(function MemoizedPalette({ color }: PaletteProps) {
 					>
 						<span className={colorContrast(colorPalette[number])}>{number}</span>
 					</Button>
-					<small className={"text-xs font-medium font-mono leading-none text-muted-foreground"}>
-						{colorPalette[number]}
-					</small>
+					<small className={"text-[10px] font-mono leading-none text-muted-foreground"}>{colorPalette[number]}</small>
 				</li>
 			))}
 		</ul>
