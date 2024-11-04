@@ -35,8 +35,8 @@ const data = {
 					url: "/dashboard/svg-to-css-encoder",
 				},
 				{
-					title: "Colorful",
-					url: "/dashboard/colorful",
+					title: "Color Converter",
+					url: "/dashboard/color-converter",
 				},
 				{
 					title: "Settings",
