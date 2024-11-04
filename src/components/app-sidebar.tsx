@@ -37,6 +37,10 @@ const data = {
 					url: "/dashboard/color-converter",
 				},
 				{
+					title: "Color Extractor",
+					url: "/dashboard/color-extractor",
+				},
+				{
 					title: "Placeholder Image",
 					url: "/dashboard/placeholder-image",
 				},

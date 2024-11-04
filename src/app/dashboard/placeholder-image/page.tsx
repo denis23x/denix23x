@@ -12,9 +12,10 @@ import { HexColorPicker } from "react-colorful";
 import { handleDownload as handleDownloadBrowser, handleShare } from "@/lib/browser";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTheme } from "next-themes";
+import { Separator } from "@/components/ui/separator";
 
 export default function Page() {
-	const { theme } = useTheme();
+	const { theme, systemTheme } = useTheme();
 	const [placeholder, setPlaceholder] = useState<string>("");
 	const [width, setWidth] = useState<number>(512);
 	const [height, setHeight] = useState<number>(512);
@@ -23,9 +24,11 @@ export default function Page() {
 	const isMobile: boolean = useIsMobile();
 
 	useEffect(() => {
-		setColor(theme === "dark" ? "#fafafa" : "#09090b");
-		setBackground(theme === "dark" ? "#18181b" : "#fafafa");
-	}, [theme]);
+		const isDark: boolean = theme === "dark" || (theme === "system" && systemTheme === "dark");
+
+		setColor(isDark ? "#fafafa" : "#09090b");
+		setBackground(isDark ? "#18181b" : "#fafafa");
+	}, [theme, systemTheme]);
 
 	let imageDataURL: string;
 	let imageBlob: Blob | null;
@@ -58,6 +61,7 @@ export default function Page() {
 				generating placeholder images with specific dimensions, colors, and text, it enables quick visualization and
 				layout testing without relying on actual content.
 			</p>
+			<Separator />
 			<div className={"flex flex-col lg:flex-row items-stretch gap-4"}>
 				<div className={"flex col-span-1"}>
 					<MemoizedPlaceholderImage

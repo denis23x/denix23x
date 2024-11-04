@@ -7,6 +7,7 @@ import { FileCode2, View } from "lucide-react";
 import { AppDrawerDialog } from "@/components/app-drawer-dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { handleCopy } from "@/lib/browser";
+import { Separator } from "@/components/ui/separator";
 
 export default function Page() {
 	const [svgInput, setSVGInput] = useState<string>("");
@@ -39,6 +40,7 @@ export default function Page() {
 				stylesheets, eliminating the need to host separate image files and reducing server requests for faster loading
 				times.
 			</p>
+			<Separator />
 			<fieldset className={"grid w-full gap-2"}>
 				<Label className={"flex items-center gap-1"} htmlFor={"svg-input"}>
 					<Button className={"size-7"} variant={"ghost"} size={"icon"}>

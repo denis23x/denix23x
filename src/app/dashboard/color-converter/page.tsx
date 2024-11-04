@@ -7,6 +7,7 @@ import { RgbaStringColorPicker } from "react-colorful";
 import { colord, random } from "colord";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import MemoizedOutput from "./components/memoized-output";
 import MemoizedHarmony from "./components/memoized-harmony";
 import MemoizedPalette from "./components/memoized-palette";
@@ -29,6 +30,7 @@ export default function Page() {
 				seamlessly switch between color models, allowing for flexible styling options and precise color matching in your
 				projects.
 			</p>
+			<Separator />
 			<div className={"flex items-stretch flex-wrap gap-4"}>
 				<div className={"grid gap-2"}>
 					<div className={"flex items-center gap-1"}>
@@ -37,11 +39,11 @@ export default function Page() {
 						</Button>
 						<span className={"text-lg font-semibold"}>Color Picker</span>
 					</div>
-					<div className={"flex gap-6"}>
-						<div className={"bg-muted/50 rounded-lg size-[200px]"}>
+					<div className={"flex gap-4"}>
+						<div className={"border shadow-sm bg-muted/50 rounded-lg size-[200px]"}>
 							<RgbaStringColorPicker color={colorPicker} onChange={setColor} />
 						</div>
-						<div className={"bg-muted/50 rounded-lg size-[200px] hidden sm:block overflow-hidden"}>
+						<div className={"border shadow-sm bg-muted/50 rounded-lg size-[200px] hidden sm:block overflow-hidden"}>
 							<div className={"size-full"} style={{ backgroundColor: color ? colorPicker : "transparent" }}></div>
 						</div>
 					</div>

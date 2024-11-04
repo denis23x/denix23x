@@ -42,7 +42,7 @@ export default memo(function MemoizedPlaceholderImage({
 
 				// Set text properties and add text
 				ctx.fillStyle = color;
-				ctx.font = `${Math.min(width, height) / 5}px Arial`;
+				ctx.font = `${Math.min(width, height) / 7.5}px Arial`;
 				ctx.textAlign = "center";
 				ctx.textBaseline = "middle";
 				ctx.fillText(text, width / 2, height / 2);
