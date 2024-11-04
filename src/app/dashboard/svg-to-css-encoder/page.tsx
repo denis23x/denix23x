@@ -3,7 +3,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { FileCode2, Clipboard, View } from "lucide-react";
+import { FileCode2, View } from "lucide-react";
 import { AppDrawerDialog } from "@/components/app-drawer-dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { handleCopy } from "@/lib/browser";
@@ -72,26 +72,21 @@ export default function Page() {
 						readOnly={true}
 					/>
 					<AppDrawerDialog
-						title={"CSS Output"}
+						title={"Preview"}
 						description={"Use the background-image in your CSS to apply the SVG"}
 						trigger={
-							<Button className={"absolute top-3 right-14 shadow-none"} size="icon" variant={"outline"}>
+							<Button className={"absolute top-3 right-3 shadow-none"} size="icon" variant={"outline"}>
 								<View />
 							</Button>
 						}
 					>
 						<div className={"size-full aspect-square"} style={dataURLWrapper}></div>
 					</AppDrawerDialog>
-					<Button
-						className={"absolute top-3 right-3 shadow-none"}
-						size="icon"
-						variant={"outline"}
-						onClick={() => handleCopy(cssOutput)}
-					>
-						<Clipboard />
-					</Button>
 				</div>
 			</fieldset>
+			<Button variant={"outline"} onClick={() => handleCopy(cssOutput)}>
+				Copy CSS Output
+			</Button>
 		</div>
 	);
 }

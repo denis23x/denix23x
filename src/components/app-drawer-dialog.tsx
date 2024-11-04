@@ -1,3 +1,5 @@
+"use client";
+
 import {
 	Dialog,
 	DialogContent,
@@ -50,7 +52,7 @@ export function AppDrawerDialog({ title, description, trigger, children }: AppDr
 			<DialogTrigger asChild>
 				<div>{trigger}</div>
 			</DialogTrigger>
-			<DialogContent className="sm:max-w-[425px]">
+			<DialogContent className={"sm:max-w-[425px]"}>
 				<DialogHeader>
 					<DialogTitle>{title}</DialogTitle>
 					<DialogDescription>{description}</DialogDescription>
