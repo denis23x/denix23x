@@ -44,18 +44,18 @@ const data = {
 					title: "Placeholder Image",
 					url: "/dashboard/placeholder-image",
 				},
-				// {
-				// 	title: "Placeholder API",
-				// 	url: "/dashboard/placeholder-api",
-				// },
+				{
+					title: "Placeholder API",
+					url: "/dashboard/placeholder-api",
+				},
 				{
 					title: "Lorem Ipsum",
 					url: "/dashboard/lorem-ipsum",
 				},
-				// {
-				// 	title: "Markdown Renderer",
-				// 	url: "/dashboard/markdown-renderer",
-				// },
+				{
+					title: "Markdown Renderer",
+					url: "/dashboard/markdown-renderer",
+				},
 			],
 		},
 		{
