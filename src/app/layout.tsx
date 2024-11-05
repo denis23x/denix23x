@@ -29,7 +29,7 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-					<main>{children}</main>
+					<div className={"overflow-auto"}>{children}</div>
 					<Toaster />
 				</ThemeProvider>
 			</body>

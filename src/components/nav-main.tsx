@@ -12,6 +12,7 @@ import {
 	SidebarMenuSubButton,
 	SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 export function NavMain({
 	items,
@@ -46,9 +47,13 @@ export function NavMain({
 									{item.items?.map(subItem => (
 										<SidebarMenuSubItem key={subItem.title}>
 											<SidebarMenuSubButton asChild>
-												<a href={subItem.url}>
-													<span>{subItem.title}</span>
-												</a>
+												{subItem.url.startsWith("http") ? (
+													<a href={subItem.url} target={"_blank"} rel={"noreferrer"}>
+														<span>{subItem.title}</span>
+													</a>
+												) : (
+													<Link href={subItem.url}>{subItem.title}</Link>
+												)}
 											</SidebarMenuSubButton>
 										</SidebarMenuSubItem>
 									))}
