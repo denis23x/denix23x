@@ -1,4 +1,4 @@
-import { AppHighlight } from "@/components/ui/app-highlight";
+import { AppHighlight } from "@/components/app-highlight";
 import { readFileAsText } from "@/lib/server";
 
 export default async function Page() {
