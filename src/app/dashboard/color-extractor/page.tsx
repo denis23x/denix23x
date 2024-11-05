@@ -18,6 +18,7 @@ export default function Page() {
 	const [imageColor, setImageColor] = useState<string>("");
 
 	const colorThief = new ColorThief();
+	const colorParseRGB = (rgb: number[]): Colord => colord(`rgb(${rgb.join(",")})`);
 
 	const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
 		const file: File | null | undefined = e.target.files?.item(0);
@@ -30,20 +31,14 @@ export default function Page() {
 		}
 	};
 
-	const parseRGB = (rgb: number[]): Colord => {
-		return colord(`rgb(${rgb.join(",")})`);
-	};
-
-	useEffect(() => {
+	const handleLoad = () => {
 		const output: HTMLImageElement | null = document.querySelector("img#file-output");
 
 		if (output) {
-			output.addEventListener("load", function () {
-				setImagePalette(colorThief.getPalette(output).map((rgb: number[]) => parseRGB(rgb).toHex()));
-				setImageColor(parseRGB(colorThief.getColor(output)).toHex());
-			});
+			setImagePalette(colorThief.getPalette(output).map((rgb: number[]) => colorParseRGB(rgb).toHex()));
+			setImageColor(colorParseRGB(colorThief.getColor(output)).toHex());
 		}
-	}, [image]); // eslint-disable-line react-hooks/exhaustive-deps
+	};
 
 	useEffect(() => {
 		setImage(wave.src);
@@ -75,6 +70,7 @@ export default function Page() {
 									id={"file-output"}
 									width={512}
 									height={512}
+									onLoad={handleLoad}
 									src={image as string}
 									alt={"Preview"}
 								/>
