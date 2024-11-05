@@ -62,8 +62,8 @@ export default function Page() {
 				layout testing without relying on actual content.
 			</p>
 			<Separator />
-			<div className={"flex flex-col lg:flex-row items-stretch gap-4"}>
-				<div className={"flex col-span-1"}>
+			<div className={"flex flex-col lg:flex-row gap-4"}>
+				<div className={"flex"}>
 					<MemoizedPlaceholderImage
 						width={width}
 						height={height}
@@ -74,7 +74,7 @@ export default function Page() {
 						blob={(e: Blob | null) => (imageBlob = e)}
 					/>
 				</div>
-				<div className={"flex flex-1 flex-col col-span-1 gap-3"}>
+				<div className={"flex flex-1 flex-col gap-3"}>
 					<fieldset className={"grid gap-2"}>
 						<Label className={"flex items-center gap-1"} htmlFor={"placeholder-input"}>
 							<Button className={"size-7"} variant={"ghost"} size={"icon"}>
@@ -91,7 +91,7 @@ export default function Page() {
 							onInput={(e: ChangeEvent<HTMLInputElement>) => setPlaceholder(e.target.value)}
 						/>
 					</fieldset>
-					<div className={"grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 my-auto"}>
+					<div className={"grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2"}>
 						<fieldset className={"grid col-span-1 gap-2"}>
 							<Label className={"flex items-center gap-1"} htmlFor={"width-input"}>
 								<Button className={"size-7"} variant={"ghost"} size={"icon"}>
@@ -103,7 +103,6 @@ export default function Page() {
 								className={"bg-sidebar rounded-b-sm h-11 pb-2"}
 								type={"number"}
 								id={"width-input"}
-								placeholder={"Width"}
 								value={width}
 								onInput={(e: ChangeEvent<HTMLInputElement>) => setWidth(Number(e.target.value))}
 							/>
@@ -127,7 +126,6 @@ export default function Page() {
 								className={"bg-sidebar rounded-b-sm h-11 pb-2"}
 								type={"number"}
 								id={"height-input"}
-								placeholder={"Height"}
 								value={height}
 								onInput={(e: ChangeEvent<HTMLInputElement>) => setHeight(Number(e.target.value))}
 							/>
