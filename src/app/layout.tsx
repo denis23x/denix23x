@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-sidebar`}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 					<div className={"overflow-auto"}>{children}</div>
 					<Toaster />
