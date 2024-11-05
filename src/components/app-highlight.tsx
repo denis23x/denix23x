@@ -1,10 +1,4 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
-import { Clipboard } from "lucide-react";
 import { codeToHtml } from "shiki";
-import { useState } from "react";
-import { handleCopy } from "@/lib/browser";
 
 interface AppHighlightProps {
 	title: string;
@@ -12,16 +6,14 @@ interface AppHighlightProps {
 	code: string;
 }
 
-export function AppHighlight({ title, language, code }: AppHighlightProps) {
-	const [highlight, setHighlight] = useState<string>("");
-
-	codeToHtml(code, {
+export async function AppHighlight({ title, language, code }: AppHighlightProps) {
+	const html: Promise<string> = codeToHtml(code, {
 		lang: language,
 		themes: {
 			light: "github-light",
 			dark: "github-dark",
 		},
-	}).then((html: string) => setHighlight(html));
+	});
 
 	return (
 		<section className={"border shadow-sm rounded-xl overflow-hidden"}>
@@ -36,10 +28,10 @@ export function AppHighlight({ title, language, code }: AppHighlightProps) {
 				</ul>
 			</header>
 			<div className={"text-xs relative min-h-16"}>
-				<Button className={"absolute right-3 top-3"} size="icon" variant={"outline"} onClick={() => handleCopy(code)}>
-					<Clipboard />
-				</Button>
-				<div dangerouslySetInnerHTML={{ __html: highlight }}></div>
+				{/*<Button className={"absolute right-3 top-3"} size="icon" variant={"outline"} onClick={() => handleCopy(code)}>*/}
+				{/*	<Clipboard />*/}
+				{/*</Button>*/}
+				{html ? <div dangerouslySetInnerHTML={{ __html: await html }}></div> : <p className={"p-3"}>Loading...</p>}
 			</div>
 		</section>
 	);
