@@ -44,6 +44,10 @@ const data = {
 					title: "Placeholder Image",
 					url: "/dashboard/placeholder-image",
 				},
+				{
+					title: "Lorem Ipsum",
+					url: "/dashboard/lorem-ipsum",
+				},
 			],
 		},
 		{
