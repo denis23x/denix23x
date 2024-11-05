@@ -52,19 +52,20 @@ export default function ColorHarmony({ harmony }: ColorHarmonyProps) {
 	return (
 		<div className={"grid col-span-1 gap-2"}>
 			<div className={"flex items-center gap-1"}>
-				<Button className={"size-7"} variant={"ghost"} size={"icon"}>
+				<Button className={"size-7"} variant={"ghost"} size={"icon"} aria-label={map[harmony].label as string}>
 					<Blend />
 				</Button>
 				<span className={"text-lg font-semibold"}>{map[harmony].label}</span>
 			</div>
 			<ul className={"flex items-center gap-1"}>
-				{(map[harmony].output as string[]).map((hex: string, index: number) => (
-					<li key={index}>
+				{(map[harmony].output as string[]).map((hex: string, i: number) => (
+					<li key={i}>
 						<Button
 							style={{ background: hex }}
 							size={"icon"}
 							variant={"outline"}
 							onClick={() => handleCopy(hex)}
+							aria-label={"Copy HEX"}
 						></Button>
 					</li>
 				))}

@@ -12,5 +12,14 @@ export default function ColorPicker() {
 		setColor(random().toRgbString());
 	}, []);
 
-	return <RgbaStringColorPicker color={color} onChange={setColor} />;
+	return (
+		<div className={"flex gap-4"}>
+			<div className={"border shadow-sm bg-muted/50 rounded-lg size-[200px]"}>
+				<RgbaStringColorPicker color={color} onChange={setColor} />
+			</div>
+			<div className={"border shadow-sm bg-muted/50 rounded-lg size-[200px] hidden sm:block overflow-hidden"}>
+				<div className={"size-full"} style={{ backgroundColor: color || "transparent" }}></div>
+			</div>
+		</div>
+	);
 }
