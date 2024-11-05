@@ -9,11 +9,7 @@ import useStore from "@/app/dashboard/color-converter/store";
 
 extend([harmonies]);
 
-interface ColorHarmonyProps {
-	harmony: string;
-}
-
-export default function ColorHarmony({ harmony }: ColorHarmonyProps) {
+export default function ColorHarmony() {
 	const { color } = useStore();
 
 	const map: Record<string, Record<string, string | string[]>> = {
@@ -50,26 +46,30 @@ export default function ColorHarmony({ harmony }: ColorHarmonyProps) {
 	};
 
 	return (
-		<div className={"grid col-span-1 gap-2"}>
-			<div className={"flex items-center gap-1"}>
-				<Button className={"size-7"} variant={"ghost"} size={"icon"} aria-label={map[harmony].label as string}>
-					<Blend />
-				</Button>
-				<span className={"text-lg font-semibold"}>{map[harmony].label}</span>
-			</div>
-			<ul className={"flex items-center gap-1"}>
-				{(map[harmony].output as string[]).map((hex: string, i: number) => (
-					<li key={i}>
-						<Button
-							style={{ background: hex }}
-							size={"icon"}
-							variant={"outline"}
-							onClick={() => handleCopy(hex)}
-							aria-label={"Copy HEX"}
-						></Button>
-					</li>
-				))}
-			</ul>
+		<div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"}>
+			{["analogous", "complementary", "rectangle", "tetradic", "triadic"].map((harmony: string, i: number) => (
+				<div className={"grid col-span-1 gap-2"} key={i}>
+					<div className={"flex items-center gap-1"}>
+						<Button className={"size-7"} variant={"ghost"} size={"icon"} aria-label={map[harmony].label as string}>
+							<Blend />
+						</Button>
+						<span className={"text-lg font-semibold"}>{map[harmony].label}</span>
+					</div>
+					<ul className={"flex items-center gap-1"}>
+						{(map[harmony].output as string[]).map((hex: string, i: number) => (
+							<li key={i}>
+								<Button
+									style={{ background: hex }}
+									size={"icon"}
+									variant={"outline"}
+									onClick={() => handleCopy(hex)}
+									aria-label={"Copy HEX"}
+								></Button>
+							</li>
+						))}
+					</ul>
+				</div>
+			))}
 		</div>
 	);
 }

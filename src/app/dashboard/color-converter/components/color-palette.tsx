@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { colord, extend } from "colord";
 import { Button } from "@/components/ui/button";
 import { handleCopy } from "@/lib/browser";
+import { SwatchBook } from "lucide-react";
 import mix from "colord/plugins/mix";
 import useStore from "@/app/dashboard/color-converter/store";
 
@@ -36,25 +37,33 @@ export default function ColorPalette() {
 	};
 
 	return (
-		<ul className={"flex flex-wrap gap-2"}>
-			{Object.keys(colorPalette).map((number: string) => (
-				<li className={"flex flex-col items-center gap-2"} key={number}>
-					<div
-						className={"flex items-center justify-center rounded-md shadow border size-14"}
-						style={{ background: colorPalette[number] }}
-					>
-						<span className={`font-xs font-mono ${colorContrast(colorPalette[number])}`}>{number}</span>
-					</div>
-					<Button
-						variant={"ghost"}
-						className={"text-[10px] font-mono leading-none text-muted-foreground h-auto p-0"}
-						aria-label={colorPalette[number]}
-						onClick={() => handleCopy(colorPalette[number])}
-					>
-						{colorPalette[number]}
-					</Button>
-				</li>
-			))}
-		</ul>
+		<div className={"grid gap-2"}>
+			<div className={"flex items-center gap-1"}>
+				<Button className={"size-7"} variant={"ghost"} size={"icon"} aria-label={"Color palette"}>
+					<SwatchBook />
+				</Button>
+				<span className={"text-lg font-semibold"}>Color palette</span>
+			</div>
+			<ul className={"flex flex-wrap gap-2"}>
+				{Object.keys(colorPalette).map((number: string) => (
+					<li className={"flex flex-col items-center gap-2"} key={number}>
+						<div
+							className={"flex items-center justify-center rounded-md shadow border size-14"}
+							style={{ background: colorPalette[number] }}
+						>
+							<span className={`font-xs font-mono ${colorContrast(colorPalette[number])}`}>{number}</span>
+						</div>
+						<Button
+							variant={"ghost"}
+							className={"text-[10px] font-mono leading-none text-muted-foreground h-auto p-0"}
+							aria-label={colorPalette[number]}
+							onClick={() => handleCopy(colorPalette[number])}
+						>
+							{colorPalette[number]}
+						</Button>
+					</li>
+				))}
+			</ul>
+		</div>
 	);
 }

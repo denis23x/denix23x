@@ -1,11 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { Palette, SwatchBook } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import ColorPicker from "./components/color-picker";
-import ColorPickerInput from "./components/color-picker-input";
+import ColorPicker from "@/app/dashboard/color-converter/components/color-picker";
+import ColorPickerInput from "@/app/dashboard/color-converter/components/color-picker-input";
 import ColorPalette from "@/app/dashboard/color-converter/components/color-palette";
-import ColorOutput from "./components/color-output";
-import ColorHarmony from "./components/color-harmony";
+import ColorOutput from "@/app/dashboard/color-converter/components/color-output";
+import ColorHarmony from "@/app/dashboard/color-converter/components/color-harmony";
 
 export default function Page() {
 	return (
@@ -19,38 +17,14 @@ export default function Page() {
 			</p>
 			<Separator />
 			<div className={"flex items-start flex-wrap gap-4"}>
-				<div className={"grid gap-2"}>
-					<div className={"flex items-center gap-1"}>
-						<Button className={"size-7"} variant={"ghost"} size={"icon"} aria-label={"Color Picker"}>
-							<Palette />
-						</Button>
-						<span className={"text-lg font-semibold"}>Color Picker</span>
-					</div>
-					<ColorPicker></ColorPicker>
-				</div>
+				<ColorPicker />
 				<div className={"grid gap-4"}>
-					<ColorPickerInput></ColorPickerInput>
-					<div className={"grid gap-2"}>
-						<div className={"flex items-center gap-1"}>
-							<Button className={"size-7"} variant={"ghost"} size={"icon"} aria-label={"Color palette"}>
-								<SwatchBook />
-							</Button>
-							<span className={"text-lg font-semibold"}>Color palette</span>
-						</div>
-						<ColorPalette />
-					</div>
+					<ColorPickerInput />
+					<ColorPalette />
 				</div>
 			</div>
-			<div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"}>
-				{["rgba", "hex", "hsl", "lch", "hwb", "name"].map((model: string, i: number) => (
-					<ColorOutput model={model} key={i} />
-				))}
-			</div>
-			<div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"}>
-				{["analogous", "complementary", "rectangle", "tetradic", "triadic"].map((harmony: string, i: number) => (
-					<ColorHarmony harmony={harmony} key={i} />
-				))}
-			</div>
+			<ColorOutput />
+			<ColorHarmony />
 		</div>
 	);
 }

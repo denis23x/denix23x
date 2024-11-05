@@ -8,6 +8,7 @@
   ],
   "ignorePatterns": ["**/components/ui/**/*.tsx"],
   "rules": {
+    "react-hooks/exhaustive-deps": "off",
     "react/react-in-jsx-scope": "off",
     "@next/next/no-img-element": "off",
     "@typescript-eslint/no-empty-object-type": "off"
