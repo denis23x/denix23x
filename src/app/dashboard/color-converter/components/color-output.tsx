@@ -55,7 +55,7 @@ export default function ColorOutput({ model }: ColorOutputProps) {
 	return (
 		<fieldset className={"grid col-span-1 gap-2"}>
 			<Label className={"flex items-center gap-1"} htmlFor={`${model}-output`}>
-				<Button className={"size-7"} variant={"ghost"} size={"icon"}>
+				<Button className={"size-7"} variant={"ghost"} size={"icon"} aria-label={map[model].label}>
 					<FileCode2 />
 				</Button>
 				<span className={"text-lg font-semibold"}>{map[model].label}</span>
@@ -69,7 +69,12 @@ export default function ColorOutput({ model }: ColorOutputProps) {
 					value={map[model].output}
 					readOnly={true}
 				/>
-				<Button size="icon" variant={"outline"} onClick={() => handleCopy(map[model].output)}>
+				<Button
+					size="icon"
+					variant={"outline"}
+					onClick={() => handleCopy(map[model].output)}
+					aria-label={"Copy Output"}
+				>
 					<Clipboard />
 				</Button>
 			</div>

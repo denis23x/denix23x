@@ -48,6 +48,7 @@ export default function ColorPalette() {
 					<Button
 						variant={"ghost"}
 						className={"text-[10px] font-mono leading-none text-muted-foreground h-auto p-0"}
+						aria-label={colorPalette[number]}
 						onClick={() => handleCopy(colorPalette[number])}
 					>
 						{colorPalette[number]}

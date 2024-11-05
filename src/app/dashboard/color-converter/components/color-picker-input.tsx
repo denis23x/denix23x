@@ -13,7 +13,7 @@ export default function ColorPickerInput() {
 	return (
 		<fieldset className={"grid gap-2"}>
 			<Label className={"flex items-center gap-1"} htmlFor={"colorful-input"}>
-				<Button className={"size-7"} variant={"ghost"} size={"icon"}>
+				<Button className={"size-7"} variant={"ghost"} size={"icon"} aria-label={"Color Input"}>
 					<FileCode2 />
 				</Button>
 				<span className={"text-lg font-semibold"}>Color Input</span>
