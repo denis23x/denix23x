@@ -1,20 +1,21 @@
 "use client";
 
-import { memo } from "react";
 import { Colord, colord, extend } from "colord";
 import { Button } from "@/components/ui/button";
 import { Blend } from "lucide-react";
 import { handleCopy } from "@/lib/browser";
 import harmonies from "colord/plugins/harmonies";
+import useStore from "@/app/dashboard/color-converter/store";
 
 extend([harmonies]);
 
-interface HarmonyProps {
-	color: string;
+interface ColorHarmonyProps {
 	harmony: string;
 }
 
-export default memo(function MemoizedHarmony({ color, harmony }: HarmonyProps) {
+export default function ColorHarmony({ harmony }: ColorHarmonyProps) {
+	const { color } = useStore();
+
 	const map: Record<string, Record<string, string | string[]>> = {
 		analogous: {
 			label: "Analogous",
@@ -70,4 +71,4 @@ export default memo(function MemoizedHarmony({ color, harmony }: HarmonyProps) {
 			</ul>
 		</div>
 	);
-});
+}
