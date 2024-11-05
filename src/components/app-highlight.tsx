@@ -16,7 +16,7 @@ export async function AppHighlight({ title, language, code }: AppHighlightProps)
 	});
 
 	return (
-		<section className={"border shadow-sm rounded-xl overflow-hidden"}>
+		<section className={"border shadow-sm rounded-xl overflow-hidden w-full"}>
 			<header className={"grid grid-cols-2 bg-sidebar border-b py-2 px-3"}>
 				<div className={"col-span-1 text-sm text-muted-foreground"}>
 					<i>{title}</i>
@@ -28,9 +28,6 @@ export async function AppHighlight({ title, language, code }: AppHighlightProps)
 				</ul>
 			</header>
 			<div className={"text-xs relative min-h-16"}>
-				{/*<Button className={"absolute right-3 top-3"} size="icon" variant={"outline"} onClick={() => handleCopy(code)}>*/}
-				{/*	<Clipboard />*/}
-				{/*</Button>*/}
 				{html ? <div dangerouslySetInnerHTML={{ __html: await html }}></div> : <p className={"p-3"}>Loading...</p>}
 			</div>
 		</section>
