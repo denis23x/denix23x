@@ -1,18 +1,17 @@
 "use client";
 
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 import { colord, extend } from "colord";
 import { Button } from "@/components/ui/button";
 import { handleCopy } from "@/lib/browser";
 import mix from "colord/plugins/mix";
+import useStore from "@/app/dashboard/color-converter/store";
 
 extend([mix]);
 
-interface PaletteProps {
-	color: string;
-}
+export default function ColorPalette() {
+	const { color } = useStore();
 
-export default memo(function MemoizedPalette({ color }: PaletteProps) {
 	const colorPalette: Record<string, string> = useMemo((): Record<string, string> => {
 		const white: string = "#fff";
 		const black: string = "#000";
@@ -57,4 +56,4 @@ export default memo(function MemoizedPalette({ color }: PaletteProps) {
 			))}
 		</ul>
 	);
-});
+}

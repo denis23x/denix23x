@@ -1,6 +1,5 @@
 "use client";
 
-import { memo } from "react";
 import { colord, extend } from "colord";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -11,15 +10,17 @@ import cmykPlugin from "colord/plugins/cmyk";
 import namesPlugin from "colord/plugins/names";
 import lchPlugin from "colord/plugins/lch";
 import hwbPlugin from "colord/plugins/hwb";
+import useStore from "@/app/dashboard/color-converter/store";
 
 extend([cmykPlugin, lchPlugin, hwbPlugin, namesPlugin]);
 
-interface OutputProps {
-	color: string;
+interface ColorOutputProps {
 	model: string;
 }
 
-export default memo(function MemoizedOutput({ color, model }: OutputProps) {
+export default function ColorOutput({ model }: ColorOutputProps) {
+	const { color } = useStore();
+
 	const map: Record<string, Record<string, string>> = {
 		rgba: {
 			label: "RGB",
@@ -74,4 +75,4 @@ export default memo(function MemoizedOutput({ color, model }: OutputProps) {
 			</div>
 		</fieldset>
 	);
-});
+}
