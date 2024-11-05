@@ -6,20 +6,18 @@ import { FileImage, View, SwatchBook } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { extractColors } from "extract-colors";
-import { FinalColor } from "extract-colors/lib/types/Color";
-import { toast } from "sonner";
 import { handleCopy } from "@/lib/browser";
-import { FastAverageColor, FastAverageColorResult } from "fast-average-color";
+import { Colord, colord } from "colord";
 import Image from "next/image";
-import superman from "../../../../public/images/superman.png";
+import wave from "../../../../public/images/wave.webp";
+import ColorThief from "colorthief";
 
 export default function Page() {
 	const [image, setImage] = useState<string | ArrayBuffer | null>(null);
-	const [imageColors, setImageColors] = useState<FinalColor[]>([]);
-	const [imageAverage, setImageAverage] = useState<FastAverageColorResult | null>(null);
+	const [imagePalette, setImagePalette] = useState<string[]>([]);
+	const [imageColor, setImageColor] = useState<string>("");
 
-	const fastAverageColor: FastAverageColor = new FastAverageColor();
+	const colorThief = new ColorThief();
 
 	const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
 		const file: File | null | undefined = e.target.files?.item(0);
@@ -32,26 +30,23 @@ export default function Page() {
 		}
 	};
 
+	const parseRGB = (rgb: number[]): Colord => {
+		return colord(`rgb(${rgb.join(",")})`);
+	};
+
 	useEffect(() => {
 		const output: HTMLImageElement | null = document.querySelector("img#file-output");
-		const frame: HTMLImageElement | null = document.querySelector("img#file-frame");
 
 		if (output) {
-			extractColors(output)
-				.then((finalColors: FinalColor[]) => setImageColors(finalColors))
-				.catch(() => toast.error("Failed to extract"));
+			output.addEventListener("load", function () {
+				setImagePalette(colorThief.getPalette(output).map((rgb: number[]) => parseRGB(rgb).toHex()));
+				setImageColor(parseRGB(colorThief.getColor(output)).toHex());
+			});
 		}
-
-		if (frame) {
-			fastAverageColor
-				.getColorAsync(frame)
-				.then((fastAverageColorResult: FastAverageColorResult) => setImageAverage(fastAverageColorResult))
-				.catch(() => toast.error("Failed to extract"));
-		}
-	}, [image, fastAverageColor]);
+	}, [image]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
-		setImage(superman.src);
+		setImage(wave.src);
 	}, []);
 
 	return (
@@ -63,7 +58,7 @@ export default function Page() {
 				creation of custom color schemes that align with the overall aesthetic of the image.
 			</p>
 			<Separator />
-			<div className={"flex items-stretch flex-wrap gap-4"}>
+			<div className={"flex items-start flex-wrap gap-4"}>
 				<div className={"grid gap-2"}>
 					<div className={"flex items-center gap-1"}>
 						<Button className={"size-7"} variant={"ghost"} size={"icon"}>
@@ -79,38 +74,38 @@ export default function Page() {
 									id={"file-output"}
 									width={512}
 									height={512}
-									src={String(image)}
+									src={image as string}
 									alt={"Preview"}
 								/>
 							)}
 						</div>
 						<div
-							className={"border shadow-sm bg-muted/50 rounded-lg size-[200px] p-12"}
-							style={{ backgroundColor: imageAverage?.hexa }}
+							className={"border shadow-sm bg-muted/50 rounded-lg size-[200px]"}
+							style={{ backgroundColor: imageColor }}
 						>
 							{image && (
-								<div className={"flex flex-col items-center gap-2"}>
+								<div className={"flex flex-col items-center justify-center gap-2 size-full relative"}>
 									<Image
-										className={"size-full object-cover rounded-lg"}
+										className={"object-cover rounded-lg size-[100px]"}
 										id={"file-frame"}
 										width={512}
 										height={512}
-										src={String(image)}
+										src={image as string}
 										alt={"Average Color"}
 									/>
 									<Button
 										variant={"link"}
-										className={`mx-auto font-mono text-sm h-auto p-0 transition-none ${imageAverage?.isLight ? "text-foreground dark:text-background" : "text-background dark:text-foreground"}`}
-										onClick={() => handleCopy(String(imageAverage?.hexa))}
+										className={`mx-auto font-mono text-sm h-auto p-0 transition-none absolute bottom-4 ${colord(imageColor).isLight() ? "text-foreground dark:text-background" : "text-background dark:text-foreground"}`}
+										onClick={() => handleCopy(imageColor)}
 									>
-										{imageAverage?.hexa}
+										{imageColor}
 									</Button>
 								</div>
 							)}
 						</div>
 					</div>
 				</div>
-				<div className={"grid gap-2"}>
+				<div className={"grid gap-4"}>
 					<fieldset className={"grid gap-2"}>
 						<Label className={"flex items-center gap-1"} htmlFor={"file-input"}>
 							<Button className={"size-7"} variant={"ghost"} size={"icon"}>
@@ -137,18 +132,18 @@ export default function Page() {
 							<span className={"text-lg font-semibold"}>Color palette</span>
 						</div>
 						<ul className={"flex flex-wrap gap-2"}>
-							{imageColors.map((finalColor: FinalColor, index: number) => (
+							{imagePalette.map((hex: string, index: number) => (
 								<li className={"flex flex-col items-center gap-2"} key={index}>
 									<div
 										className={"flex items-center justify-center rounded-md shadow border size-14"}
-										style={{ background: finalColor.hex }}
+										style={{ background: hex }}
 									></div>
 									<Button
 										variant={"ghost"}
 										className={"text-[10px] font-mono leading-none text-muted-foreground h-auto p-0"}
-										onClick={() => handleCopy(finalColor.hex)}
+										onClick={() => handleCopy(hex)}
 									>
-										{finalColor.hex}
+										{hex}
 									</Button>
 								</li>
 							))}

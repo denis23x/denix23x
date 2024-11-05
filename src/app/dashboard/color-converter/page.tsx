@@ -31,7 +31,7 @@ export default function Page() {
 				projects.
 			</p>
 			<Separator />
-			<div className={"flex items-stretch flex-wrap gap-4"}>
+			<div className={"flex items-start flex-wrap gap-4"}>
 				<div className={"grid gap-2"}>
 					<div className={"flex items-center gap-1"}>
 						<Button className={"size-7"} variant={"ghost"} size={"icon"}>
@@ -48,7 +48,7 @@ export default function Page() {
 						</div>
 					</div>
 				</div>
-				<div className={"grid gap-2"}>
+				<div className={"grid gap-4"}>
 					<fieldset className={"grid gap-2"}>
 						<Label className={"flex items-center gap-1"} htmlFor={"colorful-input"}>
 							<Button className={"size-7"} variant={"ghost"} size={"icon"}>
