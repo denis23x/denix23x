@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "userId": 3,
+      "title": "Atlas Shrugged",
+      "cover": "https://picsum.photos/seed/lKA48VrUC/512/512",
+      "author": "David Wyllie",
+      "format": "Audiobook",
+      "genre": "Business",
+      "publisher": "Firebrand Books",
+      "series": "The Infinity Cycle",
+      "createdAt": "Wed Nov 06 2024 14:02:31 GMT+0700 (GMT+07:00)",
+      "updatedAt": "Mon Feb 19 2024 18:38:54 GMT+0700 (GMT+07:00)"
+    }
+  ],
+  "status": 200
+}
