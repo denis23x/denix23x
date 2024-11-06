@@ -2,19 +2,14 @@
 
 import { useRef, useEffect, RefObject } from "react";
 import { useTheme } from "next-themes";
-import { Button } from "@/components/ui/button";
-import { handleDownload as handleDownloadBrowser, handleShare } from "@/lib/browser";
-import { useIsMobile } from "@/hooks/use-mobile";
 import useStore from "@/app/dashboard/placeholder-image/store";
 
 export default function PlaceholderImage() {
-	const { text, width, height, background, setBackground, color, setColor } = useStore();
+	const { text, width, height, background, setBackground, color, setColor, setCanvas } = useStore();
 	const { theme, systemTheme } = useTheme();
 
 	const canvasRef: RefObject<HTMLCanvasElement> = useRef<HTMLCanvasElement>(null);
 	const imgRef: RefObject<HTMLImageElement> = useRef<HTMLImageElement>(null);
-
-	const isMobile: boolean = useIsMobile();
 
 	useEffect(() => {
 		const isDark: boolean = theme === "dark" || (theme === "system" && systemTheme === "dark");
@@ -48,50 +43,23 @@ export default function PlaceholderImage() {
 
 				// Convert canvas to data URL and set it as the image source
 				image.src = canvas.toDataURL("image/png");
+
+				// Store
+				setCanvas(canvas);
 			}
 		}
 	}, [width, height, background, color, text]);
 
-	const handleDownload = () => {
-		const canvas: HTMLCanvasElement | null = canvasRef.current;
-		const image: HTMLImageElement | null = imgRef.current;
-
-		const name: string = `${text || `${width}x${height}`}.png`;
-
-		if (isMobile) {
-			canvas?.toBlob((blob: Blob | null) => {
-				if (blob) {
-					const shareFile: File = new File([blob], name, {
-						type: blob.type,
-					});
-
-					const shareData: ShareData = {
-						files: [shareFile],
-					};
-
-					handleShare(shareData);
-				}
-			});
-		} else {
-			handleDownloadBrowser(image?.src as string, name);
-		}
-	};
-
 	return (
-		<div className={"flex flex-col gap-4"}>
-			<div className={"border rounded-lg overflow-hidden shadow-sm size-[204px]"}>
-				<canvas className={"hidden"} ref={canvasRef} />
-				<img
-					className={"m-auto size-full object-contain aspect-square"}
-					ref={imgRef}
-					alt={"Generated Placeholder"}
-					width={width}
-					height={height}
-				/>
-			</div>
-			<Button variant={"outline"} onClick={handleDownload} aria-label={"Download Image"}>
-				Download Image
-			</Button>
+		<div className={"border rounded-lg overflow-hidden shadow-sm size-[256px]"}>
+			<canvas className={"hidden"} ref={canvasRef} />
+			<img
+				className={"m-auto size-full object-contain aspect-square"}
+				ref={imgRef}
+				alt={"Generated Placeholder"}
+				width={width}
+				height={height}
+			/>
 		</div>
 	);
 }

@@ -11,6 +11,8 @@ interface StoreState {
 	setBackground: (width: string) => void;
 	color: string;
 	setColor: (width: string) => void;
+	canvas: HTMLCanvasElement | null;
+	setCanvas: (canvas: HTMLCanvasElement | null) => void;
 }
 
 const useStore: UseBoundStore<StoreApi<StoreState>> = create<StoreState>(set => ({
@@ -24,6 +26,8 @@ const useStore: UseBoundStore<StoreApi<StoreState>> = create<StoreState>(set => 
 	setBackground: (background: string) => set(() => ({ background })),
 	color: "transparent",
 	setColor: (color: string) => set(() => ({ color })),
+	canvas: null,
+	setCanvas: (canvas: HTMLCanvasElement | null) => set(() => ({ canvas })),
 }));
 
 export default useStore;
