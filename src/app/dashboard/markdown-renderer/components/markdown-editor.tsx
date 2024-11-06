@@ -55,6 +55,8 @@ import MDEditor, {
 	title6,
 	unorderedListCommand,
 } from "@uiw/react-md-editor/nohighlight";
+import { handleDownload as handleDownloadBrowser } from "@/lib/browser";
+import dayjs from "dayjs";
 
 export default function MarkdownEditor() {
 	const { input, setInput } = useStore();
@@ -130,7 +132,7 @@ export default function MarkdownEditor() {
 
 	const xImage: ICommand = {
 		...image,
-		icon: <Image />,
+		icon: <Image />, // eslint-disable-line jsx-a11y/alt-text
 	};
 
 	const xTable: ICommand = {
@@ -184,13 +186,24 @@ export default function MarkdownEditor() {
 		icon: <Minus />,
 	};
 
+	const handleDownload = () => {
+		const blob: Blob = new Blob([input], {
+			type: "text/markdown",
+		});
+
+		const url: string = URL.createObjectURL(blob);
+		const name: string = dayjs().format("DD-MM-YYYY");
+
+		handleDownloadBrowser(url, `markdown-${name}.md`);
+	};
+
 	return (
 		<div className={"grid gap-4"}>
 			<MDEditor
 				value={input}
 				enableScroll={true}
 				visibleDragbar={false}
-				height={512}
+				height={448}
 				onChange={e => setInput(String(e))}
 				commands={[
 					xBold,
@@ -219,7 +232,9 @@ export default function MarkdownEditor() {
 				]}
 				extraCommands={[xCodeEdit, xCodeLive, xCodePreview, xFullscreen]}
 			/>
-			<Button variant={"outline"}>Download Markdown as File</Button>
+			<Button variant={"outline"} onClick={handleDownload} aria-label={"Download Markdown as File"}>
+				Download Markdown as File
+			</Button>
 		</div>
 	);
 }

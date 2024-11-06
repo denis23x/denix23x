@@ -3,6 +3,7 @@ import PlaceholderImage from "@/app/dashboard/placeholder-image/components/place
 import PlaceholderText from "@/app/dashboard/placeholder-image/components/placeholder-text";
 import PlaceholderSizes from "@/app/dashboard/placeholder-image/components/placeholder-sizes";
 import PlaceholderColors from "@/app/dashboard/placeholder-image/components/placeholder-colors";
+import PlaceholderDownload from "@/app/dashboard/placeholder-image/components/placeholder-download";
 
 export default function Page() {
 	return (
@@ -22,6 +23,7 @@ export default function Page() {
 					<PlaceholderColors />
 				</div>
 			</div>
+			<PlaceholderDownload />
 		</div>
 	);
 }
