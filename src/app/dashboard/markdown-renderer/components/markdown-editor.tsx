@@ -75,8 +75,6 @@ export default function MarkdownEditor() {
 		icon: <Strikethrough />,
 	};
 
-	// --
-
 	const xTitle1: ICommand = {
 		...title1,
 		icon: <Heading1 />,
@@ -106,8 +104,6 @@ export default function MarkdownEditor() {
 		...title6,
 		icon: <Heading6 />,
 	};
-
-	// --
 
 	const xLink: ICommand = {
 		...link,
@@ -139,8 +135,6 @@ export default function MarkdownEditor() {
 		icon: <Table />,
 	};
 
-	// --
-
 	const xList: ICommand = {
 		...unorderedListCommand,
 		icon: <List />,
@@ -155,8 +149,6 @@ export default function MarkdownEditor() {
 		...checkedListCommand,
 		icon: <ListTodo />,
 	};
-
-	// --
 
 	const xCodeEdit: ICommand = {
 		...codeEdit,
@@ -178,8 +170,6 @@ export default function MarkdownEditor() {
 		icon: <Fullscreen />,
 	};
 
-	// --
-
 	const xHr: ICommand = {
 		...hr,
 		icon: <Minus />,
@@ -199,6 +189,7 @@ export default function MarkdownEditor() {
 	return (
 		<div className={"grid gap-4"}>
 			<MDEditor
+				overflow={false}
 				value={input}
 				enableScroll={true}
 				visibleDragbar={false}
