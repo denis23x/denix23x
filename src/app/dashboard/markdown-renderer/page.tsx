@@ -1,8 +1,7 @@
 import { Separator } from "@/components/ui/separator";
-import MarkdownInput from "@/app/dashboard/markdown-renderer/components/markdown-input";
-import MarkdownOutput from "@/app/dashboard/markdown-renderer/components/markdown-output";
+import MarkdownEditor from "@/app/dashboard/markdown-renderer/components/markdown-editor";
 
-export default async function Page() {
+export default function Page() {
 	return (
 		<div className={"flex flex-1 flex-col gap-4 p-4 pt-0"}>
 			<h1 className={"scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl"}>Markdown Renderer</h1>
@@ -12,10 +11,7 @@ export default async function Page() {
 				switching applications.
 			</p>
 			<Separator />
-			<div className={"flex flex-col lg:flex-row gap-4"}>
-				<MarkdownInput />
-				<MarkdownOutput />
-			</div>
+			<MarkdownEditor />
 		</div>
 	);
 }
