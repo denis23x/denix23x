@@ -27,7 +27,7 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-const data = {
+export const data = {
 	user: {
 		name: "shadcn",
 		email: "m@example.com",
@@ -36,7 +36,7 @@ const data = {
 	navMain: [
 		{
 			title: "Tools",
-			url: "#",
+			url: "/dashboard/tools",
 			icon: SquareTerminal,
 			isActive: true,
 			items: [
@@ -72,7 +72,7 @@ const data = {
 		},
 		{
 			title: "Misc",
-			url: "#",
+			url: "/dashboard/misc",
 			icon: Shapes,
 			isActive: true,
 			items: [
