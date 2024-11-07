@@ -3,6 +3,13 @@ import { readFileAsText } from "@/lib/server";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 import PlaceholderRequest, { PlaceholderRequestParameters } from "./components/placeholder-request";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Placeholder API",
+	description:
+		"Mock backend API endpoints easily with predefined, free-to-use endpoints for testing. Perfect for front-end developers needing simulated responses without a live backend.",
+};
 
 export default async function Page() {
 	const booksModel: string = await readFileAsText("/files/placeholder-api/book.ts");

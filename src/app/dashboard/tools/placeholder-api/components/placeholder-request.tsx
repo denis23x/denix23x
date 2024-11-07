@@ -50,11 +50,14 @@ export default function PlaceholderRequest({ type, path, response, model, parame
 			</CollapsibleTrigger>
 			<CollapsibleContent>
 				<div className={"grid gap-3"}>
-					{/* prettier-ignore */}
-					<div className={`flex justify-between w-full bg-background ${map[type].border} !border-b-input border-x-0 gap-4 py-2 px-2 sm:px-4`}>
+					<div
+						className={`flex justify-between w-full bg-background ${map[type].border} !border-b-input border-x-0 gap-4 py-2 px-2 sm:px-4`}
+					>
 						<small className={"leading-7 font-bold my-auto"}>Parameters</small>
-						<Link href={path.replace('{id}', '1')} target={"_blank"}>
-							<Button variant={"outline"} aria-label={"Try it out"}>Try it out</Button>
+						<Link href={path.replace("{id}", "1")} target={"_blank"}>
+							<Button variant={"outline"} aria-label={"Try it out"}>
+								Try it out
+							</Button>
 						</Link>
 					</div>
 					<div className={"grid"}>

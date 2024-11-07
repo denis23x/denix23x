@@ -1,6 +1,13 @@
 import { Separator } from "@/components/ui/separator";
+import { Metadata } from "next";
 import ExpandableCard from "./components/expandable-card";
 import ExpandableGrid from "./components/expandable-grid";
+
+export const metadata: Metadata = {
+	title: "Playlist",
+	description:
+		"Explore a curated selection of my favorite albums across genres and styles. Discover impactful tracks, unique sounds, and insights—perfect for expanding your playlist!",
+};
 
 export default function Page() {
 	return (

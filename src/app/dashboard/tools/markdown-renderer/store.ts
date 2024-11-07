@@ -6,8 +6,8 @@ interface StoreState {
 }
 
 const useStore: UseBoundStore<StoreApi<StoreState>> = create<StoreState>(set => ({
-	// prettier-ignore
-	input: "# Heading\n\nUllamco do dolore reprehenderit aute sit adipisicing exercitation tempor. Dolor officia sint magna velit incididunt excepteur aliqua est ex dolor nostrud tempor.",
+	input:
+		"# Heading\n\nUllamco do dolore reprehenderit aute sit adipisicing exercitation tempor. Dolor officia sint magna velit incididunt excepteur aliqua est ex dolor nostrud tempor.",
 	setInput: (input: string) => set(() => ({ input })),
 }));
 
