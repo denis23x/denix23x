@@ -15,7 +15,7 @@ const cards: Card[] = [
 		description: "Slipknot",
 		title: "Iowa",
 		src: "/dashboard/misc/playlist/slipknot-iowa.webp",
-		ctaText: "Youtube",
+		ctaText: "YouTube",
 		ctaLink: "https://www.youtube.com/watch?v=qr5spx6mmYQ&list=OLAK5uy_koce7px0VmK1rsB31P4t9cKuVaa5hKpto",
 		content: () => {
 			return (
@@ -31,7 +31,7 @@ const cards: Card[] = [
 		description: "Mindless Self Indulgence",
 		title: "If",
 		src: "/dashboard/misc/playlist/mindless-self-indulgence-if.jpeg",
-		ctaText: "Youtube",
+		ctaText: "YouTube",
 		ctaLink: "https://www.youtube.com/watch?v=UR0UkTiKxmc&list=OLAK5uy_nIrlgjhPrToiPyKq0xHerkaVWz8xCzE3I",
 		content: () => {
 			return (
@@ -48,7 +48,7 @@ const cards: Card[] = [
 		description: "Yellow Claw",
 		title: "Blood For Mercy",
 		src: "/dashboard/misc/playlist/yellow-claw-blood-for-mercy.jpeg",
-		ctaText: "Youtube",
+		ctaText: "YouTube",
 		ctaLink: "https://www.youtube.com/watch?v=W15FZGzFqog&list=OLAK5uy_mUAFk0KRJWvH_L_P0W01kmJNYx3rXc0ZU",
 		content: () => {
 			return <p>Blood for Mercy is the first studio album by Dutch electronic music ensemble Yellow Claw.</p>;

@@ -1,9 +1,16 @@
 import { Separator } from "@/components/ui/separator";
+import { Metadata } from "next";
 import ColorPicker from "./components/color-picker";
 import ColorPickerInput from "./components/color-picker-input";
 import ColorPalette from "./components/color-palette";
 import ColorOutput from "./components/color-output";
 import ColorHarmony from "./components/color-harmony";
+
+export const metadata: Metadata = {
+	title: "Color Converter",
+	description:
+		"Easily convert color values across formats like HEX, RGB, and HSL. Switch between models with a click for flexible styling and precise color matching in projects.",
+};
 
 export default function Page() {
 	return (

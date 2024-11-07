@@ -1,5 +1,12 @@
 import { Separator } from "@/components/ui/separator";
+import { Metadata } from "next";
 import MarkdownEditor from "./components/markdown-editor";
+
+export const metadata: Metadata = {
+	title: "Markdown Renderer",
+	description:
+		"Render Markdown content in your browser and download the output. Perfect for developers and writers needing a quick way to preview formatted Markdown without switching apps.",
+};
 
 export default function Page() {
 	return (

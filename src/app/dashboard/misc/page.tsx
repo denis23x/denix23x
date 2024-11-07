@@ -1,14 +1,16 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { HoverEffect } from "@/components/ui/card-hover-effect";
+import { AppGridEffect } from "@/components/app-grid-effect";
+import { Music } from "lucide-react";
 
 export default function Page() {
-	const projects = [
+	const items = [
 		{
 			title: "Playlist",
 			description: "A technology company that builds economic infrastructure for the internet.",
-			link: "/dashboard/tools/color-converter",
+			icon: Music,
+			link: "/dashboard/misc/playlist",
 		},
 	];
 
@@ -21,9 +23,7 @@ export default function Page() {
 				facets of what I enjoy.
 			</p>
 			<Separator />
-			<div className="">
-				<HoverEffect items={projects} />
-			</div>
+			<AppGridEffect items={items} />
 		</div>
 	);
 }
