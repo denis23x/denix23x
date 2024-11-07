@@ -40,7 +40,7 @@ export default function PlaceholderRequest({ type, path, response, model, parame
 	};
 
 	return (
-		<Collapsible className={`w-full rounded-md group/collapsible ${map[type].border} ${map[type].bg}`}>
+		<Collapsible className={`w-full rounded-md group/collapsible overflow-auto ${map[type].border} ${map[type].bg}`}>
 			<CollapsibleTrigger className={"w-full p-1"}>
 				<div className={"flex items-center justify-between w-full gap-2"}>
 					<small className={`font-bold uppercase text-foreground rounded py-1 w-16 ${map[type].button}`}>{type}</small>
