@@ -1,6 +1,18 @@
 "use client";
 
-import { BookOpen, Bot, House, Frame, LifeBuoy, Map, PieChart, Send, Settings2, SquareTerminal } from "lucide-react";
+import {
+	BookOpen,
+	Bot,
+	House,
+	Frame,
+	LifeBuoy,
+	Map,
+	PieChart,
+	Send,
+	Settings2,
+	SquareTerminal,
+	Shapes,
+} from "lucide-react";
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
 import { NavSecondary } from "@/components/nav-secondary";
@@ -29,10 +41,6 @@ const data = {
 			isActive: true,
 			items: [
 				{
-					title: "SVG to CSS Encoder",
-					url: "/dashboard/tools/svg-to-css-encoder",
-				},
-				{
 					title: "Color Converter",
 					url: "/dashboard/tools/color-converter",
 				},
@@ -55,6 +63,22 @@ const data = {
 				{
 					title: "Markdown Renderer",
 					url: "/dashboard/tools/markdown-renderer",
+				},
+				{
+					title: "SVG to CSS Encoder",
+					url: "/dashboard/tools/svg-to-css-encoder",
+				},
+			],
+		},
+		{
+			title: "Misc",
+			url: "#",
+			icon: Shapes,
+			isActive: true,
+			items: [
+				{
+					title: "Playlist",
+					url: "/dashboard/misc/playlist",
 				},
 			],
 		},
