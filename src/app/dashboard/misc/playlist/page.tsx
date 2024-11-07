@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
@@ -22,8 +22,8 @@ export default function ExpandableCardDemo() {
 				return (
 					<p>
 						Iowa is the second studio album by American heavy metal band Slipknot. Produced by the band and Ross
-						Robinson, it was released on August 28, 2001, by Roadrunner Records. The title derives from the band's home
-						state, Iowa, which members have stated is one of their greatest sources of inspiration.
+						Robinson, it was released on August 28, 2001, by Roadrunner Records. The title derives from the band&#39;s
+						home state, Iowa, which members have stated is one of their greatest sources of inspiration.
 					</p>
 				);
 			},
@@ -170,7 +170,7 @@ export default function ExpandableCardDemo() {
 				) : null}
 			</AnimatePresence>
 			<ul className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 items-start gap-4">
-				{cards.map((card, index) => (
+				{cards.map(card => (
 					<motion.div
 						layoutId={`card-${card.title}-${id}`}
 						key={card.title}

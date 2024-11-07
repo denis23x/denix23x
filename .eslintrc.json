@@ -6,7 +6,11 @@
     "plugin:react/recommended",
     "plugin:prettier/recommended"
   ],
-  "ignorePatterns": ["**/components/ui/**/*.tsx"],
+  "ignorePatterns": [
+    "**/components/ui/**/*.tsx",
+    "**/components/blocks/**/*.tsx",
+    "**/hooks/**/*.tsx"
+  ],
   "rules": {
     "react-hooks/exhaustive-deps": "off",
     "react/react-in-jsx-scope": "off",
