@@ -30,31 +30,31 @@ const data = {
 			items: [
 				{
 					title: "SVG to CSS Encoder",
-					url: "/dashboard/svg-to-css-encoder",
+					url: "/dashboard/tools/svg-to-css-encoder",
 				},
 				{
 					title: "Color Converter",
-					url: "/dashboard/color-converter",
+					url: "/dashboard/tools/color-converter",
 				},
 				{
 					title: "Color Extractor",
-					url: "/dashboard/color-extractor",
+					url: "/dashboard/tools/color-extractor",
 				},
 				{
 					title: "Placeholder Image",
-					url: "/dashboard/placeholder-image",
+					url: "/dashboard/tools/placeholder-image",
 				},
 				{
 					title: "Placeholder API",
-					url: "/dashboard/placeholder-api",
+					url: "/dashboard/tools/placeholder-api",
 				},
 				{
 					title: "Lorem Ipsum",
-					url: "/dashboard/lorem-ipsum",
+					url: "/dashboard/tools/lorem-ipsum",
 				},
 				{
 					title: "Markdown Renderer",
-					url: "/dashboard/markdown-renderer",
+					url: "/dashboard/tools/markdown-renderer",
 				},
 			],
 		},
