@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Timeline } from "@/components/ui/timeline";
-import { BorderBeam } from "@/components/ui/border-beam";
+// import { BorderBeam } from "@/components/ui/border-beam";
 
 export function AppTimeline() {
 	const data = [
