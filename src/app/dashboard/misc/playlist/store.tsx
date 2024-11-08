@@ -12,11 +12,26 @@ interface StoreState {
 const cards: Card[] = [
 	{
 		uid: nanoid(),
+		description: "Hotline Miami",
+		title: "OST",
+		src: "/dashboard/misc/playlist/hotline-miami-ost.avif",
+		link: "https://www.youtube.com/watch?v=IW1yCDcpTJk&list=PLk2QSht0RAUEMduNgBzaW3RrQVuokzkLE",
+		content: () => {
+			return (
+				<p>
+					Hotline Miami is a 2012 top-down shooter game developed by Dennaton Games and published by Devolver Digital.
+					In the game, players take on the role of an unnamed silent protagonist—dubbed Jacket by fans—while committing
+					massacres against the local Russian mafia.
+				</p>
+			);
+		},
+	},
+	{
+		uid: nanoid(),
 		description: "Slipknot",
 		title: "Iowa",
 		src: "/dashboard/misc/playlist/slipknot-iowa.webp",
-		ctaText: "YouTube",
-		ctaLink: "https://www.youtube.com/watch?v=qr5spx6mmYQ&list=OLAK5uy_koce7px0VmK1rsB31P4t9cKuVaa5hKpto",
+		link: "https://www.youtube.com/watch?v=qr5spx6mmYQ&list=OLAK5uy_koce7px0VmK1rsB31P4t9cKuVaa5hKpto",
 		content: () => {
 			return (
 				<p>
@@ -31,8 +46,7 @@ const cards: Card[] = [
 		description: "Mindless Self Indulgence",
 		title: "If",
 		src: "/dashboard/misc/playlist/mindless-self-indulgence-if.jpeg",
-		ctaText: "YouTube",
-		ctaLink: "https://www.youtube.com/watch?v=UR0UkTiKxmc&list=OLAK5uy_nIrlgjhPrToiPyKq0xHerkaVWz8xCzE3I",
+		link: "https://www.youtube.com/watch?v=UR0UkTiKxmc&list=OLAK5uy_nIrlgjhPrToiPyKq0xHerkaVWz8xCzE3I",
 		content: () => {
 			return (
 				<p>
@@ -48,8 +62,7 @@ const cards: Card[] = [
 		description: "Yellow Claw",
 		title: "Blood For Mercy",
 		src: "/dashboard/misc/playlist/yellow-claw-blood-for-mercy.jpeg",
-		ctaText: "YouTube",
-		ctaLink: "https://www.youtube.com/watch?v=W15FZGzFqog&list=OLAK5uy_mUAFk0KRJWvH_L_P0W01kmJNYx3rXc0ZU",
+		link: "https://www.youtube.com/watch?v=W15FZGzFqog&list=OLAK5uy_mUAFk0KRJWvH_L_P0W01kmJNYx3rXc0ZU",
 		content: () => {
 			return <p>Blood for Mercy is the first studio album by Dutch electronic music ensemble Yellow Claw.</p>;
 		},

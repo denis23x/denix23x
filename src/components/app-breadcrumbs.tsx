@@ -9,7 +9,7 @@ import {
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { usePathname } from "next/navigation";
-import { data as sidebar } from "@/components/app-sidebar";
+import { navMain } from "@/store/useNavMain";
 
 interface AppBreadcrumbs {
 	title: string;
@@ -26,7 +26,7 @@ export function AppBreadcrumbs() {
 		},
 	];
 
-	sidebar.navMain.forEach(main => {
+	navMain.forEach(main => {
 		if (pathname.startsWith(main.url)) {
 			appBreadcrumbs.push(main);
 		}
@@ -50,7 +50,7 @@ export function AppBreadcrumbs() {
 								<BreadcrumbPage>{breadcrumbs.title}</BreadcrumbPage>
 							)}
 						</BreadcrumbItem>
-						{i !== appBreadcrumbs.length - 1 && <BreadcrumbSeparator className="hidden md:block" />}
+						{i !== appBreadcrumbs.length - 1 && <BreadcrumbSeparator className={"hidden md:block"} />}
 					</ul>
 				))}
 			</BreadcrumbList>

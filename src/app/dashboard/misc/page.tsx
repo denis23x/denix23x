@@ -3,14 +3,13 @@
 import { Separator } from "@/components/ui/separator";
 import { AppGridEffect } from "@/components/app-grid-effect";
 import { Music } from "lucide-react";
+import { navMainPlaylist } from "@/store/useNavMain";
 
 export default function Page() {
 	const items = [
 		{
-			title: "Playlist",
-			description: "A technology company that builds economic infrastructure for the internet.",
+			...navMainPlaylist,
 			icon: Music,
-			link: "/dashboard/misc/playlist",
 		},
 	];
 

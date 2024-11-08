@@ -1,15 +1,15 @@
 import { Separator } from "@/components/ui/separator";
+import { Metadata } from "next";
+import { navMainPlaceholderImage } from "@/store/useNavMain";
 import PlaceholderImage from "./components/placeholder-image";
 import PlaceholderText from "./components/placeholder-text";
 import PlaceholderSizes from "./components/placeholder-sizes";
 import PlaceholderColors from "./components/placeholder-colors";
 import PlaceholderDownload from "./components/placeholder-download";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Placeholder Image",
-	description:
-		"Generate customizable placeholder images with specific dimensions, colors, and text for quick visualization and layout testing in web and app development projects.",
+	title: navMainPlaceholderImage.title,
+	description: navMainPlaceholderImage.description,
 };
 
 export default function Page() {

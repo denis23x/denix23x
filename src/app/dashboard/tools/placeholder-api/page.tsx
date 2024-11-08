@@ -1,14 +1,14 @@
 import { Separator } from "@/components/ui/separator";
 import { readFileAsText } from "@/lib/server";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown } from "lucide-react";
-import PlaceholderRequest, { PlaceholderRequestParameters } from "./components/placeholder-request";
 import { Metadata } from "next";
+import { ChevronDown } from "lucide-react";
+import { navMainPlaceholderApi } from "@/store/useNavMain";
+import PlaceholderRequest, { PlaceholderRequestParameters } from "./components/placeholder-request";
 
 export const metadata: Metadata = {
-	title: "Placeholder API",
-	description:
-		"Mock backend API endpoints easily with predefined, free-to-use endpoints for testing. Perfect for front-end developers needing simulated responses without a live backend.",
+	title: navMainPlaceholderApi.title,
+	description: navMainPlaceholderApi.description,
 };
 
 export default async function Page() {
