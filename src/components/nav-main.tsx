@@ -30,6 +30,19 @@ export function NavMain({ items }: NavMainProps) {
 		<SidebarGroup>
 			<SidebarGroupLabel>Platform</SidebarGroupLabel>
 			<SidebarMenu>
+				<SidebarMenuItem>
+					<SidebarMenuButton asChild>
+						<Link href={"/"}>Landing</Link>
+					</SidebarMenuButton>
+				</SidebarMenuItem>
+				<SidebarMenuItem>
+					<SidebarMenuButton asChild>
+						<Link href={"/blog"}>Blog</Link>
+					</SidebarMenuButton>
+				</SidebarMenuItem>
+			</SidebarMenu>
+			<SidebarGroupLabel>Platform</SidebarGroupLabel>
+			<SidebarMenu>
 				{items.map(item => (
 					<Collapsible key={item.title} asChild defaultOpen={item.isActive} className={"group/collapsible"}>
 						<SidebarMenuItem>

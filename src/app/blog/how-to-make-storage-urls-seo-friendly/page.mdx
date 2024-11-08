@@ -1,0 +1,138 @@
+import AppBlogLayout from '../../../components/app-blog-layout';
+
+### About
+
+> Did you know that not every link will be crawled by default by Googlebot? Google prefers SEO friendly links because they help search engines and users understand the content of the page more easily
+
+___
+
+SEO friendly :white_check_mark:
+
+https://example.com/artificial-intelligence-trends-2024
+
+Optimized URLs follow a structured, keyword-rich format. This ensures better indexing by search engines, improves keyword relevancy, and enhances user engagement
+
+Not SEO friendly :no_entry:
+
+https://example.com/view.php?section=98&art_id=349872&type=blog
+
+These parameter-based links are less intuitive for users, lack keyword context, and make it difficult for search engines to effectively crawl and rank our pages
+
+___
+
+Let's imagine you are using the **Firebase Storage** in your project and the link of files in that storage will looks like this ..
+
+https://firebasestorage.googleapis.com/v0/b/project-name.appspot.com/o/path/image.png
+
+Of course ++this is not SEO friendly++ and Google will never found your images or files ..etc
+
+### Idea
+
+First of all, decide on the structure of the files and their names. For names I suggest using **UID** and I will tell you further how to make the URL as friendly as possible
+
+When a frontend uploads an image you should get the **context** of where they are using that image. You can parse the body of article (or whatever you have there) and extract more frequently used words as array of string. I have a post about it
+
+[@preview](https://takabase.com/post/510001)
+
+Let's say you got something like this
+
+- **UID** automatically generated `a5805698`
+- **Context** `['dog', 'playing', 'with', 'cat']` --> `'dog-playing-with-cat'`
+
+So, your file name will be `'dog-playing-with-cat-a5805698.png'` you can save it in database, but real file name will be the only `'a5805698.png'` you can upload it to your bucket
+
+Expectations
+
+https://example.com/images/dog-playing-with-cat-a5805698.png
+
+Reality
+
+https://firebasestorage.googleapis.com/v0/b/project-name.appspot.com/o/images/a5805698.png
+
+Now to connect these two addresses you will need a proxy
+
+### localhost:4200
+
+For local development you should use the `proxy.conf.mjs` file with next content
+
+``` javascript
+export default {
+  '/images/*': {
+    target: 'https://firebasestorage.googleapis.com/v0/b/project-name.appspot.com/o/',
+    secure: false,
+    changeOrigin: true,
+    bypass: (req, res) => {
+      const filename = req.url.split('/').pop();
+      const filenameUid = filename.split('-').pop();
+
+      req.url = encodeURIComponent(req.url.replace(filename, filenameUid).substring(1)) + '?alt=media';
+    }
+  }
+}
+```
+
+You can read more about `proxy.conf.mjs` in [official Angular documentation](https://angular.dev/tools/cli/serve#proxying-to-a-backend-server)
+
+Let me explain you **bypass** method
+
+- `req.url` will be equal to `/images/dog-playing-with-cat-a5805698.png`
+- we take only the last part `dog-playing-with-cat-a5805698.png`
+- we take only the last part again `a5805698.png`
+
+Then replace `dog-playing-with-cat-a5805698.png` --> `a5805698.png` and encode it properly (do not encode the first `/` in the `req.url`) and append special query parameter`?alt=media` to display image as media
+
+**Firebase Storage** uses encoded URLs to ensure that file paths and query parameters are correctly interpreted by browsers and servers
+
+Now our expectations connected to our reality! And yeah .. this part `dog-playing-with-cat` it means nothing :sweat_smile: (only for better SEO)
+
+To make the `proxy.conf.mjs` work you can append new parameter for your dev script `--proxy-config src/proxy.conf.mjs` another option is specify the file in your `angular.json`
+
+``` json
+{
+   "projects": {
+     "project-name": {
+       "architect": {
+         "serve": {
+           "options": {
+             "proxyConfig": "src/proxy.conf.mjs"
+           }
+         }
+       }
+     }
+   }
+ }
+```
+
+### Production
+
+In production the `proxy.conf.mjs` which we used before will not work, but the idea is completely the same. I found this [express-http-proxy](https://www.npmjs.com/package/express-http-proxy) package and I used it
+
+``` bash
+npm i express-http-proxy
+```
+
+In your `server.ts` add new route and write a handler, it will work completely the same as `proxy.conf.mjs`
+
+``` typescript
+// prettier-ignore
+server.use('/images/*', proxy('https://firebasestorage.googleapis.com', {
+	filter: (req) => req.method === 'GET',
+	proxyReqPathResolver: (req) => {
+		const filename: string = req.originalUrl.split('/').pop();
+		const filenameUid: string = filename.split('-').pop();
+
+		const storageBucket: string = ['/v0/b', environment.firebase.storageBucket, 'o'].join('/') + '/';
+		const storageBucketFile: string = encodeURIComponent(req.originalUrl.replace(filename, filenameUid).substring(1)) + '?alt=media';
+
+		return storageBucket + storageBucketFile;
+	}
+}));
+```
+
+So now we got a flexible way to work with images and made them SEO friendly :star_struck:
+
+**BTW** such a way can be used in any stack and any environment
+
+export default function MDXPage({ children }) {
+	return <AppBlogLayout>{children}</AppBlogLayout>
+}

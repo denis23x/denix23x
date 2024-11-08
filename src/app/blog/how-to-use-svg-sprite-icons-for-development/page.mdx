@@ -1,0 +1,148 @@
+import AppBlogLayout from '../../../components/app-blog-layout'
+
+### About
+
+> [wiki/Texture_atlas](https://en.wikipedia.org/wiki/Texture_atlas) In computer graphics, a texture atlas (also called a spritesheet or an image sprite in 2D game development) is an image containing multiple smaller images, usually packed together to reduce overall dimensions. An atlas can consist of uniformly-sized images or images of varying dimensions. A sub-image is drawn using custom texture coordinates to pick it out of the atlas
+
+### Setup
+
+We will need to install a few node packages
+
+- [svg2sprite-cli](https://www.npmjs.com/package/svg2sprite-cli)
+- [prettier](https://www.npmjs.com/package/prettier)
+- [prompts](https://www.npmjs.com/package/prompts)
+- [jsdom](https://www.npmjs.com/package/jsdom)
+
+All this can be installed with one following command, where `-D` it's `--save-dev` so don’t worry about production build
+
+``` bash
+npm i svg2sprite-cli prettier prompts jsdom -D
+```
+
+We actually only need one package, but we'll be cool developers and install them all, read on to find out why :sunglasses:
+
+Let's download a set of icons for the sprite, I prefer to use Bootstrap icons
+
+[@preview](https://icons.getbootstrap.com)
+
+Then arrange your files something like this
+
+``` treeview
+assets/
+└── icons/
+    ├── ban.svg
+    ├── bookmark.svg
+    └── ...
+sprite.js
+```
+
+Now it's a time to use already installed packages :fire:
+
+### sprite.js
+
+Here is the simple script below where we using **prompts** and **svg2sprite-cli**
+
+**prompts** package is responsible for command line interaction with the user, we will use only select as an prompt type, there are a lot of additional types and you can read about all of them in the [documentation](https://github.com/terkelg/prompts?tab=readme-ov-file#-types)
+
+**svg2sprite-cli** we will use this package to create a sprite, just pass the input and output values to it, add extra parameters like `--stripAttrs` if needed, again, if you are interested, read the [documentation](https://github.com/mrmlnc/svg2sprite-cli#readme)
+
+``` javascript
+import prompts from 'prompts';
+import { spawn } from 'child_process';
+
+(async () => {
+	const sprite = await prompts({
+		type: 'select',
+		name: 'sprite',
+		message: 'Select a sprite',
+		initial: 0,
+		choices: [
+			{
+				title: 'Bootstrap',
+				value: 'bootstrap',
+				description: 'Build sprite of Bootstrap icons'
+			}
+			// ...add more values
+		]
+	});
+
+	if (sprite.sprite === 'bootstrap') {
+		const run = spawn('svg2sprite ./assets/icons ./assets/sprite-bootstrap.svg --inline --stripAttrs class --stripAttrs fill', {
+			shell: true,
+			stdio: 'inherit'
+		});
+	} else {
+		console.log('Ok, Bye!');
+	}
+})();
+```
+
+Now you can run this script with `node sprite` and you will see a select from the **prompts** package, by selecting the appropriate item your sprite will be assembled :white_check_mark:
+
+### index.html
+
+Now need to inject it to the project into `index.html` with help of **jsdom** and **prettier**
+
+Here is the **index.html** example below, pay attention to `data-sprite="bootstrap"` this is the element where our sprite will appear
+
+``` markup
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<title>Sprite</title>
+	</head>
+	<body>
+		<h1 class="text-3xl font-bold underline">Hello world!</h1>
+		<!-- prettier-ignore -->
+		<div class="hidden" data-sprite="bootstrap"></div>
+	</body>
+</html>
+```
+
+Let's update **sprite.js** script with the next code
+
+**jsdom** this package will be used to work with **DOM** and insert sprite into **index.html**
+
+**prettier** this package will be used for text formatting. ++Overall I strongly recommend using it if you are not doing it already++ :wink:
+
+``` javascript
+run.on('close', () => {
+	fs.readFile('./assets/sprite-bootstrap.svg', 'utf8', (error, sprite) => {
+		if (error) {
+			throw error;
+		}
+
+		jsdom.JSDOM.fromFile('./index.html').then((dom) => {
+			dom.window.document.querySelector("[data-sprite='bootstrap']").innerHTML = sprite.trim();
+
+			fs.writeFile('./index.html', dom.serialize(), (error) => {
+				if (error) {
+					throw error;
+				}
+
+				spawn('prettier --write index.html --log-level silent', {
+					shell: true,
+					stdio: 'inherit'
+				});
+			});
+		});
+	});
+});
+```
+
+Again, you can run this script with `node sprite` at this time the generated sprite will be inserted into the `index.html`, the contents will be formatted and the sprite is completely ready to work
+
+From now at any time anywhere you can display icons from sprite as follows, just specify the link to the icon name `#bookmark` like. Using attributes you can adjust the size, and you can also apply the fill thanks to the fact that earlier we cut this attribute from the original file using `--stripAttrs`
+
+``` markup
+<svg width="1.5em" height="1.5em" viewBox="0 0 16 16">
+	<use xlink:href="#bookmark"></use>
+</svg>
+```
+
+export default function MDXPage({ children }) {
+	return <AppBlogLayout>{children}</AppBlogLayout>
+}
