@@ -1,18 +1,6 @@
 "use client";
 
-import {
-	BookOpen,
-	Bot,
-	House,
-	Frame,
-	LifeBuoy,
-	Map,
-	PieChart,
-	Send,
-	Settings2,
-	SquareTerminal,
-	Shapes,
-} from "lucide-react";
+import { House, Frame, LifeBuoy, Map, PieChart, Send } from "lucide-react";
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
 import { NavSecondary } from "@/components/nav-secondary";
@@ -26,6 +14,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { navMain } from "@/store/useNavMain";
 
 export const data = {
 	user: {
@@ -33,121 +22,7 @@ export const data = {
 		email: "m@example.com",
 		avatar: "/avatars/shadcn.jpg",
 	},
-	navMain: [
-		{
-			title: "Tools",
-			url: "/dashboard/tools",
-			icon: SquareTerminal,
-			isActive: true,
-			items: [
-				{
-					title: "Color Converter",
-					url: "/dashboard/tools/color-converter",
-				},
-				{
-					title: "Color Extractor",
-					url: "/dashboard/tools/color-extractor",
-				},
-				{
-					title: "Placeholder Image",
-					url: "/dashboard/tools/placeholder-image",
-				},
-				{
-					title: "Placeholder API",
-					url: "/dashboard/tools/placeholder-api",
-				},
-				{
-					title: "Lorem Ipsum",
-					url: "/dashboard/tools/lorem-ipsum",
-				},
-				{
-					title: "Markdown Renderer",
-					url: "/dashboard/tools/markdown-renderer",
-				},
-				{
-					title: "SVG to CSS Encoder",
-					url: "/dashboard/tools/svg-to-css-encoder",
-				},
-			],
-		},
-		{
-			title: "Misc",
-			url: "/dashboard/misc",
-			icon: Shapes,
-			isActive: true,
-			items: [
-				{
-					title: "Playlist",
-					url: "/dashboard/misc/playlist",
-				},
-			],
-		},
-		{
-			title: "Models",
-			url: "#",
-			icon: Bot,
-			items: [
-				{
-					title: "Genesis",
-					url: "#",
-				},
-				{
-					title: "Explorer",
-					url: "#",
-				},
-				{
-					title: "Quantum",
-					url: "#",
-				},
-			],
-		},
-		{
-			title: "Documentation",
-			url: "#",
-			icon: BookOpen,
-			items: [
-				{
-					title: "Introduction",
-					url: "#",
-				},
-				{
-					title: "Get Started",
-					url: "#",
-				},
-				{
-					title: "Tutorials",
-					url: "#",
-				},
-				{
-					title: "Changelog",
-					url: "#",
-				},
-			],
-		},
-		{
-			title: "Settings",
-			url: "#",
-			icon: Settings2,
-			items: [
-				{
-					title: "General",
-					url: "#",
-				},
-				{
-					title: "Team",
-					url: "#",
-				},
-				{
-					title: "Billing",
-					url: "#",
-				},
-				{
-					title: "Limits",
-					url: "#",
-				},
-			],
-		},
-	],
+	navMain,
 	navSecondary: [
 		{
 			title: "Support",

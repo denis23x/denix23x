@@ -1,13 +1,13 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
+import { navMainColorExtractor } from "@/store/useNavMain";
 import ImagePreview from "./components/image-preview";
 import ImageInput from "./components/image-input";
 import ImagePalette from "./components/image-palette";
 
 export const metadata: Metadata = {
-	title: "Color Extractor",
-	description:
-		"Create a color palette from any image, including average HUE, to match themes across UI components. Ideal for maintaining aesthetic and visual consistency in design.",
+	title: navMainColorExtractor.title,
+	description: navMainColorExtractor.description,
 };
 
 export default function Page() {

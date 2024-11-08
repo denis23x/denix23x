@@ -1,13 +1,13 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
+import { navMainLoremIpsum } from "@/store/useNavMain";
 import LoremRadio from "./components/lorem-radio";
 import LoremNumber from "./components/lorem-number";
 import LoremTextarea from "./components/lorem-textarea";
 
 export const metadata: Metadata = {
-	title: "Lorem Ipsum",
-	description:
-		"Generate customizable Lorem Ipsum text for web design, enabling designers to fill layouts with realistic, non-distracting text that simulates real content for visual testing.",
+	title: navMainLoremIpsum.title,
+	description: navMainLoremIpsum.description,
 };
 
 export default function Page() {

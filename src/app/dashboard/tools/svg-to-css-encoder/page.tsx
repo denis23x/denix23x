@@ -1,12 +1,12 @@
 import { Separator } from "@/components/ui/separator";
+import { Metadata } from "next";
+import { navMainSvgToCssEncoder } from "@/store/useNavMain";
 import SvgInput from "./components/svg-input";
 import SvgOutput from "./components/svg-output";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "SVG to CSS Encoder",
-	description:
-		"Convert SVG code to a Data URI format for direct CSS use, enabling embedded SVG images within stylesheets, reducing server requests for faster page loads.",
+	title: navMainSvgToCssEncoder.title,
+	description: navMainSvgToCssEncoder.description,
 };
 
 export default function Page() {

@@ -5,6 +5,7 @@ import { RefObject, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import { Separator } from "@/components/ui/separator";
+import { CirclePlay } from "lucide-react";
 import ExpandableCloseIcon from "./expandable-close-icon";
 import useStore from "../store";
 
@@ -82,7 +83,7 @@ export default function ExpandableCard() {
 								/>
 							</motion.div>
 							<div>
-								<div className="flex justify-between items-start p-4">
+								<div className="flex justify-between items-center p-4">
 									<div className="">
 										<motion.span
 											layoutId={`title-${active.uid}`}
@@ -102,11 +103,11 @@ export default function ExpandableCard() {
 										initial={{ opacity: 0 }}
 										animate={{ opacity: 1 }}
 										exit={{ opacity: 0 }}
-										href={active.ctaLink}
+										href={active.link}
 										target="_blank"
-										className="px-4 py-3 text-sm rounded-full font-bold bg-red-500 text-white"
+										className="p-2 rounded-full bg-red-500 text-white"
 									>
-										{active.ctaText}
+										<CirclePlay />
 									</motion.a>
 								</div>
 								<Separator />

@@ -9,7 +9,7 @@ interface AppGridEffectProps {
 		title: string;
 		icon: LucideIcon;
 		description: string;
-		link: string;
+		url: string;
 	}[];
 	className?: string;
 }
@@ -20,9 +20,9 @@ export const AppGridEffect = ({ items, className }: AppGridEffectProps) => {
 	return (
 		<ul className={cn("grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5", className)}>
 			{items.map((item, idx: number) => (
-				<li key={item?.link}>
+				<li key={idx}>
 					<Link
-						href={item?.link}
+						href={item?.url}
 						className={"relative group block p-2 h-full w-full"}
 						onMouseEnter={() => setHoveredIndex(idx)}
 						onMouseLeave={() => setHoveredIndex(null)}
