@@ -6,7 +6,7 @@ interface AppHighlightProps {
 	code: string;
 }
 
-export async function AppHighlight({ title, language, code }: AppHighlightProps) {
+export async function AppHighlight({ title }: AppHighlightProps) {
 	const html: string = "";
 
 	// const html: Promise<string> = codeToHtml(code, {
