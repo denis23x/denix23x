@@ -50,11 +50,11 @@ export function AppBusinessCard() {
 				</ul>
 			</div>
 			<Separator />
-			<span className="pointer-events-none whitespace-pre-wrap text-2xl font-semibold leading-none dark:from-white dark:to-slate-900/10">
-				Software Developer | Angular, React, Vue, Node, GCP, Vercel
+			<span className="pointer-events-none whitespace-pre-wrap text-4xl md:text-5xl lg:text-6xl font-semibold leading-none text-center mx-auto dark:from-white dark:to-slate-900/10">
+				Software Developer
 			</span>
 			<p className={"leading-7"}>
-				I'm a passionate frontend developer with a focus on creating clean, responsive, and user-centered designs.
+				I&#39;m a passionate frontend developer with a focus on creating clean, responsive, and user-centered designs.
 				Skilled in <strong className={"inline-code"}>JavaScript</strong>,
 				<strong className={"inline-code"}>TypeScript</strong>, <strong className={"inline-code"}>SCSS</strong>, and
 				other frontend technologies, I enjoy building engaging, intuitive interfaces that enhance the user experience.
