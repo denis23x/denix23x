@@ -46,7 +46,91 @@ Here is the simple script below where we using **prompts** and **svg2sprite-cli*
 
 **svg2sprite-cli** we will use this package to create a sprite, just pass the input and output values to it, add extra parameters like `--stripAttrs` if needed, again, if you are interested, read the [documentation](https://github.com/mrmlnc/svg2sprite-cli#readme)
 
-``` javascript
+``` javascript showLineNumbers
+import prompts from 'prompts';
+import { spawn } from 'child_process';
+
+(async () => {
+	const sprite = await prompts({
+		type: 'select',
+		name: 'sprite',
+		message: 'Select a sprite',
+		initial: 0,
+		choices: [
+			{
+				title: 'Bootstrap',
+				value: 'bootstrap',
+				description: 'Build sprite of Bootstrap icons'
+			}
+			// ...add more values
+		]
+	});
+
+	if (sprite.sprite === 'bootstrap') {
+		const run = spawn('svg2sprite ./assets/icons ./assets/sprite-bootstrap.svg --inline --stripAttrs class --stripAttrs fill', {
+			shell: true,
+			stdio: 'inherit'
+		});
+	} else {
+		console.log('Ok, Bye!');
+	}
+})();
+import prompts from 'prompts';
+import { spawn } from 'child_process';
+
+(async () => {
+	const sprite = await prompts({
+		type: 'select',
+		name: 'sprite',
+		message: 'Select a sprite',
+		initial: 0,
+		choices: [
+			{
+				title: 'Bootstrap',
+				value: 'bootstrap',
+				description: 'Build sprite of Bootstrap icons'
+			}
+			// ...add more values
+		]
+	});
+
+	if (sprite.sprite === 'bootstrap') {
+		const run = spawn('svg2sprite ./assets/icons ./assets/sprite-bootstrap.svg --inline --stripAttrs class --stripAttrs fill', {
+			shell: true,
+			stdio: 'inherit'
+		});
+	} else {
+		console.log('Ok, Bye!');
+	}
+})();
+import prompts from 'prompts';
+import { spawn } from 'child_process';
+
+(async () => {
+	const sprite = await prompts({
+		type: 'select',
+		name: 'sprite',
+		message: 'Select a sprite',
+		initial: 0,
+		choices: [
+			{
+				title: 'Bootstrap',
+				value: 'bootstrap',
+				description: 'Build sprite of Bootstrap icons'
+			}
+			// ...add more values
+		]
+	});
+
+	if (sprite.sprite === 'bootstrap') {
+		const run = spawn('svg2sprite ./assets/icons ./assets/sprite-bootstrap.svg --inline --stripAttrs class --stripAttrs fill', {
+			shell: true,
+			stdio: 'inherit'
+		});
+	} else {
+		console.log('Ok, Bye!');
+	}
+})();
 import prompts from 'prompts';
 import { spawn } from 'child_process';
 
@@ -85,7 +169,7 @@ Now need to inject it to the project into `index.html` with help of **jsdom** an
 
 Here is the **index.html** example below, pay attention to `data-sprite="bootstrap"` this is the element where our sprite will appear
 
-``` markup
+``` html
 <!doctype html>
 <html lang="en">
 	<head>
@@ -137,7 +221,7 @@ Again, you can run this script with `node sprite` at this time the generated spr
 
 From now at any time anywhere you can display icons from sprite as follows, just specify the link to the icon name `#bookmark` like. Using attributes you can adjust the size, and you can also apply the fill thanks to the fact that earlier we cut this attribute from the original file using `--stripAttrs`
 
-``` markup
+``` html
 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16">
 	<use xlink:href="#bookmark"></use>
 </svg>

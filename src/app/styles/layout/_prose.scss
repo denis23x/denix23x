@@ -1,0 +1,63 @@
+.prose {
+	h1, h2, h3, h4, h5, h6 {
+		@apply font-bold text-foreground;
+	}
+
+	strong {
+		@apply font-bold text-foreground;
+	}
+
+  p {
+	  @apply leading-7 text-foreground;
+  }
+
+	blockquote {
+		@apply border-l-2 pl-6 italic text-foreground;
+
+		p {
+			@apply before:contain-none after:contain-none;
+		}
+	}
+
+	a {
+		@apply underline text-foreground;
+	}
+
+	code:not(:has(*)) {
+		@apply rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground before:contain-none after:contain-none;
+	}
+
+	[data-rehype-pretty-code-figure] {
+		pre {
+			color: unset;
+			background: unset;
+
+			@apply flex border border-input shadow-sm;
+
+			code[data-line-numbers] {
+				counter-reset: line;
+
+				& > [data-line]::before {
+					counter-increment: line;
+					content: counter(line);
+
+					display: inline-block;
+					width: 2ch;
+					margin-right: 2rem;
+					text-align: right;
+					color: hsl(var(--muted-foreground));
+					border-right: 1px solid hsl(var(--border));
+					padding-right: 8px;
+				}
+
+				&[data-line-numbers-max-digits="2"] > [data-line]::before {
+					width: 3ch;
+				}
+
+				&[data-line-numbers-max-digits="3"] > [data-line]::before {
+					width: 4ch;
+				}
+			}
+		}
+	}
+}
