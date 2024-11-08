@@ -10,7 +10,7 @@ export function AppBusinessCard() {
 			<div className={"flex flex-col lg:flex-row items-center justify-between gap-8"}>
 				<div className={"flex flex-col lg:flex-row items-center gap-10"}>
 					<Image
-						className={"size-[128] rounded-full bg-sidebar overflow-hidden border border-foreground object-cover"}
+						className={"size-[128] aspect-square rounded-full bg-sidebar border border-foreground object-cover"}
 						priority={true}
 						width={128}
 						height={128}
