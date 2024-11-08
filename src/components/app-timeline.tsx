@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Timeline } from "@/components/ui/timeline";
-// import { BorderBeam } from "@/components/ui/border-beam";
 
 export function AppTimeline() {
 	const data = [
@@ -148,7 +147,7 @@ export function AppTimeline() {
 	];
 
 	return (
-		<div className="w-full rounded-3xl overflow-hidden relative">
+		<div className="relative grid w-full lg:max-w-4xl mx-auto gap-10 overflow-hidden lg:rounded-3xl bg-background lg:shadow">
 			<Timeline data={data} />
 		</div>
 	);

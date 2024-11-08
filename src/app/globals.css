@@ -1,3 +1,4 @@
+@import "./styles/base/typography.css";
 @import "./styles/vendor/md-editor.css";
 @import "./styles/vendor/shiki.css";
 
