@@ -1,0 +1,73 @@
+@mixin light() {
+	code[data-theme*=" "],
+	code[data-theme*=" "] span {
+		color: var(--shiki-light);
+		background-color: var(--shiki-light-bg);
+	}
+}
+
+@mixin dark() {
+	code[data-theme*=" "],
+	code[data-theme*=" "] span {
+		color: var(--shiki-dark);
+		background-color: var(--shiki-dark-bg);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	@include light();
+}
+
+@media (prefers-color-scheme: dark) {
+	@include dark();
+}
+
+.light {
+	@include light();
+}
+
+.dark {
+	@include dark();
+}
+
+pre:has(code) {
+	position: relative;
+}
+
+pre button.copy {
+	position: absolute;
+	right: 16px;
+	top: 16px;
+	height: 28px;
+	width: 28px;
+	padding: 0;
+	display: flex;
+
+	& span {
+		width: 100%;
+		aspect-ratio: 1 / 1;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		background-color: red;
+	}
+
+	& .ready {
+		//background-image: url(/icons/copy.svg);
+	}
+
+	& .success {
+		display: none;
+		//background-image: url(/icons/copy-success.svg);
+	}
+
+	&.copied {
+		& .success {
+			display: block;
+		}
+
+		& .ready {
+			display: none;
+		}
+	}
+}

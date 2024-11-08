@@ -1,4 +1,4 @@
-import { codeToHtml } from "shiki";
+// import { codeToHtml } from "shiki";
 
 interface AppHighlightProps {
 	title?: string;
@@ -7,13 +7,15 @@ interface AppHighlightProps {
 }
 
 export async function AppHighlight({ title, language, code }: AppHighlightProps) {
-	const html: Promise<string> = codeToHtml(code, {
-		lang: language,
-		themes: {
-			light: "github-light",
-			dark: "github-dark",
-		},
-	});
+	const html: string = "";
+
+	// const html: Promise<string> = codeToHtml(code, {
+	// 	lang: language,
+	// 	themes: {
+	// 		light: "github-light",
+	// 		dark: "github-dark",
+	// 	},
+	// });
 
 	return (
 		<section className={"border shadow-sm rounded-md overflow-hidden w-full"}>
