@@ -3,11 +3,11 @@
 import { motion } from "framer-motion";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import Link from "next/link";
-import { FlipWords } from "@/components/ui/flip-words";
-import { Mouse } from "lucide-react";
+// import { FlipWords } from "@/components/ui/flip-words";
+// import { Mouse } from "lucide-react";
 
 export function AppAuroraBackground() {
-	const words = ["better", "cute", "beautiful", "modern"];
+	// const words = ["better", "cute", "beautiful", "modern"];
 
 	return (
 		<AuroraBackground>
