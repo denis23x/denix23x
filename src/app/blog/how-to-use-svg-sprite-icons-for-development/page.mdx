@@ -1,10 +1,18 @@
 import MdxBlogLayout from '../../../components/mdx/mdx-blog-layout'
 
-### About
+## Contents
+
+# H1
+
+## H2 long long test
+
+### H3
+
+# About
 
 > [wiki/Texture_atlas](https://en.wikipedia.org/wiki/Texture_atlas) In computer graphics, a texture atlas (also called a spritesheet or an image sprite in 2D game development) is an image containing multiple smaller images, usually packed together to reduce overall dimensions. An atlas can consist of uniformly-sized images or images of varying dimensions. A sub-image is drawn using custom texture coordinates to pick it out of the atlas
 
-### Setup
+## Setup
 
 We will need to install a few node packages
 
@@ -47,90 +55,6 @@ Here is the simple script below where we using **prompts** and **svg2sprite-cli*
 **svg2sprite-cli** we will use this package to create a sprite, just pass the input and output values to it, add extra parameters like `--stripAttrs` if needed, again, if you are interested, read the [documentation](https://github.com/mrmlnc/svg2sprite-cli#readme)
 
 ``` javascript showLineNumbers
-import prompts from 'prompts';
-import { spawn } from 'child_process';
-
-(async () => {
-	const sprite = await prompts({
-		type: 'select',
-		name: 'sprite',
-		message: 'Select a sprite',
-		initial: 0,
-		choices: [
-			{
-				title: 'Bootstrap',
-				value: 'bootstrap',
-				description: 'Build sprite of Bootstrap icons'
-			}
-			// ...add more values
-		]
-	});
-
-	if (sprite.sprite === 'bootstrap') {
-		const run = spawn('svg2sprite ./assets/icons ./assets/sprite-bootstrap.svg --inline --stripAttrs class --stripAttrs fill', {
-			shell: true,
-			stdio: 'inherit'
-		});
-	} else {
-		console.log('Ok, Bye!');
-	}
-})();
-import prompts from 'prompts';
-import { spawn } from 'child_process';
-
-(async () => {
-	const sprite = await prompts({
-		type: 'select',
-		name: 'sprite',
-		message: 'Select a sprite',
-		initial: 0,
-		choices: [
-			{
-				title: 'Bootstrap',
-				value: 'bootstrap',
-				description: 'Build sprite of Bootstrap icons'
-			}
-			// ...add more values
-		]
-	});
-
-	if (sprite.sprite === 'bootstrap') {
-		const run = spawn('svg2sprite ./assets/icons ./assets/sprite-bootstrap.svg --inline --stripAttrs class --stripAttrs fill', {
-			shell: true,
-			stdio: 'inherit'
-		});
-	} else {
-		console.log('Ok, Bye!');
-	}
-})();
-import prompts from 'prompts';
-import { spawn } from 'child_process';
-
-(async () => {
-	const sprite = await prompts({
-		type: 'select',
-		name: 'sprite',
-		message: 'Select a sprite',
-		initial: 0,
-		choices: [
-			{
-				title: 'Bootstrap',
-				value: 'bootstrap',
-				description: 'Build sprite of Bootstrap icons'
-			}
-			// ...add more values
-		]
-	});
-
-	if (sprite.sprite === 'bootstrap') {
-		const run = spawn('svg2sprite ./assets/icons ./assets/sprite-bootstrap.svg --inline --stripAttrs class --stripAttrs fill', {
-			shell: true,
-			stdio: 'inherit'
-		});
-	} else {
-		console.log('Ok, Bye!');
-	}
-})();
 import prompts from 'prompts';
 import { spawn } from 'child_process';
 

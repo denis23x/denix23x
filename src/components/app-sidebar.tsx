@@ -1,6 +1,6 @@
 "use client";
 
-import { House, Frame, LifeBuoy, Map, PieChart, Send } from "lucide-react";
+import { House, Frame, LifeBuoy, Map, PieChart } from "lucide-react";
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
 import { NavSecondary } from "@/components/nav-secondary";

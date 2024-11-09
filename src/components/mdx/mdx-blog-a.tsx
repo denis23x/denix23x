@@ -10,9 +10,12 @@ export default function MdxBlogA({
 }: DetailedHTMLProps<HTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) {
 	const preRef: RefObject<HTMLAnchorElement> = useRef<HTMLAnchorElement>(null);
 
+	// @ts-ignore
+	const target = props.href.startsWith("http") ? "_blank" : "_self";
+
 	return (
-		// @ts-ignore
-		<Link className={"inline-flex items-center"} ref={preRef} {...props} target={"_blank"}>
+		// @ts-expect-error href is required
+		<Link className={"inline-flex items-center"} ref={preRef} {...props} target={target}>
 			{children}
 			<ArrowUpRight className={"block size-4"} />
 		</Link>

@@ -1,13 +1,15 @@
 import nextMDX from "@next/mdx";
 import remarkGfm from "remark-gfm";
+import remarkToc from "remark-toc";
+import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 import { shikiOptions } from "./src/options/shikiOptions.mjs";
 
 const withMDX = nextMDX({
 	extension: /\.mdx?$/,
 	options: {
-		remarkPlugins: [remarkGfm],
-		rehypePlugins: [[rehypePrettyCode, shikiOptions]],
+		remarkPlugins: [remarkGfm, remarkToc],
+		rehypePlugins: [rehypeSlug, [rehypePrettyCode, shikiOptions]],
 	},
 });
 
