@@ -10,7 +10,7 @@ export default function MdxBlogA({
 }: DetailedHTMLProps<HTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) {
 	const preRef: RefObject<HTMLAnchorElement> = useRef<HTMLAnchorElement>(null);
 
-	// @ts-ignore
+	// @ts-expect-error href is not exist
 	const target = props.href.startsWith("http") ? "_blank" : "_self";
 
 	return (

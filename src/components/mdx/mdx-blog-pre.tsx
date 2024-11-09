@@ -22,11 +22,11 @@ export default function MdxBlogPre({
 	return (
 		<div className={"border border-input rounded-md"}>
 			<Button
-				variant={"outline"}
+				variant={"ghost"}
 				size="icon"
 				aria-label={"Copy"}
 				onClick={handleClickCopy}
-				className="absolute top-3 right-3 z-10"
+				className="absolute top-2 right-2 z-10"
 			>
 				<Clipboard />
 			</Button>
