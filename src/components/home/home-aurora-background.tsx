@@ -5,7 +5,7 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Mouse } from "lucide-react";
 import Link from "next/link";
 
-export function AppAuroraBackground() {
+export function HomeAuroraBackground() {
 	return (
 		<AuroraBackground>
 			<motion.div

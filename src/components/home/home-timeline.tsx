@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Timeline } from "@/components/ui/timeline";
 
-export function AppTimeline() {
+export function HomeTimeline() {
 	const data = [
 		{
 			title: "2024",

@@ -17,7 +17,7 @@ export default function MdxBlogA({
 		// @ts-expect-error href is required
 		<Link className={"inline-flex items-center"} ref={preRef} {...props} target={target}>
 			{children}
-			<ArrowUpRight className={"block size-4"} />
+			{target === "_blank" && <ArrowUpRight className={"block size-4"} />}
 		</Link>
 	);
 }

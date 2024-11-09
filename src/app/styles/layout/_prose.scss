@@ -1,4 +1,8 @@
 .prose {
+	*:last-child {
+		@apply mb-0;
+	}
+
 	h1, h2, h3, h4, h5, h6 {
 		@apply font-bold text-foreground;
 	}
@@ -20,7 +24,7 @@
 	}
 
 	a {
-		@apply underline text-blue-600;
+		@apply underline text-blue-600 dark:text-blue-400;
 	}
 
 	code:not(:has(*)) {
@@ -28,8 +32,26 @@
 	}
 
 	ul {
+		@apply text-foreground;
+
 		ul {
 			@apply m-0;
+		}
+	}
+
+	ol {
+		@apply text-foreground;
+
+		ol {
+			@apply m-0;
+		}
+	}
+
+	table {
+		@apply text-foreground;
+
+		th {
+			@apply text-foreground;
 		}
 	}
 
@@ -37,10 +59,20 @@
 		@apply relative bg-background;
 
 		pre {
-			display: flex;
 			color: unset;
 			background: unset;
 			margin: 0;
+			padding: 0;
+
+			code {
+				@apply w-full overflow-auto p-3;
+			}
+
+			code {
+				span[data-highlighted-line] {
+					@apply bg-input;
+				}
+			}
 
 			code[data-line-numbers] {
 				counter-reset: line;

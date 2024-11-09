@@ -4,7 +4,7 @@ import { AtSign, Linkedin, Send, Twitter } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { BorderBeam } from "@/components/ui/border-beam";
 
-export function AppBusinessCard() {
+export function HomeBusinessCard() {
 	return (
 		<div className="relative grid w-full lg:max-w-4xl mx-auto gap-10 overflow-hidden lg:rounded-3xl bg-background pt-10 pb-4 lg:pb-10 px-4 lg:px-10 lg:shadow">
 			<div className={"flex flex-col lg:flex-row items-center justify-between gap-8"}>

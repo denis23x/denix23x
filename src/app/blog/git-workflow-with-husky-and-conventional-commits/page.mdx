@@ -1,12 +1,18 @@
 import MdxBlogLayout from '../../../components/mdx/mdx-blog-layout'
 
-### About
+___
 
-> Probably the most powerful feature of Git is to run any scripts before or after git-operations. Although they are great for automation of things in your development process, managing them can be really cumbersome. That's where Husky comes in. :feet:
+# Git workflow with Husky and Conventional Commits
+
+## Contents
+
+# Intro
+
+Probably the most powerful feature of Git is to run any scripts before or after git-operations. Although they are great for automation of things in your development process, managing them can be really cumbersome. That's where Husky comes in 🐶
 
 Husky is a tool that makes using Git hooks easier by providing a configuration for them to take care of things easily. Husky provides an easy way to enforce code standards, run tests, and even automate general tasks in your Git workflow.
 
-### What are Conventional Commits?
+# What are Conventional Commits?
 
 Conventional Commits dictate a consistent method for writing commit messages for Git. It enables automatic changelog generation, automation of processes based on commit types, and ultimately helps with more effective collaboration and maintainability of the codebase.
 
@@ -25,16 +31,16 @@ The commit message should be structured as follows:
 Here's a breakdown of the header elements:
 
 - `<type>`: The type of change this commit introduces. Some examples of `<type>` are but not limited to:
-- **feat** (new feature)
-- **fix** (bug fix)
-- **refactor** (improvement of code, without functionality change)
-- **docs** (changes in documentation)
+- **feat** (*new feature*)
+- **fix** (*bug fix*)
+- **refactor** (*improvement of code, without functionality change*)
+- **docs** (*changes in documentation*)
 - `[optional scope]`: This can be useful for describing more about a larger feature or area of the codebase exactly what kind of modification was done.
 - `<description>`: This message describes the general idea of what this commit does.
 
 Take a look for more info in [official documentation](https://www.conventionalcommits.org/en/v1.0.0/) of Conventional Commits.
 
-### How Husky and Conventional Commits Play Nicely Together
+# Setup
 
 Husky is a tool used to enforce conventional commits. We will add a `commit-msg` hook that will check your commit messages against the conventional commits specification and won't allow committing when it doesn't comply. In this way, all your commit messages will be consistent, informative in the project.
 
@@ -43,15 +49,15 @@ The following are some reasons why it is so helpful:
 - **Improved Generation of Changelog** : Conventional Commits being consistent and semantic, make the generation of changelogs much easier to comprehend-clear, concise, and communicative.
 - **Improved Collaboration** : A standardized format for commit messages extends communication and collaboration among developers.
 
-### Commitlint
+## Commitlint
 
-As always we should install some packages .. let's begin from Conventional Commits
+As always we should install some packages .. let's begin from Conventional Commits:
 
 ``` bash
 npm install @commitlint/cli @commitlint/config-conventional --save-dev
 ```
 
-After installing packages, create a new file `.commitlintrc` in root of your project with the following content. Check [documentation](https://commitlint.js.org/reference/configuration.html) for detailed info about it
+After installing packages, create a new file `.commitlintrc` in root of your project with the following content. Check [documentation](https://commitlint.js.org/reference/configuration.html) for detailed info about it.
 
 ``` json
 {
@@ -59,29 +65,33 @@ After installing packages, create a new file `.commitlintrc` in root of your pro
 }
 ```
 
-Commitlint is ready to go, to check how it works run the next command in your terminal and be ready to face with lot of errors :grin:
+Commitlint is ready to go, to check how it works run the next command in your terminal and be ready to face with a lot of errors 😁
 
 ``` bash
 echo "qwerty" | commitlint
 ```
 
-### Husky
+## Husky
 
-Install it with next command
+Install it with next command:
 
 ``` bash
 npx husky init
 ```
 
-After initialization it will create a folder `.husky` in the root of your project, there you can see a `pre-commit` file, this is **a name of one of 13 client-side Git hooks** , check them all in the official [Git documentation](https://git-scm.com/docs/githooks) We can delete this file for now, or replace it's contents to `echo "pre-commit hook"`
+After initialization, it will create a folder `.husky` in the root of your project, there you can see a `pre-commit` file, this is **a name of one of 13 client-side Git hooks**, check them all in the official [Git documentation](https://git-scm.com/docs/githooks)
 
-Create a new file there with name `commit-msg` and following content, that command will check our commit message and shows errors if it's not good enough
+We can delete this file for now, or replace it's contents to `echo "pre-commit hook"`
+
+Create a new file there with name `commit-msg` and following content, that command will check our commit message and shows errors if it's not good enough:
 
 ``` bash
 npx --no -- commitlint --edit $1
 ```
 
-That's all for now! Feel free to play with other hooks, for sure they will be helpful in many projects and many cases, and read [official documentation](https://typicode.github.io/husky) for more info about Husky :dog:
+That's all for now! Feel free to play with other hooks, for sure they will be helpful in many projects and many cases, and read [official documentation](https://typicode.github.io/husky) for more info about Husky.
+
+Thanks for reading! I hope you found this post helpful. Feel free to share your thoughts or ask any questions.
 
 export default function MDXPage({ children }) {
 	return <MdxBlogLayout>{children}</MdxBlogLayout>

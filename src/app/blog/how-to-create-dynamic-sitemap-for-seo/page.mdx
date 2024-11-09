@@ -1,21 +1,29 @@
 import MdxBlogLayout from '../../../components/mdx/mdx-blog-layout'
 
-### About
+___
 
-> A **sitemap.xml** is an XML file that lists all the URLs on your website, guiding search engine crawlers through your content. **This file is essential for SEO** because it helps search engines index your pages more efficiently. But in dynamic websites where content changes frequently, maintaining a static sitemap can be tedious.
+# How to create dynamic sitemap for SEO
 
-Creating a dynamic `sitemap.xml` via an **API** endpoint that queries the database and builds the sitemap on the fly can be a powerful approach..
+## Contents
 
-| Advantages | Disadvantages |
-| ------ | ------ |
-| :white_check_mark: Always Up-to-Date | :x: Performance Concerns |
-| :white_check_mark: Reduced Manual Work | :x: Load on Database |
-| :white_check_mark: Scalable Solution | :x: Complexity |
-| :white_check_mark: Flexibility in Data Inclusion | :x: SEO Impact If Slow or Unavailable |
+# Intro
+
+ A **sitemap.xml** is an XML file that lists all the URLs on your website, guiding search engine crawlers through your content. **This file is essential for SEO** because it helps search engines index your pages more efficiently. But in dynamic websites where content changes frequently, maintaining a static sitemap can be tedious.
+
+Creating a dynamic `sitemap.xml` via an **API** endpoint that queries the database and builds the sitemap on the fly can be a powerful approach:
+
+| Advantages                      | Disadvantages                       |
+|---------------------------------|-------------------------------------|
+| ✅ Always Up-to-Date             | ❌ Performance Concerns              |
+| ✅ Reduced Manual Work           | ❌ Load on Database                  |
+| ✅ Scalable Solution             | ❌ Complexity                        |
+| ✅ Flexibility in Data Inclusion | ❌ SEO Impact If Slow or Unavailable |
 
 I'll leave you to decide whether you need this or not. But let's assume you do, and you already have a **Node** server with an array of entities (from your database) that you want to include in a dynamic `sitemap.xml`
 
-I'll explain the main points, using this array of posts as an example.
+# Setup
+
+I'll explain the main points, using this array of posts as an example:
 
 ``` typescript
 const postList: Partial<Post>[] = [
@@ -25,21 +33,20 @@ const postList: Partial<Post>[] = [
     image: 'https://example.com/images/the-sun.png',
     updatedAt: '2024-01-01T10:20:30.000Z'
   }
-  // ...add more posts
 ];
 ```
 
-First, we need to install the **XML builder** and optionally **dayjs** (see the spoilers below for functions like getPriority and getChangeFreq)
+First, we need to install the **XML builder** and optionally **dayjs** (*see the spoilers below for functions like **getPriority** and **getChangeFreq***)
 
 ``` bash
 npm i xmlbuilder dayjs
 ```
 
-### Build `sitemap.xml`
+# Build
 
-Here's a simple method that creates a `sitemap` constant, then pushes each post as a new URL element into the file. Afterward, we'll respond to the client with the generated file
+Here's a simple method that creates a `sitemap` constant, then pushes each post as a new URL element into the file. Afterward, we'll respond to the client with the generated file.
 
-``` typescript
+``` typescript {11-12,16-17}
 const sitemap: XMLElement = xmlbuilder
   .create('urlset', { encoding: 'UTF-8' })
   .att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
@@ -79,11 +86,11 @@ return response
 
 Here is a couple interesting points..
 
-+++ getPriority
+## Priority
 
-This method calculates a priority score for a given URL based on it's depth (position within the website structure) and update frequency
+This method calculates a priority score for a given URL based on it's depth (*position within the website structure*) and update frequency.
 
-Feel free to tune it :wink:
+Feel free to tune it 😉
 
 ``` typescript
 const getPriority = (url: string, lastmod: Date): string => {
@@ -112,13 +119,12 @@ const getPriority = (url: string, lastmod: Date): string => {
   return Math.max(0.0, Math.min(1.0, priority)).toFixed(2);
 }
 ```
-+++
 
-+++ getChangeFreq
+## Change Frequency
 
-This method determines the change frequency for a given URL based on its last modification date
+This method determines the change frequency for a given URL based on its last modification date.
 
-Feel free to tune it :wink:
+Feel free to tune it 😉
 
 ``` typescript
 getChangeFreq: (lastmod: Date): string => {
@@ -139,9 +145,10 @@ getChangeFreq: (lastmod: Date): string => {
   }
 }
 ```
-+++
 
-Our final `sitemap.xml`
+# Merge
+
+Our final `sitemap.xml` file:
 
 ``` xml
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -155,17 +162,12 @@ Our final `sitemap.xml`
       <image:title>The Sun</image:title>
     </image:image>
   </url>
-  ... more values below
 </urlset>
 ```
 
-### Merge
+Did you know that you can split sitemaps and have as many as you'd like? You can use your main `sitemap.xml` as an index file and add references to other parts of your site.
 
-Did you know that you can split sitemaps and have as many as you'd like? :scream:
-
-You can use your main `sitemap.xml` as an index file and add references to other parts of your site.
-
-One of these could be your new endpoint, which will use the code I shared with you above :wink:
+One of these could be your new endpoint, which will use the code I shared with you above:
 
 ``` xml
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -178,9 +180,7 @@ One of these could be your new endpoint, which will use the code I shared with y
 </sitemapindex>
 ```
 
-### Bonus
-
-[@preview](https://octopus.do/sitemap/resource/generator)
+Thanks for reading! I hope you found this post helpful. Feel free to share your thoughts or ask any questions.
 
 export default function MDXPage({ children }) {
 	return <MdxBlogLayout>{children}</MdxBlogLayout>

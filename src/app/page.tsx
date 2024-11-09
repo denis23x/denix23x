@@ -1,16 +1,16 @@
-import { AppAuroraBackground } from "@/components/app-aurora-background";
-import { AppTimeline } from "@/components/app-timeline";
-import { AppBusinessCard } from "@/components/app-business-card";
-import { AppRetro } from "@/components/app-retro";
+import { HomeAuroraBackground } from "@/components/home/home-aurora-background";
+import { HomeTimeline } from "@/components/home/home-timeline";
+import { HomeBusinessCard } from "@/components/home/home-business-card";
+import { HomeRetro } from "@/components/home/home-retro";
 
 export default function Home() {
 	return (
 		<>
-			<AppAuroraBackground />
+			<HomeAuroraBackground />
 			<div className={"grid sm:gap-10"}>
-				<AppBusinessCard />
-				<AppTimeline />
-				<AppRetro />
+				<HomeBusinessCard />
+				<HomeTimeline />
+				<HomeRetro />
 			</div>
 		</>
 	);

@@ -1,59 +1,55 @@
 import MdxBlogLayout from '../../../components/mdx/mdx-blog-layout';
 
-### About
-
-> Did you know that not every link will be crawled by default by Googlebot? Google prefers SEO friendly links because they help search engines and users understand the content of the page more easily
-
 ___
 
-SEO friendly :white_check_mark:
+# How to make storage URLs SEO friendly
 
+## Contents
+
+# Intro
+
+Did you know that not every link will be crawled by default by Googlebot? Google prefers SEO friendly links because they help search engines and users understand the content of the page more easily.
+
+**SEO friendly** ✅ \
 https://example.com/artificial-intelligence-trends-2024
 
-Optimized URLs follow a structured, keyword-rich format. This ensures better indexing by search engines, improves keyword relevancy, and enhances user engagement
+Optimized URLs follow a structured, keyword-rich format. This ensures better indexing by search engines, improves keyword relevancy, and enhances user engagement.
 
-Not SEO friendly :no_entry:
-
+**Not SEO friendly** ❌ \
 https://example.com/view.php?section=98&art_id=349872&type=blog
 
-These parameter-based links are less intuitive for users, lack keyword context, and make it difficult for search engines to effectively crawl and rank our pages
+These parameter-based links are less intuitive for users, lack keyword context, and make it difficult for search engines to effectively crawl and rank our pages.
 
-___
+# Setup
 
-Let's imagine you are using the **Firebase Storage** in your project and the link of files in that storage will looks like this ..
+Let's imagine you are using the **Firebase Storage** in your project and the link of files in that storage will look like this:
 
 https://firebasestorage.googleapis.com/v0/b/project-name.appspot.com/o/path/image.png
 
-Of course ++this is not SEO friendly++ and Google will never found your images or files ..etc
+Of course **this is not SEO friendly** and Google will never found your images or files.
 
-### Idea
+## Thing
 
-First of all, decide on the structure of the files and their names. For names I suggest using **UID** and I will tell you further how to make the URL as friendly as possible
+First of all, decide on the structure of the files and their names. For names, I suggest using **UID** and I will tell you further how to make the URL as friendly as possible. When a frontend uploads an image you should get the **context** of where they are using that image. You can parse the body of article (or whatever you have there) and extract more frequently used words as array of string.
 
-When a frontend uploads an image you should get the **context** of where they are using that image. You can parse the body of article (or whatever you have there) and extract more frequently used words as array of string. I have a post about it
-
-[@preview](https://takabase.com/post/510001)
-
-Let's say you got something like this
+Let's say you got something like this:
 
 - **UID** automatically generated `a5805698`
 - **Context** `['dog', 'playing', 'with', 'cat']` --> `'dog-playing-with-cat'`
 
-So, your file name will be `'dog-playing-with-cat-a5805698.png'` you can save it in database, but real file name will be the only `'a5805698.png'` you can upload it to your bucket
+So, your file name will be `'dog-playing-with-cat-a5805698.png'` you can save it in database, but real file name will be the only `'a5805698.png'` you can upload it to your bucket.
 
-Expectations
-
+**Expectations** ✅ \
 https://example.com/images/dog-playing-with-cat-a5805698.png
 
-Reality
-
+**Reality** ❌ \
 https://firebasestorage.googleapis.com/v0/b/project-name.appspot.com/o/images/a5805698.png
 
-Now to connect these two addresses you will need a proxy
+Now to connect these two addresses you will need a proxy.
 
-### localhost:4200
+## localhost:4200
 
-For local development you should use the `proxy.conf.mjs` file with next content
+For local development you should use the `proxy.conf.mjs` file with next content:
 
 ``` javascript
 export default {
@@ -73,17 +69,17 @@ export default {
 
 You can read more about `proxy.conf.mjs` in [official Angular documentation](https://angular.dev/tools/cli/serve#proxying-to-a-backend-server)
 
-Let me explain you **bypass** method
+Let me explain to you **bypass** method:
 
 - `req.url` will be equal to `/images/dog-playing-with-cat-a5805698.png`
-- we take only the last part `dog-playing-with-cat-a5805698.png`
-- we take only the last part again `a5805698.png`
+  - we take only the last part `dog-playing-with-cat-a5805698.png`
+    - we take only the last part again `a5805698.png`
 
-Then replace `dog-playing-with-cat-a5805698.png` --> `a5805698.png` and encode it properly (do not encode the first `/` in the `req.url`) and append special query parameter`?alt=media` to display image as media
+Then replace `dog-playing-with-cat-a5805698.png` to `a5805698.png` and encode it properly (do not encode the first `/` in the `req.url`) and append special query parameter`?alt=media` to display image as media.
 
-**Firebase Storage** uses encoded URLs to ensure that file paths and query parameters are correctly interpreted by browsers and servers
+> **Firebase Storage** uses encoded URLs to ensure that file paths and query parameters are correctly interpreted by browsers and servers
 
-Now our expectations connected to our reality! And yeah .. this part `dog-playing-with-cat` it means nothing :sweat_smile: (only for better SEO)
+Now our expectations connected to our reality! And yeah .. this part `dog-playing-with-cat` it means nothing (*only for better SEO*)
 
 To make the `proxy.conf.mjs` work you can append new parameter for your dev script `--proxy-config src/proxy.conf.mjs` another option is specify the file in your `angular.json`
 
@@ -103,9 +99,9 @@ To make the `proxy.conf.mjs` work you can append new parameter for your dev scri
  }
 ```
 
-### Production
+## Production
 
-In production the `proxy.conf.mjs` which we used before will not work, but the idea is completely the same. I found this [express-http-proxy](https://www.npmjs.com/package/express-http-proxy) package and I used it
+In production the `proxy.conf.mjs` which we used before will not work, but the idea is completely the same. I found this [express-http-proxy](https://www.npmjs.com/package/express-http-proxy) package and I used it!
 
 ``` bash
 npm i express-http-proxy
@@ -114,7 +110,6 @@ npm i express-http-proxy
 In your `server.ts` add new route and write a handler, it will work completely the same as `proxy.conf.mjs`
 
 ``` typescript
-// prettier-ignore
 server.use('/images/*', proxy('https://firebasestorage.googleapis.com', {
 	filter: (req) => req.method === 'GET',
 	proxyReqPathResolver: (req) => {
@@ -129,9 +124,9 @@ server.use('/images/*', proxy('https://firebasestorage.googleapis.com', {
 }));
 ```
 
-So now we got a flexible way to work with images and made them SEO friendly :star_struck:
+So now we got a flexible way to work with images and made them SEO friendly (such a way can be used in any stack and any environment)
 
-**BTW** such a way can be used in any stack and any environment
+Thanks for reading! I hope you found this post helpful. Feel free to share your thoughts or ask any questions.
 
 export default function MDXPage({ children }) {
 	return <MdxBlogLayout>{children}</MdxBlogLayout>

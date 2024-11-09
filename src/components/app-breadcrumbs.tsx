@@ -42,15 +42,18 @@ export function AppBreadcrumbs() {
 		<Breadcrumb>
 			<BreadcrumbList>
 				{appBreadcrumbs.map((breadcrumbs: AppBreadcrumbs, i: number) => (
-					<ul className={"flex items-center gap-1.5 sm:gap-2.5"} key={i}>
-						<BreadcrumbItem className={"hidden md:block"}>
+					<ul
+						className={`items-center gap-1.5 sm:gap-2.5 ${appBreadcrumbs.length - i > 2 ? "hidden sm:flex" : "flex"}`}
+						key={i}
+					>
+						<BreadcrumbItem className={""}>
 							{i !== appBreadcrumbs.length - 1 ? (
 								<BreadcrumbLink href={breadcrumbs.url}>{breadcrumbs.title}</BreadcrumbLink>
 							) : (
 								<BreadcrumbPage>{breadcrumbs.title}</BreadcrumbPage>
 							)}
 						</BreadcrumbItem>
-						{i !== appBreadcrumbs.length - 1 && <BreadcrumbSeparator className={"hidden md:block"} />}
+						{i !== appBreadcrumbs.length - 1 && <BreadcrumbSeparator />}
 					</ul>
 				))}
 			</BreadcrumbList>

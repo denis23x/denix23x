@@ -1,7 +1,7 @@
 import { FlipWords } from "@/components/ui/flip-words";
 import RetroGrid from "@/components/ui/retro-grid";
 
-export function AppRetro() {
+export function HomeRetro() {
 	const words: string[] = ["better", "cute", "beautiful", "modern", "fast"];
 
 	return (

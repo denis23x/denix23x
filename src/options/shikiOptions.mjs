@@ -1,3 +1,5 @@
+import { transformerMetaHighlight } from "@shikijs/transformers";
+
 /** @type {import('rehype-pretty-code').Options} */
 export const shikiOptions = {
 	keepBackground: false,
@@ -5,6 +7,8 @@ export const shikiOptions = {
 		dark: "github-dark",
 		light: "github-light",
 	},
-	transformers: [],
+	transformers: [
+		transformerMetaHighlight()
+	],
 };
 
