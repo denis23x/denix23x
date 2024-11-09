@@ -6,7 +6,7 @@ import { handleCopy } from "@/lib/browser";
 import { useEffect } from "react";
 import { View } from "lucide-react";
 import ColorThief from "colorthief";
-import wave from "~/images/wave.webp";
+import wave from "~/dashboard/tools/color-extractor/wave.webp";
 import Image from "next/image";
 import useStore from "../store";
 

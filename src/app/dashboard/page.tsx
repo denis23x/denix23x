@@ -79,7 +79,7 @@ const NewTest = () => {
 				pauseOnHover
 				className="absolute top-4 [--duration:20s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] "
 			>
-				{files.map((f: any, idx: number) => (
+				{files.map((f, idx: number) => (
 					<figure
 						key={idx}
 						className={cn(

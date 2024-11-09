@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-	const booksModel: string = await readFileAsText("/files/placeholder-api/book.ts");
-	const booksResponse: string = await readFileAsText("/files/placeholder-api/books.json");
+	const booksModel: string = await readFileAsText("/public/dashboard/tools/placeholder-api/book.ts");
+	const booksResponse: string = await readFileAsText("/public/dashboard/tools/placeholder-api/books.json");
 	const booksParameters: PlaceholderRequestParameters[] = [
 		{
 			name: "search",
@@ -41,8 +41,8 @@ export default async function Page() {
 		},
 	];
 
-	const usersModel: string = await readFileAsText("/files/placeholder-api/user.ts");
-	const usersResponse: string = await readFileAsText("/files/placeholder-api/users.json");
+	const usersModel: string = await readFileAsText("/public/dashboard/tools/placeholder-api/user.ts");
+	const usersResponse: string = await readFileAsText("/public/dashboard/tools/placeholder-api/users.json");
 	const usersParameters: PlaceholderRequestParameters[] = [
 		{
 			name: "search",
