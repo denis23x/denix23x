@@ -15,9 +15,9 @@ export default function MdxBlogA({
 
 	return (
 		// @ts-expect-error href is required
-		<Link className={"inline-flex items-center"} ref={preRef} {...props} target={target}>
-			{children}
-			{target === "_blank" && <ArrowUpRight className={"block size-4"} />}
+		<Link className={"inline"} ref={preRef} {...props} target={target}>
+			<span className={"inline-block text-ellipsis overflow-hidden align-bottom underline max-w-full"}>{children}</span>
+			{target === "_blank" && <ArrowUpRight className={"inline-block align-baseline size-4"} />}
 		</Link>
 	);
 }

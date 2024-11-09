@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
 	return (
 		<div className={"flex flex-1 flex-col gap-4 p-4 pt-0"}>
-			<h1 className={"scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl"}>SVG to CSS Encoder</h1>
+			<h1 className={"text-4xl font-extrabold tracking-tight lg:text-5xl"}>SVG to CSS Encoder</h1>
 			<p className={"leading-7"}>
 				This tool transforms <strong>SVG</strong> code into a <strong>Data URI format</strong>, creating an encoded{" "}
 				<strong>URL</strong> that can be used directly as a <code className="inline-code">background-image</code> in{" "}
