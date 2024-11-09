@@ -20,7 +20,7 @@
 	}
 
 	a {
-		@apply underline text-foreground;
+		@apply underline text-blue-600;
 	}
 
 	code:not(:has(*)) {
@@ -28,11 +28,13 @@
 	}
 
 	[data-rehype-pretty-code-figure] {
+		@apply relative bg-background;
+
 		pre {
+			display: flex;
 			color: unset;
 			background: unset;
-
-			@apply flex border border-input shadow-sm;
+			margin: 0;
 
 			code[data-line-numbers] {
 				counter-reset: line;
@@ -43,7 +45,7 @@
 
 					display: inline-block;
 					width: 2ch;
-					margin-right: 2rem;
+					margin-right: 1rem;
 					text-align: right;
 					color: hsl(var(--muted-foreground));
 					border-right: 1px solid hsl(var(--border));

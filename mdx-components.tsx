@@ -1,17 +1,11 @@
-import Link from "next/link";
 import type { MDXComponents } from "mdx/types";
-import { ArrowUpRight } from "lucide-react";
+import MdxBlogPre from "@/components/mdx/mdx-blog-pre";
+import MdxBlogA from "@/components/mdx/mdx-blog-a";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
-		a: ({ children, href }) => {
-			return (
-				<Link className={"inline-flex items-center text-foreground underline"} href={href as string}>
-					{children}
-					<ArrowUpRight className={"block size-4"} />
-				</Link>
-			);
-		},
+		a: props => <MdxBlogA {...props} />,
+		pre: props => <MdxBlogPre {...props} />,
 		...components,
 	};
 }

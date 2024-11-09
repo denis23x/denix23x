@@ -25,14 +25,19 @@ export const data = {
 	navMain,
 	navSecondary: [
 		{
-			title: "Support",
-			url: "#",
+			title: "shadcn/ui",
+			url: "https://ui.shadcn.com/docs/components/accordion",
 			icon: LifeBuoy,
 		},
 		{
-			title: "Feedback",
-			url: "#",
-			icon: Send,
+			title: "Lucide Icons",
+			url: "https://lucide.dev/",
+			icon: LifeBuoy,
+		},
+		{
+			title: "TailwindCSS",
+			url: "https://tailwindcss.com/docs/installation",
+			icon: LifeBuoy,
 		},
 	],
 	projects: [
