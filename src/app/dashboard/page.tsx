@@ -1,3 +1,5 @@
+"use client";
+
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { Separator } from "@/components/ui/separator";
 import React from "react";
@@ -10,6 +12,9 @@ import {
 	IconSignature,
 	IconTableColumn,
 } from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
+import Marquee from "@/components/ui/marquee";
+import { AnimatedBeamMultipleOutputDemo } from "@/components/test";
 
 export default function Page() {
 	return (
@@ -29,6 +34,7 @@ export default function Page() {
 							title={item.title}
 							description={item.description}
 							header={item.header}
+							url={item.url}
 							icon={item.icon}
 							className={`border-input ${i === 4 || i === 8 ? "md:col-span-2" : ""}`}
 						/>
@@ -43,317 +49,106 @@ const Skeleton = () => (
 	<div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
 );
 
-/*
-const SkeletonOne = () => {
-	const variants = {
-		initial: {
-			x: 0,
-		},
-		animate: {
-			x: 10,
-			rotate: 5,
-			transition: {
-				duration: 0.2,
-			},
-		},
-	};
-	const variantsSecond = {
-		initial: {
-			x: 0,
-		},
-		animate: {
-			x: -10,
-			rotate: -5,
-			transition: {
-				duration: 0.2,
-			},
-		},
-	};
+const files = [
+	{
+		name: "Dynamic sitemap",
+		body: "Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto. Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.",
+	},
+	{
+		name: "SEO friendly URLs",
+		body: "A spreadsheet or worksheet is a file made of rows and columns that help sort data, arrange data easily, and calculate numerical data. A spreadsheet or worksheet is a file made of rows and columns that help sort data, arrange data easily, and calculate numerical data.",
+	},
+	{
+		name: "SVG Sprite",
+		body: "Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation. Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation.",
+	},
+	{
+		name: "keys.gpg",
+		body: "GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages. GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages.",
+	},
+	{
+		name: "seed.txt",
+		body: "A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain. A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain.",
+	},
+];
 
+const NewTest = () => {
 	return (
-		<motion.div
-			initial="initial"
-			whileHover="animate"
-			className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
-		>
-			<motion.div
-				variants={variants}
-				className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-white dark:bg-black"
+		<div className={"relative size-full overflow-hidden min-h-[166px] border border-input bg-sidebar rounded-xl"}>
+			<Marquee
+				pauseOnHover
+				className="absolute top-4 [--duration:20s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] "
 			>
-				<div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-				<div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
-			</motion.div>
-			<motion.div
-				variants={variantsSecond}
-				className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 w-3/4 ml-auto bg-white dark:bg-black"
-			>
-				<div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
-				<div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-			</motion.div>
-			<motion.div
-				variants={variants}
-				className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 bg-white dark:bg-black"
-			>
-				<div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-				<div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
-			</motion.div>
-		</motion.div>
+				{files.map((f: any, idx: number) => (
+					<figure
+						key={idx}
+						className={cn(
+							"relative w-48 cursor-pointer overflow-hidden rounded-xl border p-4",
+							"border-gray-950/[.1] bg-background hover:bg-background",
+							"dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+							"transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
+						)}
+					>
+						<div className="flex flex-row items-center gap-2">
+							<div className="flex flex-col">
+								<figcaption className="text-sm font-medium dark:text-white">{f.name}</figcaption>
+							</div>
+						</div>
+						<blockquote className="mt-2 text-xs">{f.body}</blockquote>
+					</figure>
+				))}
+			</Marquee>
+		</div>
 	);
 };
-
-const SkeletonTwo = () => {
-	const variants = {
-		initial: {
-			width: 0,
-		},
-		animate: {
-			width: "100%",
-			transition: {
-				duration: 0.2,
-			},
-		},
-		hover: {
-			width: ["0%", "100%"],
-			transition: {
-				duration: 2,
-			},
-		},
-	};
-	const arr = new Array(6).fill(0);
-
-	return (
-		<motion.div
-			initial="initial"
-			animate="animate"
-			whileHover="hover"
-			className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
-		>
-			{arr.map((_, i) => (
-				<motion.div
-					key={"skelenton-two" + i}
-					variants={variants}
-					style={{
-						maxWidth: Math.random() * (100 - 40) + 40 + "%",
-					}}
-					className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-neutral-100 dark:bg-black w-full h-4"
-				></motion.div>
-			))}
-		</motion.div>
-	);
-};
-
-const SkeletonThree = () => {
-	const variants = {
-		initial: {
-			backgroundPosition: "0 50%",
-		},
-		animate: {
-			backgroundPosition: ["0, 50%", "100% 50%", "0 50%"],
-		},
-	};
-	return (
-		<motion.div
-			initial="initial"
-			animate="animate"
-			variants={variants}
-			transition={{
-				duration: 5,
-				repeat: Infinity,
-				repeatType: "reverse",
-			}}
-			className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] rounded-lg bg-dot-black/[0.2] flex-col space-y-2"
-			style={{
-				background: "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
-				backgroundSize: "400% 400%",
-			}}
-		>
-			<motion.div className="h-full w-full rounded-lg"></motion.div>
-		</motion.div>
-	);
-};
-
-const SkeletonFour = () => {
-	const first = {
-		initial: {
-			x: 20,
-			rotate: -5,
-		},
-		hover: {
-			x: 0,
-			rotate: 0,
-		},
-	};
-	const second = {
-		initial: {
-			x: -20,
-			rotate: 5,
-		},
-		hover: {
-			x: 0,
-			rotate: 0,
-		},
-	};
-	return (
-		<motion.div
-			initial="initial"
-			animate="animate"
-			whileHover="hover"
-			className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2"
-		>
-			<motion.div
-				variants={first}
-				className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
-			>
-				{/!*<Image*!/}
-				{/!*	src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"*!/}
-				{/!*	alt="avatar"*!/}
-				{/!*	height="100"*!/}
-				{/!*	width="100"*!/}
-				{/!*	className="rounded-full h-10 w-10"*!/}
-				{/!*!/>*!/}
-				<p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-					Just code in Vanilla Javascript
-				</p>
-				<p className="border border-red-500 bg-red-100 dark:bg-red-900/20 text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
-					Delusional
-				</p>
-			</motion.div>
-			<motion.div className="h-full relative z-20 w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center">
-				{/!*<Image*!/}
-				{/!*	src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"*!/}
-				{/!*	alt="avatar"*!/}
-				{/!*	height="100"*!/}
-				{/!*	width="100"*!/}
-				{/!*	className="rounded-full h-10 w-10"*!/}
-				{/!*!/>*!/}
-				<p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-					Tailwind CSS is cool, you know
-				</p>
-				<p className="border border-green-500 bg-green-100 dark:bg-green-900/20 text-green-600 text-xs rounded-full px-2 py-0.5 mt-4">
-					Sensible
-				</p>
-			</motion.div>
-			<motion.div
-				variants={second}
-				className="h-full w-1/3 rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
-			>
-				{/!*<Image*!/}
-				{/!*	src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"*!/}
-				{/!*	alt="avatar"*!/}
-				{/!*	height="100"*!/}
-				{/!*	width="100"*!/}
-				{/!*	className="rounded-full h-10 w-10"*!/}
-				{/!*!/>*!/}
-				<p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-					I love angular, RSC, and Redux.
-				</p>
-				<p className="border border-orange-500 bg-orange-100 dark:bg-orange-900/20 text-orange-600 text-xs rounded-full px-2 py-0.5 mt-4">
-					Helpless
-				</p>
-			</motion.div>
-		</motion.div>
-	);
-};
-
-const SkeletonFive = () => {
-	const variants = {
-		initial: {
-			x: 0,
-		},
-		animate: {
-			x: 10,
-			rotate: 5,
-			transition: {
-				duration: 0.2,
-			},
-		},
-	};
-	const variantsSecond = {
-		initial: {
-			x: 0,
-		},
-		animate: {
-			x: -10,
-			rotate: -5,
-			transition: {
-				duration: 0.2,
-			},
-		},
-	};
-
-	return (
-		<motion.div
-			initial="initial"
-			whileHover="animate"
-			className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
-		>
-			<motion.div
-				variants={variants}
-				className="flex flex-row rounded-2xl border border-neutral-100 dark:border-white/[0.2] p-2  items-start space-x-2 bg-white dark:bg-black"
-			>
-				{/!*<Image*!/}
-				{/!*	src="https://pbs.twimg.com/profile_images/1417752099488636931/cs2R59eW_400x400.jpg"*!/}
-				{/!*	alt="avatar"*!/}
-				{/!*	height="100"*!/}
-				{/!*	width="100"*!/}
-				{/!*	className="rounded-full h-10 w-10"*!/}
-				{/!*!/>*!/}
-				<p className="text-xs text-neutral-500">
-					There are a lot of cool framerworks out there like React, Angular, Vue, Svelte that can make your life ....
-				</p>
-			</motion.div>
-			<motion.div
-				variants={variantsSecond}
-				className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center justify-end space-x-2 w-3/4 ml-auto bg-white dark:bg-black"
-			>
-				<p className="text-xs text-neutral-500">Use PHP.</p>
-				<div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
-			</motion.div>
-		</motion.div>
-	);
-};
-*/
 
 const items = [
 	{
-		title: "The Dawn of Innovation",
+		title: "Tools",
 		description: "Explore the birth of groundbreaking ideas and inventions.",
-		header: <Skeleton />,
+		url: "/dashboard/tools",
+		header: <AnimatedBeamMultipleOutputDemo />,
 		icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
 	},
 	{
 		title: "The Digital Revolution",
 		description: "Dive into the transformative power of technology.",
+		url: "/dashboard/tools",
 		header: <Skeleton />,
 		icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
 	},
 	{
 		title: "The Art of Design",
 		description: "Discover the beauty of thoughtful and functional design.",
+		url: "/dashboard/tools",
 		header: <Skeleton />,
 		icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
 	},
 	{
 		title: "The Spirit of Adventure",
 		description: "Embark on exciting journeys and thrilling discoveries.",
+		url: "/dashboard/tools",
 		header: <Skeleton />,
 		icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
 	},
 	{
-		title: "The Power of Communication",
+		title: "Blog",
 		description: "Understand the impact of effective communication in our lives.",
-		header: <Skeleton />,
+		url: "/blog",
+		header: <NewTest />,
 		icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
 	},
 	{
-		title: "The Pursuit of Knowledge",
+		title: "Misc",
 		description: "Join the quest for understanding and enlightenment.",
+		url: "/dashboard/misc",
 		header: <Skeleton />,
 		icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
 	},
 	{
 		title: "The Joy of Creation",
 		description: "Experience the thrill of bringing ideas to life.",
+		url: "/dashboard/tools",
 		header: <Skeleton />,
 		icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
 	},

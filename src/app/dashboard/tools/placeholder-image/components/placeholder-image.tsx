@@ -51,7 +51,7 @@ export default function PlaceholderImage() {
 	}, [width, height, background, color, text]);
 
 	return (
-		<div className={"border rounded-lg overflow-hidden shadow-sm size-[256px]"}>
+		<div className={"border border-input rounded-lg overflow-hidden shadow-sm size-[256px]"}>
 			<canvas className={"hidden"} ref={canvasRef} />
 			<img
 				className={"m-auto size-full object-contain aspect-square"}

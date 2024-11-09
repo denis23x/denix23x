@@ -30,6 +30,16 @@ export const data = {
 			icon: LifeBuoy,
 		},
 		{
+			title: "aceternity",
+			url: "https://ui.aceternity.com/components",
+			icon: LifeBuoy,
+		},
+		{
+			title: "magicui",
+			url: "https://magicui.design/docs/components/marquee",
+			icon: LifeBuoy,
+		},
+		{
 			title: "Lucide Icons",
 			url: "https://lucide.dev/",
 			icon: LifeBuoy,

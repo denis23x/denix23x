@@ -45,7 +45,7 @@ export default function ImagePreview() {
 				<span className={"text-lg font-semibold"}>Preview</span>
 			</div>
 			<div className={"flex flex-wrap gap-4"}>
-				<div className={"border shadow-sm bg-muted/50 rounded-lg size-[200px] overflow-hidden"}>
+				<div className={"border border-input shadow-sm bg-muted/50 rounded-lg size-[200px] overflow-hidden"}>
 					{image && (
 						<Image
 							className={"size-full object-cover"}
@@ -58,7 +58,10 @@ export default function ImagePreview() {
 						/>
 					)}
 				</div>
-				<div className={"border shadow-sm bg-muted/50 rounded-lg size-[200px]"} style={{ backgroundColor: imageColor }}>
+				<div
+					className={"border border-input shadow-sm bg-muted/50 rounded-lg size-[200px]"}
+					style={{ backgroundColor: imageColor }}
+				>
 					{image && (
 						<div className={"flex flex-col items-center justify-center gap-2 size-full relative"}>
 							<Image

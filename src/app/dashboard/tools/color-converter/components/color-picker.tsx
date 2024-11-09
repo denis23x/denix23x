@@ -25,11 +25,13 @@ export default function ColorPicker() {
 				<span className={"text-lg font-semibold"}>Color Picker</span>
 			</div>
 			<div className={"flex gap-4"}>
-				<div className={"border shadow-sm bg-muted/50 rounded-lg size-[200px]"}>
+				<div className={"border border-input shadow-sm bg-muted/50 rounded-lg size-[200px]"}>
 					<RgbaStringColorPicker color={colorPicker} onChange={setColor} />
 				</div>
-				<div className={"border shadow-sm bg-muted/50 rounded-lg size-[200px] hidden sm:block overflow-hidden"}>
-					<div className={"size-full"} style={{ backgroundColor: color || "transparent" }}></div>
+				<div className={"hidden sm:block overflow-hidden"}>
+					<div className={"border border-input shadow-sm bg-muted/50 rounded-lg size-[200px] overflow-hidden"}>
+						<div className={"size-full"} style={{ backgroundColor: color || "transparent" }}></div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -72,7 +72,9 @@ const config: Config = {
     			aurora: 'aurora 60s linear infinite',
     			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
     			shine: 'shine var(--duration) infinite linear',
-    			grid: 'grid 15s linear infinite'
+    			grid: 'grid 15s linear infinite',
+    			marquee: 'marquee var(--duration) infinite linear',
+    			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite'
     		},
     		keyframes: {
     			aurora: {
@@ -105,6 +107,22 @@ const config: Config = {
     				},
     				'100%': {
     					transform: 'translateY(0)'
+    				}
+    			},
+    			marquee: {
+    				from: {
+    					transform: 'translateX(0)'
+    				},
+    				to: {
+    					transform: 'translateX(calc(-100% - var(--gap)))'
+    				}
+    			},
+    			'marquee-vertical': {
+    				from: {
+    					transform: 'translateY(0)'
+    				},
+    				to: {
+    					transform: 'translateY(calc(-100% - var(--gap)))'
     				}
     			}
     		}
