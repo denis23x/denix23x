@@ -1,0 +1,175 @@
+import MdxBlogLayout from '../../../components/mdx/mdx-blog-layout'
+
+___
+
+# How to summarize text in TypeScript without AI
+
+## Contents
+
+# Intro
+
+All the applications that allow users to create long-form content, such as blog posts or news articles, will likely need summaries of these pieces. It's quite possible to do using a simple TypeScript function without any AI-driven models.
+
+## Why approaches without AI?
+
+Because you will need to pay for that AI 💰
+
+If you need something special, you can pay a little money, but if your task is not so important, and you do not mind some inaccuracy, you can use the method described below.
+
+# Thing
+
+How the algorithm works:
+
+- **Counting Word Frequency**: This counts the frequency of each word still left in the text
+- **Sorting and Returning the Top Words**: This orders the words out of their order based on frequency, back in line with returning the most important
+
+Below I will give a couple of additional methods that you can use if you wish.
+
+##  Stop words (*optional*)
+
+Add any words here to your taste, you can also add obscene language here to filter the text.
+
+``` typescript
+const stopWords: Set<string> = new Set([
+  'all',
+  'also',
+  'an',
+  'and',
+  'are',
+  'as',
+  'at',
+  'be',
+  'below',
+  'but',
+  'by',
+  'can',
+  'do',
+  'does',
+  'else',
+  'end',
+  'for',
+  'from',
+  'has',
+  'have',
+  'if',
+  'in',
+  'io',
+  'is',
+  'it',
+  'just',
+  'many',
+  'me',
+  'much',
+  'my',
+  'need',
+  'not',
+  'of',
+  'on',
+  'or',
+  'should',
+  'so',
+  'such',
+  'that',
+  'the',
+  'then',
+  'there',
+  'this',
+  'to',
+  'use',
+  'was',
+  'we',
+  'when',
+  'which',
+  'why',
+  'will',
+  'with',
+  'would',
+  'you',
+  'your'
+]);
+```
+
+## Singular forms (*optional*)
+
+This remains only singular forms to avoid duplicates (*like "book", "books"*)
+
+``` typescript
+const irregularPlurals: Record<string, string> = {
+  children: 'child',
+  men: 'man',
+  women: 'woman',
+  feet: 'foot',
+  teeth: 'tooth',
+  mice: 'mouse',
+  geese: 'goose',
+  oxen: 'ox',
+  people: 'person'
+};
+
+const getSingular = (word: string): string => {
+  if (irregularPlurals[word.toLowerCase()]) {
+    return irregularPlurals[word.toLowerCase()];
+  } else if (word.length > 2) {
+    if (word.endsWith('ies') && word.length > 4) {
+      return word.slice(0, -3) + 'y'; // e.g., 'cities' -> 'city'
+    } else if (word.endsWith('ves')) {
+      return word.slice(0, -3) + 'f'; // e.g., 'leaves' -> 'leaf'
+    } else if (word.endsWith('es') && /(?:sh|ch|ss|x|z)es$/.test(word)) {
+      return word.slice(0, -2); // e.g., 'boxes' -> 'box', 'wishes' -> 'wish'
+    } else if (word.endsWith('s') && !word.endsWith('ss')) {
+      return word.slice(0, -1); // e.g., 'cats' -> 'cat', 'cases' -> 'case'
+    }
+  }
+
+  return word;
+};
+```
+
+The default method that processes text and extracts keywords from it:
+
+``` typescript {6-8}
+const = getKeywords(text: string, limit: number = 10): string[] => {
+	const getWordFrequency = (text: string): Map<string, number> => {
+		const wordMap: Map<string, number> = new Map();
+		const words: string[] = text.toLowerCase().match(/\b\w+\b(?!')(?<!')/g) || [];
+
+		// Optional
+		// filter((word: string) => !stopWords.has(word))
+		// map((word: string) => getSingular(word))
+
+		words
+			.filter((word: string) => word.length >= 2)
+			.filter((word: string) => !Number(word))
+			.filter((word: string) => !word.endsWith('ing'))
+			.forEach((word: string) => wordMap.set(word, (wordMap.get(word) || 0) + 1));
+
+		return wordMap;
+	};
+
+	// Sort words by frequency and filter out less meaningful ones
+	return Array.from(getWordFrequency(text).entries())
+		.sort((a: any[], b: any[]) => b[1] - a[1])
+		.slice(0, limit)
+		.map(([word]: [string, number]) => word);
+}
+
+const article = `
+  JavaScript is a versatile programming language commonly used in web development.
+  It was initially created to develop interactive websites, but it has evolved to support
+  full-stack development with the introduction of Node.js. JavaScript's wide-ranging
+  capabilities make it an essential language for front-end, back-end, and even mobile application
+  development. In this post, we will discuss its importance in modern web applications,
+  touching on frameworks like Angular and React, and how they simplify complex UIs. We
+  will also explore the growing role of JavaScript in server-side applications.
+`;
+
+console.log(getKeywords(article, 5));
+```
+
+By default, it will return next keywords *in, development, it, and, javascript* but if you add optional methods it will return another set of keywords *javascript, development, language, web, and application* which fits better, so feel free to tune it for your needs.
+
+Thanks for reading! I hope you found this post helpful. Feel free to share your thoughts or ask any questions.
+
+export default function MDXPage({ children }) {
+	return <MdxBlogLayout>{children}</MdxBlogLayout>
+}

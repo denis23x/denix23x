@@ -6,13 +6,6 @@ import { Music } from "lucide-react";
 import { navMainPlaylist } from "@/store/useNavMain";
 
 export default function Page() {
-	const items = [
-		{
-			...navMainPlaylist,
-			icon: Music,
-		},
-	];
-
 	return (
 		<div className={"flex flex-1 flex-col gap-4 p-4 pt-0"}>
 			<h1 className={"text-4xl font-extrabold tracking-tight lg:text-5xl"}>Misc</h1>
@@ -26,3 +19,10 @@ export default function Page() {
 		</div>
 	);
 }
+
+const items = [
+	{
+		...navMainPlaylist,
+		icon: Music,
+	},
+];
