@@ -5,7 +5,7 @@ import { DetailedHTMLProps, HTMLAttributes, RefObject, useRef } from "react";
 import { handleCopy } from "@/lib/browser";
 import { Button } from "@/components/ui/button";
 
-export default function MdxBlogPre({
+export default function MaterialsPre({
 	children,
 	...props
 }: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement>) {

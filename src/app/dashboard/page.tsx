@@ -1,5 +1,3 @@
-"use client";
-
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { Separator } from "@/components/ui/separator";
 import { IconArrowWaveRightUp, IconBoxAlignRightFilled, IconFileBroken, IconSignature } from "@tabler/icons-react";
@@ -65,9 +63,9 @@ const items = [
 		icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
 	},
 	{
-		title: "Blog",
-		description: "Understand the impact of effective communication in our lives.",
-		url: "/blog",
+		title: "Materials",
+		description: "Various topics, sharing tips, tutorials, and ideas to support your projects and inspire creativity",
+		url: "/dashboard/materials",
 		header: <DashboardMarquee />,
 	},
 	{

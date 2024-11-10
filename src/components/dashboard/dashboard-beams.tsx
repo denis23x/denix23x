@@ -38,7 +38,12 @@ export default function DashboardBeams() {
 			<div className="flex size-full flex-row items-stretch justify-between max-w-lg">
 				<div className="flex flex-col justify-center gap-2">
 					<Circle ref={div1Ref}>
-						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="size-6 text-[#F41756]">
+						<svg
+							role="img"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+							className="size-6 text-[#F41756] translate-y-0.5"
+						>
 							<title>Angular</title>
 							<path
 								fill={"currentColor"}

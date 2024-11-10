@@ -14,7 +14,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { navMain } from "@/store/useNavMain";
+import { navMain } from "@/app/store/useNavMain";
 
 export const data = {
 	user: {

@@ -1,4 +1,4 @@
-import { BookOpen, Bot, Settings2, Shapes, SquareTerminal } from "lucide-react";
+import { ScrollText, Shapes, SquareTerminal } from "lucide-react";
 
 export const navMainColorConverter = {
 	title: "Color Converter",
@@ -65,7 +65,6 @@ export const navMain = [
 		title: "Tools",
 		url: "/dashboard/tools",
 		icon: SquareTerminal,
-		isActive: true,
 		items: [
 			navMainColorConverter,
 			navMainColorExtractor,
@@ -80,72 +79,76 @@ export const navMain = [
 		title: "Misc",
 		url: "/dashboard/misc",
 		icon: Shapes,
-		isActive: true,
 		items: [navMainPlaylist],
 	},
 	{
-		title: "Models",
-		url: "#",
-		icon: Bot,
-		items: [
-			{
-				title: "Genesis",
-				url: "#",
-			},
-			{
-				title: "Explorer",
-				url: "#",
-			},
-			{
-				title: "Quantum",
-				url: "#",
-			},
-		],
+		title: "Materials",
+		url: "/dashboard/materials",
+		icon: ScrollText,
 	},
-	{
-		title: "Documentation",
-		url: "#",
-		icon: BookOpen,
-		items: [
-			{
-				title: "Introduction",
-				url: "#",
-			},
-			{
-				title: "Get Started",
-				url: "#",
-			},
-			{
-				title: "Tutorials",
-				url: "#",
-			},
-			{
-				title: "Changelog",
-				url: "#",
-			},
-		],
-	},
-	{
-		title: "Settings",
-		url: "#",
-		icon: Settings2,
-		items: [
-			{
-				title: "General",
-				url: "#",
-			},
-			{
-				title: "Team",
-				url: "#",
-			},
-			{
-				title: "Billing",
-				url: "#",
-			},
-			{
-				title: "Limits",
-				url: "#",
-			},
-		],
-	},
+	// {
+	// 	title: "Models",
+	// 	url: "#",
+	// 	icon: Bot,
+	// 	items: [
+	// 		{
+	// 			title: "Genesis",
+	// 			url: "#",
+	// 		},
+	// 		{
+	// 			title: "Explorer",
+	// 			url: "#",
+	// 		},
+	// 		{
+	// 			title: "Quantum",
+	// 			url: "#",
+	// 		},
+	// 	],
+	// },
+	// {
+	// 	title: "Documentation",
+	// 	url: "#",
+	// 	icon: BookOpen,
+	// 	items: [
+	// 		{
+	// 			title: "Introduction",
+	// 			url: "#",
+	// 		},
+	// 		{
+	// 			title: "Get Started",
+	// 			url: "#",
+	// 		},
+	// 		{
+	// 			title: "Tutorials",
+	// 			url: "#",
+	// 		},
+	// 		{
+	// 			title: "Changelog",
+	// 			url: "#",
+	// 		},
+	// 	],
+	// },
+	// {
+	// 	title: "Settings",
+	// 	url: "#",
+	// 	icon: Settings2,
+	// 	items: [
+	// 		{
+	// 			title: "General",
+	// 			url: "#",
+	// 		},
+	// 		{
+	// 			title: "Team",
+	// 			url: "#",
+	// 		},
+	// 		{
+	// 			title: "Billing",
+	// 			url: "#",
+	// 		},
+	// 		{
+	// 			title: "Limits",
+	// 			url: "#",
+	// 		},
+	// 	],
+	// },
 ];

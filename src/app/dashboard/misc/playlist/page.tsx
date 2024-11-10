@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainPlaylist } from "@/store/useNavMain";
+import { navMainPlaylist } from "@/app/store/useNavMain";
 import ExpandableCard from "./components/expandable-card";
 import ExpandableGrid from "./components/expandable-grid";
 

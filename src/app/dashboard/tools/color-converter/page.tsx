@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainColorConverter } from "@/store/useNavMain";
+import { navMainColorConverter } from "@/app/store/useNavMain";
 import ColorPicker from "./components/color-picker";
 import ColorPickerInput from "./components/color-picker-input";
 import ColorPalette from "./components/color-palette";

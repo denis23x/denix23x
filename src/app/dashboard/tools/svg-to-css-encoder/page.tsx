@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainSvgToCssEncoder } from "@/store/useNavMain";
+import { navMainSvgToCssEncoder } from "@/app/store/useNavMain";
 import SvgInput from "./components/svg-input";
 import SvgOutput from "./components/svg-output";
 

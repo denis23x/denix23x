@@ -20,7 +20,7 @@ export function HomeAuroraBackground() {
 			>
 				<div className="text-5xl md:text-7xl font-bold dark:text-white text-center">Hi 👋</div>
 				<div className="font-extralight text-2xl md:text-4xl dark:text-neutral-200 md:py-4">
-					And this, is my website.
+					And this, is My Website.
 				</div>
 				<div className={"grid gap-10"}>
 					<Link

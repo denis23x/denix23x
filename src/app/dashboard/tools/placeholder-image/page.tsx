@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainPlaceholderImage } from "@/store/useNavMain";
+import { navMainPlaceholderImage } from "@/app/store/useNavMain";
 import PlaceholderImage from "./components/placeholder-image";
 import PlaceholderText from "./components/placeholder-text";
 import PlaceholderSizes from "./components/placeholder-sizes";

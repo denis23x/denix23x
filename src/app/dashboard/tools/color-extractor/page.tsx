@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainColorExtractor } from "@/store/useNavMain";
+import { navMainColorExtractor } from "@/app/store/useNavMain";
 import ImagePreview from "./components/image-preview";
 import ImageInput from "./components/image-input";
 import ImagePalette from "./components/image-palette";

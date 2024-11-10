@@ -1,5 +1,3 @@
-"use client";
-
 import { Separator } from "@/components/ui/separator";
 import { AppGridEffect } from "@/components/app-grid-effect";
 import { Palette, Image, Code, SwatchBook, Type, Scroll, Images } from "lucide-react";
@@ -11,7 +9,14 @@ import {
 	navMainPlaceholderApi,
 	navMainPlaceholderImage,
 	navMainSvgToCssEncoder,
-} from "@/store/useNavMain";
+} from "@/app/store/useNavMain";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Tools",
+	description:
+		"Discover a curated collection of tools to streamline your workflow. Access quick color converters, code generators, and more—each tool designed for efficient results.",
+};
 
 export default function Page() {
 	return (
@@ -30,30 +35,30 @@ export default function Page() {
 const items = [
 	{
 		...navMainColorConverter,
-		icon: Palette,
+		icon: <Palette />,
 	},
 	{
 		...navMainColorExtractor,
-		icon: SwatchBook,
+		icon: <SwatchBook />,
 	},
 	{
 		...navMainLoremIpsum,
-		icon: Scroll,
+		icon: <Scroll />,
 	},
 	{
 		...navMainMarkdownRenderer,
-		icon: Type,
+		icon: <Type />,
 	},
 	{
 		...navMainPlaceholderApi,
-		icon: Code,
+		icon: <Code />,
 	},
 	{
 		...navMainPlaceholderImage,
-		icon: Image,
+		icon: <Image />, // eslint-disable-line jsx-a11y/alt-text
 	},
 	{
 		...navMainSvgToCssEncoder,
-		icon: Images,
+		icon: <Images />,
 	},
 ];

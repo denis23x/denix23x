@@ -3,7 +3,7 @@ import { readFileAsText } from "@/lib/server";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Metadata } from "next";
 import { ChevronDown } from "lucide-react";
-import { navMainPlaceholderApi } from "@/store/useNavMain";
+import { navMainPlaceholderApi } from "@/app/store/useNavMain";
 import PlaceholderRequest, { PlaceholderRequestParameters } from "./components/placeholder-request";
 
 export const metadata: Metadata = {

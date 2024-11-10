@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainLoremIpsum } from "@/store/useNavMain";
+import { navMainLoremIpsum } from "@/app/store/useNavMain";
 import LoremRadio from "./components/lorem-radio";
 import LoremNumber from "./components/lorem-number";
 import LoremTextarea from "./components/lorem-textarea";

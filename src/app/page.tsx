@@ -7,7 +7,7 @@ export default function Home() {
 	return (
 		<>
 			<HomeAuroraBackground />
-			<div className={"grid sm:gap-10"}>
+			<div className={"grid lg:gap-10"}>
 				<HomeBusinessCard />
 				<HomeTimeline />
 				<HomeRetro />

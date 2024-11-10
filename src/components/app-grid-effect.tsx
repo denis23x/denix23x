@@ -1,13 +1,14 @@
+"use client";
+
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
 interface AppGridEffectProps {
 	items: {
 		title: string;
-		icon: LucideIcon;
+		icon: ReactNode;
 		description: string;
 		url: string;
 	}[];
@@ -48,7 +49,7 @@ export const AppGridEffect = ({ items, className }: AppGridEffectProps) => {
 							className={`rounded-2xl h-full w-full p-4 overflow-hidden bg-background border border-input group-hover:border-ring relative z-20`}
 						>
 							<div className={"grid gap-4 relative z-50"}>
-								{item.icon && <item.icon />}
+								{item.icon && item.icon}
 								<span className={"text-foreground font-bold tracking-wide"}>{item.title}</span>
 								<p className={"text-foreground tracking-wide leading-relaxed overflow-hidden line-clamp-4 text-sm"}>
 									{item.description}

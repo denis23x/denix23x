@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { DetailedHTMLProps, HTMLAttributes, RefObject, useRef } from "react";
 import Link from "next/link";
 
-export default function MdxBlogA({
+export default function MaterialsA({
 	children,
 	...props
 }: DetailedHTMLProps<HTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) {

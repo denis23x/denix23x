@@ -1,9 +1,14 @@
-"use client";
-
 import { Separator } from "@/components/ui/separator";
 import { AppGridEffect } from "@/components/app-grid-effect";
 import { Music } from "lucide-react";
-import { navMainPlaylist } from "@/store/useNavMain";
+import { navMainPlaylist } from "@/app/store/useNavMain";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Misc",
+	description:
+		"Explore a curated collection of personal favorites, including playlists, movie recommendations, and more. Discover links to explore all the things I enjoy.",
+};
 
 export default function Page() {
 	return (
@@ -23,6 +28,6 @@ export default function Page() {
 const items = [
 	{
 		...navMainPlaylist,
-		icon: Music,
+		icon: <Music />,
 	},
 ];

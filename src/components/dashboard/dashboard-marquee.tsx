@@ -37,27 +37,27 @@ export default function DashboardMarquee() {
 const files = [
 	{
 		name: "Dynamic sitemap 📍",
-		url: "/blog/how-to-create-dynamic-sitemap-for-seo",
+		url: "/dashboard/materials/how-to-create-dynamic-sitemap-for-seo",
 		body: "A sitemap.xml is an XML file that lists all the URLs on your website, guiding search engine crawlers through your content. This file is essential for SEO because it helps search engines index your pages more efficiently.",
 	},
 	{
 		name: "SEO friendly URLs 🔗",
-		url: "/blog/how-to-make-storage-urls-seo-friendly",
+		url: "/dashboard/materials/how-to-make-storage-urls-seo-friendly",
 		body: "Did you know that not every link will be crawled by default by Googlebot? Google prefers SEO friendly links because they help search engines and users understand the content of the page more easily.",
 	},
 	{
 		name: "SVG Sprite 🌠",
-		url: "/blog/how-to-use-svg-sprite-icons-for-development",
+		url: "/dashboard/materials/how-to-use-svg-sprite-icons-for-development",
 		body: "In web development, an SVG sprite is a collection of SVG icons or graphics bundled together in a single SVG file. Each graphic within the sprite can be referenced individually, allowing for efficient use of SVG graphics on a website.",
 	},
 	{
 		name: "Git with Husky 🐶",
-		url: "/blog/git-workflow-with-husky-and-conventional-commits",
+		url: "/dashboard/materials/git-workflow-with-husky-and-conventional-commits",
 		body: "Probably the most powerful feature of Git is to run any scripts before or after git-operations. Although they are great for automation of things in your development process, managing them can be really cumbersome. That's where Husky comes in!",
 	},
 	{
 		name: "Summarize text 🤖",
-		url: "/blog/how-to-summarize-text-in-typeScript-without-ai",
+		url: "/dashboard/materials/how-to-summarize-text-in-typeScript-without-ai",
 		body: "All the applications that allow users to create long-form content, such as blog posts or news articles, will likely need summaries of these pieces. It's quite possible to do using a simple TypeScript function without any AI-driven models.",
 	},
 ];

@@ -9,7 +9,7 @@ import {
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { usePathname } from "next/navigation";
-import { navMain } from "@/store/useNavMain";
+import { navMain } from "@/app/store/useNavMain";
 
 interface AppBreadcrumbs {
 	title: string;
@@ -31,11 +31,13 @@ export function AppBreadcrumbs() {
 			appBreadcrumbs.push(main);
 		}
 
-		main.items.forEach(item => {
-			if (pathname.startsWith(item.url)) {
-				appBreadcrumbs.push(item);
-			}
-		});
+		if (main.items) {
+			main.items.forEach(item => {
+				if (pathname.startsWith(item.url)) {
+					appBreadcrumbs.push(item);
+				}
+			});
+		}
 	});
 
 	return (
