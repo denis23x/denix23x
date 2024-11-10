@@ -1,6 +1,4 @@
-import MdxBlogLayout from '../../../components/mdx/mdx-blog-layout'
-
-___
+import MdxBlogLayout from "@/components/mdx/mdx-blog-layout";
 
 # How to summarize text in TypeScript without AI
 
@@ -168,7 +166,10 @@ console.log(getKeywords(article, 5));
 
 By default, it will return next keywords *in, development, it, and, javascript* but if you add optional methods it will return another set of keywords *javascript, development, language, web, and application* which fits better, so feel free to tune it for your needs.
 
-Thanks for reading! I hope you found this post helpful. Feel free to share your thoughts or ask any questions.
+export const metadata = {
+	title: 'How to summarize text in TypeScript without AI',
+	description: 'Discover how to efficiently summarize text in JavaScript using a simple, non-AI method. This approach provides accurate text condensation.'
+}
 
 export default function MDXPage({ children }) {
 	return <MdxBlogLayout>{children}</MdxBlogLayout>

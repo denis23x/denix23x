@@ -1,6 +1,4 @@
-import MdxBlogLayout from '../../../components/mdx/mdx-blog-layout'
-
-___
+import MdxBlogLayout from "@/components/mdx/mdx-blog-layout";
 
 # How to create dynamic sitemap for SEO
 
@@ -180,7 +178,10 @@ One of these could be your new endpoint, which will use the code I shared with y
 </sitemapindex>
 ```
 
-Thanks for reading! I hope you found this post helpful. Feel free to share your thoughts or ask any questions.
+export const metadata = {
+	title: 'How to create a dynamic sitemap for SEO',
+	description: 'Learn how to create a dynamic sitemap.xml in web applications using modern frameworks like Nest, Nuxt, or Express'
+}
 
 export default function MDXPage({ children }) {
 	return <MdxBlogLayout>{children}</MdxBlogLayout>

@@ -28,13 +28,7 @@ interface NavMainProps {
 export function NavMain({ items }: NavMainProps) {
 	return (
 		<SidebarGroup>
-			<SidebarGroupLabel>Platform</SidebarGroupLabel>
 			<SidebarMenu>
-				<SidebarMenuItem>
-					<SidebarMenuButton asChild>
-						<Link href={"/"}>Landing</Link>
-					</SidebarMenuButton>
-				</SidebarMenuItem>
 				<SidebarMenuItem>
 					<SidebarMenuButton asChild>
 						<Link href={"/blog"}>Blog</Link>

@@ -41,7 +41,7 @@ export function HomeBusinessCard() {
 					<li>
 						<Link href={"https://www.linkedin.com/in/denis-iakimenko/"} target={"_blank"} rel={"noopener noreferrer"}>
 							<svg
-								className={"size-8 text-[#0A66C2]"}
+								className={"size-8 text-foreground hover:text-[#0A66C2]"}
 								fill="currentColor"
 								viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ export function HomeBusinessCard() {
 					<li>
 						<Link href={"https://t.me/denis23x"} target={"_blank"} rel={"noopener noreferrer"}>
 							<svg
-								className={"size-8 text-[#26A5E4]"}
+								className={"size-8 text-foreground hover:text-[#26A5E4]"}
 								fill="currentColor"
 								viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg"
@@ -63,9 +63,9 @@ export function HomeBusinessCard() {
 						</Link>
 					</li>
 					<li>
-						<Link href={"mailto:denix23x@gmail.com"} target={"_blank"} rel={"noopener noreferrer"}>
+						<Link href={"mailto:denix23x@gmail.com"} rel={"noopener noreferrer"}>
 							<svg
-								className={"size-8 text-[#EA4335]"}
+								className={"size-8 text-foreground hover:text-[#EA4335]"}
 								fill="currentColor"
 								viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg"

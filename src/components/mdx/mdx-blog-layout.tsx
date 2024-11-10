@@ -1,12 +1,25 @@
-import Link from "next/link";
 import { ReactNode } from "react";
+import Link from "next/link";
+import { ArrowLeft, House } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import MdxBlogFooter from "@/components/mdx/mdx-blog-footer";
 
 export default function MdxBlogLayout({ children }: { children: ReactNode }) {
 	return (
-		<div className={"prose grid max-w-4xl bg-background shadow rounded-xl p-4 my-4 mx-auto"}>
-			<Link href={"/dashboard"}>Dashboard</Link>
-			<Link href={"/blog"}>Blog</Link>
-			<div className={"w-full overflow-auto"}>{children}</div>
+		<div className={"bg-background"}>
+			<div className={"flex flex-col gap-4 max-w-4xl mx-auto p-4"}>
+				<div className={"flex items-center justify-between gap-4"}>
+					<Link href={"/blog"}>
+						<ArrowLeft />
+					</Link>
+					<Link href={"/"}>
+						<House />
+					</Link>
+				</div>
+				<Separator />
+				<div className={"prose max-w-full"}>{children}</div>
+				<MdxBlogFooter />
+			</div>
 		</div>
 	);
 }

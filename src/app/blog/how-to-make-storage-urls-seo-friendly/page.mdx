@@ -1,6 +1,4 @@
-import MdxBlogLayout from '../../../components/mdx/mdx-blog-layout';
-
-___
+import MdxBlogLayout from "@/components/mdx/mdx-blog-layout";
 
 # How to make storage URLs SEO friendly
 
@@ -28,7 +26,7 @@ https://firebasestorage.googleapis.com/v0/b/project-name.appspot.com/o/path/imag
 
 Of course **this is not SEO friendly** and Google will never found your images or files.
 
-## Thing
+# Thing
 
 First of all, decide on the structure of the files and their names. For names, I suggest using **UID** and I will tell you further how to make the URL as friendly as possible. When a frontend uploads an image you should get the **context** of where they are using that image. You can parse the body of article (or whatever you have there) and extract more frequently used words as array of string.
 
@@ -126,7 +124,10 @@ server.use('/images/*', proxy('https://firebasestorage.googleapis.com', {
 
 So now we got a flexible way to work with images and made them SEO friendly (such a way can be used in any stack and any environment)
 
-Thanks for reading! I hope you found this post helpful. Feel free to share your thoughts or ask any questions.
+export const metadata = {
+	title: 'How to make storage URLs SEO friendly',
+	description: 'Making Firebase Storage images URLs SEO friendly with a proxy in Angular'
+}
 
 export default function MDXPage({ children }) {
 	return <MdxBlogLayout>{children}</MdxBlogLayout>
