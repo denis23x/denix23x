@@ -10,6 +10,7 @@ import {
 	navMainPlaceholderApi,
 	navMainPlaceholderImage,
 	navMainSvgToCssEncoder,
+	navMainThumbHashImage,
 } from "@/app/store/useNavMain";
 import type { Metadata } from "next";
 
@@ -65,5 +66,9 @@ const items = [
 	{
 		...navMainSvgToCssEncoder,
 		icon: <Images />,
+	},
+	{
+		...navMainThumbHashImage,
+		icon: <Image />, // eslint-disable-line jsx-a11y/alt-text
 	},
 ];

@@ -56,6 +56,13 @@ export const navMainSvgToCssEncoder = {
 		"Generate customizable placeholder images with specific dimensions, colors, and text for quick visualization and layout testing in web and app development projects.",
 };
 
+export const navMainThumbHashImage = {
+	title: "ThumbHash Image",
+	url: "/dashboard/tools/thumb-hash-image",
+	description:
+		"Generate thumb hash image previews in your browser for seamless, blurred placeholders. Perfect for developers optimizing loading visuals on web and mobile apps.",
+};
+
 // --
 
 export const navMainPlaylist = {
@@ -81,6 +88,7 @@ export const navMain = [
 			navMainPlaceholderApi,
 			navMainPlaceholderImage,
 			navMainSvgToCssEncoder,
+			navMainThumbHashImage,
 		],
 	},
 	{

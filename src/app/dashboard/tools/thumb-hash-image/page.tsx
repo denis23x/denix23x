@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { rgbaToThumbHash, thumbHashToRGBA } from "thumbhash";
 import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator";
 
-export default function ThumbHashGenerator() {
+export default function Page() {
 	const [imageData, setImageData] = useState<string | null>(null);
 	const [thumbHash, setThumbHash] = useState<Uint8Array | null>(null);
 
 	// Function to handle image upload and convert to ThumbHash
-	const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files?.[0];
 
 		if (file) {
@@ -75,7 +76,6 @@ export default function ThumbHashGenerator() {
 	const renderThumbHashImage = (): string | null => {
 		if (!thumbHash) return null;
 
-		// @ts-ignore
 		const { w, h, rgba } = thumbHashToRGBA(thumbHash);
 		const canvas = document.createElement("canvas");
 		canvas.width = w;
@@ -91,7 +91,15 @@ export default function ThumbHashGenerator() {
 	};
 
 	return (
-		<div>
+		<div className={"flex flex-1 flex-col gap-4 p-4 pt-0"}>
+			<h1 className={"text-4xl font-extrabold tracking-tight lg:text-5xl"}>ThumbHash Image</h1>
+			<p className={"leading-7"}>
+				This tool allows you to create thumb hash variations of your images directly in the browser, offering a seamless
+				way to generate blurred previews for improved loading visuals. Ideal for developers and designers looking to
+				optimize user experience, it provides a fast, efficient method to create subtle image placeholders that enhance
+				loading transitions on web and mobile applications.
+			</p>
+			<Separator />
 			<h1>ThumbHash Image Generator</h1>
 			<input type="file" accept="image/*" onChange={handleImageUpload} />
 			{imageData && (
