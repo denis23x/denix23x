@@ -1,5 +1,12 @@
 import { ScrollText, Shapes, SquareTerminal } from "lucide-react";
 
+export const navMainBlurHashImage = {
+	title: "BlurHash Image",
+	url: "/dashboard/tools/blur-hash-image",
+	description:
+		"Generate BlurHash images directly from your browser with this tool. Perfect for developers and designers needing fast, efficient placeholders for smooth loading effects.",
+};
+
 export const navMainColorConverter = {
 	title: "Color Converter",
 	url: "/dashboard/tools/color-converter",
@@ -66,6 +73,7 @@ export const navMain = [
 		url: "/dashboard/tools",
 		icon: SquareTerminal,
 		items: [
+			navMainBlurHashImage,
 			navMainColorConverter,
 			navMainColorExtractor,
 			navMainLoremIpsum,

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 
-interface NavMainProps {
+type NavMainProps = {
 	items: {
 		title: string;
 		url: string;
@@ -23,7 +23,7 @@ interface NavMainProps {
 			url: string;
 		}[];
 	}[];
-}
+};
 
 export function NavMain({ items }: NavMainProps) {
 	return (

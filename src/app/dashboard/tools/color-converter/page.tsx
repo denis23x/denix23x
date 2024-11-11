@@ -23,9 +23,9 @@ export default function Page() {
 				projects.
 			</p>
 			<Separator />
-			<div className={"flex items-start flex-wrap gap-4"}>
+			<div className={"flex items-start flex-col xl:flex-row gap-4"}>
 				<ColorPicker />
-				<div className={"grid gap-4"}>
+				<div className={"grid gap-4 flex-1"}>
 					<ColorPickerInput />
 					<ColorPalette />
 				</div>

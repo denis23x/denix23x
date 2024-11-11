@@ -10,8 +10,8 @@ export default function Home() {
 			<div className={"grid lg:gap-10"}>
 				<HomeBusinessCard />
 				<HomeTimeline />
-				<HomeRetro />
 			</div>
+			<HomeRetro />
 		</>
 	);
 }

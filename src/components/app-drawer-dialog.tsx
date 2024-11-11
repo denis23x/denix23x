@@ -17,12 +17,12 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ReactNode, useState } from "react";
 
-interface AppDrawerDialogProps {
+type AppDrawerDialogProps = {
 	title: string;
 	description: string;
 	trigger: ReactNode;
 	children: ReactNode;
-}
+};
 
 export function AppDrawerDialog({ title, description, trigger, children }: AppDrawerDialogProps) {
 	const [isOpen, setIsOpen] = useState(false);

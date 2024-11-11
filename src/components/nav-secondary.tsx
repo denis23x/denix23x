@@ -7,13 +7,13 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-interface NavSecondaryProps {
+type NavSecondaryProps = {
 	items: {
 		title: string;
 		url: string;
 		icon: LucideIcon;
 	}[];
-}
+};
 
 export function NavSecondary({
 	items,

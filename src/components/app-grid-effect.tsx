@@ -5,7 +5,7 @@ import { ReactNode, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 
-interface AppGridEffectProps {
+type AppGridEffectProps = {
 	items: {
 		title: string;
 		icon: ReactNode;
@@ -13,7 +13,7 @@ interface AppGridEffectProps {
 		url: string;
 	}[];
 	className?: string;
-}
+};
 
 export const AppGridEffect = ({ items, className }: AppGridEffectProps) => {
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);

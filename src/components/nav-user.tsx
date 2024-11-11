@@ -11,13 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar";
 
-interface NavUserProps {
+type NavUserProps = {
 	user: {
 		name: string;
 		email: string;
 		avatar: string;
 	};
-}
+};
 
 export function NavUser({ user }: NavUserProps) {
 	const { isMobile } = useSidebar();

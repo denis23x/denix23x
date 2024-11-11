@@ -5,12 +5,12 @@ import rehypeStringify from "rehype-stringify";
 import { unified } from "unified";
 import { shikiOptions } from "@/options/shikiOptions.mjs";
 
-interface AppHighlightProps {
+type AppHighlightProps = {
 	title?: string;
 	showLineNumbers?: boolean;
 	language: string;
 	code: string;
-}
+};
 
 export async function AppHighlight({ title, showLineNumbers, language, code }: AppHighlightProps) {
 	const html: string = await highlightCode({ showLineNumbers, language, code });

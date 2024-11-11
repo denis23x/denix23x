@@ -8,22 +8,22 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AppHighlight } from "@/components/app-highlight";
 import Link from "next/link";
 
-interface PlaceholderRequestProps {
+type PlaceholderRequestProps = {
 	type: string;
 	path: string;
 	response: string;
 	model: string;
 	parameters: PlaceholderRequestParameters[];
-}
+};
 
-export interface PlaceholderRequestParameters {
+export type PlaceholderRequestParameters = {
 	name: string;
 	description: string;
 	key: string;
 	type: string;
 	partOf: string;
 	required?: boolean;
-}
+};
 
 export default function PlaceholderRequest({ type, path, response, model, parameters }: PlaceholderRequestProps) {
 	const map: Record<string, Record<string, string>> = {

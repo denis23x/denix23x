@@ -11,10 +11,10 @@ import {
 import { usePathname } from "next/navigation";
 import { navMain } from "@/app/store/useNavMain";
 
-interface AppBreadcrumbs {
+type AppBreadcrumbs = {
 	title: string;
 	url: string;
-}
+};
 
 export function AppBreadcrumbs() {
 	const pathname: string = usePathname();

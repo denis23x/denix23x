@@ -2,6 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { AppGridEffect } from "@/components/app-grid-effect";
 import { Palette, Image, Code, SwatchBook, Type, Scroll, Images } from "lucide-react";
 import {
+	navMainBlurHashImage,
 	navMainColorConverter,
 	navMainColorExtractor,
 	navMainLoremIpsum,
@@ -33,6 +34,10 @@ export default function Page() {
 }
 
 const items = [
+	{
+		...navMainBlurHashImage,
+		icon: <Image />, // eslint-disable-line jsx-a11y/alt-text
+	},
 	{
 		...navMainColorConverter,
 		icon: <Palette />,
