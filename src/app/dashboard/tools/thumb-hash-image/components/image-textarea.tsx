@@ -1,22 +1,22 @@
 "use client";
 
-import useStore from "../store";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Scroll } from "lucide-react";
 import { handleCopy } from "@/lib/browser";
 import { useEffect, useState } from "react";
+import useStore from "../store";
 
 export default function ImageTextarea() {
-	const { blurHashDataURL } = useStore();
+	const { thumbHashDataURL } = useStore();
 	const [size, setSize] = useState<string>("0");
 
 	useEffect(() => {
-		const bytes = new TextEncoder().encode(blurHashDataURL).length;
+		const bytes = new TextEncoder().encode(thumbHashDataURL).length;
 
 		setSize(String((bytes / 1024).toFixed(2)));
-	}, [blurHashDataURL]);
+	}, [thumbHashDataURL]);
 
 	return (
 		<fieldset className={"grid w-full gap-2"}>
@@ -30,10 +30,10 @@ export default function ImageTextarea() {
 				rows={8}
 				className={"bg-sidebar mb-2 p-3"}
 				id={"data-url-output"}
-				value={blurHashDataURL}
+				value={thumbHashDataURL}
 				readOnly={true}
 			/>
-			<Button variant={"outline"} onClick={() => handleCopy(blurHashDataURL)} aria-label={"Copy Data URL"}>
+			<Button variant={"outline"} onClick={() => handleCopy(thumbHashDataURL)} aria-label={"Copy Data URL"}>
 				Copy Data URL
 			</Button>
 		</fieldset>

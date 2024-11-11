@@ -1,6 +1,9 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
 import { navMainBlurHashImage } from "@/app/store/useNavMain";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { CircleAlert } from "lucide-react";
+import Link from "next/link";
 import ImageInput from "./components/image-input";
 import ImageBlurHashPreview from "./components/image-blur-hash-preview";
 import ImageTextarea from "./components/image-textarea";
@@ -22,6 +25,18 @@ export default function Page() {
 				BlurHash codes for smooth loading effects.
 			</p>
 			<Separator />
+			<Alert variant="destructive">
+				<AlertDescription className={"flex items-start gap-2"}>
+					<CircleAlert className={"size-4 translate-y-0.5"} />
+					<span className={"inline"}>
+						<Link className={"underline"} href={"/dashboard/tools/thumb-hash-image"}>
+							ThumbHash
+						</Link>{" "}
+						provides smaller, faster-loading previews with color accuracy, making it more efficient than BlurHash for
+						high-performance image placeholders.
+					</span>
+				</AlertDescription>
+			</Alert>
 			<div className={"flex items-start flex-wrap gap-4"}>
 				<ImageBlurHashPreview />
 				<div className={"grid gap-4 flex-1"}>

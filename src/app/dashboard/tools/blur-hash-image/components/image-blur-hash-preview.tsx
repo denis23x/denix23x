@@ -90,7 +90,6 @@ export default function ImageBlurHashPreview() {
 						ref={imageRef}
 						priority={true}
 						className={"object-contain aspect-square"}
-						id={"file-output"}
 						width={512}
 						height={512}
 						onLoad={handleEncode}
