@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { AppGridEffect } from "@/components/app-grid-effect";
-import { Music } from "lucide-react";
-import { navMainPlaylist } from "@/app/store/useNavMain";
+import { Bookmark, Camera, Music } from "lucide-react";
+import { navMainBookmarks, navMainPhotos, navMainPlaylist } from "@/app/store/useNavMain";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -26,6 +26,14 @@ export default function Page() {
 }
 
 const items = [
+	{
+		...navMainBookmarks,
+		icon: <Bookmark />,
+	},
+	{
+		...navMainPhotos,
+		icon: <Camera />,
+	},
 	{
 		...navMainPlaylist,
 		icon: <Music />,

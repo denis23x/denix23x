@@ -21,6 +21,9 @@ const nextConfig = {
 		silenceDeprecations: ["legacy-js-api"],
 	},
 	images: {
+		domains: [
+			"api.microlink.io",
+		],
 		remotePatterns: [
 			{
 				protocol: "https",

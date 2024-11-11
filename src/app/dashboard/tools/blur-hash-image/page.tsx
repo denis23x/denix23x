@@ -26,9 +26,9 @@ export default function Page() {
 			</p>
 			<Separator />
 			<Alert variant="destructive">
-				<AlertDescription className={"flex items-start gap-2"}>
-					<CircleAlert className={"size-4 translate-y-0.5"} />
-					<span className={"inline"}>
+				<AlertDescription className={"flex flex-col sm:flex-row items-start gap-2"}>
+					<CircleAlert className={"min-w-4 size-4 translate-y-0.5"} />
+					<span className={"inline-block"}>
 						<Link className={"underline"} href={"/dashboard/tools/thumb-hash-image"}>
 							ThumbHash
 						</Link>{" "}

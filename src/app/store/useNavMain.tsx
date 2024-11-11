@@ -65,6 +65,20 @@ export const navMainThumbHashImage = {
 
 // --
 
+export const navMainBookmarks = {
+	title: "Bookmarks",
+	url: "/dashboard/misc/bookmarks",
+	description:
+		"Explore a curated collection of developer resources, including guides, coding tips, tools, and tutorials to boost productivity. Perfect for enhancing your dev toolkit.",
+};
+
+export const navMainPhotos = {
+	title: "Photos",
+	url: "/dashboard/misc/photos",
+	description:
+		"Explore a curated collection of travel photos capturing stunning landscapes, vibrant cityscapes, and cultural moments. Each image invites you to see the world anew.",
+};
+
 export const navMainPlaylist = {
 	title: "Playlist",
 	url: "/dashboard/misc/playlist",
@@ -95,7 +109,7 @@ export const navMain = [
 		title: "Misc",
 		url: "/dashboard/misc",
 		icon: Shapes,
-		items: [navMainPlaylist],
+		items: [navMainBookmarks, navMainPhotos, navMainPlaylist],
 	},
 	{
 		title: "Materials",

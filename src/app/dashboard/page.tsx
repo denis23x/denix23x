@@ -1,9 +1,9 @@
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { Separator } from "@/components/ui/separator";
-import { IconArrowWaveRightUp, IconBoxAlignRightFilled, IconFileBroken, IconSignature } from "@tabler/icons-react";
 import DashboardSkeleton from "@/components/dashboard/dashboard-skeleton";
 import DashboardMarquee from "@/components/dashboard/dashboard-marquee";
 import DashboardBeams from "@/components/dashboard/dashboard-beams";
+import DashboardWordRotate from "@/components/dashboard/dashboard-word-rotate";
 
 export default function Page() {
 	return (
@@ -24,7 +24,6 @@ export default function Page() {
 							description={item.description}
 							header={item.header}
 							url={item.url}
-							icon={item.icon}
 							className={`border-input ${i === 4 || i === 8 ? "md:col-span-2" : ""}`}
 						/>
 					))}
@@ -45,22 +44,19 @@ const items = [
 		title: "Misc",
 		description: "Collection of personal interests, from playlists to movie recommendations and more",
 		url: "/dashboard/misc",
-		header: <DashboardSkeleton />,
-		icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
+		header: <DashboardWordRotate />,
 	},
 	{
-		title: "The Art of Design",
-		description: "Discover the beauty of thoughtful and functional design.",
-		url: "/dashboard/tools",
+		title: "Placeholder",
+		description: "Ut duis nostrud est incididunt duis ea adipisicing velit qui.",
+		url: "/dashboard",
 		header: <DashboardSkeleton />,
-		icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
 	},
 	{
-		title: "The Spirit of Adventure",
-		description: "Embark on exciting journeys and thrilling discoveries.",
-		url: "/dashboard/tools",
+		title: "Placeholder",
+		description: "Ut non amet exercitation aute cillum ea proident quis irure.",
+		url: "/dashboard",
 		header: <DashboardSkeleton />,
-		icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
 	},
 	{
 		title: "Materials",
@@ -69,10 +65,9 @@ const items = [
 		header: <DashboardMarquee />,
 	},
 	{
-		title: "The Digital Revolution",
-		description: "Join the quest for understanding and enlightenment.",
-		url: "/dashboard/misc",
+		title: "Placeholder",
+		description: "Pariatur ea voluptate exercitation nostrud ut et adipisicing duis labore eiusmod ullamco duis.",
+		url: "/dashboard",
 		header: <DashboardSkeleton />,
-		icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
 	},
 ];
