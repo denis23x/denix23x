@@ -4,5 +4,6 @@ export type Card = {
 	title: string;
 	link: string;
 	src: string;
+	blurDataURL: string;
 	content: () => JSX.Element;
 };

@@ -115,7 +115,7 @@ export default function PlaceholderRequest({ type, path, response, model, parame
 								Description
 							</small>
 						</div>
-						<div className={"grid grid-cols-12 py-2 px-2 sm:px-4"}>
+						<div className={"grid grid-cols-12 py-2 sm:py-4 px-2 sm:px-4"}>
 							<span className={"leading-7 text-foreground col-span-3 lg:col-span-2 xl:col-span-1"}>200</span>
 							<div className={"font-bold text-foreground col-span-9 lg:col-span-10 xl:col-span-11"}>
 								<Tabs className={"overflow-auto"} defaultValue="response">

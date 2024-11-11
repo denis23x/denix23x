@@ -44,22 +44,24 @@ export default function SvgOutput() {
 						value={output}
 						readOnly={true}
 					/>
-					<AppDrawerDialog
-						title={"Preview"}
-						description={"Use the background-image in your CSS to apply the SVG"}
-						trigger={
-							<Button
-								className={"absolute top-3 right-3 shadow-none"}
-								size="icon"
-								variant={"outline"}
-								aria-label={"Preview"}
-							>
-								<View />
-							</Button>
-						}
-					>
-						<div className={"size-full aspect-square"} style={svgPreview}></div>
-					</AppDrawerDialog>
+					{input && (
+						<AppDrawerDialog
+							title={"Preview"}
+							description={"Use the background-image in your CSS to apply the SVG"}
+							trigger={
+								<Button
+									className={"absolute top-3 right-3 shadow-none"}
+									size="icon"
+									variant={"outline"}
+									aria-label={"Preview"}
+								>
+									<View />
+								</Button>
+							}
+						>
+							<div className={"size-full aspect-square"} style={svgPreview}></div>
+						</AppDrawerDialog>
+					)}
 				</div>
 			</fieldset>
 			<Button variant={"outline"} onClick={() => handleCopy(output)} aria-label={"Copy CSS Output"}>

@@ -75,8 +75,10 @@ export default function ExpandableCard() {
 							<motion.div layoutId={`image-${active.uid}`}>
 								<Image
 									priority
-									width={400}
-									height={400}
+									width={512}
+									height={512}
+									placeholder={"blur"}
+									blurDataURL={active.blurDataURL}
 									src={active.src}
 									alt={active.title}
 									className="w-full aspect-square sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"

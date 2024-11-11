@@ -3,38 +3,34 @@
 import { Button } from "@/components/ui/button";
 import { Colord, colord } from "colord";
 import { handleCopy } from "@/lib/browser";
-import { useEffect } from "react";
+import { RefObject, useRef } from "react";
 import { View } from "lucide-react";
 import ColorThief from "colorthief";
-import wave from "~/dashboard/tools/color-extractor/wave.webp";
 import Image from "next/image";
 import useStore from "../store";
 
 export default function ImagePreview() {
-	const { image, setImage, imageColor, setImageColor, setImagePalette } = useStore();
+	const imageRef: RefObject<HTMLImageElement> = useRef<HTMLImageElement>(null);
+	const { image, imageColor, setImageColor, setImagePalette } = useStore();
 
 	const colorThief = new ColorThief();
 	const colorParseRGB = (rgb: number[]): Colord => colord(`rgb(${rgb.join(",")})`);
 
 	const handleLoad = () => {
-		const output: HTMLImageElement | null = document.querySelector("img#file-output");
+		if (imageRef.current) {
+			const img: HTMLImageElement = imageRef.current;
 
-		if (output) {
-			if (output.complete) {
-				setImagePalette(colorThief.getPalette(output).map((rgb: number[]) => colorParseRGB(rgb).toHex()));
-				setImageColor(colorParseRGB(colorThief.getColor(output)).toHex());
+			if (img.complete) {
+				setImagePalette(colorThief.getPalette(img).map((rgb: number[]) => colorParseRGB(rgb).toHex()));
+				setImageColor(colorParseRGB(colorThief.getColor(img)).toHex());
 			} else {
-				output.addEventListener("load", () => {
-					setImagePalette(colorThief.getPalette(output).map((rgb: number[]) => colorParseRGB(rgb).toHex()));
-					setImageColor(colorParseRGB(colorThief.getColor(output)).toHex());
+				img.addEventListener("load", () => {
+					setImagePalette(colorThief.getPalette(img).map((rgb: number[]) => colorParseRGB(rgb).toHex()));
+					setImageColor(colorParseRGB(colorThief.getColor(img)).toHex());
 				});
 			}
 		}
 	};
-
-	useEffect(() => {
-		setImage(wave.src);
-	}, []);
 
 	return (
 		<div className={"grid gap-2"}>
@@ -48,8 +44,8 @@ export default function ImagePreview() {
 				<div className={"border border-input shadow-sm bg-muted/50 rounded-lg size-[200px] overflow-hidden"}>
 					{image && (
 						<Image
+							ref={imageRef}
 							className={"size-full object-cover"}
-							id={"file-output"}
 							width={512}
 							height={512}
 							onLoad={handleLoad}
@@ -66,7 +62,6 @@ export default function ImagePreview() {
 						<div className={"flex flex-col items-center justify-center gap-2 size-full relative"}>
 							<Image
 								className={"object-cover rounded-lg size-[100px]"}
-								id={"file-frame"}
 								width={512}
 								height={512}
 								src={image as string}

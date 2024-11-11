@@ -20,8 +20,10 @@ export default function ExpandableGrid() {
 					<div className="flex gap-4 flex-col  w-full">
 						<motion.div layoutId={`image-${card.uid}`}>
 							<Image
-								width={200}
-								height={200}
+								width={512}
+								height={512}
+								placeholder={"blur"}
+								blurDataURL={card.blurDataURL}
 								src={card.src}
 								alt={card.title}
 								className="w-full aspect-square rounded-lg object-cover object-top"

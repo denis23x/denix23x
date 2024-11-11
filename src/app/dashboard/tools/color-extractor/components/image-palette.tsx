@@ -20,7 +20,7 @@ export default function ImagePalette() {
 				{imagePalette.map((hex: string, i: number) => (
 					<li className={"flex flex-col items-center gap-2"} key={i}>
 						<div
-							className={"flex items-center justify-center rounded-md shadow border size-14"}
+							className={"flex items-center justify-center rounded-md shadow border border-input size-14"}
 							style={{ background: hex }}
 						></div>
 						<Button

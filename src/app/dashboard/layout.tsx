@@ -20,12 +20,14 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 			<AppSidebar />
 			<SidebarInset>
 				<div className={"grid"}>
-					<header className="flex h-16 shrink-0 items-center gap-2">
+					<header className="flex h-16 items-center justify-between gap-2">
 						<div className="flex items-center gap-2 px-4">
 							<SidebarTrigger className="-ml-1" />
-							<ThemeToggle />
 							<Separator orientation="vertical" className="mr-2 h-4" />
 							<AppBreadcrumbs />
+						</div>
+						<div className={"flex items-center gap-2 px-4"}>
+							<ThemeToggle />
 						</div>
 					</header>
 					<div className={"overflow-auto"}>{children}</div>
