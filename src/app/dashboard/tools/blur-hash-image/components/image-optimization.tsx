@@ -24,6 +24,7 @@ export default function ImageOptimization() {
 				type={"number"}
 				id={"optimization-input"}
 				value={optimization}
+				min={1}
 				onInput={(e: ChangeEvent<HTMLInputElement>) => setOptimization(Number(e.target.value))}
 			/>
 			<Slider

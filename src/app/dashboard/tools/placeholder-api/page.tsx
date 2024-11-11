@@ -73,9 +73,9 @@ export default async function Page() {
 		<div className={"flex flex-1 flex-col gap-4 p-4 pt-0"}>
 			<h1 className={"text-4xl font-extrabold tracking-tight lg:text-5xl"}>Placeholder API</h1>
 			<p className={"leading-7"}>
-				This tool offers a quick and easy way to mock backend API endpoints, providing developers with predefined,
-				free-to-use endpoints for testing and prototyping. Ideal for front-end development and testing workflows, it
-				allows you to simulate API responses without needing a live backend.
+				This tool offers a quick and easy way to mock backend <strong>API</strong> endpoints, providing developers with
+				predefined, free-to-use endpoints for testing and prototyping. Ideal for front-end development and testing
+				workflows, it allows you to simulate <strong>API</strong> responses without needing a live backend.
 			</p>
 			<Separator />
 			<Collapsible className={"group/collapsible-top"} defaultOpen={true}>

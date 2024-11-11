@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { MutableRefObject, RefObject, useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import { View } from "lucide-react";
 import { decode, encode } from "blurhash";
 import { useDebounce } from "use-debounce";
@@ -14,72 +14,67 @@ export default function ImageBlurHashPreview() {
 	const { image, optimization, blurHash, setBlurHash, setBlurHashDataURL } = useStore();
 	const [width, setWidth] = useState<number>(256);
 	const [height, setHeight] = useState<number>(256);
-	const [optimizationDebounce] = useDebounce<number>(optimization, 300);
-	const hasMounted: MutableRefObject<boolean> = useRef(false);
+	const [optimizationDebounce] = useDebounce(optimization, 400);
 
-	const handleLoad = () => {
+	useEffect(() => {
 		if (imageRef.current) {
 			if (imageRef.current.complete) {
-				handleEncode();
-			} else {
-				imageRef.current.addEventListener("load", () => handleEncode());
+				if (blurHash) {
+					handleEncode();
+				}
 			}
 		}
-	};
+	}, [optimizationDebounce]);
 
 	const handleEncode = () => {
 		if (imageRef.current) {
-			setWidth(Math.round(imageRef.current.naturalWidth / optimization));
-			setHeight(Math.round(imageRef.current.naturalHeight / optimization));
+			const w: number = imageRef.current.naturalWidth;
+			const h: number = imageRef.current.naturalHeight;
+
+			const wOptimized: number = optimization ? Math.round(w / optimization) : w;
+			const hOptimized: number = optimization ? Math.round(h / optimization) : h;
+
+			setWidth(wOptimized);
+			setHeight(hOptimized);
 
 			const canvas: HTMLCanvasElement = document.createElement("canvas");
 
-			canvas.width = width;
-			canvas.height = height;
+			canvas.width = wOptimized;
+			canvas.height = hOptimized;
 
 			const ctx: CanvasRenderingContext2D | null = canvas.getContext("2d");
 
 			if (ctx) {
-				ctx.drawImage(imageRef.current, 0, 0, width, height);
+				ctx.drawImage(imageRef.current, 0, 0, wOptimized, hOptimized);
 
 				// Get the resized image data and pass it to BlurHash
-				const imageData = ctx.getImageData(0, 0, width, height);
+				const imageData: ImageData = ctx.getImageData(0, 0, wOptimized, hOptimized);
 				const componentsX: number = 4; // Recommended values for BlurHash encoding
 				const componentsY: number = 4;
 				const hash: string = encode(imageData.data, imageData.width, imageData.height, componentsX, componentsY);
 
-				// Encode
+				// BlurHash
 				setBlurHash(hash);
+
+				// DataURL
+				setTimeout(() => {
+					if (canvasRef.current) {
+						const pixels: Uint8ClampedArray = decode(hash, wOptimized, hOptimized, 1);
+						const canvas1: HTMLCanvasElement = canvasRef.current;
+						const ctx1: CanvasRenderingContext2D | null = canvas1.getContext("2d");
+
+						if (ctx1) {
+							const imageData1: ImageData = ctx1.createImageData(wOptimized, hOptimized);
+							imageData1.data.set(pixels);
+							ctx1.putImageData(imageData1, 0, 0);
+
+							setBlurHashDataURL(canvas1.toDataURL());
+						}
+					}
+				});
 			}
 		}
 	};
-
-	useEffect(() => {
-		if (canvasRef.current && blurHash) {
-			const pixels = decode(blurHash, width, height, 1);
-			const canvas = canvasRef.current;
-			const ctx = canvas.getContext("2d");
-
-			if (ctx) {
-				console.log(width);
-
-				const imageData = ctx.createImageData(width, height);
-				imageData.data.set(pixels);
-				ctx.putImageData(imageData, 0, 0);
-
-				setBlurHashDataURL(canvas.toDataURL());
-			}
-		}
-	}, [blurHash]);
-
-	useEffect(() => {
-		if (!hasMounted.current) {
-			hasMounted.current = true;
-			return;
-		}
-
-		handleEncode();
-	}, [optimizationDebounce]);
 
 	return (
 		<div className={"grid gap-2"}>
@@ -93,11 +88,12 @@ export default function ImageBlurHashPreview() {
 				<div className={"border border-input shadow-sm bg-muted/50 rounded-lg size-[256px] overflow-hidden"}>
 					<Image
 						ref={imageRef}
+						priority={true}
 						className={"object-contain aspect-square"}
 						id={"file-output"}
 						width={512}
 						height={512}
-						onLoad={handleLoad}
+						onLoad={handleEncode}
 						src={image as string}
 						alt={"Preview"}
 					/>
