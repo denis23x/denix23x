@@ -21,10 +21,13 @@ const nextConfig = {
 		silenceDeprecations: ["legacy-js-api"],
 	},
 	images: {
-		domains: [
-			"api.microlink.io",
-		],
 		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "api.microlink.io",
+				port: "",
+				pathname: "/**/**",
+			},
 			{
 				protocol: "https",
 				hostname: "assets.aceternity.com",

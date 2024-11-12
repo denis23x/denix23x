@@ -3,6 +3,7 @@
 import { useScroll, useTransform } from "framer-motion";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Map } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,18 +22,28 @@ export const ParallaxScroll = ({ images, className }: { images: string[]; classN
 
 	return (
 		<div className={cn("overflow-hidden w-full pt-4 -mt-4", className)}>
-			<ul className="grid grid-cols-2 lg:grid-cols-4 items-start gap-8">
+			<ul className="grid grid-cols-2 md:grid-cols-4 items-start gap-8">
 				{images.map((url, idx) => (
 					<li className="grid gap-10" key={"grid-1" + idx}>
 						<motion.div style={{ y: idx % 2 ? translate1 : translate2 }}>
-							<Link href={url} target={"_blank"} rel={"noopener noreferrer"}>
+							<Link
+								className={"relative group"}
+								href={`/dashboard/misc/photos/1024/${url}`}
+								target={"_blank"}
+								rel={"noopener noreferrer"}
+							>
 								<Image
-									src={url}
-									className="h-[512px] w-full object-cover object-center rounded-lg gap-10 !m-0 !p-0"
+									loading={"lazy"}
+									src={`/dashboard/misc/photos/512/${url}`}
+									className="aspect-[3/4] w-full object-cover object-center rounded-lg gap-10 !m-0 !p-0"
 									height="400"
 									width="400"
 									alt="thumbnail"
 								/>
+								<span className={"absolute left-4 bottom-4 transition-opacity opacity-0 group-hover:opacity-100"}>
+									<Map />
+									9VW9+94 Baku, Azerbaijan
+								</span>
 							</Link>
 						</motion.div>
 					</li>
