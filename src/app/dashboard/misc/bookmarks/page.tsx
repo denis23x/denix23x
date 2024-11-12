@@ -2,7 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
 import { navMainBookmarks } from "@/app/store/useNavMain";
 import { LinkPreview } from "@/components/ui/link-preview";
-import { Link } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
 	title: navMainBookmarks.title,
@@ -24,16 +24,22 @@ export default function Page() {
 				<div className="absolute pointer-events-none inset-0 bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 				<ul className="relative flex flex-wrap items-start justify-start gap-4">
 					{items.map((item, i: number) => (
-						<li className={"flex items-center justify-start gap-2"} key={i}>
-							<Link className={"min-w-5 size-5"} />
-							<LinkPreview
-								url={item.url}
-								imageSrc={item.image}
-								isStatic={true}
-								className={"font-normal text-lg sm:text-2xl whitespace-nowrap"}
-							>
-								{item.label}
-							</LinkPreview>
+						<li className={"flex items-center justify-start"} key={i}>
+							{item.image ? (
+								<LinkPreview
+									url={item.url}
+									imageSrc={item.image}
+									isStatic={true}
+									className={"font-normal text-lg sm:text-2xl whitespace-nowrap"}
+								>
+									{item.label}
+								</LinkPreview>
+							) : (
+								<LinkPreview url={item.url} className={"font-normal text-lg sm:text-2xl whitespace-nowrap"}>
+									{item.label}
+								</LinkPreview>
+							)}
+							<ArrowUpRight className={"inline-block align-baseline min-w-4 size-4"} />
 						</li>
 					))}
 				</ul>
@@ -77,5 +83,10 @@ const items = [
 		url: "https://lucide.dev/",
 		label: "Lucide",
 		image: "/dashboard/misc/bookmarks/lucide.png",
+	},
+	{
+		url: "https://simpleicons.org/",
+		label: "Simple Icons",
+		image: "/dashboard/misc/bookmarks/simple-icons.png",
 	},
 ];

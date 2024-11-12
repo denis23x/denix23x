@@ -115,6 +115,12 @@ export const navMain = [
 		title: "Materials",
 		url: "/dashboard/materials",
 		icon: ScrollText,
+		items: [
+			{
+				title: "Markdown",
+				url: "/dashboard/materials/",
+			},
+		],
 	},
 	// {
 	// 	title: "Models",

@@ -15,7 +15,7 @@ export default function ExpandableGrid() {
 					layoutId={`card-${card.uid}`}
 					key={card.uid}
 					onClick={() => setActive(card)}
-					className="p-4 flex flex-col  hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
+					className="p-4 flex flex-col hover:bg-neutral-100 dark:hover:bg-sidebar rounded-xl cursor-pointer"
 				>
 					<div className="flex gap-4 flex-col  w-full">
 						<motion.div layoutId={`image-${card.uid}`}>
