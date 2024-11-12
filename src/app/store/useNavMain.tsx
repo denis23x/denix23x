@@ -76,7 +76,7 @@ export const navMainPhotos = {
 	title: "Photos",
 	url: "/dashboard/misc/photos",
 	description:
-		"Explore a curated collection of travel photos capturing stunning landscapes, vibrant cityscapes, and cultural moments. Each image invites you to see the world anew.",
+		"Explore a curated collection of travel photos capturing stunning landscapes, and vibrant cityscapes. Each image invites you to see the world anew.",
 };
 
 export const navMainPlaylist = {

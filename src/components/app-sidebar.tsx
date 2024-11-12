@@ -40,11 +40,6 @@ export const data = {
 			icon: LifeBuoy,
 		},
 		{
-			title: "Lucide Icons",
-			url: "https://lucide.dev/",
-			icon: LifeBuoy,
-		},
-		{
 			title: "TailwindCSS",
 			url: "https://tailwindcss.com/docs/installation",
 			icon: LifeBuoy,
