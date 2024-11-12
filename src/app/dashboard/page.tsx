@@ -4,6 +4,7 @@ import DashboardSkeleton from "@/components/dashboard/dashboard-skeleton";
 import DashboardMarquee from "@/components/dashboard/dashboard-marquee";
 import DashboardBeams from "@/components/dashboard/dashboard-beams";
 import DashboardWordRotate from "@/components/dashboard/dashboard-word-rotate";
+import DashboardVideo from "@/components/dashboard/dashboard-video";
 
 export default function Page() {
 	return (
@@ -50,7 +51,7 @@ const items = [
 		title: "Placeholder",
 		description: "Ut duis nostrud est incididunt duis ea adipisicing velit qui.",
 		url: "/dashboard",
-		header: <DashboardSkeleton />,
+		header: <DashboardVideo />,
 	},
 	{
 		title: "Placeholder",

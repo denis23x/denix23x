@@ -7,11 +7,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const ParallaxScroll = ({ images, className }: { images: string[]; className?: string }) => {
-	const { scrollYProgress } = useScroll({
-		// @ts-expect-error probably null
-		container: document.querySelector("body"), // remove this if your container is not fixed height
-		offset: ["start start", "end start"], // remove this if your container is not fixed height
-	});
+	const { scrollYProgress } =
+		typeof window !== "undefined"
+			? useScroll({
+					// @ts-expect-error probably null
+					container: document?.body, // remove this if your container is not fixed height
+					offset: ["start start", "end start"], // remove this if your container is not fixed height
+				})
+			: useScroll();
 
 	const translate1 = useTransform(scrollYProgress, [0, 1], [0, -300]);
 	const translate2 = useTransform(scrollYProgress, [0, 1], [0, 0]);

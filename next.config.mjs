@@ -31,6 +31,12 @@ const nextConfig = {
 				port: "",
 				pathname: "/**/**",
 			},
+			{
+				protocol: "https",
+				hostname: "startup-template-sage.vercel.app",
+				port: "",
+				pathname: "/**/**",
+			},
 		],
 	},
 };
