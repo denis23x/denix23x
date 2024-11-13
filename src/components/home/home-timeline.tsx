@@ -97,7 +97,7 @@ export function HomeTimeline() {
 						<Link href={"https://ln.bookaboom.ru/"} target={"_blank"} rel={"noopener noreferrer"}>
 							<Image
 								loading={"lazy"}
-								src="/home/timeline/bookaboom.png"
+								src="/home/timeline/bookaboom.webp"
 								alt="Bookaboom"
 								placeholder={"blur"}
 								blurDataURL={
@@ -111,7 +111,7 @@ export function HomeTimeline() {
 						<Link href={"https://dabster.im/"} target={"_blank"} rel={"noopener noreferrer"}>
 							<Image
 								loading={"lazy"}
-								src="/home/timeline/dabster.png"
+								src="/home/timeline/dabster.webp"
 								alt="Dabster"
 								placeholder={"blur"}
 								blurDataURL={
@@ -125,7 +125,7 @@ export function HomeTimeline() {
 						<Link href={"https://audio.litnet.com/"} target={"_blank"} rel={"noopener noreferrer"}>
 							<Image
 								loading={"lazy"}
-								src="/home/timeline/audio-litnet.png"
+								src="/home/timeline/audio-litnet.webp"
 								alt="Litner Audio"
 								placeholder={"blur"}
 								blurDataURL={
@@ -139,7 +139,7 @@ export function HomeTimeline() {
 						<Link href={"https://www.publishmepod.online/"} target={"_blank"} rel={"noopener noreferrer"}>
 							<Image
 								loading={"lazy"}
-								src="/home/timeline/delibri.png"
+								src="/home/timeline/delibri.webp"
 								alt="Delibri"
 								placeholder={"blur"}
 								blurDataURL={
@@ -170,7 +170,7 @@ export function HomeTimeline() {
 						<Link href={"https://unicom24.ru/"} target={"_blank"} rel={"noopener noreferrer"}>
 							<Image
 								loading={"lazy"}
-								src="/home/timeline/unicom24.png"
+								src="/home/timeline/unicom24.webp"
 								alt="Unicom24"
 								placeholder={"blur"}
 								blurDataURL={
@@ -184,7 +184,7 @@ export function HomeTimeline() {
 						<Link href={"https://www.pik.ru/"} target={"_blank"} rel={"noopener noreferrer"}>
 							<Image
 								loading={"lazy"}
-								src="/home/timeline/pik.png"
+								src="/home/timeline/pik.webp"
 								alt="PIK Group"
 								placeholder={"blur"}
 								blurDataURL={
