@@ -1,6 +1,7 @@
 import { Timeline } from "@/components/ui/timeline";
 // import Image from "next/image";
 // import Link from "next/link";
+import { HomeTimelineScreenshots } from "@/components/home/home-timeline-screenshots";
 
 export function HomeTimeline() {
 	const data = [
@@ -9,13 +10,11 @@ export function HomeTimeline() {
 			content: (
 				<div>
 					<p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-						Led a backend migration from Node.js to PHP, incorporating SVG graphics for high-volume data visualizations,
-						enabling more insightful analytics through custom diagrams and D3.js visualizations.
-					</p>
-					<p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
 						Enhanced complex PHP projects with new functionalities using Twig, native JavaScript, jQuery, REST, and
 						Angular.
 					</p>
+					<HomeTimelineScreenshots screenshots={screenshots2024} />
+
 					{/*<div className="grid grid-cols-2 gap-4">*/}
 					{/*	<Link href={"https://cooplay.app/"} target={"_blank"} rel={"noopener noreferrer"}>*/}
 					{/*		<Image*/}
@@ -27,7 +26,7 @@ export function HomeTimeline() {
 					{/*			}*/}
 					{/*			width={512}*/}
 					{/*			height={782}*/}
-					{/*			className="rounded-lg object-cover object-top h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"*/}
+					{/*			className="rounded-lg object-cover object-top h-20 md:h-44 lg:h-60 w-full border border-input"*/}
 					{/*		/>*/}
 					{/*	</Link>*/}
 					{/*	<Link href={"https://kostyl.works/"} target={"_blank"} rel={"noopener noreferrer"}>*/}
@@ -40,7 +39,7 @@ export function HomeTimeline() {
 					{/*			}*/}
 					{/*			width={512}*/}
 					{/*			height={749}*/}
-					{/*			className="rounded-lg object-cover object-top h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"*/}
+					{/*			className="rounded-lg object-cover object-top h-20 md:h-44 lg:h-60 w-full border border-input"*/}
 					{/*		/>*/}
 					{/*	</Link>*/}
 					{/*	<Link href={"https://rocket.kostyl.works/"} target={"_blank"} rel={"noopener noreferrer"}>*/}
@@ -53,7 +52,7 @@ export function HomeTimeline() {
 					{/*			}*/}
 					{/*			width={512}*/}
 					{/*			height={722}*/}
-					{/*			className="rounded-lg object-cover object-top h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"*/}
+					{/*			className="rounded-lg object-cover object-top h-20 md:h-44 lg:h-60 w-full border border-input"*/}
 					{/*		/>*/}
 					{/*	</Link>*/}
 					{/*	<Link href={"https://visualsectors.com/"} target={"_blank"} rel={"noopener noreferrer"}>*/}
@@ -197,3 +196,22 @@ export function HomeTimeline() {
 		</div>
 	);
 }
+
+const screenshots2024 = [
+	{
+		src: "/home/timeline/cooplay.webp",
+		url: "https://cooplay.app/",
+	},
+	{
+		src: "/home/timeline/kostyl-works.webp",
+		url: "https://kostyl.works/",
+	},
+	{
+		src: "/home/timeline/rocket-kostyl-works.webp",
+		url: "https://rocket.kostyl.works/",
+	},
+	{
+		src: "/home/timeline/visual-sectors.webp",
+		url: "https://visualsectors.com/",
+	},
+];
