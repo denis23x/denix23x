@@ -1,23 +1,24 @@
+import type { Review } from "../db/reviews/schema";
 import { NextRequest, NextResponse } from "next/server";
-import { reviewsObject, type Review } from "@/app/api/v1/placeholder/db";
-import { pagination } from "@/app/api/v1/placeholder/pagination";
+import { getReviews } from "../db/repository";
+import { pagination } from "@/app/api/v1/placeholder/db/pagination";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
-	const bookId: string | null = searchParams.get("bookId");
-	const userId: string | null = searchParams.get("userId");
+	const bookUid: string | null = searchParams.get("bookUid");
+	const userUid: string | null = searchParams.get("userUid");
 	const page: number = Number(searchParams.get("page")) || 1;
 	const size: number = Number(searchParams.get("pageSize")) || 10;
-	const commentsList: Review[] = Object.values(reviewsObject);
+	const commentsList: Review[] = Object.values(getReviews());
 
 	let response: Review[] = commentsList;
 
-	if (bookId) {
-		response = response.filter((r: Review) => r.bookId === Number(bookId));
+	if (bookUid) {
+		response = response.filter((r: Review) => r.bookUid === bookUid);
 	}
 
-	if (userId) {
-		response = response.filter((r: Review) => r.userId === Number(userId));
+	if (userUid) {
+		response = response.filter((r: Review) => r.userUid === userUid);
 	}
 
 	const start: number = (page - 1) * size;
@@ -25,7 +26,7 @@ export async function GET(req: NextRequest) {
 
 	return NextResponse.json({
 		data: response.slice(start, end),
-		pagination: pagination(commentsList, page, size),
+		pagination: pagination(response, page, size),
 		status: 200,
 	});
 }

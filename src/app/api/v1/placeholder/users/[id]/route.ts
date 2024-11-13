@@ -1,15 +1,37 @@
 import { NextRequest, NextResponse } from "next/server";
-import { usersObject } from "@/app/api/v1/placeholder/db";
+import { getUsersByUid } from "../../db/repository";
 
-interface Id {
-	id: string;
+interface Uid {
+	uid: string;
 }
 
-export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
-	const { id }: Id = await params;
+export async function GET(_: NextRequest, { params }: { params: Promise<Uid> }) {
+	const { uid }: Uid = await params;
 
 	return NextResponse.json({
-		data: usersObject[id],
+		data: getUsersByUid(uid),
 		status: 200,
 	});
 }
+
+// export async function POST(req: NextRequest) {
+// 	const res = await req.json();
+//
+// 	return NextResponse.json({
+// 		data: {
+// 			message: "All ok!",
+// 		},
+// 		status: 200,
+// 	});
+// }
+//
+// export async function PUT(req: NextRequest) {
+// 	const res = await req.json();
+//
+// 	return NextResponse.json({
+// 		data: {
+// 			message: "All ok!",
+// 		},
+// 		status: 200,
+// 	});
+// }

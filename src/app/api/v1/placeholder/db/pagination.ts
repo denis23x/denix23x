@@ -1,3 +1,7 @@
+import type { Book } from "./books/schema";
+import type { User } from "./users/schema";
+import type { Review } from "./reviews/schema";
+
 export type Pagination = {
 	totalItems: number;
 	totalPages: number;
