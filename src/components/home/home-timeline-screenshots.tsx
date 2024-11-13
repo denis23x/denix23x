@@ -17,8 +17,8 @@ export const Screenshot = React.memo(({ screenshot, index, hovered, setHovered }
 		onMouseEnter={() => setHovered(index)}
 		onMouseLeave={() => setHovered(null)}
 		className={cn(
-			"rounded-lg relative bg-sidebar w-full aspect-square transition-all duration-300 ease-out border border-input overflow-hidden hover:shadow-lg",
-			hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
+			"rounded relative bg-sidebar w-full aspect-square transition-all duration-300 ease-out border border-input overflow-hidden",
+			hovered !== null && hovered !== index ? "blur-sm scale-[0.98]" : "hover:shadow-lg hover:scale-[1.02]"
 		)}
 	>
 		<Link href={screenshot.url} target={"_blank"} rel={"noopener noreferrer"}>
