@@ -30,12 +30,6 @@ const nextConfig = {
 			},
 			{
 				protocol: "https",
-				hostname: "assets.aceternity.com",
-				port: "",
-				pathname: "/**/**",
-			},
-			{
-				protocol: "https",
 				hostname: "startup-template-sage.vercel.app",
 				port: "",
 				pathname: "/**/**",
