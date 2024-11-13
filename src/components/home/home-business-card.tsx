@@ -9,11 +9,11 @@ export function HomeBusinessCard() {
 			<div className={"flex flex-col lg:flex-row items-center justify-between gap-8"}>
 				<div className={"flex flex-col lg:flex-row items-center gap-10"}>
 					<Image
-						className={"size-[128] aspect-square rounded-full bg-sidebar border border-foreground object-cover"}
+						className={"size-[128px] aspect-square rounded-full bg-sidebar border border-foreground object-cover"}
 						priority={true}
-						width={128}
-						height={128}
-						src={"/home/avatar.png"}
+						width={256}
+						height={305}
+						src={"/home/business-card/avatar.webp"}
 						alt={"Denis Iakimenko"}
 					></Image>
 					<p className={"grid text-center lg:text-left gap-4"}>

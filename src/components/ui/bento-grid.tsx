@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const BentoGrid = ({ className, children }: { className?: string; children?: React.ReactNode }) => {
 	return (
-		<div className={cn("grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto ", className)}>
+		<div className={cn("grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto pb-4", className)}>
 			{children}
 		</div>
 	);

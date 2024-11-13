@@ -28,7 +28,7 @@ type NavMainProps = {
 export function NavMain({ items }: NavMainProps) {
 	return (
 		<SidebarGroup>
-			<SidebarGroupLabel>Platform</SidebarGroupLabel>
+			<SidebarGroupLabel>Dashboard</SidebarGroupLabel>
 			<SidebarMenu>
 				{items.map(item => (
 					<SidebarMenuItem key={item.title}>

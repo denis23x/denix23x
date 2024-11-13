@@ -16,20 +16,18 @@ export default function Page() {
 				ensuring efficient access to everything you need in one place.
 			</p>
 			<Separator />
-			<div className={"flex"}>
-				<BentoGrid className="w-full">
-					{items.map((item, i) => (
-						<BentoGridItem
-							key={i}
-							title={item.title}
-							description={item.description}
-							header={item.header}
-							url={item.url}
-							className={`border-input ${i === 4 || i === 8 ? "md:col-span-2" : ""}`}
-						/>
-					))}
-				</BentoGrid>
-			</div>
+			<BentoGrid className="w-full">
+				{items.map((item, i) => (
+					<BentoGridItem
+						key={i}
+						title={item.title}
+						description={item.description}
+						header={item.header}
+						url={item.url}
+						className={`border-input ${i === 4 || i === 8 ? "md:col-span-2" : ""}`}
+					/>
+				))}
+			</BentoGrid>
 		</div>
 	);
 }

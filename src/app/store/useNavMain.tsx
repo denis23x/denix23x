@@ -90,6 +90,7 @@ export const navMainPlaylist = {
 
 export const navMain = [
 	{
+		isActive: true,
 		title: "Tools",
 		url: "/dashboard/tools",
 		icon: SquareTerminal,
@@ -106,6 +107,7 @@ export const navMain = [
 		],
 	},
 	{
+		isActive: true,
 		title: "Misc",
 		url: "/dashboard/misc",
 		icon: Shapes,
@@ -115,12 +117,6 @@ export const navMain = [
 		title: "Materials",
 		url: "/dashboard/materials",
 		icon: ScrollText,
-		items: [
-			{
-				title: "Markdown",
-				url: "/dashboard/materials/",
-			},
-		],
 	},
 	// {
 	// 	title: "Models",

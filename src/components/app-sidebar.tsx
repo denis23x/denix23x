@@ -1,14 +1,10 @@
 "use client";
 
-import { House, Frame, LifeBuoy, Map, PieChart } from "lucide-react";
+import { House } from "lucide-react";
 import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
-import { NavSecondary } from "@/components/nav-secondary";
-import { NavUser } from "@/components/nav-user";
 import {
 	Sidebar,
 	SidebarContent,
-	SidebarFooter,
 	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
@@ -17,51 +13,36 @@ import {
 import { navMain } from "@/app/store/useNavMain";
 
 export const data = {
-	user: {
-		name: "shadcn",
-		email: "m@example.com",
-		avatar: "/avatars/shadcn.jpg",
-	},
+	// user: {
+	// 	name: "??",
+	// 	email: "denix23x@gmail.com",
+	// 	avatar: "/avatars/shadcn.jpg",
+	// },
 	navMain,
-	navSecondary: [
-		{
-			title: "shadcn/ui",
-			url: "https://ui.shadcn.com/docs/components/accordion",
-			icon: LifeBuoy,
-		},
-		{
-			title: "aceternity",
-			url: "https://ui.aceternity.com/components",
-			icon: LifeBuoy,
-		},
-		{
-			title: "magicui",
-			url: "https://magicui.design/docs/components/marquee",
-			icon: LifeBuoy,
-		},
-		{
-			title: "TailwindCSS",
-			url: "https://tailwindcss.com/docs/installation",
-			icon: LifeBuoy,
-		},
-	],
-	projects: [
-		{
-			name: "Design Engineering",
-			url: "#",
-			icon: Frame,
-		},
-		{
-			name: "Sales & Marketing",
-			url: "#",
-			icon: PieChart,
-		},
-		{
-			name: "Travel",
-			url: "#",
-			icon: Map,
-		},
-	],
+	// navSecondary: [
+	// 	{
+	// 		title: "TailwindCSS",
+	// 		url: "https://tailwindcss.com/docs/installation",
+	// 		icon: LifeBuoy,
+	// 	},
+	// ],
+	// projects: [
+	// 	{
+	// 		name: "Design Engineering",
+	// 		url: "#",
+	// 		icon: Frame,
+	// 	},
+	// 	{
+	// 		name: "Sales & Marketing",
+	// 		url: "#",
+	// 		icon: PieChart,
+	// 	},
+	// 	{
+	// 		name: "Travel",
+	// 		url: "#",
+	// 		icon: Map,
+	// 	},
+	// ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -78,8 +59,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 									<House className={"m-auto size-4"} />
 								</div>
 								<div className={"grid flex-1 text-left text-sm leading-tight"}>
-									<span className={"truncate font-semibold"}>Acme Inc</span>
-									<span className={"truncate text-xs"}>Enterprise</span>
+									<span className={"truncate font-semibold"}>denis23x</span>
+									<span className={"truncate text-xs"}>My Website</span>
 								</div>
 							</a>
 						</SidebarMenuButton>
@@ -88,12 +69,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 			</SidebarHeader>
 			<SidebarContent>
 				<NavMain items={data.navMain} />
-				<NavProjects projects={data.projects} />
-				<NavSecondary items={data.navSecondary} className={"mt-auto"} />
+				{/*<NavProjects projects={data.projects} />*/}
+				{/*<NavSecondary items={data.navSecondary} className={"mt-auto"} />*/}
 			</SidebarContent>
-			<SidebarFooter>
-				<NavUser user={data.user} />
-			</SidebarFooter>
+			{/*<SidebarFooter>*/}
+			{/*	<NavUser user={data.user} />*/}
+			{/*</SidebarFooter>*/}
 		</Sidebar>
 	);
 }

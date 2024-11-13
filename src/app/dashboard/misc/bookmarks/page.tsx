@@ -21,8 +21,8 @@ export default function Page() {
 			</p>
 			<Separator />
 			<div className="grid w-full bg-background dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative">
-				<div className="absolute pointer-events-none inset-0 bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-				<ul className="relative flex flex-wrap items-start justify-start gap-4">
+				<div className="absolute pointer-events-none inset-0 bg-background [mask-image:radial-gradient(ellipse_at_right,transparent_20%,black)]"></div>
+				<ul className="relative grid gap-6">
 					{items.map((item, i: number) => (
 						<li className={"flex items-center justify-start"} key={i}>
 							{item.image ? (
@@ -88,5 +88,20 @@ const items = [
 		url: "https://simpleicons.org/",
 		label: "Simple Icons",
 		image: "/dashboard/misc/bookmarks/simple-icons.png",
+	},
+	{
+		url: "https://magicui.design/",
+		label: "Magic UI",
+		image: "/dashboard/misc/bookmarks/magic-ui.png",
+	},
+	{
+		url: "https://ui.aceternity.com/",
+		label: "Aceternity UI",
+		image: "/dashboard/misc/bookmarks/aceternity-ui.png",
+	},
+	{
+		url: "https://ui.shadcn.com/",
+		label: "shadcn/ui",
+		image: "/dashboard/misc/bookmarks/shadcn-ui.png",
 	},
 ];
