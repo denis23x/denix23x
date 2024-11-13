@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { User } from "@/app/api/v1/placeholder/models";
-import { usersObject } from "@/app/api/v1/placeholder/db";
+import { usersObject, type User } from "@/app/api/v1/placeholder/db";
+import { pagination } from "@/app/api/v1/placeholder/pagination";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
 	const search: string | null = searchParams.get("search");
+	const page: number = Number(searchParams.get("page")) || 1;
+	const size: number = Number(searchParams.get("pageSize")) || 10;
 	const usersList: User[] = Object.values(usersObject);
 
 	let response: User[] = usersList;
@@ -15,8 +17,12 @@ export async function GET(req: NextRequest) {
 		});
 	}
 
+	const start: number = (page - 1) * size;
+	const end: number = start + size;
+
 	return NextResponse.json({
-		data: response,
+		data: response.slice(start, end),
+		pagination: pagination(usersList, page, size),
 		status: 200,
 	});
 }

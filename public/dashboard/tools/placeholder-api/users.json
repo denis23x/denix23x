@@ -13,5 +13,13 @@
       "updatedAt": "Tue Mar 26 2024 05:21:08 GMT+0700 (GMT+07:00)"
     }
   ],
+  "pagination": {
+    "totalItems": 20,
+    "totalPages": 2,
+    "currentPage": 1,
+    "pageSize": 10,
+    "hasNextPage": true,
+    "hasPreviousPage": false
+  },
   "status": 200
 }

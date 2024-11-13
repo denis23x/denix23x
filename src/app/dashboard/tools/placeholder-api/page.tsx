@@ -24,8 +24,22 @@ export default async function Page() {
 		},
 		{
 			name: "userId",
-			description: "Search by userId",
+			description: "Filter by userId",
 			key: "userId",
+			type: "number",
+			partOf: "query",
+		},
+		{
+			name: "page",
+			description: "Page",
+			key: "page",
+			type: "number",
+			partOf: "query",
+		},
+		{
+			name: "pageSize",
+			description: "Page size",
+			key: "pageSize",
 			type: "number",
 			partOf: "query",
 		},
@@ -51,6 +65,20 @@ export default async function Page() {
 			type: "string",
 			partOf: "query",
 		},
+		{
+			name: "page",
+			description: "Page",
+			key: "page",
+			type: "number",
+			partOf: "query",
+		},
+		{
+			name: "pageSize",
+			description: "Page size",
+			key: "pageSize",
+			type: "number",
+			partOf: "query",
+		},
 	];
 	const usersParametersId: PlaceholderRequestParameters[] = [
 		{
@@ -63,10 +91,60 @@ export default async function Page() {
 		},
 	];
 
+	const reviewsModel: string = await readFileAsText("/public/dashboard/tools/placeholder-api/review.ts");
+	const reviewsResponse: string = await readFileAsText("/public/dashboard/tools/placeholder-api/reviews.json");
+	const reviewsParameters: PlaceholderRequestParameters[] = [
+		{
+			name: "bookId",
+			description: "Filter by bookId",
+			key: "bookId",
+			type: "string",
+			partOf: "query",
+		},
+		{
+			name: "userId",
+			description: "Filter by userId",
+			key: "userId",
+			type: "string",
+			partOf: "query",
+		},
+		{
+			name: "page",
+			description: "Page",
+			key: "page",
+			type: "number",
+			partOf: "query",
+		},
+		{
+			name: "pageSize",
+			description: "Page size",
+			key: "pageSize",
+			type: "number",
+			partOf: "query",
+		},
+	];
+	const reviewsParametersId: PlaceholderRequestParameters[] = [
+		{
+			name: "reviewId",
+			description: "Get review by id",
+			key: "reviewId",
+			type: "number",
+			partOf: "path",
+			required: true,
+		},
+	];
+
 	const singleResponse = (response: string): string => {
 		const original = JSON.parse(response);
 
-		return JSON.stringify({ ...original, data: original.data[0] }, null, 2);
+		return JSON.stringify(
+			{
+				data: original.data[0],
+				status: 200,
+			},
+			null,
+			2
+		);
 	};
 
 	return (
@@ -102,6 +180,33 @@ export default async function Page() {
 						response={singleResponse(booksResponse)}
 						model={booksModel}
 						parameters={booksParametersId}
+					/>
+				</CollapsibleContent>
+			</Collapsible>
+			<Collapsible className={"group/collapsible-top"} defaultOpen={true}>
+				<CollapsibleTrigger
+					className={"flex items-center justify-between gap-4 border-b border-input hover:bg-sidebar w-full p-1"}
+				>
+					<div className={"flex items-center gap-2"}>
+						<span className={"text-2xl font-semibold tracking-tight"}>Reviews</span>
+						<span className={"text-sm text-muted-foreground"}>Everything about reviews</span>
+					</div>
+					<ChevronDown className={"group-data-[state=open]/collapsible-top:rotate-180"} />
+				</CollapsibleTrigger>
+				<CollapsibleContent className={"grid gap-4 pt-2"}>
+					<PlaceholderRequest
+						type={"GET"}
+						path={"/api/v1/placeholder/reviews"}
+						response={reviewsResponse}
+						model={reviewsModel}
+						parameters={reviewsParameters}
+					/>
+					<PlaceholderRequest
+						type={"GET"}
+						path={"/api/v1/placeholder/reviews/{id}"}
+						response={singleResponse(reviewsResponse)}
+						model={reviewsModel}
+						parameters={reviewsParametersId}
 					/>
 				</CollapsibleContent>
 			</Collapsible>

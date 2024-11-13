@@ -2,7 +2,7 @@
   "data": [
     {
       "id": 1,
-      "userId": 3,
+      "userId": 1,
       "title": "Atlas Shrugged",
       "cover": "https://picsum.photos/seed/lKA48VrUC/512/512",
       "author": "David Wyllie",
@@ -14,5 +14,13 @@
       "updatedAt": "Mon Feb 19 2024 18:38:54 GMT+0700 (GMT+07:00)"
     }
   ],
+  "pagination": {
+    "totalItems": 100,
+    "totalPages": 10,
+    "currentPage": 1,
+    "pageSize": 10,
+    "hasNextPage": true,
+    "hasPreviousPage": false
+  },
   "status": 200
 }
