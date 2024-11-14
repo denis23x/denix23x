@@ -8,29 +8,29 @@ export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
 	const search: string | null = searchParams.get("search");
 
-	const demoUserArgs: Prisma.demoUserFindManyArgs = {};
-
-	if (search) {
-		demoUserArgs.where = {
-			...demoUserArgs.where,
-			OR: [
-				{
-					firstName: {
-						contains: search,
-						mode: "insensitive",
-					},
-				},
-				{
-					lastName: {
-						contains: search,
-						mode: "insensitive",
-					},
-				},
-			],
-		};
-	}
-
 	try {
+		const demoUserArgs: Prisma.demoUserFindManyArgs = {};
+
+		if (search) {
+			demoUserArgs.where = {
+				...demoUserArgs.where,
+				OR: [
+					{
+						firstName: {
+							contains: search,
+							mode: "insensitive",
+						},
+					},
+					{
+						lastName: {
+							contains: search,
+							mode: "insensitive",
+						},
+					},
+				],
+			};
+		}
+
 		const [users, meta]: [demoUser[], PageNumberPaginationMeta] = await prisma.demoUser
 			.paginate(demoUserArgs)
 			.withPages({
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
 	try {
 		return NextResponse.json({
 			data: await prisma.demoUser.create({ data: userSchema.parse(await req.json()) }),
-			status: 200,
+			status: 201,
 		});
 	} catch (error) {
 		return NextResponse.json(handleErr(error), handleErr(error));

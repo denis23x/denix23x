@@ -3,32 +3,33 @@ import { Prisma, type demoBook } from "@prisma/client";
 import type { PageNumberPaginationMeta } from "prisma-extension-pagination";
 import { handleErr, prisma } from "@/lib/prisma";
 import { bookSchema } from "./schema";
+import { z } from "zod";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
 	const search: string | null = searchParams.get("search");
 	const userId: string | null = searchParams.get("userId");
 
-	const demoBookArgs: Prisma.demoBookFindManyArgs = {};
-
-	if (search) {
-		demoBookArgs.where = {
-			...demoBookArgs.where,
-			title: {
-				contains: search,
-				mode: "insensitive",
-			},
-		};
-	}
-
-	if (userId) {
-		demoBookArgs.where = {
-			...demoBookArgs.where,
-			userId: Number(userId),
-		};
-	}
-
 	try {
+		const demoBookArgs: Prisma.demoBookFindManyArgs = {};
+
+		if (search) {
+			demoBookArgs.where = {
+				...demoBookArgs.where,
+				title: {
+					contains: search,
+					mode: "insensitive",
+				},
+			};
+		}
+
+		if (userId) {
+			demoBookArgs.where = {
+				...demoBookArgs.where,
+				userId: z.number().parse(Number(userId)),
+			};
+		}
+
 		const [books, meta]: [demoBook[], PageNumberPaginationMeta] = await prisma.demoBook
 			.paginate(demoBookArgs)
 			.withPages({
@@ -57,12 +58,12 @@ export async function POST(req: NextRequest) {
 					...bookSchema.parse(data),
 					user: {
 						connect: {
-							id: Number(userId),
+							id: z.number().parse(Number(userId)),
 						},
 					},
 				},
 			}),
-			status: 200,
+			status: 201,
 		});
 	} catch (error) {
 		return NextResponse.json(handleErr(error), handleErr(error));

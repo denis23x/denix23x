@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { handleErr, prisma } from "@/lib/prisma";
 import { bookSchema } from "../schema";
+import { z } from "zod";
 
 type Id = {
 	id: string;
@@ -11,7 +12,7 @@ export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
 		return NextResponse.json({
 			data: await prisma.demoBook.findUniqueOrThrow({
 				where: {
-					id: Number((await params).id),
+					id: z.number().parse(Number((await params).id)),
 				},
 			}),
 			status: 200,
@@ -28,13 +29,13 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 		return NextResponse.json({
 			data: await prisma.demoBook.update({
 				where: {
-					id: Number((await params).id),
+					id: z.number().parse(Number((await params).id)),
 				},
 				data: {
 					...bookSchema.parse(data),
 					user: {
 						connect: {
-							id: Number(userId),
+							id: z.number().parse(Number(userId)),
 						},
 					},
 				},
@@ -51,7 +52,7 @@ export async function DELETE(_: NextRequest, { params }: { params: Promise<Id> }
 		return NextResponse.json({
 			data: await prisma.demoBook.delete({
 				where: {
-					id: Number((await params).id),
+					id: z.number().parse(Number((await params).id)),
 				},
 			}),
 			status: 200,
