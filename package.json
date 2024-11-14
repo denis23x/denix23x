@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:turbopack": "next dev --turbopack",
-    "build": "next build",
+    "build": "npm run prisma:generate && next build",
     "start": "next start",
     "lint": "next lint",
     "prisma:seed": "npx prisma db seed",
