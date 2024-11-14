@@ -1,19 +1,27 @@
+import type { demoUser } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { getUsersByUid } from "../../db/repository";
+import { prisma } from "@/lib/prisma";
 
-interface Uid {
-	uid: string;
+interface Id {
+	id: string;
 }
 
-export async function GET(_: NextRequest, { params }: { params: Promise<Uid> }) {
-	const { uid }: Uid = await params;
+export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
+	const { id }: Id = await params;
+
+	const user: demoUser | null = await prisma.demoUser.findUnique({
+		where: {
+			id: Number(id),
+		},
+	});
 
 	return NextResponse.json({
-		data: getUsersByUid(uid),
+		data: user,
 		status: 200,
 	});
 }
 
+// TODO: crud
 // export async function POST(req: NextRequest) {
 // 	const res = await req.json();
 //

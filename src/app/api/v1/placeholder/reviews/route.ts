@@ -1,32 +1,42 @@
-import type { Review } from "../db/reviews/schema";
+import { type demoReview, Prisma } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { getReviews } from "../db/repository";
-import { pagination } from "@/app/api/v1/placeholder/db/pagination";
+import { prisma } from "@/lib/prisma";
+import type { PageNumberPaginationMeta } from "prisma-extension-pagination";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
-	const bookUid: string | null = searchParams.get("bookUid");
-	const userUid: string | null = searchParams.get("userUid");
+	const bookId: string | null = searchParams.get("bookId");
+	const userId: string | null = searchParams.get("userId");
 	const page: number = Number(searchParams.get("page")) || 1;
 	const size: number = Number(searchParams.get("pageSize")) || 10;
-	const commentsList: Review[] = Object.values(getReviews());
 
-	let response: Review[] = commentsList;
+	const demoReviewArgs: Prisma.demoReviewFindManyArgs = {};
 
-	if (bookUid) {
-		response = response.filter((r: Review) => r.bookUid === bookUid);
+	if (userId) {
+		demoReviewArgs.where = {
+			...demoReviewArgs.where,
+			userId: Number(userId),
+		};
 	}
 
-	if (userUid) {
-		response = response.filter((r: Review) => r.userUid === userUid);
+	if (bookId) {
+		demoReviewArgs.where = {
+			...demoReviewArgs.where,
+			bookId: Number(bookId),
+		};
 	}
 
-	const start: number = (page - 1) * size;
-	const end: number = start + size;
+	const [reviews, meta]: [demoReview[], PageNumberPaginationMeta] = await prisma.demoReview
+		.paginate(demoReviewArgs)
+		.withPages({
+			limit: size,
+			page: page,
+			includePageCount: true,
+		});
 
 	return NextResponse.json({
-		data: response.slice(start, end),
-		pagination: pagination(response, page, size),
+		data: reviews,
+		pagination: meta,
 		status: 200,
 	});
 }

@@ -1,29 +1,45 @@
-import type { User } from "../db/users/schema";
 import { NextRequest, NextResponse } from "next/server";
-import { getUsers } from "../db/repository";
-import { pagination } from "@/app/api/v1/placeholder/db/pagination";
+import { type demoUser, Prisma } from "@prisma/client";
+import type { PageNumberPaginationMeta } from "prisma-extension-pagination";
+import { prisma } from "@/lib/prisma";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
 	const search: string | null = searchParams.get("search");
 	const page: number = Number(searchParams.get("page")) || 1;
 	const size: number = Number(searchParams.get("pageSize")) || 10;
-	const usersList: User[] = Object.values(getUsers());
 
-	let response: User[] = usersList;
+	const demoUserArgs: Prisma.demoUserFindManyArgs = {};
 
 	if (search) {
-		response = response.filter((u: User) => {
-			return [u.firstName, u.lastName].join().toLowerCase().includes(search.toLowerCase());
-		});
+		demoUserArgs.where = {
+			...demoUserArgs.where,
+			OR: [
+				{
+					firstName: {
+						contains: search,
+						mode: "insensitive",
+					},
+				},
+				{
+					lastName: {
+						contains: search,
+						mode: "insensitive",
+					},
+				},
+			],
+		};
 	}
 
-	const start: number = (page - 1) * size;
-	const end: number = start + size;
+	const [users, meta]: [demoUser[], PageNumberPaginationMeta] = await prisma.demoUser.paginate(demoUserArgs).withPages({
+		limit: size,
+		page: page,
+		includePageCount: true,
+	});
 
 	return NextResponse.json({
-		data: response.slice(start, end),
-		pagination: pagination(response, page, size),
+		data: users,
+		pagination: meta,
 		status: 200,
 	});
 }

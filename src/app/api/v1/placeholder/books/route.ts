@@ -1,34 +1,43 @@
-import type { Book } from "../db/books/schema";
+import { Prisma, type demoBook } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { getBooks } from "../db/repository";
-import { pagination } from "@/app/api/v1/placeholder/db/pagination";
+import { prisma } from "@/lib/prisma";
+import type { PageNumberPaginationMeta } from "prisma-extension-pagination";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
 	const search: string | null = searchParams.get("search");
-	const userUid: string | null = searchParams.get("userUid");
+	const userId: string | null = searchParams.get("userId");
 	const page: number = Number(searchParams.get("page")) || 1;
 	const size: number = Number(searchParams.get("pageSize")) || 10;
-	const booksList: Book[] = Object.values(getBooks());
 
-	let response: Book[] = booksList;
+	const demoBookArgs: Prisma.demoBookFindManyArgs = {};
 
 	if (search) {
-		response = response.filter((b: Book) => {
-			return [b.title, b.author].join().toLowerCase().includes(search.toLowerCase());
-		});
+		demoBookArgs.where = {
+			...demoBookArgs.where,
+			title: {
+				contains: search,
+				mode: "insensitive",
+			},
+		};
 	}
 
-	if (userUid) {
-		response = response.filter((b: Book) => b.userUid === userUid);
+	if (userId) {
+		demoBookArgs.where = {
+			...demoBookArgs.where,
+			userId: Number(userId),
+		};
 	}
 
-	const start: number = (page - 1) * size;
-	const end: number = start + size;
+	const [books, meta]: [demoBook[], PageNumberPaginationMeta] = await prisma.demoBook.paginate(demoBookArgs).withPages({
+		limit: size,
+		page: page,
+		includePageCount: true,
+	});
 
 	return NextResponse.json({
-		data: response.slice(start, end),
-		pagination: pagination(response, page, size),
+		data: books,
+		pagination: meta,
 		status: 200,
 	});
 }
