@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker/locale/en";
 
 const demoUsersCount: number = 20;
 const demoUsersSeed = () => {
-	return Array.from({ length: demoUsersCount }, (_, i) => {
+	return Array.from({ length: demoUsersCount }, () => {
 		const sex: string = faker.person.sex();
 		const firstName: string = faker.person.firstName(sex as "female" | "male");
 		const lastName: string = faker.person.lastName(sex as "female" | "male");
@@ -11,7 +11,6 @@ const demoUsersSeed = () => {
 			: null;
 
 		return {
-			id: i + 1,
 			avatar,
 			firstName,
 			lastName,

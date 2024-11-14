@@ -1,45 +1,53 @@
-import type { demoUser } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { handleErr, prisma } from "@/lib/prisma";
+import { userSchema } from "@/app/api/v1/placeholder/users/schema";
 
-interface Id {
+type Id = {
 	id: string;
-}
+};
 
 export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
-	const { id }: Id = await params;
-
-	const user: demoUser | null = await prisma.demoUser.findUnique({
-		where: {
-			id: Number(id),
-		},
-	});
-
-	return NextResponse.json({
-		data: user,
-		status: 200,
-	});
+	try {
+		return NextResponse.json({
+			data: await prisma.demoUser.findUniqueOrThrow({
+				where: {
+					id: Number((await params).id),
+				},
+			}),
+			status: 200,
+		});
+	} catch (error) {
+		return NextResponse.json(handleErr(error), handleErr(error));
+	}
 }
 
-// TODO: crud
-// export async function POST(req: NextRequest) {
-// 	const res = await req.json();
-//
-// 	return NextResponse.json({
-// 		data: {
-// 			message: "All ok!",
-// 		},
-// 		status: 200,
-// 	});
-// }
-//
-// export async function PUT(req: NextRequest) {
-// 	const res = await req.json();
-//
-// 	return NextResponse.json({
-// 		data: {
-// 			message: "All ok!",
-// 		},
-// 		status: 200,
-// 	});
-// }
+export async function PUT(req: NextRequest, { params }: { params: Promise<Id> }) {
+	try {
+		return NextResponse.json({
+			data: await prisma.demoUser.update({
+				where: {
+					id: Number((await params).id),
+				},
+				data: userSchema.parse(await req.json()),
+			}),
+			status: 200,
+		});
+	} catch (error) {
+		return NextResponse.json(handleErr(error), handleErr(error));
+	}
+}
+
+export async function DELETE(_: NextRequest, { params }: { params: Promise<Id> }) {
+	try {
+		return NextResponse.json({
+			data: await prisma.demoUser.delete({
+				where: {
+					id: Number((await params).id),
+				},
+			}),
+			status: 200,
+		});
+	} catch (error) {
+		return NextResponse.json(handleErr(error), handleErr(error));
+	}
+}

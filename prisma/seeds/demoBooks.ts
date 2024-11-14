@@ -12,14 +12,13 @@ const demoBooksSeed = async () => {
 	});
 	const uLength: number = u.length - 1;
 
-	return Array.from({ length: demoBooksCount }, (_, i) => {
+	return Array.from({ length: demoBooksCount }, () => {
 		const user: Pick<demoUser, "id"> = u[faker.number.int({ min: 1, max: uLength })];
 		const cover: string | null = faker.datatype.boolean()
 			? faker.image.urlPicsumPhotos({ width: 512, height: 512, grayscale: false, blur: 0 })
 			: null;
 
 		return {
-			id: i + 1,
 			userId: user.id,
 			title: faker.book.title(),
 			description: faker.lorem.paragraph({ min: 1, max: 3 }),

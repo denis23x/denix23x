@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { type demoUser, Prisma } from "@prisma/client";
 import type { PageNumberPaginationMeta } from "prisma-extension-pagination";
-import { prisma } from "@/lib/prisma";
+import { handleErr, prisma } from "@/lib/prisma";
+import { userSchema } from "./schema";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
 	const search: string | null = searchParams.get("search");
-	const page: number = Number(searchParams.get("page")) || 1;
-	const size: number = Number(searchParams.get("pageSize")) || 10;
 
 	const demoUserArgs: Prisma.demoUserFindManyArgs = {};
 
@@ -31,15 +30,32 @@ export async function GET(req: NextRequest) {
 		};
 	}
 
-	const [users, meta]: [demoUser[], PageNumberPaginationMeta] = await prisma.demoUser.paginate(demoUserArgs).withPages({
-		limit: size,
-		page: page,
-		includePageCount: true,
-	});
+	try {
+		const [users, meta]: [demoUser[], PageNumberPaginationMeta] = await prisma.demoUser
+			.paginate(demoUserArgs)
+			.withPages({
+				limit: Number(searchParams.get("pageSize")) || 10,
+				page: Number(searchParams.get("page")) || 1,
+				includePageCount: true,
+			});
 
-	return NextResponse.json({
-		data: users,
-		pagination: meta,
-		status: 200,
-	});
+		return NextResponse.json({
+			data: users,
+			pagination: meta,
+			status: 200,
+		});
+	} catch (error) {
+		return NextResponse.json(handleErr(error), handleErr(error));
+	}
+}
+
+export async function POST(req: NextRequest) {
+	try {
+		return NextResponse.json({
+			data: await prisma.demoUser.create({ data: userSchema.parse(await req.json()) }),
+			status: 200,
+		});
+	} catch (error) {
+		return NextResponse.json(handleErr(error), handleErr(error));
+	}
 }

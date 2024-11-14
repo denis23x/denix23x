@@ -1,14 +1,13 @@
-import { type demoReview, Prisma } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { type demoReview, Prisma } from "@prisma/client";
 import type { PageNumberPaginationMeta } from "prisma-extension-pagination";
+import { handleErr, prisma } from "@/lib/prisma";
+import { reviewSchema } from "./schema";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
 	const bookId: string | null = searchParams.get("bookId");
 	const userId: string | null = searchParams.get("userId");
-	const page: number = Number(searchParams.get("page")) || 1;
-	const size: number = Number(searchParams.get("pageSize")) || 10;
 
 	const demoReviewArgs: Prisma.demoReviewFindManyArgs = {};
 
@@ -26,17 +25,48 @@ export async function GET(req: NextRequest) {
 		};
 	}
 
-	const [reviews, meta]: [demoReview[], PageNumberPaginationMeta] = await prisma.demoReview
-		.paginate(demoReviewArgs)
-		.withPages({
-			limit: size,
-			page: page,
-			includePageCount: true,
-		});
+	try {
+		const [reviews, meta]: [demoReview[], PageNumberPaginationMeta] = await prisma.demoReview
+			.paginate(demoReviewArgs)
+			.withPages({
+				limit: Number(searchParams.get("pageSize")) || 10,
+				page: Number(searchParams.get("page")) || 1,
+				includePageCount: true,
+			});
 
-	return NextResponse.json({
-		data: reviews,
-		pagination: meta,
-		status: 200,
-	});
+		return NextResponse.json({
+			data: reviews,
+			pagination: meta,
+			status: 200,
+		});
+	} catch (error) {
+		return NextResponse.json(handleErr(error), handleErr(error));
+	}
+}
+
+export async function POST(req: NextRequest) {
+	try {
+		const { userId, bookId, ...data } = await req.json();
+
+		return NextResponse.json({
+			data: await prisma.demoReview.create({
+				data: {
+					...reviewSchema.parse(data),
+					user: {
+						connect: {
+							id: Number(userId),
+						},
+					},
+					book: {
+						connect: {
+							id: Number(bookId),
+						},
+					},
+				},
+			}),
+			status: 200,
+		});
+	} catch (error) {
+		return NextResponse.json(handleErr(error), handleErr(error));
+	}
 }

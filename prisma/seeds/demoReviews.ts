@@ -19,14 +19,13 @@ const demoReviewsSeed = async () => {
 	});
 	const bLength: number = b.length - 1;
 
-	return Array.from({ length: demoReviewsCount }, (_, i) => {
+	return Array.from({ length: demoReviewsCount }, () => {
 		const user: Pick<demoUser, "id"> = u[faker.number.int({ min: 1, max: uLength })];
 		const book: Pick<demoBook, "id"> = b[faker.number.int({ min: 1, max: bLength })];
 		const emoji: string[] = Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => faker.internet.emoji());
 		const message: string = `${faker.lorem.sentence()} ${emoji.join(" ")}`;
 
 		return {
-			id: i + 1,
 			userId: user.id,
 			bookId: book.id,
 			message,
