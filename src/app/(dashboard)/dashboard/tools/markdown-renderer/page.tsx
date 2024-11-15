@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
 import { navMainMarkdownRenderer } from "@/stores/useNavMain";
-import Editor from "@/components/markdown-render/editor";
+import Editor from "@/components/tools/markdown-render/editor";
 
 export const metadata: Metadata = {
 	title: navMainMarkdownRenderer.title,

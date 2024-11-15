@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import MaterialsFooter from "@/components/materials/materials-footer";
-import MaterialsScrollProgressBar from "@/components/materials/materials-scroll-progress-bar";
+import MaterialsFooter from "@/components/dashboard/materials/materials-footer";
+import MaterialsScrollProgressBar from "@/components/dashboard/materials/materials-scroll-progress-bar";
 
 export default function MaterialsLayout({ children }: { children: ReactNode }) {
 	return (

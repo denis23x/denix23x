@@ -1,11 +1,11 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
 import { navMainColorConverter } from "@/stores/useNavMain";
-import Picker from "@/components/color-converter/picker";
-import PickerInput from "@/components/color-converter/picker-input";
-import Palette from "@/components/color-converter/palette";
-import Output from "@/components/color-converter/output";
-import Harmony from "@/components/color-converter/harmony";
+import Picker from "@/components/tools/color-converter/picker";
+import PickerInput from "@/components/tools/color-converter/picker-input";
+import Palette from "@/components/tools/color-converter/palette";
+import Output from "@/components/tools/color-converter/output";
+import Harmony from "@/components/tools/color-converter/harmony";
 
 export const metadata: Metadata = {
 	title: navMainColorConverter.title,

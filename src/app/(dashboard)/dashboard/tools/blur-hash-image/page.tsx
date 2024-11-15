@@ -4,11 +4,11 @@ import { navMainBlurHashImage } from "@/stores/useNavMain";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { CircleAlert } from "lucide-react";
 import Link from "next/link";
-import Input from "@/components/blur-hash-image/input";
-import BlurHashPreview from "@/components/blur-hash-image/blur-hash-preview";
-import Textarea from "@/components/blur-hash-image/textarea";
-import Optimization from "@/components/blur-hash-image/optimization";
-import BlurHash from "@/components/blur-hash-image/blur-hash";
+import Input from "@/components/tools/blur-hash-image/input";
+import BlurHashPreview from "@/components/tools/blur-hash-image/blur-hash-preview";
+import Textarea from "@/components/tools/blur-hash-image/textarea";
+import Optimization from "@/components/tools/blur-hash-image/optimization";
+import BlurHash from "@/components/tools/blur-hash-image/blur-hash";
 
 export const metadata: Metadata = {
 	title: navMainBlurHashImage.title,

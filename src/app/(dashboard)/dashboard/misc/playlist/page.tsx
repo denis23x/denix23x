@@ -1,8 +1,8 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
 import { navMainPlaylist } from "@/stores/useNavMain";
-import Card from "@/components/playlist/card";
-import Grid from "@/components/playlist/grid";
+import Card from "@/components/dashboard/misc/playlist/card";
+import Grid from "@/components/dashboard/misc/playlist/grid";
 
 export const metadata: Metadata = {
 	title: navMainPlaylist.title,
