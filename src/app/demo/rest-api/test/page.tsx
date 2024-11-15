@@ -18,7 +18,8 @@ import { User as UserType } from "@/app/demo/rest-api/test/types/user";
 
 export const metadata: Metadata = {
 	title: "Lorem Ipsum Demo",
-	description: "Lorem Ipsum Demo",
+	description:
+		"Lorem Ipsum Demo: A mock API for testing, prototyping, and showcasing. Access users, posts, and reviews with sample data—perfect for developers and designers.",
 };
 
 type Params = {

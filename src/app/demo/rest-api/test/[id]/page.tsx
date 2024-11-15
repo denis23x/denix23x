@@ -5,7 +5,8 @@ import { Review } from "../types/review";
 
 export const metadata: Metadata = {
 	title: "Lorem Ipsum Demo",
-	description: "Lorem Ipsum Demo",
+	description:
+		"Lorem Ipsum Demo: A mock API for testing, prototyping, and showcasing. Access users, posts, and reviews with sample data—perfect for developers and designers.",
 };
 
 type Id = {
