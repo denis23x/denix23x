@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Rabbit } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
-import useStore from "@/stores/useBlurHashImageStore";
+import useStore from "@/stores/blur-hash-image.store";
 
 export default function Optimization() {
 	const { optimization, setOptimization } = useStore();

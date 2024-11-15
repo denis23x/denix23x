@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { FileCode2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import useStore from "@/stores/useColorConverterStore";
+import useStore from "@/stores/color-converter.store";
 
 export default function PickerInput() {
 	const { color, setColor } = useStore();

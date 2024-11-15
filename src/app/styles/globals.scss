@@ -1,7 +1,7 @@
-@use "styles/base/typography.scss";
-@use "styles/layout/prose.scss";
-@use "styles/vendor/md-editor.scss";
-@use "styles/vendor/shiki.scss";
+@use "base/typography";
+@use "layout/prose";
+@use "vendor/md-editor";
+@use "vendor/shiki";
 
 @tailwind base;
 @tailwind components;

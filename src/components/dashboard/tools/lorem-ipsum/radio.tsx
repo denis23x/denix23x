@@ -2,7 +2,7 @@
 
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import useStore from "@/stores/useLoremIpsumStore";
+import useStore from "@/stores/lorem-ipsum.store";
 
 export default function Radio() {
 	const { setLoremGenerate } = useStore();

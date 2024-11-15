@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainPlaceholderApi } from "@/stores/useNavMain";
+import { navMainPlaceholderApi } from "@/stores/nav-main.store";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { CircleAlert } from "lucide-react";
 import Link from "next/link";

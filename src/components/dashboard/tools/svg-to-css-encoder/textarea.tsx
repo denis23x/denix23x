@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { FileImage } from "lucide-react";
 import { Textarea as Textarea1 } from "@/components/ui/textarea";
 import { ChangeEvent } from "react";
-import useStore from "@/stores/useSvgToCssEncoderStore";
+import useStore from "@/stores/svg-to-css-encoder.store";
 
 export default function Textarea() {
 	const { input, setInput } = useStore();

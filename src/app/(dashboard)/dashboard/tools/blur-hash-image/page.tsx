@@ -1,14 +1,14 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainBlurHashImage } from "@/stores/useNavMain";
+import { navMainBlurHashImage } from "@/stores/nav-main.store";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { CircleAlert } from "lucide-react";
 import Link from "next/link";
-import Input from "@/components/tools/blur-hash-image/input";
-import BlurHashPreview from "@/components/tools/blur-hash-image/blur-hash-preview";
-import Textarea from "@/components/tools/blur-hash-image/textarea";
-import Optimization from "@/components/tools/blur-hash-image/optimization";
-import BlurHash from "@/components/tools/blur-hash-image/blur-hash";
+import BlurHashPreview from "@/components/dashboard/tools/blur-hash-image/blur-hash-preview";
+import Input from "@/components/dashboard/tools/blur-hash-image/input";
+import BlurHash from "@/components/dashboard/tools/blur-hash-image/blur-hash";
+import Optimization from "@/components/dashboard/tools/blur-hash-image/optimization";
+import Textarea from "@/components/dashboard/tools/blur-hash-image/textarea";
 
 export const metadata: Metadata = {
 	title: navMainBlurHashImage.title,

@@ -6,7 +6,7 @@ import { MoveHorizontal, MoveVertical } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ChangeEvent } from "react";
 import { Slider } from "@/components/ui/slider";
-import useStore from "@/stores/usePlaceholderImageStore";
+import useStore from "@/stores/placeholder-image.store";
 
 export default function Sizes() {
 	const { width, setWidth, height, setHeight } = useStore();

@@ -1,9 +1,9 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainColorExtractor } from "@/stores/useNavMain";
-import Preview from "@/components/tools/color-extractor/preview";
-import Input from "@/components/tools/color-extractor/input";
-import Palette from "@/components/tools/color-extractor/palette";
+import { navMainColorExtractor } from "@/stores/nav-main.store";
+import Preview from "@/components/dashboard/tools/color-extractor/preview";
+import Input from "@/components/dashboard/tools/color-extractor/input";
+import Palette from "@/components/dashboard/tools/color-extractor/palette";
 
 export const metadata: Metadata = {
 	title: navMainColorExtractor.title,

@@ -7,7 +7,7 @@ import { Textarea as Textarea1 } from "@/components/ui/textarea";
 import { handleCopy } from "@/lib/browser";
 import { LoremIpsum } from "lorem-ipsum";
 import { useEffect } from "react";
-import useStore from "@/stores/useLoremIpsumStore";
+import useStore from "@/stores/lorem-ipsum.store";
 
 export default function Textarea() {
 	const { loremCount, loremGenerate, loremIpsum, setLoremIpsum } = useStore();

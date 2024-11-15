@@ -4,10 +4,10 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { FileCode2, View } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
-import { AppDrawerDialog } from "@/components/app-drawer-dialog";
+import { AppDrawerDialog } from "@/components/app/app-drawer-dialog";
 import { handleCopy } from "@/lib/browser";
 import { useEffect } from "react";
-import useStore from "@/stores/useSvgToCssEncoderStore";
+import useStore from "@/stores/svg-to-css-encoder.store";
 
 export default function Output() {
 	const { input, output, setOutput } = useStore();

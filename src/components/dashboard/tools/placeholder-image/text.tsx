@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Type } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ChangeEvent } from "react";
-import useStore from "@/stores/usePlaceholderImageStore";
+import useStore from "@/stores/placeholder-image.store";
 
 export default function Text() {
 	const { width, height, text, setText } = useStore();

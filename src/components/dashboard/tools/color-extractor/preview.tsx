@@ -7,7 +7,7 @@ import { RefObject, useRef } from "react";
 import { View } from "lucide-react";
 import ColorThief from "colorthief";
 import Image from "next/image";
-import useStore from "@/stores/useColorExtractorStore";
+import useStore from "@/stores/color-extractor.store";
 
 export default function Preview() {
 	const imageRef: RefObject<HTMLImageElement> = useRef<HTMLImageElement>(null);

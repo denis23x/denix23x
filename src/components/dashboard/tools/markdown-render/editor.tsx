@@ -27,7 +27,7 @@ import {
 	Table,
 } from "lucide-react";
 import React from "react";
-import useStore from "@/stores/useMarkdownRenderStore";
+import useStore from "@/stores/markdown-render.store";
 import MDEditor, {
 	bold,
 	checkedListCommand,

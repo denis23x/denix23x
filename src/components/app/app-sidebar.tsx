@@ -1,7 +1,7 @@
 "use client";
 
 import { House } from "lucide-react";
-import { NavMain } from "@/components/nav-main";
+import { NavMain } from "@/components/nav/nav-main";
 import {
 	Sidebar,
 	SidebarContent,
@@ -10,7 +10,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { navMain } from "@/stores/useNavMain";
+import { navMainStore } from "@/stores/nav-main.store";
 
 export const data = {
 	// user: {
@@ -18,7 +18,7 @@ export const data = {
 	// 	email: "denix23x@gmail.com",
 	// 	avatar: "/avatars/shadcn.jpg",
 	// },
-	navMain,
+	navMain: navMainStore,
 	// navSecondary: [
 	// 	{
 	// 		title: "TailwindCSS",

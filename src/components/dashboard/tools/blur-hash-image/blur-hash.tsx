@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Clipboard, Code } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { handleCopy } from "@/lib/browser";
-import useStore from "@/stores/useBlurHashImageStore";
+import useStore from "@/stores/blur-hash-image.store";
 
 export default function BlurHash() {
 	const { blurHash } = useStore();

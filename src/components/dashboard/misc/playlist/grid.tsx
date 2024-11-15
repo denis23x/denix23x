@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import useStore from "@/stores/usePlaylistStore";
+import useStore from "@/stores/playlist.store";
 
 export default function Grid() {
 	const { cards, setActive } = useStore();

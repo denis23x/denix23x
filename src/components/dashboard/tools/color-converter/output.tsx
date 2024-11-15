@@ -10,7 +10,7 @@ import cmykPlugin from "colord/plugins/cmyk";
 import namesPlugin from "colord/plugins/names";
 import lchPlugin from "colord/plugins/lch";
 import hwbPlugin from "colord/plugins/hwb";
-import useStore from "@/stores/useColorConverterStore";
+import useStore from "@/stores/color-converter.store";
 
 extend([cmykPlugin, lchPlugin, hwbPlugin, namesPlugin]);
 

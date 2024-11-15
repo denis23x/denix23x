@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Blend } from "lucide-react";
 import { handleCopy } from "@/lib/browser";
 import harmonies from "colord/plugins/harmonies";
-import useStore from "@/stores/useColorConverterStore";
+import useStore from "@/stores/color-converter.store";
 
 extend([harmonies]);
 

@@ -9,7 +9,7 @@ import {
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { usePathname } from "next/navigation";
-import { navMain } from "@/stores/useNavMain";
+import { navMainStore } from "@/stores/nav-main.store";
 
 type AppBreadcrumbs = {
 	title: string;
@@ -26,7 +26,7 @@ export function AppBreadcrumbs() {
 		},
 	];
 
-	navMain.forEach(main => {
+	navMainStore.forEach(main => {
 		if (pathname.startsWith(main.url)) {
 			appBreadcrumbs.push(main);
 		}

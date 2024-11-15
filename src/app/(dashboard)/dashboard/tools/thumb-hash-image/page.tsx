@@ -1,10 +1,10 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainThumbHashImage } from "@/stores/useNavMain";
-import ThumbHashPreview from "@/components/tools/thumb-hash-image/thumb-hash-preview";
-import Input from "@/components/tools/thumb-hash-image/input";
-import Textarea from "@/components/tools/thumb-hash-image/textarea";
-import ThumbHash from "@/components/tools/thumb-hash-image/thumb-hash";
+import { navMainThumbHashImage } from "@/stores/nav-main.store";
+import ThumbHashPreview from "@/components/dashboard/tools/thumb-hash-image/thumb-hash-preview";
+import Input from "@/components/dashboard/tools/thumb-hash-image/input";
+import Textarea from "@/components/dashboard/tools/thumb-hash-image/textarea";
+import ThumbHash from "@/components/dashboard/tools/thumb-hash-image/thumb-hash";
 
 export const metadata: Metadata = {
 	title: navMainThumbHashImage.title,

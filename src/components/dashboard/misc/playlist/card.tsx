@@ -7,7 +7,7 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 import { Separator } from "@/components/ui/separator";
 import { CirclePlay } from "lucide-react";
 import CloseIcon from "./close-icon";
-import useStore from "@/stores/usePlaylistStore";
+import useStore from "@/stores/playlist.store";
 
 export default function Card() {
 	const ref: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);

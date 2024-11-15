@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { handleDownload as handleDownloadBrowser, handleShare } from "@/lib/browser";
 import { useIsMobile } from "@/hooks/use-mobile";
-import useStore from "@/stores/usePlaceholderImageStore";
+import useStore from "@/stores/placeholder-image.store";
 
 export default function Download() {
 	const { text, width, height, canvas } = useStore();

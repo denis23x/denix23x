@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainPlaylist } from "@/stores/useNavMain";
+import { navMainPlaylist } from "@/stores/nav-main.store";
 import Card from "@/components/dashboard/misc/playlist/card";
 import Grid from "@/components/dashboard/misc/playlist/grid";
 

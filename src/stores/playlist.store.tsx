@@ -1,6 +1,15 @@
 import { create, StoreApi, UseBoundStore } from "zustand";
 import { nanoid } from "nanoid";
-import { ExpandableCard } from "@/app/models/expandable-card";
+
+type ExpandableCard = {
+	uid: string;
+	description: string;
+	title: string;
+	link: string;
+	src: string;
+	blurDataURL: string;
+	content: () => JSX.Element;
+};
 
 interface StoreState {
 	active: ExpandableCard | boolean | null;

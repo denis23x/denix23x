@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, RefObject } from "react";
 import { useTheme } from "next-themes";
-import useStore from "@/stores/usePlaceholderImageStore";
+import useStore from "@/stores/placeholder-image.store";
 
 export default function Image() {
 	const { text, width, height, background, setBackground, color, setColor, setCanvas } = useStore();

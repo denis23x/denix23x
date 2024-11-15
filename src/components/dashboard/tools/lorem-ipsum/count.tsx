@@ -6,7 +6,7 @@ import { Text } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { ChangeEvent } from "react";
-import useStore from "@/stores/useLoremIpsumStore";
+import useStore from "@/stores/lorem-ipsum.store";
 
 export default function Count() {
 	const { loremCount, setLoremCount } = useStore();

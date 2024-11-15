@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { AppGridEffect } from "@/components/app-grid-effect";
+import { AppGridEffect } from "@/components/app/app-grid-effect";
 import { Palette, Image, Code, SwatchBook, Type, Scroll, Images } from "lucide-react";
 import {
 	navMainBlurHashImage,
@@ -11,7 +11,7 @@ import {
 	navMainPlaceholderImage,
 	navMainSvgToCssEncoder,
 	navMainThumbHashImage,
-} from "@/stores/useNavMain";
+} from "@/stores/nav-main.store";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

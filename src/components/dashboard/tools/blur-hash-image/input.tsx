@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { FileImage } from "lucide-react";
 import { Input as Input1 } from "@/components/ui/input";
-import useStore from "@/stores/useBlurHashImageStore";
+import useStore from "@/stores/blur-hash-image.store";
 
 export default function Input() {
 	const { setImage } = useStore();

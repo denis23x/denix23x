@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/components/app/app-sidebar";
 import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { AppBreadcrumbs } from "@/components/app-breadcrumbs";
+import { AppBreadcrumbs } from "@/components/app/app-breadcrumbs";
 
 export const metadata: Metadata = {
 	title: {

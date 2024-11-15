@@ -1,11 +1,11 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainPlaceholderImage } from "@/stores/useNavMain";
-import Image from "@/components/tools/placeholder-image/image";
-import Text from "@/components/tools/placeholder-image/text";
-import Sizes from "@/components/tools/placeholder-image/sizes";
-import Colors from "@/components/tools/placeholder-image/colors";
-import Download from "@/components/tools/placeholder-image/download";
+import { navMainPlaceholderImage } from "@/stores/nav-main.store";
+import Image from "@/components/dashboard/tools/placeholder-image/image";
+import Text from "@/components/dashboard/tools/placeholder-image/text";
+import Sizes from "@/components/dashboard/tools/placeholder-image/sizes";
+import Colors from "@/components/dashboard/tools/placeholder-image/colors";
+import Download from "@/components/dashboard/tools/placeholder-image/download";
 
 export const metadata: Metadata = {
 	title: navMainPlaceholderImage.title,

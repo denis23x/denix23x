@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainPhotos } from "@/stores/useNavMain";
+import { navMainPhotos } from "@/stores/nav-main.store";
 import { ParallaxScroll } from "@/components/ui/parallax-scroll";
 
 export const metadata: Metadata = {

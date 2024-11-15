@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { ChangeEvent } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { HexColorPicker } from "react-colorful";
-import useStore from "@/stores/usePlaceholderImageStore";
+import useStore from "@/stores/placeholder-image.store";
 
 export default function Colors() {
 	const { color, setColor, background, setBackground } = useStore();

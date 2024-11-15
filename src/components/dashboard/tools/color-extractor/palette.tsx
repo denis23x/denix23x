@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { handleCopy } from "@/lib/browser";
 import { SwatchBook } from "lucide-react";
-import useStore from "@/stores/useColorExtractorStore";
+import useStore from "@/stores/color-extractor.store";
 
 export default function Palette() {
 	const { imagePalette } = useStore();

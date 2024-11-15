@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Clipboard, Code } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { handleCopy } from "@/lib/browser";
-import useStore from "@/stores/useThumbHashImageStore";
+import useStore from "@/stores/thumb-hash-image.store";
 
 export default function ThumbHash() {
 	const { thumbHash } = useStore();

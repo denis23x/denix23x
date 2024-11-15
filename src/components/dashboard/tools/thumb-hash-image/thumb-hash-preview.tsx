@@ -5,7 +5,7 @@ import { RefObject, useRef } from "react";
 import { View } from "lucide-react";
 import { rgbaToThumbHash, thumbHashToRGBA } from "thumbhash";
 import Image from "next/image";
-import useStore from "@/stores/useThumbHashImageStore";
+import useStore from "@/stores/thumb-hash-image.store";
 
 export default function ThumbHashPreview() {
 	const imageRef: RefObject<HTMLImageElement> = useRef<HTMLImageElement>(null);

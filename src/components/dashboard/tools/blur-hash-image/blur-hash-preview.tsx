@@ -6,7 +6,7 @@ import { View } from "lucide-react";
 import { decode, encode } from "blurhash";
 import { useDebounce } from "use-debounce";
 import Image from "next/image";
-import useStore from "@/stores/useBlurHashImageStore";
+import useStore from "@/stores/blur-hash-image.store";
 
 export default function BlurHashPreview() {
 	const imageRef: RefObject<HTMLImageElement> = useRef<HTMLImageElement>(null);

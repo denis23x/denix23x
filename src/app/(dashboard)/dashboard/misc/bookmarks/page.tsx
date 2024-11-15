@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainBookmarks } from "@/stores/useNavMain";
+import { navMainBookmarks } from "@/stores/nav-main.store";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { ArrowUpRight } from "lucide-react";
 

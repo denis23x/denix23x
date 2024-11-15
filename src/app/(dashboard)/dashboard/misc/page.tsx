@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
-import { AppGridEffect } from "@/components/app-grid-effect";
+import { AppGridEffect } from "@/components/app/app-grid-effect";
 import { Bookmark, Camera, Music } from "lucide-react";
-import { navMainBookmarks, navMainPhotos, navMainPlaylist } from "@/stores/useNavMain";
+import { navMainBookmarks, navMainPhotos, navMainPlaylist } from "@/stores/nav-main.store";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

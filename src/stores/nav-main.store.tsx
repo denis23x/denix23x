@@ -88,7 +88,7 @@ export const navMainPlaylist = {
 
 // --
 
-export const navMain = [
+export const navMainStore = [
 	{
 		isActive: true,
 		title: "Tools",

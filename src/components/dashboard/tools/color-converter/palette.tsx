@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { handleCopy } from "@/lib/browser";
 import { SwatchBook } from "lucide-react";
 import mix from "colord/plugins/mix";
-import useStore from "@/stores/useColorConverterStore";
+import useStore from "@/stores/color-converter.store";
 
 extend([mix]);
 

@@ -1,9 +1,9 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainLoremIpsum } from "@/stores/useNavMain";
-import Radio from "@/components/tools/lorem-ipsum/radio";
-import Number from "@/components/tools/lorem-ipsum/count";
-import Textarea from "@/components/tools/lorem-ipsum/textarea";
+import { navMainLoremIpsum } from "@/stores/nav-main.store";
+import Radio from "@/components/dashboard/tools/lorem-ipsum/radio";
+import Number from "@/components/dashboard/tools/lorem-ipsum/count";
+import Textarea from "@/components/dashboard/tools/lorem-ipsum/textarea";
 
 export const metadata: Metadata = {
 	title: navMainLoremIpsum.title,

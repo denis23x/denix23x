@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Scroll } from "lucide-react";
 import { handleCopy } from "@/lib/browser";
 import { useEffect, useState } from "react";
-import useStore from "@/stores/useThumbHashImageStore";
+import useStore from "@/stores/thumb-hash-image.store";
 
 export default function Textarea() {
 	const { thumbHashDataURL } = useStore();

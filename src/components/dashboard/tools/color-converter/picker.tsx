@@ -5,7 +5,7 @@ import { useEffect, useMemo } from "react";
 import { colord, random } from "colord";
 import { Button } from "@/components/ui/button";
 import { Palette } from "lucide-react";
-import useStore from "@/stores/useColorConverterStore";
+import useStore from "@/stores/color-converter.store";
 
 export default function Picker() {
 	const { color, setColor } = useStore();

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Scroll } from "lucide-react";
 import { handleCopy } from "@/lib/browser";
 import { useEffect, useState } from "react";
-import useStore from "@/stores/useBlurHashImageStore";
+import useStore from "@/stores/blur-hash-image.store";
 
 export default function Textarea() {
 	const { blurHashDataURL } = useStore();

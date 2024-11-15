@@ -1,8 +1,8 @@
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
-import { navMainSvgToCssEncoder } from "@/stores/useNavMain";
-import Input from "@/components/tools/svg-to-css-encoder/textarea";
-import Output from "@/components/tools/svg-to-css-encoder/output";
+import { navMainSvgToCssEncoder } from "@/stores/nav-main.store";
+import Input from "@/components/dashboard/tools/svg-to-css-encoder/textarea";
+import Output from "@/components/dashboard/tools/svg-to-css-encoder/output";
 
 export const metadata: Metadata = {
 	title: navMainSvgToCssEncoder.title,
