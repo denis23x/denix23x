@@ -2690,8 +2690,8 @@
       "description": "Develop Env"
     },
     {
-      "url": "https://test.your-api-server.com",
-      "description": "Testing Env"
+      "url": "https://denix23x.vercel.app",
+      "description": "Prod Env"
     }
   ],
   "externalDocs": {

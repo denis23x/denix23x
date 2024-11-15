@@ -22,13 +22,11 @@ const demoReviewsSeed = async () => {
 	return Array.from({ length: demoReviewsCount }, () => {
 		const user: Pick<demoUser, "id"> = u[faker.number.int({ min: 1, max: uLength })];
 		const book: Pick<demoBook, "id"> = b[faker.number.int({ min: 1, max: bLength })];
-		const emoji: string[] = Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => faker.internet.emoji());
-		const message: string = `${faker.lorem.sentence()} ${emoji.join(" ")}`;
 
 		return {
 			userId: user.id,
 			bookId: book.id,
-			message,
+			message: faker.lorem.paragraphs({ min: 2, max: 4 }),
 			rating: faker.number.int({ min: 1, max: 5 }),
 			createdAt: faker.date.recent(),
 			updatedAt: faker.date.past(),

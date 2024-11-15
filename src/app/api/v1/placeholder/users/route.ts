@@ -14,20 +14,10 @@ export async function GET(req: NextRequest) {
 		if (search) {
 			demoUserArgs.where = {
 				...demoUserArgs.where,
-				OR: [
-					{
-						firstName: {
-							contains: search,
-							mode: "insensitive",
-						},
-					},
-					{
-						lastName: {
-							contains: search,
-							mode: "insensitive",
-						},
-					},
-				],
+				name: {
+					contains: search,
+					mode: "insensitive",
+				},
 			};
 		}
 

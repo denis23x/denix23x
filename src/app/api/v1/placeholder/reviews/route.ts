@@ -11,7 +11,16 @@ export async function GET(req: NextRequest) {
 	const userId: string | null = searchParams.get("userId");
 
 	try {
-		const demoReviewArgs: Prisma.demoReviewFindManyArgs = {};
+		const demoReviewArgs: Prisma.demoReviewFindManyArgs = {
+			select: {
+				id: true,
+				message: true,
+				rating: true,
+				createdAt: true,
+				updatedAt: true,
+				user: true,
+			},
+		};
 
 		if (userId) {
 			demoReviewArgs.where = {
