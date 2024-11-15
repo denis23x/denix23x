@@ -9,7 +9,7 @@ import {
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { usePathname } from "next/navigation";
-import { navMain } from "@/app/store/useNavMain";
+import { navMain } from "@/stores/useNavMain";
 
 type AppBreadcrumbs = {
 	title: string;

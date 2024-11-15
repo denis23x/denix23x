@@ -10,7 +10,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { navMain } from "@/app/store/useNavMain";
+import { navMain } from "@/stores/useNavMain";
 
 export const data = {
 	// user: {
