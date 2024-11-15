@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "description": "This API provides access to a collection of books, users, and reviews, allowing clients to perform various operations like viewing available books, creating and managing users, and posting or retrieving book reviews.\n\n- **Books**: Retrieve book details, search for books, and view books.\n- **Users**: Manage users, view user profiles.\n- **Reviews**: Add, view, update, or delete reviews for books.",
-    "title": "Books Showcase Demo",
+    "title": "Lorem Ipsum",
     "contact": {
       "email": "denix23x@gmail.com"
     },

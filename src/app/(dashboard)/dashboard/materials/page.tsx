@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-	const paths = await globby("src/app/dashboard/materials", {
+	const paths = await globby("src/app/(dashboard)/dashboard/materials", {
 		expandDirectories: {
 			files: ["page.mdx"],
 		},

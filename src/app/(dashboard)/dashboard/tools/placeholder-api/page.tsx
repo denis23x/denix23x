@@ -31,23 +31,31 @@ export default async function Page() {
 					</span>
 				</AlertDescription>
 			</Alert>
-			<Link href={"/dashboard/tools/placeholder-api/swagger"}>swagger</Link>
-			<Link href={"/dashboard/tools/placeholder-api/demo"}>demo</Link>
 			<div className="relative flex flex-col md:flex-row gap-4">
-				<div className="relative max-w-1/2">
+				<Link className="relative max-w-1/2" href={"/dashboard/tools/placeholder-api/swagger"} target={"_blank"}>
 					<Safari
-						url="magicui.design"
-						className="size-full object-top"
-						// src={"/home/timeline/audio-litnet.webp"}
+						url="swagger/docs"
+						className="size-full object-top dark:hidden block"
+						src={"/dashboard/tools/placeholder-api/swagger.png"}
 					/>
-				</div>
-				<div className="relative max-w-1/2">
 					<Safari
-						url="magicui.design"
-						className="size-full object-top"
-						// src={"/home/timeline/dabster.webp"}
+						url="swagger/docs"
+						className="size-full object-top hidden dark:block"
+						src={"/dashboard/tools/placeholder-api/swagger-dark.png"}
 					/>
-				</div>
+				</Link>
+				<Link className="relative max-w-1/2" href={"/dashboard/tools/placeholder-api/demo"} target={"_blank"}>
+					<Safari
+						url="demo"
+						className="size-full object-top dark:hidden block"
+						src={"/dashboard/tools/placeholder-api/demo.png"}
+					/>
+					<Safari
+						url="demo"
+						className="size-full object-top hidden dark:block"
+						src={"/dashboard/tools/placeholder-api/demo-dark.png"}
+					/>
+				</Link>
 			</div>
 		</div>
 	);
