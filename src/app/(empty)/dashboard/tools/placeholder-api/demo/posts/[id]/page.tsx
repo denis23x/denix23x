@@ -1,7 +1,5 @@
-import { Metadata } from "next";
-import { Book } from "../../types/book";
+import type { demoBook, demoReview, demoUser } from "@prisma/client";
 import { Ratings } from "@/components/ui/ratings";
-import { Review } from "../../types/review";
 import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 import { headers } from "next/headers";
 import { Separator } from "@/components/ui/separator";
@@ -9,15 +7,17 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 
-export const metadata: Metadata = {
-	title: "Lorem Ipsum Demo",
-	description:
-		"Lorem Ipsum Demo: A mock API for testing, prototyping, and showcasing. Access users, posts, and reviews with sample data—perfect for developers and designers.",
-};
-
 type Id = {
 	id: string;
 };
+
+interface demoBookWU<U> extends demoBook {
+	user: U;
+}
+
+interface demoReviewWU<U> extends demoReview {
+	user: U;
+}
 
 export default async function Page({ params }: { params: Promise<Id> }) {
 	const headersList: ReadonlyHeaders = await headers();
@@ -28,8 +28,8 @@ export default async function Page({ params }: { params: Promise<Id> }) {
 		fetch(`${host}/api/v1/placeholder/reviews?bookId=${bookId}&page=${1}&pageSize=${100}`),
 	]);
 
-	const { data: book }: { data: Book } = await rBook.json();
-	const { data: reviews }: { data: Review[] } = await rReviews.json();
+	const { data: book }: { data: demoBookWU<demoUser> } = await rBook.json();
+	const { data: reviews }: { data: demoReviewWU<demoUser>[] } = await rReviews.json();
 
 	return (
 		<div className={"grid gap-4 md:gap-12"}>
@@ -75,7 +75,7 @@ export default async function Page({ params }: { params: Promise<Id> }) {
 			</span>
 			{reviews.length ? (
 				<ul className={"grid gap-4"}>
-					{reviews.map((review: Review) => (
+					{reviews.map((review: demoReviewWU<demoUser>) => (
 						<li
 							className={"flex flex-col gap-4 rounded-xl bg-background border border-input overflow-hidden p-4"}
 							key={review.id}

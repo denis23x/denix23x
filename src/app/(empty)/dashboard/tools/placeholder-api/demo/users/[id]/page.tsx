@@ -1,21 +1,12 @@
-import { Metadata } from "next";
-import { Book } from "../../types/book";
+import type { demoBook, demoUser, demoReview } from "@prisma/client";
 import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 import { headers } from "next/headers";
-import { User as UserType } from "../../types/user";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Review } from "@/app/(empty)/dashboard/tools/placeholder-api/demo/types/review";
 import { Ratings } from "@/components/ui/ratings";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import Image from "next/image";
-
-export const metadata: Metadata = {
-	title: "Lorem Ipsum Demo",
-	description:
-		"Lorem Ipsum Demo: A mock API for testing, prototyping, and showcasing. Access users, posts, and reviews with sample data—perfect for developers and designers.",
-};
 
 type Id = {
 	id: string;
@@ -31,9 +22,9 @@ export default async function Page({ params }: { params: Promise<Id> }) {
 		fetch(`${host}/api/v1/placeholder/reviews?userId=${userId}&page=${1}&pageSize=${100}`),
 	]);
 
-	const { data: user }: { data: UserType } = await rUser.json();
-	const { data: books }: { data: Book[] } = await rBooks.json();
-	const { data: reviews }: { data: Review[] } = await rReviews.json();
+	const { data: user }: { data: demoUser } = await rUser.json();
+	const { data: books }: { data: demoBook[] } = await rBooks.json();
+	const { data: reviews }: { data: demoReview[] } = await rReviews.json();
 
 	return (
 		<div className={"grid gap-4 md:gap-12"}>
@@ -69,7 +60,7 @@ export default async function Page({ params }: { params: Promise<Id> }) {
 			</span>
 			{books.length ? (
 				<ul className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"}>
-					{books.map((book: Book) => (
+					{books.map((book: demoBook) => (
 						<li className={"col-span-1 rounded-xl overflow-hidden border border-input"} key={book.id}>
 							<div className={"grid gap-4 bg-background size-full p-4"}>
 								<Link className={""} href={`../posts/${book.id}`}>
@@ -105,7 +96,7 @@ export default async function Page({ params }: { params: Promise<Id> }) {
 			</span>
 			{reviews.length ? (
 				<ul className={"grid gap-4"}>
-					{reviews.map((review: Review) => (
+					{reviews.map((review: demoReview) => (
 						<li
 							className={"flex flex-col gap-4 rounded-xl bg-background border border-input overflow-hidden p-4"}
 							key={review.id}

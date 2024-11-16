@@ -17,7 +17,10 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-	title: "My Website | denis23x",
+	title: {
+		template: "%s | denis23x",
+		default: "My Website",
+	},
 	description:
 		"Frontend developer skilled in JavaScript, TypeScript, SCSS, and more. I create responsive, user-centered designs with an eye for detail, enhancing user experience and functionality.",
 };

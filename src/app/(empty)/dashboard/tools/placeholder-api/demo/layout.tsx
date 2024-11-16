@@ -2,10 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-	title: {
-		template: "%s | denis23x",
-		default: "Placeholder API | denis23x",
-	},
+	title: "Placeholder API - Demo",
 	description:
 		"A mock API for testing, prototyping, and showcasing. Access users, posts, and reviews with sample data—perfect for developers and designers.",
 };

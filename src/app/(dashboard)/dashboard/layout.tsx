@@ -8,7 +8,7 @@ import { AppBreadcrumbs } from "@/components/app/app-breadcrumbs";
 export const metadata: Metadata = {
 	title: {
 		template: "%s | denis23x",
-		default: "Dashboard | denis23x",
+		default: "Dashboard",
 	},
 	description:
 		"Access organized groups of pages with this streamlined dashboard, offering quick links to tools, resources, and collections for efficient navigation in one place.",
