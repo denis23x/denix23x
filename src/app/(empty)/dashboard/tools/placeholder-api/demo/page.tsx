@@ -15,6 +15,8 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { User as UserType } from "@/app/(empty)/dashboard/tools/placeholder-api/demo/types/user";
+import { headers } from "next/headers";
+import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 
 export const metadata: Metadata = {
 	title: "Lorem Ipsum Demo",
@@ -28,7 +30,8 @@ type Params = {
 };
 
 export default async function Page({ searchParams }: { searchParams: Promise<Params> }) {
-	const host: string = "http://localhost:3000";
+	const headersList: ReadonlyHeaders = await headers();
+	const host: string | null = headersList.get("x-origin");
 	const { page, pageSize = "9" }: { page: string; pageSize: string } = await searchParams;
 	const response: Response = await fetch(`${host}/api/v1/placeholder/books?page=${page}&pageSize=${pageSize}`);
 	const { data: books, pagination }: { data: Book[]; pagination: PaginationType } = await response.json();

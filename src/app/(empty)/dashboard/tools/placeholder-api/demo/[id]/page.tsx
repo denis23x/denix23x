@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { Book } from "../types/book";
 import { Ratings } from "@/components/ui/ratings";
 import { Review } from "../types/review";
+import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
 	title: "Lorem Ipsum Demo",
@@ -14,7 +16,8 @@ type Id = {
 };
 
 export default async function Page({ params }: { params: Promise<Id> }) {
-	const host: string = "http://localhost:3000";
+	const headersList: ReadonlyHeaders = await headers();
+	const host: string | null = headersList.get("x-origin");
 	const { id }: { id: string } = await params;
 	const [rBook, rReviews]: Response[] = await Promise.all([
 		fetch(`${host}/api/v1/placeholder/books/${id}`),
