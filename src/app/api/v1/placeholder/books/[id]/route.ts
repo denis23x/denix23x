@@ -11,6 +11,16 @@ export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		return NextResponse.json({
 			data: await prisma.demoBook.findUniqueOrThrow({
+				select: {
+					id: true,
+					title: true,
+					description: true,
+					cover: true,
+					genre: true,
+					createdAt: true,
+					updatedAt: true,
+					user: true,
+				},
 				where: {
 					id: z.number().parse(Number((await params).id)),
 				},

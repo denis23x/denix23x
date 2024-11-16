@@ -35,6 +35,7 @@ model demoReview {
 
 model demoUser {
   id        Int          @id @default(autoincrement()) @db.Integer
+  avatar    String?
   name      String
   bio       String
   email     String       @unique

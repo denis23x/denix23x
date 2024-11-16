@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 		"Access organized groups of pages with this streamlined dashboard, offering quick links to tools, resources, and collections for efficient navigation in one place.",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function DashboardLayout({ children }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<SidebarProvider defaultOpen={false}>
 			<AppSidebar />

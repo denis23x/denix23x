@@ -4,9 +4,9 @@ import openapi from "~/dashboard/tools/placeholder-api/swagger/denis23x.openapi.
 import "swagger-ui-react/swagger-ui.css";
 
 export const metadata: Metadata = {
-	title: "Lorem Ipsum Swagger",
+	title: "Placeholder API Swagger",
 	description:
-		"Explore the Lorem Ipsum Swagger page: A comprehensive mock API documentation for testing, prototyping, and showcasing demo. Perfect for developers!",
+		"Explore the Placeholder API Swagger page: A comprehensive mock API documentation for testing, prototyping, and showcasing demo. Perfect for developers!",
 };
 
 export default function Page() {

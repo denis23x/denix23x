@@ -20,10 +20,10 @@ const demoBooksSeed = async () => {
 
 		return {
 			userId: user.id,
-			title: faker.book.title(),
+			title: faker.lorem.words({ min: 2, max: 4 }),
 			description: faker.lorem.paragraphs({ min: 4, max: 6 }),
 			cover,
-			genre: faker.book.genre(),
+			genre: faker.lorem.word(),
 			createdAt: faker.date.recent(),
 			updatedAt: faker.date.past(),
 		};

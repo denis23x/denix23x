@@ -26,7 +26,7 @@ const demoReviewsSeed = async () => {
 		return {
 			userId: user.id,
 			bookId: book.id,
-			message: faker.lorem.paragraphs({ min: 2, max: 4 }),
+			message: faker.lorem.sentences({ min: 2, max: 4 }),
 			rating: faker.number.int({ min: 1, max: 5 }),
 			createdAt: faker.date.recent(),
 			updatedAt: faker.date.past(),

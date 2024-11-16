@@ -14,12 +14,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { User as UserType } from "@/app/(empty)/dashboard/tools/placeholder-api/demo/types/user";
 import { headers } from "next/headers";
 import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 
 export const metadata: Metadata = {
-	title: "Lorem Ipsum Demo",
+	title: "Placeholder API",
 	description:
 		"Lorem Ipsum Demo: A mock API for testing, prototyping, and showcasing. Access users, posts, and reviews with sample data—perfect for developers and designers.",
 };
@@ -38,41 +37,51 @@ export default async function Page({ searchParams }: { searchParams: Promise<Par
 	const pages: number[] = Array.from({ length: pagination.pageCount }, (_, i) => i + 1);
 
 	return (
-		<div className={"grid gap-4 md:gap-12 w-full max-w-4xl mx-auto py-4 md:py-12 px-4 text-foreground"}>
-			<h1 className={"text-4xl font-extrabold tracking-tight md:text-5xl"}>Lorem Ipsum Showcase</h1>
+		<div className={"block"}>
 			<ul className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"}>
 				{books.map((book: Book) => (
-					<li className={"col-span-1 rounded-xl border border-input overflow-hidden"} key={book.id}>
-						<Link className={"grid bg-background hover:bg-sidebar size-full p-4"} href={`./demo/${book.id}`}>
-							{book.cover ? (
-								<figure className={"flex flex-col gap-4"}>
-									<Image
-										className={"size-full rounded-xl"}
-										width={512}
-										height={512}
-										src={book.cover}
-										alt={book.title}
-									/>
-									{book.user && (
-										<div className={"mt-auto"}>
-											<User user={book.user} />
-										</div>
+					<li className={"col-span-1 rounded-xl overflow-hidden border border-input"} key={book.id}>
+						<div className={"grid gap-4 bg-background size-full p-4"}>
+							<Link className={""} href={`./demo/posts/${book.id}`}>
+								{book.cover ? (
+									<figure className={"flex flex-col gap-4"}>
+										<Image
+											className={"size-full rounded-xl"}
+											width={512}
+											height={512}
+											src={book.cover}
+											alt={book.title}
+										/>
+									</figure>
+								) : (
+									<div className={"flex flex-col items-start justify-between gap-4"}>
+										<strong className={"line-clamp-1 text-2xl"}>{book.title}</strong>
+										<Badge>{book.genre}</Badge>
+										<p className={"line-clamp-6"}>{book.description}</p>
+									</div>
+								)}
+							</Link>
+							<Link className={"mt-auto w-full grid gap-4"} href={`./demo/users/${book.user?.id}`}>
+								{!book.cover && <Separator />}
+								<div className={"flex items-center gap-4"}>
+									{book.user?.avatar && (
+										<figure className={"rounded-full overflow-hidden size-12"}>
+											<Image
+												className={"size-full aspect-square object-cover object-center"}
+												width={48}
+												height={48}
+												src={book.user?.avatar}
+												alt={book.user?.name}
+											/>
+										</figure>
 									)}
-								</figure>
-							) : (
-								<div className={"flex flex-col items-start justify-between gap-4"}>
-									<strong className={"line-clamp-1 text-2xl"}>{book.title}</strong>
-									<Badge>{book.genre}</Badge>
-									<p className={"line-clamp-5"}>{book.description}</p>
-									{book.user && (
-										<div className={"mt-auto w-full grid gap-4"}>
-											<Separator />
-											<User user={book.user} />
-										</div>
-									)}
+									<div className={"flex flex-col items-stretch flex-1"}>
+										<span className={"font-semibold tracking-tight"}>{book.user?.name}</span>
+										<p className={"leading-7 line-clamp-1"}>{book.user?.bio}</p>
+									</div>
 								</div>
-							)}
-						</Link>
+							</Link>
+						</div>
 					</li>
 				))}
 			</ul>
@@ -101,27 +110,6 @@ export default async function Page({ searchParams }: { searchParams: Promise<Par
 					</PaginationItem>
 				</PaginationContent>
 			</Pagination>
-		</div>
-	);
-}
-
-function User({ user }: { user: UserType }) {
-	return (
-		<div className={"flex items-center gap-4"}>
-			<figure className={"rounded-lg overflow-hidden size-12"}>
-				<img
-					className={"size-full aspect-square object-cover object-center"}
-					width={48}
-					height={48}
-					loading={"lazy"}
-					src={`https://api.dicebear.com/9.x/fun-emoji/svg?size=48&seed=${user.name}`}
-					alt={user.name}
-				/>
-			</figure>
-			<div className={"flex flex-col items-stretch flex-1"}>
-				<span className={"font-semibold tracking-tight"}>{user.name}</span>
-				<span className={"leading-7 line-clamp-1"}>{user.bio}</span>
-			</div>
 		</div>
 	);
 }

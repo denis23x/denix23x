@@ -10,6 +10,14 @@ type Id = {
 export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		return NextResponse.json({
+			select: {
+				id: true,
+				message: true,
+				rating: true,
+				createdAt: true,
+				updatedAt: true,
+				user: true,
+			},
 			data: await prisma.demoReview.findUniqueOrThrow({
 				where: {
 					id: z.number().parse(Number((await params).id)),
