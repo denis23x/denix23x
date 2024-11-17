@@ -55,7 +55,7 @@ const prismaInstance = () => {
 
 	const extendsPagination = {
 		model: {
-			demoBook: {
+			demoPost: {
 				paginate,
 			},
 			demoReview: {

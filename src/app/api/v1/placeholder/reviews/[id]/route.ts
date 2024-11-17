@@ -32,7 +32,7 @@ export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
 
 export async function PUT(req: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
-		const { userId, bookId, ...data } = await req.json();
+		const { userId, postId, ...data } = await req.json();
 
 		return NextResponse.json({
 			data: await prisma.demoReview.update({
@@ -46,9 +46,9 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 							id: z.number().parse(Number(userId)),
 						},
 					},
-					book: {
+					post: {
 						connect: {
-							id: z.number().parse(Number(bookId)),
+							id: z.number().parse(Number(postId)),
 						},
 					},
 				},

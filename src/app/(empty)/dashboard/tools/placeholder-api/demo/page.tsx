@@ -1,4 +1,4 @@
-import type { demoBook, demoUser } from "@prisma/client";
+import type { demoPost, demoUser } from "@prisma/client";
 import {
 	Pagination,
 	PaginationContent,
@@ -30,7 +30,7 @@ type PaginationT = {
 	totalCount: number;
 };
 
-interface demoBookWU<U> extends demoBook {
+interface demoPostWU<U> extends demoPost {
 	user: U;
 }
 
@@ -38,52 +38,58 @@ export default async function Page({ searchParams }: { searchParams: Promise<Par
 	const headersList: ReadonlyHeaders = await headers();
 	const host: string | null = headersList.get("x-origin");
 	const { page, pageSize = "9" }: { page: string; pageSize: string } = await searchParams;
-	const response: Response = await fetch(`${host}/api/v1/placeholder/books?page=${page}&pageSize=${pageSize}`);
-	const { data: books, pagination }: { data: demoBookWU<demoUser>[]; pagination: PaginationT } = await response.json();
+	const response: Response = await fetch(`${host}/api/v1/placeholder/posts?page=${page}&pageSize=${pageSize}`);
+	const { data: posts, pagination }: { data: demoPostWU<demoUser>[]; pagination: PaginationT } = await response.json();
 	const pages: number[] = Array.from({ length: pagination.pageCount }, (_, i) => i + 1);
 
 	return (
-		<div className={"block"}>
+		<div className={"grid gap-4 md:gap-12"}>
 			<ul className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"}>
-				{books.map((book: demoBookWU<demoUser>) => (
-					<li className={"col-span-1 rounded-xl overflow-hidden border border-input"} key={book.id}>
+				{posts.map((post: demoPostWU<demoUser>) => (
+					<li className={"col-span-1 rounded-xl overflow-hidden border border-input"} key={post.id}>
 						<div className={"grid gap-4 bg-background size-full p-4"}>
-							<Link className={""} href={`./demo/posts/${book.id}`}>
-								{book.cover ? (
+							<Link className={""} href={`./demo/posts/${post.id}`}>
+								{post.cover ? (
 									<figure className={"flex flex-col gap-4"}>
 										<Image
 											className={"size-full rounded-xl"}
 											width={512}
 											height={512}
-											src={book.cover}
-											alt={book.title}
+											src={post.cover}
+											alt={post.title}
 										/>
 									</figure>
 								) : (
 									<div className={"flex flex-col items-start justify-between gap-4"}>
-										<strong className={"line-clamp-1 text-2xl"}>{book.title}</strong>
-										<Badge>{book.genre}</Badge>
-										<p className={"line-clamp-6"}>{book.description}</p>
+										<strong className={"line-clamp-1 text-2xl"}>{post.title}</strong>
+										{post.tags.length && (
+											<div className={"flex flex-wrap gap-2"}>
+												{post.tags.map((tag: string, i) => (
+													<Badge key={i}>{tag}</Badge>
+												))}
+											</div>
+										)}
+										<p className={"line-clamp-6"}>{post.description}</p>
 									</div>
 								)}
 							</Link>
-							<Link className={"mt-auto w-full grid gap-4"} href={`./demo/users/${book.user?.id}`}>
-								{!book.cover && <Separator />}
+							<Link className={"mt-auto w-full grid gap-4"} href={`./demo/users/${post.user?.id}`}>
+								{!post.cover && <Separator />}
 								<div className={"flex items-center gap-4"}>
-									{book.user?.avatar && (
+									{post.user?.avatar && (
 										<figure className={"rounded-full overflow-hidden size-12"}>
 											<Image
 												className={"size-full aspect-square object-cover object-center"}
 												width={48}
 												height={48}
-												src={book.user?.avatar}
-												alt={book.user?.name}
+												src={post.user?.avatar}
+												alt={post.user?.name}
 											/>
 										</figure>
 									)}
 									<div className={"flex flex-col items-stretch flex-1"}>
-										<span className={"font-semibold tracking-tight"}>{book.user?.name}</span>
-										<p className={"leading-7 line-clamp-1"}>{book.user?.bio}</p>
+										<span className={"font-semibold tracking-tight"}>{post.user?.name}</span>
+										<p className={"leading-7 line-clamp-1"}>{post.user?.bio}</p>
 									</div>
 								</div>
 							</Link>

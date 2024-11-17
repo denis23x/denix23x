@@ -1,4 +1,4 @@
-import type { demoBook, demoReview, demoUser } from "@prisma/client";
+import type { demoPost, demoReview, demoUser } from "@prisma/client";
 import { Ratings } from "@/components/ui/ratings";
 import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 import { headers } from "next/headers";
@@ -11,7 +11,7 @@ type Id = {
 	id: string;
 };
 
-interface demoBookWU<U> extends demoBook {
+interface demoPostWU<U> extends demoPost {
 	user: U;
 }
 
@@ -22,52 +22,52 @@ interface demoReviewWU<U> extends demoReview {
 export default async function Page({ params }: { params: Promise<Id> }) {
 	const headersList: ReadonlyHeaders = await headers();
 	const host: string | null = headersList.get("x-origin");
-	const { id: bookId }: { id: string } = await params;
-	const [rBook, rReviews]: Response[] = await Promise.all([
-		fetch(`${host}/api/v1/placeholder/books/${bookId}`),
-		fetch(`${host}/api/v1/placeholder/reviews?bookId=${bookId}&page=${1}&pageSize=${100}`),
+	const { id: postId }: { id: string } = await params;
+	const [rPost, rReviews]: Response[] = await Promise.all([
+		fetch(`${host}/api/v1/placeholder/posts/${postId}`),
+		fetch(`${host}/api/v1/placeholder/reviews?postId=${postId}&page=${1}&pageSize=${100}`),
 	]);
 
-	const { data: book }: { data: demoBookWU<demoUser> } = await rBook.json();
+	const { data: post }: { data: demoPostWU<demoUser> } = await rPost.json();
 	const { data: reviews }: { data: demoReviewWU<demoUser>[] } = await rReviews.json();
 
 	return (
 		<div className={"grid gap-4 md:gap-12"}>
 			<div className={"bg-background border border-input rounded-xl overflow-hidden w-full"}>
-				{book.cover && (
-					<Link href={book.cover} target={"_blank"} rel={"noopener noreferrer"}>
+				{post.cover && (
+					<Link href={post.cover} target={"_blank"} rel={"noopener noreferrer"}>
 						<Image
 							priority={true}
 							className={"w-full aspect-video object-cover object-center"}
 							width={512}
 							height={512}
-							src={book.cover}
-							alt={book.title}
+							src={post.cover}
+							alt={post.title}
 						/>
 					</Link>
 				)}
 				<div className={"grid gap-4 p-4"}>
-					<Link className={"flex items-center gap-4"} href={`../users/${book.user?.id}`}>
-						{book.user?.avatar && (
+					<Link className={"flex items-center gap-4"} href={`../users/${post.user?.id}`}>
+						{post.user?.avatar && (
 							<figure className={"rounded-full overflow-hidden size-12"}>
 								<Image
 									priority={true}
 									className={"size-full aspect-square object-cover object-center"}
 									width={48}
 									height={48}
-									src={book.user?.avatar}
-									alt={book.user?.name}
+									src={post.user?.avatar}
+									alt={post.user?.name}
 								/>
 							</figure>
 						)}
 						<div className={"flex flex-col items-stretch flex-1"}>
-							<span className={"font-semibold tracking-tight"}>{book.user?.name}</span>
-							<p className={"leading-7 line-clamp-1"}>{book.user?.bio}</p>
+							<span className={"font-semibold tracking-tight"}>{post.user?.name}</span>
+							<p className={"leading-7 line-clamp-1"}>{post.user?.bio}</p>
 						</div>
 					</Link>
 					<Separator />
-					<h2 className={"text-4xl font-extrabold tracking-tight md:text-5xl first-letter:uppercase"}>{book.title}</h2>
-					<p className={"leading-7 inline-block first-letter:uppercase"}>{book.description}</p>
+					<h2 className={"text-4xl font-extrabold tracking-tight md:text-5xl first-letter:uppercase"}>{post.title}</h2>
+					<p className={"leading-7 inline-block first-letter:uppercase"}>{post.description}</p>
 				</div>
 			</div>
 			<span className={"text-2xl font-semibold tracking-tight"}>

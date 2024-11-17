@@ -7,7 +7,7 @@ import { z } from "zod";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
-	const bookId: string | null = searchParams.get("bookId");
+	const postId: string | null = searchParams.get("postId");
 	const userId: string | null = searchParams.get("userId");
 
 	try {
@@ -29,10 +29,10 @@ export async function GET(req: NextRequest) {
 			};
 		}
 
-		if (bookId) {
+		if (postId) {
 			demoReviewArgs.where = {
 				...demoReviewArgs.where,
-				bookId: z.number().parse(Number(bookId)),
+				postId: z.number().parse(Number(postId)),
 			};
 		}
 
@@ -56,7 +56,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
 	try {
-		const { userId, bookId, ...data } = await req.json();
+		const { userId, postId, ...data } = await req.json();
 
 		return NextResponse.json({
 			data: await prisma.demoReview.create({
@@ -67,9 +67,9 @@ export async function POST(req: NextRequest) {
 							id: z.number().parse(Number(userId)),
 						},
 					},
-					book: {
+					post: {
 						connect: {
-							id: z.number().parse(Number(bookId)),
+							id: z.number().parse(Number(postId)),
 						},
 					},
 				},

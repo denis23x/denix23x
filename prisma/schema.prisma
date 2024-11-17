@@ -8,12 +8,12 @@ datasource db {
   url      = env("DATABASE_URL") // uses connection pooling
 }
 
-model demoBook {
+model demoPost {
   id          Int          @id @default(autoincrement()) @db.Integer
   title       String
   description String
   cover       String?
-  genre       String
+  tags        String[]
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
   user        demoUser     @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -27,8 +27,8 @@ model demoReview {
   rating    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  book      demoBook @relation(fields: [bookId], references: [id], onDelete: Cascade)
-  bookId    Int
+  post      demoPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    Int
   user      demoUser @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    Int
 }
@@ -41,6 +41,6 @@ model demoUser {
   email     String       @unique
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
-  books     demoBook[]
+  posts     demoPost[]
   reviews   demoReview[]
 }

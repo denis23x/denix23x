@@ -1,4 +1,4 @@
-import { type demoUser, type demoBook, PrismaClient } from "@prisma/client";
+import { type demoUser, type demoPost, PrismaClient } from "@prisma/client";
 import { faker } from "@faker-js/faker/locale/en";
 
 const prisma = new PrismaClient();
@@ -12,20 +12,20 @@ const demoReviewsSeed = async () => {
 	});
 	const uLength: number = u.length - 1;
 
-	const b: Pick<demoBook, "id">[] = await prisma.demoBook.findMany({
+	const p: Pick<demoPost, "id">[] = await prisma.demoPost.findMany({
 		select: {
 			id: true,
 		},
 	});
-	const bLength: number = b.length - 1;
+	const pLength: number = p.length - 1;
 
 	return Array.from({ length: demoReviewsCount }, () => {
 		const user: Pick<demoUser, "id"> = u[faker.number.int({ min: 1, max: uLength })];
-		const book: Pick<demoBook, "id"> = b[faker.number.int({ min: 1, max: bLength })];
+		const post: Pick<demoPost, "id"> = p[faker.number.int({ min: 1, max: pLength })];
 
 		return {
 			userId: user.id,
-			bookId: book.id,
+			postId: post.id,
 			message: faker.lorem.sentences({ min: 2, max: 4 }),
 			rating: faker.number.int({ min: 1, max: 5 }),
 			createdAt: faker.date.recent(),

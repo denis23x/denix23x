@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Prisma, type demoBook } from "@prisma/client";
+import { Prisma, type demoPost } from "@prisma/client";
 import type { PageNumberPaginationMeta } from "prisma-extension-pagination";
 import { handleErr, prisma } from "@/lib/prisma";
-import { bookSchema } from "./schema";
+import { postSchema } from "./schema";
 import { z } from "zod";
 
 export async function GET(req: NextRequest) {
@@ -11,13 +11,13 @@ export async function GET(req: NextRequest) {
 	const userId: string | null = searchParams.get("userId");
 
 	try {
-		const demoBookArgs: Prisma.demoBookFindManyArgs = {
+		const demoPostArgs: Prisma.demoPostFindManyArgs = {
 			select: {
 				id: true,
 				title: true,
 				description: true,
 				cover: true,
-				genre: true,
+				tags: true,
 				createdAt: true,
 				updatedAt: true,
 				user: true,
@@ -25,8 +25,8 @@ export async function GET(req: NextRequest) {
 		};
 
 		if (search) {
-			demoBookArgs.where = {
-				...demoBookArgs.where,
+			demoPostArgs.where = {
+				...demoPostArgs.where,
 				title: {
 					contains: search,
 					mode: "insensitive",
@@ -35,14 +35,14 @@ export async function GET(req: NextRequest) {
 		}
 
 		if (userId) {
-			demoBookArgs.where = {
-				...demoBookArgs.where,
+			demoPostArgs.where = {
+				...demoPostArgs.where,
 				userId: z.number().parse(Number(userId)),
 			};
 		}
 
-		const [books, meta]: [demoBook[], PageNumberPaginationMeta] = await prisma.demoBook
-			.paginate(demoBookArgs)
+		const [posts, meta]: [demoPost[], PageNumberPaginationMeta] = await prisma.demoPost
+			.paginate(demoPostArgs)
 			.withPages({
 				limit: Number(searchParams.get("pageSize")) || 10,
 				page: Number(searchParams.get("page")) || 1,
@@ -50,7 +50,7 @@ export async function GET(req: NextRequest) {
 			});
 
 		return NextResponse.json({
-			data: books,
+			data: posts,
 			pagination: meta,
 			status: 200,
 		});
@@ -64,9 +64,9 @@ export async function POST(req: NextRequest) {
 		const { userId, ...data } = await req.json();
 
 		return NextResponse.json({
-			data: await prisma.demoBook.create({
+			data: await prisma.demoPost.create({
 				data: {
-					...bookSchema.parse(data),
+					...postSchema.parse(data),
 					user: {
 						connect: {
 							id: z.number().parse(Number(userId)),

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { handleErr, prisma } from "@/lib/prisma";
-import { bookSchema } from "../schema";
+import { postSchema } from "../schema";
 import { z } from "zod";
 
 type Id = {
@@ -10,13 +10,13 @@ type Id = {
 export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		return NextResponse.json({
-			data: await prisma.demoBook.findUniqueOrThrow({
+			data: await prisma.demoPost.findUniqueOrThrow({
 				select: {
 					id: true,
 					title: true,
 					description: true,
 					cover: true,
-					genre: true,
+					tags: true,
 					createdAt: true,
 					updatedAt: true,
 					user: true,
@@ -37,12 +37,12 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 		const { userId, ...data } = await req.json();
 
 		return NextResponse.json({
-			data: await prisma.demoBook.update({
+			data: await prisma.demoPost.update({
 				where: {
 					id: z.number().parse(Number((await params).id)),
 				},
 				data: {
-					...bookSchema.parse(data),
+					...postSchema.parse(data),
 					user: {
 						connect: {
 							id: z.number().parse(Number(userId)),
@@ -60,7 +60,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 export async function DELETE(_: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		return NextResponse.json({
-			data: await prisma.demoBook.delete({
+			data: await prisma.demoPost.delete({
 				where: {
 					id: z.number().parse(Number((await params).id)),
 				},
