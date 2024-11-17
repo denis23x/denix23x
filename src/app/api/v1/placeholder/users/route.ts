@@ -41,10 +41,17 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
 	try {
-		return NextResponse.json({
-			data: await prisma.demoUser.create({ data: userSchema.parse(await req.json()) }),
-			status: 201,
-		});
+		const { ...data } = userSchema.parse(await req.json());
+
+		return NextResponse.json(
+			{
+				data: await prisma.demoUser.create({ data }),
+				status: 201,
+			},
+			{
+				status: 201,
+			}
+		);
 	} catch (error) {
 		return NextResponse.json(handleErr(error), handleErr(error));
 	}

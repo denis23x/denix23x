@@ -1,6 +1,8 @@
 import { z } from "zod";
 
 export const commentSchema = z.object({
-	message: z.string().min(2),
+	userId: z.coerce.number().min(1),
+	postId: z.coerce.number().min(1),
+	message: z.string().min(1),
 	rating: z.number().min(1).max(5),
 });

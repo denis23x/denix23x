@@ -61,21 +61,26 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
 	try {
-		const { userId, ...data } = await req.json();
+		const { userId, ...data } = postSchema.parse(await req.json());
 
-		return NextResponse.json({
-			data: await prisma.demoPost.create({
-				data: {
-					...postSchema.parse(data),
-					user: {
-						connect: {
-							id: z.number().parse(Number(userId)),
+		return NextResponse.json(
+			{
+				data: await prisma.demoPost.create({
+					data: {
+						...data,
+						user: {
+							connect: {
+								id: userId,
+							},
 						},
 					},
-				},
-			}),
-			status: 201,
-		});
+				}),
+				status: 201,
+			},
+			{
+				status: 201,
+			}
+		);
 	} catch (error) {
 		return NextResponse.json(handleErr(error), handleErr(error));
 	}

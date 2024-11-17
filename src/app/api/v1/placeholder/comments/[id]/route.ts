@@ -7,20 +7,26 @@ type Id = {
 	id: string;
 };
 
+const idSchema = z.object({
+	id: z.coerce.number().min(1),
+});
+
 export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
+		const { id } = idSchema.parse(await params);
+
 		return NextResponse.json({
-			select: {
-				id: true,
-				message: true,
-				rating: true,
-				createdAt: true,
-				updatedAt: true,
-				user: true,
-			},
 			data: await prisma.demoComment.findUniqueOrThrow({
+				select: {
+					id: true,
+					message: true,
+					rating: true,
+					createdAt: true,
+					updatedAt: true,
+					user: true,
+				},
 				where: {
-					id: z.number().parse(Number((await params).id)),
+					id,
 				},
 			}),
 			status: 200,
@@ -32,26 +38,17 @@ export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
 
 export async function PUT(req: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
-		const { userId, postId, ...data } = await req.json();
+		const { id } = idSchema.parse(await params);
+
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		const { userId, postId, ...data } = commentSchema.partial().parse(await req.json());
 
 		return NextResponse.json({
 			data: await prisma.demoComment.update({
 				where: {
-					id: z.number().parse(Number((await params).id)),
+					id,
 				},
-				data: {
-					...commentSchema.parse(data),
-					user: {
-						connect: {
-							id: z.number().parse(Number(userId)),
-						},
-					},
-					post: {
-						connect: {
-							id: z.number().parse(Number(postId)),
-						},
-					},
-				},
+				data,
 			}),
 			status: 200,
 		});
@@ -62,10 +59,12 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 
 export async function DELETE(_: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
+		const { id } = idSchema.parse(await params);
+
 		return NextResponse.json({
 			data: await prisma.demoComment.delete({
 				where: {
-					id: z.number().parse(Number((await params).id)),
+					id,
 				},
 			}),
 			status: 200,
