@@ -61,7 +61,9 @@ export default async function Page({ searchParams }: { searchParams: Promise<Par
 									</figure>
 								) : (
 									<div className={"flex flex-col items-start justify-between gap-4"}>
-										<strong className={"line-clamp-1 text-2xl"}>{post.title}</strong>
+										<strong className={"first-letter:uppercase"}>
+											<span className={"line-clamp-1 text-2xl"}>{post.title}</span>
+										</strong>
 										{post.tags.length && (
 											<div className={"flex flex-wrap gap-2"}>
 												{post.tags.slice(0, 3).map((tag: string, i) => (

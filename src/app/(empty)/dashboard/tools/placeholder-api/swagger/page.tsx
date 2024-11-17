@@ -1,7 +1,5 @@
 import { Metadata } from "next";
-import SwaggerUI from "swagger-ui-react";
-import openapi from "~/dashboard/tools/placeholder-api/swagger/denis23x.openapi.json";
-import "swagger-ui-react/swagger-ui.css";
+import Swagger from "@/components/dashboard/tools/placeholder-api/swagger";
 
 export const metadata: Metadata = {
 	title: "Placeholder API - Swagger",
@@ -10,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-	return <SwaggerUI spec={openapi} />;
+	return <Swagger />;
 }

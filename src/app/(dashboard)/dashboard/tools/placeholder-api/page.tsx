@@ -36,24 +36,24 @@ export default async function Page() {
 					<Safari
 						url="swagger/docs"
 						className="size-full object-top dark:hidden block"
-						src={"/dashboard/tools/placeholder-api/swagger.png"}
+						src={"/dashboard/tools/placeholder-api/swagger.webp"}
 					/>
 					<Safari
 						url="swagger/docs"
 						className="size-full object-top hidden dark:block"
-						src={"/dashboard/tools/placeholder-api/swagger-dark.png"}
+						src={"/dashboard/tools/placeholder-api/swagger-dark.webp"}
 					/>
 				</Link>
 				<Link className="relative max-w-1/2" href={"/dashboard/tools/placeholder-api/demo"} target={"_blank"}>
 					<Safari
 						url="demo"
 						className="size-full object-top dark:hidden block"
-						src={"/dashboard/tools/placeholder-api/demo.png"}
+						src={"/dashboard/tools/placeholder-api/demo.webp"}
 					/>
 					<Safari
 						url="demo"
 						className="size-full object-top hidden dark:block"
-						src={"/dashboard/tools/placeholder-api/demo-dark.png"}
+						src={"/dashboard/tools/placeholder-api/demo-dark.webp"}
 					/>
 				</Link>
 			</div>
