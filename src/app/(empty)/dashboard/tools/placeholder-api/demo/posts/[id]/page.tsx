@@ -1,4 +1,4 @@
-import type { demoPost, demoReview, demoUser } from "@prisma/client";
+import type { demoPost, demoComment, demoUser } from "@prisma/client";
 import { Ratings } from "@/components/ui/ratings";
 import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 import { headers } from "next/headers";
@@ -15,7 +15,7 @@ interface demoPostWU<U> extends demoPost {
 	user: U;
 }
 
-interface demoReviewWU<U> extends demoReview {
+interface demoCommentWU<U> extends demoComment {
 	user: U;
 }
 
@@ -23,13 +23,13 @@ export default async function Page({ params }: { params: Promise<Id> }) {
 	const headersList: ReadonlyHeaders = await headers();
 	const host: string | null = headersList.get("x-origin");
 	const { id: postId }: { id: string } = await params;
-	const [rPost, rReviews]: Response[] = await Promise.all([
+	const [rPost, rComments]: Response[] = await Promise.all([
 		fetch(`${host}/api/v1/placeholder/posts/${postId}`),
-		fetch(`${host}/api/v1/placeholder/reviews?postId=${postId}&page=${1}&pageSize=${100}`),
+		fetch(`${host}/api/v1/placeholder/comments?postId=${postId}&page=${1}&pageSize=${100}`),
 	]);
 
 	const { data: post }: { data: demoPostWU<demoUser> } = await rPost.json();
-	const { data: reviews }: { data: demoReviewWU<demoUser>[] } = await rReviews.json();
+	const { data: comments }: { data: demoCommentWU<demoUser>[] } = await rComments.json();
 
 	return (
 		<div className={"grid gap-4 md:gap-12"}>
@@ -71,33 +71,33 @@ export default async function Page({ params }: { params: Promise<Id> }) {
 				</div>
 			</div>
 			<span className={"text-2xl font-semibold tracking-tight"}>
-				Comments <span className={"text-muted-foreground"}>({reviews.length})</span>
+				Comments <span className={"text-muted-foreground"}>({comments.length})</span>
 			</span>
-			{reviews.length ? (
+			{comments.length ? (
 				<ul className={"grid gap-4"}>
-					{reviews.map((review: demoReviewWU<demoUser>) => (
+					{comments.map((comment: demoCommentWU<demoUser>) => (
 						<li
 							className={"flex flex-col gap-4 rounded-xl bg-background border border-input overflow-hidden p-4"}
-							key={review.id}
+							key={comment.id}
 						>
-							<Link className={"flex items-center gap-4"} href={`../users/${review.user?.id}`}>
-								{review.user?.avatar && (
+							<Link className={"flex items-center gap-4"} href={`../users/${comment.user?.id}`}>
+								{comment.user?.avatar && (
 									<figure className={"rounded-full overflow-hidden size-12"}>
 										<Image
 											className={"size-full aspect-square object-cover object-center"}
 											width={48}
 											height={48}
-											src={review.user?.avatar}
-											alt={review.user?.name}
+											src={comment.user?.avatar}
+											alt={comment.user?.name}
 										/>
 									</figure>
 								)}
 								<div className={"flex flex-col items-stretch flex-1 gap-1"}>
-									<span className={"font-semibold tracking-tight"}>{review.user?.name}</span>
-									<Ratings rating={review.rating} variant={"yellow"} />
+									<span className={"font-semibold tracking-tight"}>{comment.user?.name}</span>
+									<Ratings rating={comment.rating} variant={"yellow"} />
 								</div>
 							</Link>
-							<p className={"leading-7"}>{review.message}</p>
+							<p className={"leading-7"}>{comment.message}</p>
 						</li>
 					))}
 				</ul>

@@ -1,13 +1,13 @@
 import { PrismaClient } from "@prisma/client";
 import demoPostsSeed from "./seeds/demoPosts";
-import demoReviewsSeed from "./seeds/demoReviews";
+import demoCommentsSeed from "./seeds/demoComments";
 import demoUsersSeed from "./seeds/demoUsers";
 
 const prisma = new PrismaClient();
 
 const main = async () => {
 	await prisma.$transaction([
-		prisma.demoReview.deleteMany(),
+		prisma.demoComment.deleteMany(),
 		prisma.demoPost.deleteMany(),
 		prisma.demoUser.deleteMany(),
 	]);
@@ -24,8 +24,8 @@ const main = async () => {
 		skipDuplicates: true,
 	});
 
-	await prisma.demoReview.createMany({
-		data: await demoReviewsSeed(),
+	await prisma.demoComment.createMany({
+		data: await demoCommentsSeed(),
 		skipDuplicates: true,
 	});
 };

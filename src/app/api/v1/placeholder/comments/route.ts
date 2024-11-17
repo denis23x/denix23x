@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { type demoReview, Prisma } from "@prisma/client";
+import { type demoComment, Prisma } from "@prisma/client";
 import type { PageNumberPaginationMeta } from "prisma-extension-pagination";
 import { handleErr, prisma } from "@/lib/prisma";
-import { reviewSchema } from "./schema";
+import { commentSchema } from "./schema";
 import { z } from "zod";
 
 export async function GET(req: NextRequest) {
@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
 	const userId: string | null = searchParams.get("userId");
 
 	try {
-		const demoReviewArgs: Prisma.demoReviewFindManyArgs = {
+		const demoCommentArgs: Prisma.demoCommentFindManyArgs = {
 			select: {
 				id: true,
 				message: true,
@@ -23,21 +23,21 @@ export async function GET(req: NextRequest) {
 		};
 
 		if (userId) {
-			demoReviewArgs.where = {
-				...demoReviewArgs.where,
+			demoCommentArgs.where = {
+				...demoCommentArgs.where,
 				userId: z.number().parse(Number(userId)),
 			};
 		}
 
 		if (postId) {
-			demoReviewArgs.where = {
-				...demoReviewArgs.where,
+			demoCommentArgs.where = {
+				...demoCommentArgs.where,
 				postId: z.number().parse(Number(postId)),
 			};
 		}
 
-		const [reviews, meta]: [demoReview[], PageNumberPaginationMeta] = await prisma.demoReview
-			.paginate(demoReviewArgs)
+		const [comments, meta]: [demoComment[], PageNumberPaginationMeta] = await prisma.demoComment
+			.paginate(demoCommentArgs)
 			.withPages({
 				limit: Number(searchParams.get("pageSize")) || 10,
 				page: Number(searchParams.get("page")) || 1,
@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
 			});
 
 		return NextResponse.json({
-			data: reviews,
+			data: comments,
 			pagination: meta,
 			status: 200,
 		});
@@ -59,9 +59,9 @@ export async function POST(req: NextRequest) {
 		const { userId, postId, ...data } = await req.json();
 
 		return NextResponse.json({
-			data: await prisma.demoReview.create({
+			data: await prisma.demoComment.create({
 				data: {
-					...reviewSchema.parse(data),
+					...commentSchema.parse(data),
 					user: {
 						connect: {
 							id: z.number().parse(Number(userId)),

@@ -3,8 +3,8 @@ import { faker } from "@faker-js/faker/locale/en";
 
 const prisma = new PrismaClient();
 
-const demoReviewsCount: number = 500;
-const demoReviewsSeed = async () => {
+const demoCommentsCount: number = 500;
+const demoCommentsSeed = async () => {
 	const u: Pick<demoUser, "id">[] = await prisma.demoUser.findMany({
 		select: {
 			id: true,
@@ -19,7 +19,7 @@ const demoReviewsSeed = async () => {
 	});
 	const pLength: number = p.length - 1;
 
-	return Array.from({ length: demoReviewsCount }, () => {
+	return Array.from({ length: demoCommentsCount }, () => {
 		const user: Pick<demoUser, "id"> = u[faker.number.int({ min: 1, max: uLength })];
 		const post: Pick<demoPost, "id"> = p[faker.number.int({ min: 1, max: pLength })];
 
@@ -34,4 +34,4 @@ const demoReviewsSeed = async () => {
 	});
 };
 
-export default demoReviewsSeed;
+export default demoCommentsSeed;

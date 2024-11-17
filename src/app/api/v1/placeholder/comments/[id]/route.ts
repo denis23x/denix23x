@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { handleErr, prisma } from "@/lib/prisma";
-import { reviewSchema } from "../schema";
+import { commentSchema } from "../schema";
 import { z } from "zod";
 
 type Id = {
@@ -18,7 +18,7 @@ export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
 				updatedAt: true,
 				user: true,
 			},
-			data: await prisma.demoReview.findUniqueOrThrow({
+			data: await prisma.demoComment.findUniqueOrThrow({
 				where: {
 					id: z.number().parse(Number((await params).id)),
 				},
@@ -35,12 +35,12 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 		const { userId, postId, ...data } = await req.json();
 
 		return NextResponse.json({
-			data: await prisma.demoReview.update({
+			data: await prisma.demoComment.update({
 				where: {
 					id: z.number().parse(Number((await params).id)),
 				},
 				data: {
-					...reviewSchema.parse(data),
+					...commentSchema.parse(data),
 					user: {
 						connect: {
 							id: z.number().parse(Number(userId)),
@@ -63,7 +63,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 export async function DELETE(_: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		return NextResponse.json({
-			data: await prisma.demoReview.delete({
+			data: await prisma.demoComment.delete({
 				where: {
 					id: z.number().parse(Number((await params).id)),
 				},

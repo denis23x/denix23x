@@ -58,7 +58,7 @@ const prismaInstance = () => {
 			demoPost: {
 				paginate,
 			},
-			demoReview: {
+			demoComment: {
 				paginate,
 			},
 			demoUser: {

@@ -1,4 +1,4 @@
-import type { demoPost, demoUser, demoReview } from "@prisma/client";
+import type { demoPost, demoUser, demoComment } from "@prisma/client";
 import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
 import { headers } from "next/headers";
 import { Badge } from "@/components/ui/badge";
@@ -17,15 +17,15 @@ export default async function Page({ params }: { params: Promise<Id> }) {
 	const headersList: ReadonlyHeaders = await headers();
 	const host: string | null = headersList.get("x-origin");
 	const { id: userId }: { id: string } = await params;
-	const [rUser, rPosts, rReviews]: Response[] = await Promise.all([
+	const [rUser, rPosts, rComments]: Response[] = await Promise.all([
 		fetch(`${host}/api/v1/placeholder/users/${userId}`),
 		fetch(`${host}/api/v1/placeholder/posts?userId=${userId}&page=${1}&pageSize=${100}`),
-		fetch(`${host}/api/v1/placeholder/reviews?userId=${userId}&page=${1}&pageSize=${100}`),
+		fetch(`${host}/api/v1/placeholder/comments?userId=${userId}&page=${1}&pageSize=${100}`),
 	]);
 
 	const { data: user }: { data: demoUser } = await rUser.json();
 	const { data: posts }: { data: demoPost[] } = await rPosts.json();
-	const { data: reviews }: { data: demoReview[] } = await rReviews.json();
+	const { data: comments }: { data: demoComment[] } = await rComments.json();
 
 	return (
 		<div className={"grid gap-4 md:gap-12"}>
@@ -97,17 +97,17 @@ export default async function Page({ params }: { params: Promise<Id> }) {
 				</span>
 			)}
 			<span className={"text-2xl font-semibold tracking-tight"}>
-				Comments <span className={"text-muted-foreground"}>({reviews.length})</span>
+				Comments <span className={"text-muted-foreground"}>({comments.length})</span>
 			</span>
-			{reviews.length ? (
+			{comments.length ? (
 				<ul className={"grid gap-4"}>
-					{reviews.map((review: demoReview) => (
+					{comments.map((comment: demoComment) => (
 						<li
 							className={"flex flex-col gap-4 rounded-xl bg-background border border-input overflow-hidden p-4"}
-							key={review.id}
+							key={comment.id}
 						>
-							<Ratings rating={review.rating} variant={"yellow"} />
-							<p className={"leading-7"}>{review.message}</p>
+							<Ratings rating={comment.rating} variant={"yellow"} />
+							<p className={"leading-7"}>{comment.message}</p>
 						</li>
 					))}
 				</ul>

@@ -9,19 +9,19 @@ datasource db {
 }
 
 model demoPost {
-  id          Int          @id @default(autoincrement()) @db.Integer
+  id          Int           @id @default(autoincrement()) @db.Integer
   title       String
   description String
   cover       String?
   tags        String[]
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  user        demoUser     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  user        demoUser      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      Int
-  reviews     demoReview[]
+  comments    demoComment[]
 }
 
-model demoReview {
+model demoComment {
   id        Int      @id @default(autoincrement()) @db.Integer
   message   String
   rating    Int
@@ -34,13 +34,13 @@ model demoReview {
 }
 
 model demoUser {
-  id        Int          @id @default(autoincrement()) @db.Integer
+  id        Int           @id @default(autoincrement()) @db.Integer
   avatar    String?
   name      String
   bio       String
-  email     String       @unique
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
+  email     String        @unique
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
   posts     demoPost[]
-  reviews   demoReview[]
+  comments  demoComment[]
 }

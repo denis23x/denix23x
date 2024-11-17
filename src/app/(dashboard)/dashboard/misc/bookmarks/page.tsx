@@ -104,4 +104,14 @@ const items = [
 		label: "shadcn/ui",
 		image: "/dashboard/misc/bookmarks/shadcn-ui.png",
 	},
+	{
+		url: "https://apidog.com/",
+		label: "Apidog",
+		image: "/dashboard/misc/bookmarks/apidog.png",
+	},
+	{
+		url: "https://www.dicebear.com/",
+		label: "DiceBear",
+		image: "/dashboard/misc/bookmarks/dice-bear.png",
+	},
 ];
