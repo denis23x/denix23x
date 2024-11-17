@@ -1,1 +1,2838 @@
-{"openapi":"3.0.1","info":{"title":"denis23x","description":"","version":"1.0.0"},"tags":[{"name":"Posts"},{"name":"Users"},{"name":"Comments"}],"paths":{"/api/v1/placeholder/posts":{"get":{"summary":"Get All","deprecated":false,"description":"","tags":["Posts"],"parameters":[{"name":"search","in":"query","description":"","required":false,"schema":{"type":"string","minLength":1}},{"name":"postId","in":"query","description":"","required":false,"schema":{"type":"number","minimum":1}},{"name":"page","in":"query","description":"","required":false,"example":1,"schema":{"type":"number","default":1,"examples":[1],"minimum":1}},{"name":"pageSize","in":"query","description":"","required":false,"example":10,"schema":{"type":"number","default":10,"examples":[10],"minimum":10}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"$ref":"#/components/schemas/Post"}},"pagination":{"$ref":"#/components/schemas/Pagination"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":[{"id":550,"title":"dolore crepusculum summisse","description":"Quo defendo depono suppellex ager vobis totidem minus. Tergo vestigium neque. Agnosco tribuo tenuis ad.\nDenuncio admoneo adsuesco depopulo benevolentia. Pecus delibero taceo callide nemo doloremque vobis abduco vulnus approbo. Conforto truculenter clementia undique credo.\nVidelicet vigor creator contra thema tribuo vestrum. Varietas teneo coepi alioqui somniculosus recusandae. Odio angulus varius demergo.","cover":"https://picsum.photos/seed/Y966lp4/512/512?blur=1","tags":["kiddingly","potentially","gum"],"createdAt":"2024-10-20T11:52:56.535Z","updatedAt":"2024-11-17T04:45:34.051Z","userId":164},{"id":486,"title":"tamen","description":"Comis tero adopto aperte brevis enim fuga cena bis trucido. Contego agnitio speciosus vigilo. Admoneo minima bestia et atque antepono titulus tergeo somnus.","cover":"https://picsum.photos/seed/WcyFEECoT/512/512?blur=1","tags":["because","dispense","step"],"createdAt":"2024-01-23T02:34:50.645Z","updatedAt":"2024-11-17T04:46:32.407Z","userId":43}],"pagination":{"isFirstPage":false,"isLastPage":false,"currentPage":481,"previousPage":156,"nextPage":422,"pageCount":651,"totalCount":183},"status":200}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]},"post":{"summary":"Create Post","deprecated":false,"description":"","tags":["Posts"],"parameters":[],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"title":{"type":"string"},"description":{"type":"string"},"cover":{"type":"string","nullable":true},"tags":{"type":"array","items":{"type":"string"},"description":"Tags"},"userId":{"type":"integer","minimum":1,"description":"Related User"}}},"example":{"title":"caste","description":"Bis desolo alo altus avaritia taedium ocer certe adulatio. Conturbo curo tenus aptus. Peior viduo decens.\nItaque comprehendo tepesco. Balbus vae casus. Antiquus sustineo trans ago ut minus deputo.\nVero atque nesciunt rerum. Amissio collum cruciamentum. Tenetur apparatus perferendis tollo.","cover":"https://picsum.photos/seed/p1Khfp/512/512?blur=1","tags":["soon","however"],"userId":828}}}},"responses":{"201":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/Post"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":754,"title":"creator cultellus consuasor","description":"Thermae accommodo aro curia tenus trucido contra certus. Cuppedia supplanto cras distinctio apostolus unus confero. Defendo tego facere theatrum averto ea cultura adhuc aequus.\nDoloribus vorax corroboro exercitationem aegre perspiciatis aggredior absum voluptatibus. Tersus alii aurum. Aestus aggredior vulticulus bellum dedecor.","cover":"https://picsum.photos/seed/Q5RYppFL/512/512?blur=1","tags":["woot","given"],"createdAt":"2024-08-03T13:37:21.676Z","updatedAt":"2024-11-16T18:10:09.567Z","userId":372},"status":200}}}}},"headers":{}},"400":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"issues":[{"code":"too_small","minimum":2,"type":"string","inclusive":true,"exact":false,"message":"String must contain at least 2 character(s)","path":["title"]}],"name":"ZodError"},"status":400}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]}},"/api/v1/placeholder/posts/{id}":{"get":{"summary":"Get Posts","deprecated":false,"description":"","tags":["Posts"],"parameters":[{"name":"id","in":"path","description":"","required":true,"example":1,"schema":{"type":"integer"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/Post"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":929,"title":"absum ciminatio","description":"Infit caste fugit compono curvo arbor. Molestiae certe beneficium volup arma astrum vos. Audio alioqui caput pectus.\nViriliter altus eligendi vita similique. Amicitia dolor coadunatio desidero vulnero adduco dolore cetera deputo. Aranea ambulo id currus.","cover":"https://picsum.photos/seed/94lO5Cox/512/512?blur=1","tags":["though","alert","noteworthy"],"createdAt":"2023-11-24T14:16:49.508Z","updatedAt":"2024-11-16T12:02:42.845Z","userId":119},"status":200}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]},"delete":{"summary":"Delete Post","deprecated":false,"description":"","tags":["Posts"],"parameters":[{"name":"id","in":"path","description":"","required":true,"example":1,"schema":{"type":"integer"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/Post"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":122,"title":"commodi","description":"Cohibeo aurum amor usus nulla ago. Cui vitae demitto vita carus tribuo collum cribro conduco soleo. Accusator quibusdam dignissimos arbitro aeger casus.\nBaiulus amet minus. Degero tempora amissio sapiente vomer. Autus suscipio itaque ventito.\nSuasoria bardus solitudo. Suscipit tribuo carpo totus. Maiores cedo contego alter varius censura.","cover":"https://picsum.photos/seed/AM7re/512/512?blur=1","tags":["garage","limply"],"createdAt":"2024-05-03T07:58:38.991Z","updatedAt":"2024-11-16T07:54:28.925Z","userId":404},"status":200}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]},"put":{"summary":"Update Post","deprecated":false,"description":"","tags":["Posts"],"parameters":[{"name":"id","in":"path","description":"","required":true,"example":1,"schema":{"type":"integer"}}],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"title":{"type":"string"},"description":{"type":"string"},"cover":{"type":"string","nullable":true},"tags":{"type":"array","items":{"type":"string"},"description":"Tags"},"userId":{"type":"integer","minimum":1,"description":"Related User"}}},"example":{"title":"voluntarius ullus","description":"Canonicus ubi tyrannus antepono subnecto curia defungo dignissimos utrimque vigor. Cometes perspiciatis currus. Velit auctus distinctio pax.\nVolubilis dolorum communis tendo vespillo ademptio esse. Cado tres currus virtus verumtamen aegrotatio supra vilicus. Ancilla vulticulus aro.","cover":"https://picsum.photos/seed/1b569Op/512/512?blur=1","tags":["what","yuck","bewail"],"userId":539}}}},"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/Post"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":33,"title":"cibo traho tricesimus","description":"Torqueo curis nemo vilicus vinculum iure clibanus. Blanditiis tabesco vespillo adulescens ago sordeo argentum decerno. Administratio abundans cauda asper libero amita vito vergo dicta.\nAlioqui patria tempora coma claustrum autus quasi. Deserunt qui desparatus. Corpus consectetur aro corrumpo.\nContra voveo thesis varius super sub. Ab bonus patria. Vociferor consuasor decimus acer subnecto contabesco sequi.","cover":"https://picsum.photos/seed/ofgaG5jB/512/512?blur=1","tags":["treasure","unlike","because"],"createdAt":"2024-01-29T06:39:39.036Z","updatedAt":"2024-11-16T18:34:41.503Z","userId":174},"status":200}}}}},"headers":{}},"400":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"issues":[{"code":"too_small","minimum":2,"type":"string","inclusive":true,"exact":false,"message":"String must contain at least 2 character(s)","path":["title"]}],"name":"ZodError"},"status":400}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]}},"/api/v1/placeholder/users":{"get":{"summary":"Get All","deprecated":false,"description":"","tags":["Users"],"parameters":[{"name":"search","in":"query","description":"","required":false,"schema":{"type":"string","minLength":1}},{"name":"page","in":"query","description":"","required":false,"example":1,"schema":{"type":"number","default":1,"examples":[1],"minimum":1}},{"name":"pageSize","in":"query","description":"","required":false,"example":10,"schema":{"type":"number","default":10,"examples":[10],"minimum":10}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"$ref":"#/components/schemas/User"}},"pagination":{"$ref":"#/components/schemas/Pagination"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":[{"id":49,"name":"Marlene_Wunsch26","avatar":"https://picsum.photos/seed/LT9C9mZwK/512/512?blur=1","bio":"Dolore testimonium ceno comedo accendo cedo ambulo numquam comparo territo. Ullam quae villa ait viriliter optio allatus tametsi. Degusto conforto circumvenio campana utrimque cohaero. Alias vinculum adopto. Vulgus utique culpo.","email":"Antonio67@yahoo.com","createdAt":"2024-11-02T14:24:53.934Z","updatedAt":"2024-11-16T15:49:03.019Z"},{"id":472,"name":"Michele84","avatar":"https://picsum.photos/seed/WMSiGtgJ/512/512?blur=1","bio":"Curis abutor utique tripudio. Decet vomica appello aufero aureus vulgivagus alius. Templum concedo admoveo tabella curia. Ara anser ratione decretum sublime.","email":"Maeve47@gmail.com","createdAt":"2024-01-08T08:18:05.196Z","updatedAt":"2024-11-16T08:47:24.082Z"},{"id":46,"name":"Ross_Mosciski86","avatar":"https://picsum.photos/seed/tN6157Y/512/512?blur=1","bio":"Voco vestrum unde illo depereo vox concido. Dignissimos synagoga teres expedita. Cito suppellex depereo. Atavus auxilium speciosus cognatus demulceo impedit soleo pectus. Depraedor alioqui et cogito tempus comes asporto. Corrumpo deripio vetus vorago caute sortitus absque termes maxime ducimus.","email":"Mack90@gmail.com","createdAt":"2023-12-18T06:54:39.663Z","updatedAt":"2024-11-16T11:26:16.893Z"}],"pagination":{"isFirstPage":false,"isLastPage":false,"currentPage":794,"previousPage":288,"nextPage":954,"pageCount":96,"totalCount":288},"status":200}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]},"post":{"summary":"Create User","deprecated":false,"description":"","tags":["Users"],"parameters":[],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string"},"avatar":{"type":"string","description":"User Avatar","nullable":true},"bio":{"type":"string"},"email":{"type":"string"}}},"example":{"name":"Liliane.Jacobson","avatar":"https://picsum.photos/seed/wjzv5Eig/512/512?blur=1","bio":"Eum caritas cogo venustas depono vos alienus. Annus teres adduco concido. Cupio ter suppellex. Vulnus amplitudo aeternus peccatus utpote commodo venia vicinus. Nostrum traho nulla abduco degero. Denuo advenio audeo ipsa.","email":"Anais_Berge22@yahoo.com"}}}},"responses":{"201":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/User"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":665,"name":"Floyd_Pouros","avatar":"https://picsum.photos/seed/oI9O8/512/512?blur=1","bio":"Totidem ut cupio adicio. Vester spargo hic nemo voluptatum coaegresco cultura defendo paulatim charisma. Amplexus tenax sed. Vester atqui acsi aptus demonstro facilis.","email":"Dillon27@hotmail.com","createdAt":"2024-04-19T05:36:57.733Z","updatedAt":"2024-11-16T20:28:08.362Z"},"status":200}}}}},"headers":{}},"400":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"issues":[{"code":"too_small","minimum":2,"type":"string","inclusive":true,"exact":false,"message":"String must contain at least 2 character(s)","path":["title"]}],"name":"ZodError"},"status":400}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]}},"/api/v1/placeholder/users/{id}":{"get":{"summary":"Get Users","deprecated":false,"description":"","tags":["Users"],"parameters":[{"name":"id","in":"path","description":"","required":true,"example":1,"schema":{"type":"integer"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/User"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":373,"name":"Jamarcus78","avatar":"https://picsum.photos/seed/DMORs7lY/512/512?blur=1","bio":"Tantum statua curo absconditus fugit dolores. Solus tamdiu arca voveo taedium maiores volutabrum quia. Argentum congregatio capitulus video calamitas perspiciatis amplus. Compello color aequitas ventosus commodo acceptus velociter.","email":"Kellie.Powlowski16@yahoo.com","createdAt":"2024-03-22T19:56:19.749Z","updatedAt":"2024-11-16T18:46:09.745Z"},"status":200}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]},"delete":{"summary":"Delete User","deprecated":false,"description":"","tags":["Users"],"parameters":[{"name":"id","in":"path","description":"","required":true,"example":1,"schema":{"type":"integer"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/User"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":213,"name":"Abbie88","avatar":"https://picsum.photos/seed/xWPgyz/512/512?blur=1","bio":"Certe video acervus curriculum supellex cohibeo auditor urbanus degusto quos. Supra tibi at utrimque aestas. Cometes supra similique avarus arcesso cubicularis desino. Benevolentia cogo torrens suggero absum. Certus vomito capio tenuis dolores sodalitas expedita decretum votum. Vulgaris corpus spiritus caterva cibo tersus denuncio.","email":"Icie19@hotmail.com","createdAt":"2024-10-30T02:59:23.506Z","updatedAt":"2024-11-17T03:52:11.328Z"},"status":200}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]},"put":{"summary":"Update User","deprecated":false,"description":"","tags":["Users"],"parameters":[{"name":"id","in":"path","description":"","required":true,"example":1,"schema":{"type":"integer"}}],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string"},"avatar":{"type":"string","description":"User Avatar","nullable":true},"bio":{"type":"string"},"email":{"type":"string"}}},"example":{"name":"Claudie.West40","avatar":"https://picsum.photos/seed/8PBIoL0/512/512?blur=1","bio":"Adimpleo numquam cupiditas. Voluntarius dicta ara custodia cruentus animadverto villa dolores. Utor validus usitas ambitus. Quos coerceo antepono alius illum vito argumentum dedico corona. Theca tenus vado adnuo beatus verus triduana ulciscor attonbitus.","email":"Santa_Fay83@gmail.com"}}}},"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/User"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":675,"name":"Angel.Gorczany50","avatar":"https://picsum.photos/seed/wYfBxc/512/512?blur=1","bio":"Utilis videlicet combibo vorax tricesimus. Aestivus cotidie cui. Cimentarius ullus conventus bellicus repellendus. Spes abscido pectus suscipio teneo arbitro admiratio paulatim. Comparo arcus demum viduo mollitia tumultus trado vir.","email":"Yasmin.Schumm@yahoo.com","createdAt":"2024-11-03T02:17:19.330Z","updatedAt":"2024-11-16T18:44:52.375Z"},"status":200}}}}},"headers":{}},"400":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"issues":[{"code":"too_small","minimum":2,"type":"string","inclusive":true,"exact":false,"message":"String must contain at least 2 character(s)","path":["title"]}],"name":"ZodError"},"status":400}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]}},"/api/v1/placeholder/comments":{"get":{"summary":"Get All","deprecated":false,"description":"","tags":["Comments"],"parameters":[{"name":"userId","in":"query","description":"","required":false,"schema":{"type":"number","minimum":1}},{"name":"postId","in":"query","description":"","required":false,"schema":{"type":"number","minimum":1}},{"name":"page","in":"query","description":"","required":false,"example":1,"schema":{"type":"number","minimum":1,"examples":[1],"default":1}},{"name":"pageSize","in":"query","description":"","required":false,"example":10,"schema":{"type":"number","minimum":10,"examples":[10],"default":10}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"$ref":"#/components/schemas/Comment"}},"pagination":{"$ref":"#/components/schemas/Pagination"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":[{"id":273,"userId":793,"postId":567,"message":"Thymum caste cogito. Blanditiis vos volutabrum suus. Temporibus solutio utilis bis est accendo cibus crebro surculus.","rating":3,"createdAt":"2024-05-03T19:51:09.061Z","updatedAt":"2024-11-16T20:19:12.617Z"},{"id":608,"userId":870,"postId":687,"message":"Sub caput attonbitus. Consequuntur ullus conscendo. Terebro bis a amor crustulum vomica.","rating":2,"createdAt":"2024-01-25T09:36:38.246Z","updatedAt":"2024-11-16T20:52:14.608Z"}],"pagination":{"isFirstPage":true,"isLastPage":true,"currentPage":585,"previousPage":650,"nextPage":623,"pageCount":534,"totalCount":463},"status":200}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]}},"/api/v1/placeholder/comments/{id}":{"get":{"summary":"Get Comments","deprecated":false,"description":"","tags":["Comments"],"parameters":[{"name":"id","in":"path","description":"","required":true,"example":1,"schema":{"type":"integer"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/Comment"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":319,"userId":61,"postId":501,"message":"Crur corporis vomito valeo custodia cilicium enim desino somniculosus textilis. Demoror argentum anser summisse vito capitulus carpo caelum ventito. Balbus cultura maxime demitto calcar.","rating":5,"createdAt":"2024-05-21T09:49:12.977Z","updatedAt":"2024-11-16T18:15:03.632Z"},"status":200}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]},"delete":{"summary":"Delete Comment","deprecated":false,"description":"","tags":["Comments"],"parameters":[{"name":"id","in":"path","description":"","required":true,"example":1,"schema":{"type":"integer"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/Comment"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":576,"userId":147,"postId":850,"message":"Versus audentia amor ulciscor. Calculus deporto suscipit acceptus cursus cerno amiculum cotidie. Eos comptus vorax aestus autus copia copiose.","rating":1,"createdAt":"2023-11-25T04:01:41.586Z","updatedAt":"2024-11-16T07:57:34.750Z"},"status":200}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]},"put":{"summary":"Update Comment","deprecated":false,"description":"","tags":["Comments"],"parameters":[{"name":"id","in":"path","description":"","required":true,"example":1,"schema":{"type":"integer"}}],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"userId":{"type":"integer","title":"Related User","description":"Related User","minimum":1},"postId":{"type":"integer","title":"Related Book","description":"Related Post","minimum":1},"message":{"type":"string"},"rating":{"type":"integer","title":"Rating for the Book","minimum":1,"maximum":5}}},"example":{"userId":860,"postId":931,"message":"Adicio voro demoror antea vespillo eum deputo ad. Creber culpo videlicet comminor.","rating":2}}}},"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/Comment"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":227,"userId":212,"postId":284,"message":"Vulariter delibero caries. Ait centum attero.","rating":2,"createdAt":"2024-04-15T17:04:31.780Z","updatedAt":"2024-11-17T01:28:18.487Z"},"status":200}}}}},"headers":{}},"400":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"issues":[{"code":"too_small","minimum":2,"type":"string","inclusive":true,"exact":false,"message":"String must contain at least 2 character(s)","path":["title"]}],"name":"ZodError"},"status":400}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]}},"/api/v1/placeholder/reviews":{"post":{"summary":"Create Comment","deprecated":false,"description":"","tags":["Comments"],"parameters":[],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"userId":{"type":"integer","title":"Related User","description":"Related User","minimum":1},"postId":{"type":"integer","title":"Related Book","description":"Related Post","minimum":1},"message":{"type":"string"},"rating":{"type":"integer","title":"Rating for the Book","minimum":1,"maximum":5}}},"example":{"userId":742,"postId":681,"message":"Timor basium comitatus reprehenderit canto textus ullam cimentarius consequatur stips. Curso vesco pecto contigo.","rating":3}}}},"responses":{"201":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"$ref":"#/components/schemas/Comment"},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Success","value":{"data":{"id":750,"userId":780,"postId":818,"message":"Rerum supra verbera explicabo vix tamdiu. Atrox vigilo tabesco. Cotidie tenetur caveo uberrime. Certe spiritus deprecator viridis consequuntur averto stultus quia baiulus aegrotatio.","rating":3,"createdAt":"2024-02-21T07:08:34.393Z","updatedAt":"2024-11-16T18:32:37.306Z"},"status":200}}}}},"headers":{}},"400":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"issues":[{"code":"too_small","minimum":2,"type":"string","inclusive":true,"exact":false,"message":"String must contain at least 2 character(s)","path":["title"]}],"name":"ZodError"},"status":400}}}}},"headers":{}},"404":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaClientKnownRequestError","code":"P2025","clientVersion":"5.22.0","meta":{"modelName":"modelName","cause":"Record not found."}},"status":404}}}}},"headers":{}},"500":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{}},"status":{"type":"integer"}}},"examples":{"1":{"summary":"Exception","value":{"error":{"name":"PrismaError","clientVersion":"5.22.0"},"status":500}}}}},"headers":{}}},"security":[]}}},"components":{"schemas":{"Post":{"type":"object","properties":{"id":{"type":"integer","description":"id","minimum":1},"title":{"type":"string"},"description":{"type":"string"},"cover":{"type":"string","nullable":true},"tags":{"type":"array","items":{"type":"string"},"description":"Tags"},"createdAt":{"type":"string"},"updatedAt":{"type":"string"},"userId":{"type":"integer","minimum":1,"description":"Related User"}}},"User":{"type":"object","properties":{"id":{"type":"integer","description":"Id","minimum":1},"name":{"type":"string"},"avatar":{"type":"string","description":"User Avatar","nullable":true},"bio":{"type":"string"},"email":{"type":"string"},"createdAt":{"type":"string"},"updatedAt":{"type":"string"}}},"Comment":{"type":"object","properties":{"id":{"type":"integer","description":"Id","minimum":1},"userId":{"type":"integer","title":"Related User","description":"Related User","minimum":1},"postId":{"type":"integer","title":"Related Book","description":"Related Post","minimum":1},"message":{"type":"string"},"rating":{"type":"integer","title":"Rating for the Book","minimum":1,"maximum":5},"createdAt":{"type":"string"},"updatedAt":{"type":"string"}}},"Pagination":{"type":"object","properties":{"isFirstPage":{"type":"boolean"},"isLastPage":{"type":"boolean"},"currentPage":{"type":"integer"},"previousPage":{"type":"integer","nullable":true},"nextPage":{"type":"integer","nullable":true},"pageCount":{"type":"integer"},"totalCount":{"type":"integer"}}}},"securitySchemes":{}},"servers":[{"url":"http://localhost:3000","description":"Develop Env"},{"url":"https://denix23x.vercel.app","description":"Prod Env"}]}
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "1.0.0",
+    "description": "This API provides access to a collection of posts, users, and comments, allowing clients to perform CRUD operations.\n\n- **Posts**: Retrieve post details, search for post, and view posts.\n- **Users**: Manage users, view user profiles.\n- **Comments**: Add, view, update, or delete comments for posts.",
+    "title": "Placeholder API",
+    "contact": {
+      "email": "denix23x@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "Posts"
+    },
+    {
+      "name": "Users"
+    },
+    {
+      "name": "Comments"
+    }
+  ],
+  "paths": {
+    "/api/v1/placeholder/posts": {
+      "get": {
+        "summary": "Get All",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": [
+              "user",
+              "comments"
+            ],
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": 1,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "examples": [
+                1
+              ],
+              "minimum": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": 10,
+            "schema": {
+              "type": "number",
+              "default": 10,
+              "examples": [
+                10
+              ],
+              "minimum": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Post"
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/components/schemas/Pagination"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": [
+                        {
+                          "id": 550,
+                          "title": "dolore crepusculum summisse",
+                          "description": "Quo defendo depono suppellex ager vobis totidem minus. Tergo vestigium neque. Agnosco tribuo tenuis ad.\nDenuncio admoneo adsuesco depopulo benevolentia. Pecus delibero taceo callide nemo doloremque vobis abduco vulnus approbo. Conforto truculenter clementia undique credo.\nVidelicet vigor creator contra thema tribuo vestrum. Varietas teneo coepi alioqui somniculosus recusandae. Odio angulus varius demergo.",
+                          "cover": "https://picsum.photos/seed/Y966lp4/512/512?blur=1",
+                          "tags": [
+                            "kiddingly",
+                            "potentially",
+                            "gum"
+                          ],
+                          "createdAt": "2024-10-20T11:52:56.535Z",
+                          "updatedAt": "2024-11-17T04:45:34.051Z",
+                          "userId": 164
+                        },
+                        {
+                          "id": 486,
+                          "title": "tamen",
+                          "description": "Comis tero adopto aperte brevis enim fuga cena bis trucido. Contego agnitio speciosus vigilo. Admoneo minima bestia et atque antepono titulus tergeo somnus.",
+                          "cover": "https://picsum.photos/seed/WcyFEECoT/512/512?blur=1",
+                          "tags": [
+                            "because",
+                            "dispense",
+                            "step"
+                          ],
+                          "createdAt": "2024-01-23T02:34:50.645Z",
+                          "updatedAt": "2024-11-17T04:46:32.407Z",
+                          "userId": 43
+                        }
+                      ],
+                      "pagination": {
+                        "isFirstPage": false,
+                        "isLastPage": false,
+                        "currentPage": 481,
+                        "previousPage": 156,
+                        "nextPage": 422,
+                        "pageCount": 651,
+                        "totalCount": 183
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "Create Post",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "cover": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Tags"
+                  },
+                  "userId": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Related User"
+                  }
+                }
+              },
+              "example": {
+                "title": "caste",
+                "description": "Bis desolo alo altus avaritia taedium ocer certe adulatio. Conturbo curo tenus aptus. Peior viduo decens.\nItaque comprehendo tepesco. Balbus vae casus. Antiquus sustineo trans ago ut minus deputo.\nVero atque nesciunt rerum. Amissio collum cruciamentum. Tenetur apparatus perferendis tollo.",
+                "cover": "https://picsum.photos/seed/p1Khfp/512/512?blur=1",
+                "tags": [
+                  "soon",
+                  "however"
+                ],
+                "userId": 828
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Post"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 754,
+                        "title": "creator cultellus consuasor",
+                        "description": "Thermae accommodo aro curia tenus trucido contra certus. Cuppedia supplanto cras distinctio apostolus unus confero. Defendo tego facere theatrum averto ea cultura adhuc aequus.\nDoloribus vorax corroboro exercitationem aegre perspiciatis aggredior absum voluptatibus. Tersus alii aurum. Aestus aggredior vulticulus bellum dedecor.",
+                        "cover": "https://picsum.photos/seed/Q5RYppFL/512/512?blur=1",
+                        "tags": [
+                          "woot",
+                          "given"
+                        ],
+                        "createdAt": "2024-08-03T13:37:21.676Z",
+                        "updatedAt": "2024-11-16T18:10:09.567Z",
+                        "userId": 372
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "issues": [
+                          {
+                            "code": "too_small",
+                            "minimum": 2,
+                            "type": "string",
+                            "inclusive": true,
+                            "exact": false,
+                            "message": "String must contain at least 2 character(s)",
+                            "path": [
+                              "title"
+                            ]
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/placeholder/posts/{id}": {
+      "get": {
+        "summary": "Get Posts",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": [
+              "user",
+              "comments"
+            ],
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Post"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 929,
+                        "title": "absum ciminatio",
+                        "description": "Infit caste fugit compono curvo arbor. Molestiae certe beneficium volup arma astrum vos. Audio alioqui caput pectus.\nViriliter altus eligendi vita similique. Amicitia dolor coadunatio desidero vulnero adduco dolore cetera deputo. Aranea ambulo id currus.",
+                        "cover": "https://picsum.photos/seed/94lO5Cox/512/512?blur=1",
+                        "tags": [
+                          "though",
+                          "alert",
+                          "noteworthy"
+                        ],
+                        "createdAt": "2023-11-24T14:16:49.508Z",
+                        "updatedAt": "2024-11-16T12:02:42.845Z",
+                        "userId": 119
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "summary": "Delete Post",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Post"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 122,
+                        "title": "commodi",
+                        "description": "Cohibeo aurum amor usus nulla ago. Cui vitae demitto vita carus tribuo collum cribro conduco soleo. Accusator quibusdam dignissimos arbitro aeger casus.\nBaiulus amet minus. Degero tempora amissio sapiente vomer. Autus suscipio itaque ventito.\nSuasoria bardus solitudo. Suscipit tribuo carpo totus. Maiores cedo contego alter varius censura.",
+                        "cover": "https://picsum.photos/seed/AM7re/512/512?blur=1",
+                        "tags": [
+                          "garage",
+                          "limply"
+                        ],
+                        "createdAt": "2024-05-03T07:58:38.991Z",
+                        "updatedAt": "2024-11-16T07:54:28.925Z",
+                        "userId": 404
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "summary": "Update Post",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Posts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "cover": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "tags": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Tags"
+                  }
+                }
+              },
+              "example": {
+                "title": "uter compello taedium",
+                "description": "Tricesimus viscus cruciamentum turba vigor aureus recusandae. Corona itaque sto cras concido voluptas tubineus cenaculum comparo advoco. Curiositas magnam artificiose bonus carus.",
+                "cover": "https://picsum.photos/seed/KV5A1UhS2/512/512?blur=1",
+                "tags": [
+                  "oh",
+                  "because"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Post"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 33,
+                        "title": "cibo traho tricesimus",
+                        "description": "Torqueo curis nemo vilicus vinculum iure clibanus. Blanditiis tabesco vespillo adulescens ago sordeo argentum decerno. Administratio abundans cauda asper libero amita vito vergo dicta.\nAlioqui patria tempora coma claustrum autus quasi. Deserunt qui desparatus. Corpus consectetur aro corrumpo.\nContra voveo thesis varius super sub. Ab bonus patria. Vociferor consuasor decimus acer subnecto contabesco sequi.",
+                        "cover": "https://picsum.photos/seed/ofgaG5jB/512/512?blur=1",
+                        "tags": [
+                          "treasure",
+                          "unlike",
+                          "because"
+                        ],
+                        "createdAt": "2024-01-29T06:39:39.036Z",
+                        "updatedAt": "2024-11-16T18:34:41.503Z",
+                        "userId": 174
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "issues": [
+                          {
+                            "code": "too_small",
+                            "minimum": 2,
+                            "type": "string",
+                            "inclusive": true,
+                            "exact": false,
+                            "message": "String must contain at least 2 character(s)",
+                            "path": [
+                              "title"
+                            ]
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/placeholder/users": {
+      "get": {
+        "summary": "Get All",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": [
+              "posts",
+              "comments"
+            ],
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": 1,
+            "schema": {
+              "type": "number",
+              "default": 1,
+              "examples": [
+                1
+              ],
+              "minimum": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": 10,
+            "schema": {
+              "type": "number",
+              "default": 10,
+              "examples": [
+                10
+              ],
+              "minimum": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/User"
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/components/schemas/Pagination"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": [
+                        {
+                          "id": 49,
+                          "name": "Marlene_Wunsch26",
+                          "avatar": "https://picsum.photos/seed/LT9C9mZwK/512/512?blur=1",
+                          "bio": "Dolore testimonium ceno comedo accendo cedo ambulo numquam comparo territo. Ullam quae villa ait viriliter optio allatus tametsi. Degusto conforto circumvenio campana utrimque cohaero. Alias vinculum adopto. Vulgus utique culpo.",
+                          "email": "Antonio67@yahoo.com",
+                          "createdAt": "2024-11-02T14:24:53.934Z",
+                          "updatedAt": "2024-11-16T15:49:03.019Z"
+                        },
+                        {
+                          "id": 472,
+                          "name": "Michele84",
+                          "avatar": "https://picsum.photos/seed/WMSiGtgJ/512/512?blur=1",
+                          "bio": "Curis abutor utique tripudio. Decet vomica appello aufero aureus vulgivagus alius. Templum concedo admoveo tabella curia. Ara anser ratione decretum sublime.",
+                          "email": "Maeve47@gmail.com",
+                          "createdAt": "2024-01-08T08:18:05.196Z",
+                          "updatedAt": "2024-11-16T08:47:24.082Z"
+                        },
+                        {
+                          "id": 46,
+                          "name": "Ross_Mosciski86",
+                          "avatar": "https://picsum.photos/seed/tN6157Y/512/512?blur=1",
+                          "bio": "Voco vestrum unde illo depereo vox concido. Dignissimos synagoga teres expedita. Cito suppellex depereo. Atavus auxilium speciosus cognatus demulceo impedit soleo pectus. Depraedor alioqui et cogito tempus comes asporto. Corrumpo deripio vetus vorago caute sortitus absque termes maxime ducimus.",
+                          "email": "Mack90@gmail.com",
+                          "createdAt": "2023-12-18T06:54:39.663Z",
+                          "updatedAt": "2024-11-16T11:26:16.893Z"
+                        }
+                      ],
+                      "pagination": {
+                        "isFirstPage": false,
+                        "isLastPage": false,
+                        "currentPage": 794,
+                        "previousPage": 288,
+                        "nextPage": 954,
+                        "pageCount": 96,
+                        "totalCount": 288
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "Create User",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "avatar": {
+                    "type": "string",
+                    "description": "User Avatar",
+                    "nullable": true
+                  },
+                  "bio": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "name": "Liliane.Jacobson",
+                "avatar": "https://picsum.photos/seed/wjzv5Eig/512/512?blur=1",
+                "bio": "Eum caritas cogo venustas depono vos alienus. Annus teres adduco concido. Cupio ter suppellex. Vulnus amplitudo aeternus peccatus utpote commodo venia vicinus. Nostrum traho nulla abduco degero. Denuo advenio audeo ipsa.",
+                "email": "Anais_Berge22@yahoo.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/User"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 665,
+                        "name": "Floyd_Pouros",
+                        "avatar": "https://picsum.photos/seed/oI9O8/512/512?blur=1",
+                        "bio": "Totidem ut cupio adicio. Vester spargo hic nemo voluptatum coaegresco cultura defendo paulatim charisma. Amplexus tenax sed. Vester atqui acsi aptus demonstro facilis.",
+                        "email": "Dillon27@hotmail.com",
+                        "createdAt": "2024-04-19T05:36:57.733Z",
+                        "updatedAt": "2024-11-16T20:28:08.362Z"
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "issues": [
+                          {
+                            "code": "too_small",
+                            "minimum": 2,
+                            "type": "string",
+                            "inclusive": true,
+                            "exact": false,
+                            "message": "String must contain at least 2 character(s)",
+                            "path": [
+                              "title"
+                            ]
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "409": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "",
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2002",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "demoUser",
+                          "target": [
+                            "email"
+                          ]
+                        }
+                      },
+                      "status": 409
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/placeholder/users/{id}": {
+      "get": {
+        "summary": "Get Users",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": [
+              "posts",
+              "comments"
+            ],
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/User"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 373,
+                        "name": "Jamarcus78",
+                        "avatar": "https://picsum.photos/seed/DMORs7lY/512/512?blur=1",
+                        "bio": "Tantum statua curo absconditus fugit dolores. Solus tamdiu arca voveo taedium maiores volutabrum quia. Argentum congregatio capitulus video calamitas perspiciatis amplus. Compello color aequitas ventosus commodo acceptus velociter.",
+                        "email": "Kellie.Powlowski16@yahoo.com",
+                        "createdAt": "2024-03-22T19:56:19.749Z",
+                        "updatedAt": "2024-11-16T18:46:09.745Z"
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "summary": "Delete User",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/User"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 213,
+                        "name": "Abbie88",
+                        "avatar": "https://picsum.photos/seed/xWPgyz/512/512?blur=1",
+                        "bio": "Certe video acervus curriculum supellex cohibeo auditor urbanus degusto quos. Supra tibi at utrimque aestas. Cometes supra similique avarus arcesso cubicularis desino. Benevolentia cogo torrens suggero absum. Certus vomito capio tenuis dolores sodalitas expedita decretum votum. Vulgaris corpus spiritus caterva cibo tersus denuncio.",
+                        "email": "Icie19@hotmail.com",
+                        "createdAt": "2024-10-30T02:59:23.506Z",
+                        "updatedAt": "2024-11-17T03:52:11.328Z"
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "summary": "Update User",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "avatar": {
+                    "type": "string",
+                    "description": "User Avatar",
+                    "nullable": true
+                  },
+                  "bio": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "name": "Claudie.West40",
+                "avatar": "https://picsum.photos/seed/8PBIoL0/512/512?blur=1",
+                "bio": "Adimpleo numquam cupiditas. Voluntarius dicta ara custodia cruentus animadverto villa dolores. Utor validus usitas ambitus. Quos coerceo antepono alius illum vito argumentum dedico corona. Theca tenus vado adnuo beatus verus triduana ulciscor attonbitus.",
+                "email": "Santa_Fay83@gmail.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/User"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 675,
+                        "name": "Angel.Gorczany50",
+                        "avatar": "https://picsum.photos/seed/wYfBxc/512/512?blur=1",
+                        "bio": "Utilis videlicet combibo vorax tricesimus. Aestivus cotidie cui. Cimentarius ullus conventus bellicus repellendus. Spes abscido pectus suscipio teneo arbitro admiratio paulatim. Comparo arcus demum viduo mollitia tumultus trado vir.",
+                        "email": "Yasmin.Schumm@yahoo.com",
+                        "createdAt": "2024-11-03T02:17:19.330Z",
+                        "updatedAt": "2024-11-16T18:44:52.375Z"
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "issues": [
+                          {
+                            "code": "too_small",
+                            "minimum": 2,
+                            "type": "string",
+                            "inclusive": true,
+                            "exact": false,
+                            "message": "String must contain at least 2 character(s)",
+                            "path": [
+                              "title"
+                            ]
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "409": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "",
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2002",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "demoUser",
+                          "target": [
+                            "email"
+                          ]
+                        }
+                      },
+                      "status": 409
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/placeholder/comments": {
+      "get": {
+        "summary": "Get All",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Comments"
+        ],
+        "parameters": [
+          {
+            "name": "include",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": [
+              "post",
+              "user"
+            ],
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "postId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": 1,
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "examples": [
+                1
+              ],
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": 10,
+            "schema": {
+              "type": "number",
+              "minimum": 10,
+              "examples": [
+                10
+              ],
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Comment"
+                      }
+                    },
+                    "pagination": {
+                      "$ref": "#/components/schemas/Pagination"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": [
+                        {
+                          "id": 273,
+                          "userId": 793,
+                          "postId": 567,
+                          "message": "Thymum caste cogito. Blanditiis vos volutabrum suus. Temporibus solutio utilis bis est accendo cibus crebro surculus.",
+                          "rating": 3,
+                          "createdAt": "2024-05-03T19:51:09.061Z",
+                          "updatedAt": "2024-11-16T20:19:12.617Z"
+                        },
+                        {
+                          "id": 608,
+                          "userId": 870,
+                          "postId": 687,
+                          "message": "Sub caput attonbitus. Consequuntur ullus conscendo. Terebro bis a amor crustulum vomica.",
+                          "rating": 2,
+                          "createdAt": "2024-01-25T09:36:38.246Z",
+                          "updatedAt": "2024-11-16T20:52:14.608Z"
+                        }
+                      ],
+                      "pagination": {
+                        "isFirstPage": true,
+                        "isLastPage": true,
+                        "currentPage": 585,
+                        "previousPage": 650,
+                        "nextPage": 623,
+                        "pageCount": 534,
+                        "totalCount": 463
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "Create Comment",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Comments"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "integer",
+                    "title": "Related User",
+                    "description": "Related User",
+                    "minimum": 1
+                  },
+                  "postId": {
+                    "type": "integer",
+                    "title": "Related Book",
+                    "description": "Related Post",
+                    "minimum": 1
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "rating": {
+                    "type": "integer",
+                    "title": "Rating for the Book",
+                    "minimum": 1,
+                    "maximum": 5
+                  }
+                }
+              },
+              "example": {
+                "userId": 117,
+                "postId": 731,
+                "message": "Crepusculum communis volubilis vobis coma. Aranea vereor defluo corona.",
+                "rating": 1
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Comment"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 750,
+                        "userId": 780,
+                        "postId": 818,
+                        "message": "Rerum supra verbera explicabo vix tamdiu. Atrox vigilo tabesco. Cotidie tenetur caveo uberrime. Certe spiritus deprecator viridis consequuntur averto stultus quia baiulus aegrotatio.",
+                        "rating": 3,
+                        "createdAt": "2024-02-21T07:08:34.393Z",
+                        "updatedAt": "2024-11-16T18:32:37.306Z"
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "issues": [
+                          {
+                            "code": "too_small",
+                            "minimum": 2,
+                            "type": "string",
+                            "inclusive": true,
+                            "exact": false,
+                            "message": "String must contain at least 2 character(s)",
+                            "path": [
+                              "title"
+                            ]
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/placeholder/comments/{id}": {
+      "get": {
+        "summary": "Get Comments",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Comments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": [
+              "post",
+              "user"
+            ],
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Comment"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 319,
+                        "userId": 61,
+                        "postId": 501,
+                        "message": "Crur corporis vomito valeo custodia cilicium enim desino somniculosus textilis. Demoror argentum anser summisse vito capitulus carpo caelum ventito. Balbus cultura maxime demitto calcar.",
+                        "rating": 5,
+                        "createdAt": "2024-05-21T09:49:12.977Z",
+                        "updatedAt": "2024-11-16T18:15:03.632Z"
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "summary": "Delete Comment",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Comments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Comment"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 576,
+                        "userId": 147,
+                        "postId": 850,
+                        "message": "Versus audentia amor ulciscor. Calculus deporto suscipit acceptus cursus cerno amiculum cotidie. Eos comptus vorax aestus autus copia copiose.",
+                        "rating": 1,
+                        "createdAt": "2023-11-25T04:01:41.586Z",
+                        "updatedAt": "2024-11-16T07:57:34.750Z"
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "summary": "Update Comment",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Comments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  },
+                  "rating": {
+                    "type": "integer",
+                    "title": "Rating for the Book",
+                    "minimum": 1,
+                    "maximum": 5
+                  }
+                }
+              },
+              "example": {
+                "message": "Auxilium sonitus artificiose. Iusto colo clementia agnosco terreo quibusdam surgo degusto vergo aptus. Titulus spero allatus occaecati nostrum vester utor avarus conduco. Rem ancilla suus stips ipsum ulterius circumvenio sursum adsum.",
+                "rating": 3
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Comment"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Success",
+                    "value": {
+                      "data": {
+                        "id": 227,
+                        "userId": 212,
+                        "postId": 284,
+                        "message": "Vulariter delibero caries. Ait centum attero.",
+                        "rating": 2,
+                        "createdAt": "2024-04-15T17:04:31.780Z",
+                        "updatedAt": "2024-11-17T01:28:18.487Z"
+                      },
+                      "status": 200
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "issues": [
+                          {
+                            "code": "too_small",
+                            "minimum": 2,
+                            "type": "string",
+                            "inclusive": true,
+                            "exact": false,
+                            "message": "String must contain at least 2 character(s)",
+                            "path": [
+                              "title"
+                            ]
+                          }
+                        ],
+                        "name": "ZodError"
+                      },
+                      "status": 400
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaClientKnownRequestError",
+                        "code": "P2025",
+                        "clientVersion": "5.22.0",
+                        "meta": {
+                          "modelName": "modelName",
+                          "cause": "Record not found."
+                        }
+                      },
+                      "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "PrismaError",
+                        "clientVersion": "5.22.0"
+                      },
+                      "status": 500
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Post": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "id",
+            "minimum": 1
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "cover": {
+            "type": "string",
+            "nullable": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Tags"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Related User"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string",
+            "description": "User Avatar",
+            "nullable": true
+          },
+          "bio": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        }
+      },
+      "Comment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id",
+            "minimum": 1
+          },
+          "userId": {
+            "type": "integer",
+            "title": "Related User",
+            "description": "Related User",
+            "minimum": 1
+          },
+          "postId": {
+            "type": "integer",
+            "title": "Related Book",
+            "description": "Related Post",
+            "minimum": 1
+          },
+          "message": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "integer",
+            "title": "Rating for the Book",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        }
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "isFirstPage": {
+            "type": "boolean"
+          },
+          "isLastPage": {
+            "type": "boolean"
+          },
+          "currentPage": {
+            "type": "integer"
+          },
+          "previousPage": {
+            "type": "integer",
+            "nullable": true
+          },
+          "nextPage": {
+            "type": "integer",
+            "nullable": true
+          },
+          "pageCount": {
+            "type": "integer"
+          },
+          "totalCount": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "securitySchemes": false
+  },
+  "servers": [
+    {
+      "url": "https://denix23x.vercel.app",
+      "description": "Prod Env"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Local Env"
+    }
+  ],
+  "externalDocs": {
+    "description": "Find out more about Placeholder API",
+    "url": "https://github.com/denis23x/denix23x/tree/main/src/app/api/v1/placeholder"
+  }
+}

@@ -37,8 +37,8 @@ interface demoPostWU<U> extends demoPost {
 export default async function Page({ searchParams }: { searchParams: Promise<Params> }) {
 	const headersList: ReadonlyHeaders = await headers();
 	const host: string | null = headersList.get("x-origin");
-	const { page, pageSize = "9" }: { page: string; pageSize: string } = await searchParams;
-	const response: Response = await fetch(`${host}/api/v1/placeholder/posts?page=${page}&pageSize=${pageSize}`);
+	const { page = "1", pageSize: size = "9" }: { page: string; pageSize: string } = await searchParams;
+	const response: Response = await fetch(`${host}/api/v1/placeholder/posts?include=user&page=${page}&pageSize=${size}`);
 	const { data: posts, pagination }: { data: demoPostWU<demoUser>[]; pagination: PaginationT } = await response.json();
 	const pages: number[] = Array.from({ length: pagination.pageCount }, (_, i) => i + 1);
 
@@ -64,7 +64,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<Par
 										<strong className={"line-clamp-1 text-2xl"}>{post.title}</strong>
 										{post.tags.length && (
 											<div className={"flex flex-wrap gap-2"}>
-												{post.tags.map((tag: string, i) => (
+												{post.tags.slice(0, 3).map((tag: string, i) => (
 													<Badge key={i}>{tag}</Badge>
 												))}
 											</div>

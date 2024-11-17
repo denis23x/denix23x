@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
 		if (userId) {
 			demoPostFindManyArgs.where = {
 				...demoPostFindManyArgs.where,
-				userId: z.number().parse(Number(userId)),
+				userId: z.coerce.number().min(1).parse(userId),
 			};
 		}
 

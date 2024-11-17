@@ -26,14 +26,14 @@ export async function GET(req: NextRequest) {
 		if (userId) {
 			demoCommentFindManyArgs.where = {
 				...demoCommentFindManyArgs.where,
-				userId: z.number().parse(Number(userId)),
+				userId: z.coerce.number().min(1).parse(userId),
 			};
 		}
 
 		if (postId) {
 			demoCommentFindManyArgs.where = {
 				...demoCommentFindManyArgs.where,
-				postId: z.number().parse(Number(postId)),
+				postId: z.coerce.number().min(1).parse(postId),
 			};
 		}
 
