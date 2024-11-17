@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Prisma } from "@prisma/client";
 import { handleErr, prisma } from "@/lib/prisma";
 import { postSchema } from "../schema";
 import { z } from "zod";
@@ -11,26 +12,28 @@ const idSchema = z.object({
 	id: z.coerce.number().min(1),
 });
 
-export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		const { id } = idSchema.parse(await params);
+		const searchParams: URLSearchParams = req.nextUrl.searchParams;
+		const include: string[] = searchParams.getAll("include");
+		const demoPostFindUniqueOrThrowArgs: Prisma.demoPostFindUniqueOrThrowArgs = {
+			where: {
+				id,
+			},
+		};
+
+		if (include.length) {
+			include.forEach((i: string) => {
+				demoPostFindUniqueOrThrowArgs.include = {
+					...demoPostFindUniqueOrThrowArgs.include,
+					[i]: true,
+				};
+			});
+		}
 
 		return NextResponse.json({
-			data: await prisma.demoPost.findUniqueOrThrow({
-				select: {
-					id: true,
-					title: true,
-					description: true,
-					cover: true,
-					tags: true,
-					createdAt: true,
-					updatedAt: true,
-					user: true,
-				},
-				where: {
-					id,
-				},
-			}),
+			data: await prisma.demoPost.findUniqueOrThrow(demoPostFindUniqueOrThrowArgs),
 			status: 200,
 		});
 	} catch (error) {
@@ -41,17 +44,19 @@ export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
 export async function PUT(req: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		const { id } = idSchema.parse(await params);
-
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const { userId, ...data } = postSchema.partial().parse(await req.json());
+		const data = postSchema
+			.omit({ userId: true })
+			.partial()
+			.parse(await req.json());
+		const demoPostUpdateArgs: Prisma.demoPostUpdateArgs = {
+			where: {
+				id,
+			},
+			data,
+		};
 
 		return NextResponse.json({
-			data: await prisma.demoPost.update({
-				where: {
-					id,
-				},
-				data,
-			}),
+			data: await prisma.demoPost.update(demoPostUpdateArgs),
 			status: 200,
 		});
 	} catch (error) {
@@ -62,13 +67,14 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 export async function DELETE(_: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		const { id } = idSchema.parse(await params);
+		const demoPostDeleteArgs: Prisma.demoPostDeleteArgs = {
+			where: {
+				id,
+			},
+		};
 
 		return NextResponse.json({
-			data: await prisma.demoPost.delete({
-				where: {
-					id,
-				},
-			}),
+			data: await prisma.demoPost.delete(demoPostDeleteArgs),
 			status: 200,
 		});
 	} catch (error) {

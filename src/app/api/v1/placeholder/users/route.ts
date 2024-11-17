@@ -6,14 +6,24 @@ import { userSchema } from "./schema";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
+	const include: string[] = searchParams.getAll("include");
 	const search: string | null = searchParams.get("search");
 
 	try {
-		const demoUserArgs: Prisma.demoUserFindManyArgs = {};
+		const demoUserFindManyArgs: Prisma.demoUserFindManyArgs = {};
+
+		if (include.length) {
+			include.forEach((i: string) => {
+				demoUserFindManyArgs.include = {
+					...demoUserFindManyArgs.include,
+					[i]: true,
+				};
+			});
+		}
 
 		if (search) {
-			demoUserArgs.where = {
-				...demoUserArgs.where,
+			demoUserFindManyArgs.where = {
+				...demoUserFindManyArgs.where,
 				name: {
 					contains: search,
 					mode: "insensitive",
@@ -22,7 +32,7 @@ export async function GET(req: NextRequest) {
 		}
 
 		const [users, meta]: [demoUser[], PageNumberPaginationMeta] = await prisma.demoUser
-			.paginate(demoUserArgs)
+			.paginate(demoUserFindManyArgs)
 			.withPages({
 				limit: Number(searchParams.get("pageSize")) || 10,
 				page: Number(searchParams.get("page")) || 1,
@@ -41,11 +51,14 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
 	try {
-		const { ...data } = userSchema.parse(await req.json());
+		const data = userSchema.parse(await req.json());
+		const demoUserCreateArgs: Prisma.demoUserCreateArgs = {
+			data,
+		};
 
 		return NextResponse.json(
 			{
-				data: await prisma.demoUser.create({ data }),
+				data: await prisma.demoUser.create(demoUserCreateArgs),
 				status: 201,
 			},
 			{

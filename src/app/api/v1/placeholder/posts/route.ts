@@ -7,26 +7,25 @@ import { z } from "zod";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
+	const include: string[] = searchParams.getAll("include");
 	const search: string | null = searchParams.get("search");
 	const userId: string | null = searchParams.get("userId");
 
 	try {
-		const demoPostArgs: Prisma.demoPostFindManyArgs = {
-			select: {
-				id: true,
-				title: true,
-				description: true,
-				cover: true,
-				tags: true,
-				createdAt: true,
-				updatedAt: true,
-				user: true,
-			},
-		};
+		const demoPostFindManyArgs: Prisma.demoPostFindManyArgs = {};
+
+		if (include.length) {
+			include.forEach((i: string) => {
+				demoPostFindManyArgs.include = {
+					...demoPostFindManyArgs.include,
+					[i]: true,
+				};
+			});
+		}
 
 		if (search) {
-			demoPostArgs.where = {
-				...demoPostArgs.where,
+			demoPostFindManyArgs.where = {
+				...demoPostFindManyArgs.where,
 				title: {
 					contains: search,
 					mode: "insensitive",
@@ -35,14 +34,14 @@ export async function GET(req: NextRequest) {
 		}
 
 		if (userId) {
-			demoPostArgs.where = {
-				...demoPostArgs.where,
+			demoPostFindManyArgs.where = {
+				...demoPostFindManyArgs.where,
 				userId: z.number().parse(Number(userId)),
 			};
 		}
 
 		const [posts, meta]: [demoPost[], PageNumberPaginationMeta] = await prisma.demoPost
-			.paginate(demoPostArgs)
+			.paginate(demoPostFindManyArgs)
 			.withPages({
 				limit: Number(searchParams.get("pageSize")) || 10,
 				page: Number(searchParams.get("page")) || 1,
@@ -62,19 +61,20 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
 	try {
 		const { userId, ...data } = postSchema.parse(await req.json());
+		const demoPostCreateArgs: Prisma.demoPostCreateArgs = {
+			data: {
+				...data,
+				user: {
+					connect: {
+						id: userId,
+					},
+				},
+			},
+		};
 
 		return NextResponse.json(
 			{
-				data: await prisma.demoPost.create({
-					data: {
-						...data,
-						user: {
-							connect: {
-								id: userId,
-							},
-						},
-					},
-				}),
+				data: await prisma.demoPost.create(demoPostCreateArgs),
 				status: 201,
 			},
 			{

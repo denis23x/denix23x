@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Prisma } from "@prisma/client";
 import { handleErr, prisma } from "@/lib/prisma";
 import { commentSchema } from "../schema";
 import { z } from "zod";
@@ -11,24 +12,28 @@ const idSchema = z.object({
 	id: z.coerce.number().min(1),
 });
 
-export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		const { id } = idSchema.parse(await params);
+		const searchParams: URLSearchParams = req.nextUrl.searchParams;
+		const include: string[] = searchParams.getAll("include");
+		const demoCommentFindUniqueOrThrowArgs: Prisma.demoCommentFindUniqueOrThrowArgs = {
+			where: {
+				id,
+			},
+		};
+
+		if (include.length) {
+			include.forEach((i: string) => {
+				demoCommentFindUniqueOrThrowArgs.include = {
+					...demoCommentFindUniqueOrThrowArgs.include,
+					[i]: true,
+				};
+			});
+		}
 
 		return NextResponse.json({
-			data: await prisma.demoComment.findUniqueOrThrow({
-				select: {
-					id: true,
-					message: true,
-					rating: true,
-					createdAt: true,
-					updatedAt: true,
-					user: true,
-				},
-				where: {
-					id,
-				},
-			}),
+			data: await prisma.demoComment.findUniqueOrThrow(demoCommentFindUniqueOrThrowArgs),
 			status: 200,
 		});
 	} catch (error) {
@@ -39,17 +44,19 @@ export async function GET(_: NextRequest, { params }: { params: Promise<Id> }) {
 export async function PUT(req: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		const { id } = idSchema.parse(await params);
-
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const { userId, postId, ...data } = commentSchema.partial().parse(await req.json());
+		const data = commentSchema
+			.omit({ userId: true, postId: true })
+			.partial()
+			.parse(await req.json());
+		const demoCommentUpdateArgs: Prisma.demoCommentUpdateArgs = {
+			where: {
+				id,
+			},
+			data,
+		};
 
 		return NextResponse.json({
-			data: await prisma.demoComment.update({
-				where: {
-					id,
-				},
-				data,
-			}),
+			data: await prisma.demoComment.update(demoCommentUpdateArgs),
 			status: 200,
 		});
 	} catch (error) {
@@ -60,13 +67,14 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 export async function DELETE(_: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		const { id } = idSchema.parse(await params);
+		const demoCommentDeleteArgs: Prisma.demoCommentDeleteArgs = {
+			where: {
+				id,
+			},
+		};
 
 		return NextResponse.json({
-			data: await prisma.demoComment.delete({
-				where: {
-					id,
-				},
-			}),
+			data: await prisma.demoComment.delete(demoCommentDeleteArgs),
 			status: 200,
 		});
 	} catch (error) {
