@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { handleErr, prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { userSchema } from "@/app/api/v1/placeholder/users/schema";
 import { z } from "zod";
 import { Prisma } from "@prisma/client";
+import { handleErr } from "@/lib/server";
+import { moderate, ModerationError } from "@/lib/openai";
+import type { Moderation } from "openai/resources/moderations";
 
 type Id = {
 	id: string;
@@ -51,6 +54,10 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 			},
 			data,
 		};
+
+		if ((await moderate(data)).results.some((m: Moderation) => m.flagged)) {
+			throw new ModerationError();
+		}
 
 		return NextResponse.json({
 			data: await prisma.demoUser.update(demoUserUpdateArgs),

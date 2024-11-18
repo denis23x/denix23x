@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { type demoComment, Prisma } from "@prisma/client";
 import type { PageNumberPaginationMeta } from "prisma-extension-pagination";
-import { handleErr, prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { commentSchema } from "./schema";
 import { z } from "zod";
+import { handleErr } from "@/lib/server";
+import { moderate, ModerationError } from "@/lib/openai";
+import type { Moderation } from "openai/resources/moderations";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
@@ -73,6 +76,10 @@ export async function POST(req: NextRequest) {
 				},
 			},
 		};
+
+		if ((await moderate(data)).results.some((m: Moderation) => m.flagged)) {
+			throw new ModerationError();
+		}
 
 		return NextResponse.json(
 			{

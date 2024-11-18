@@ -60,6 +60,7 @@
     "nanoid": "^5.0.8",
     "next": "15.0.2",
     "next-themes": "^0.3.0",
+    "openai": "^4.72.0",
     "prisma-extension-pagination": "^0.7.4",
     "qss": "^3.0.0",
     "react": "^18.3.1",
