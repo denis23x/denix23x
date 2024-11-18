@@ -4,7 +4,7 @@ import React from "react";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface ScrollProgressBarType {
+interface ScrollProgressType {
 	type?: "circle" | "bar";
 	position?: "top-right" | "bottom-right" | "top-left" | "bottom-left";
 	color?: string;
@@ -12,26 +12,26 @@ interface ScrollProgressBarType {
 	showPercentage?: boolean;
 }
 
-export default function MaterialsScrollProgressBar({
+export default function MaterialsScrollProgress({
 	type = "circle",
 	position = "bottom-right",
 	color = "hsl(var(--primary))",
 	strokeSize = 2,
 	showPercentage = false,
-}: ScrollProgressBarType) {
+}: ScrollProgressType) {
 	const { scrollYProgress } = useScroll();
 	const scrollPercentage = useTransform(scrollYProgress, [0, 1], [0, 100]);
 	const [percentage, setPercentage] = React.useState(0);
 
 	useMotionValueEvent(scrollPercentage, "change", latest => {
-		setPercentage(Math.round(latest));
+		setPercentage(latest); // Math.round(latest)
 	});
 
 	if (type === "bar") {
 		return (
 			<div className="fixed start-0 end-0 top-0 pointer-events-none z-30" style={{ height: `${strokeSize + 2}px` }}>
 				<span
-					className="bg-background h-full w-full block transition-[width]"
+					className="bg-background h-full w-full block"
 					style={{
 						backgroundColor: color,
 						width: `${percentage}%`,

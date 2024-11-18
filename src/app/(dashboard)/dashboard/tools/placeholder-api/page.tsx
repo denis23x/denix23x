@@ -32,7 +32,12 @@ export default async function Page() {
 				</AlertDescription>
 			</Alert>
 			<div className="relative flex flex-col md:flex-row gap-4">
-				<Link className="relative max-w-1/2" href={"/dashboard/tools/placeholder-api/swagger"} target={"_blank"}>
+				<Link
+					className="relative max-w-1/2"
+					href={"/dashboard/tools/placeholder-api/swagger"}
+					target={"_blank"}
+					rel={"nofollow tag"}
+				>
 					<Safari
 						url="swagger/docs"
 						className="size-full object-top dark:hidden block"
@@ -44,7 +49,12 @@ export default async function Page() {
 						src={"/dashboard/tools/placeholder-api/swagger-dark.webp"}
 					/>
 				</Link>
-				<Link className="relative max-w-1/2" href={"/dashboard/tools/placeholder-api/demo"} target={"_blank"}>
+				<Link
+					className="relative max-w-1/2"
+					href={"/dashboard/tools/placeholder-api/demo"}
+					target={"_blank"}
+					rel={"nofollow tag"}
+				>
 					<Safari
 						url="demo"
 						className="size-full object-top dark:hidden block"

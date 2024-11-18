@@ -21,6 +21,23 @@ interface StoreState {
 const cards: ExpandableCard[] = [
 	{
 		uid: nanoid(),
+		description: "Linkin Park",
+		title: "Meteora",
+		src: "/dashboard/misc/playlist/linkin-park-meteora.webp",
+		link: "https://www.youtube.com/watch?v=U6R-twDkrcI&list=OLAK5uy_nAZAs495Fuv7ij62C3N50Ga7TAp60sq0w",
+		blurDataURL:
+			"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAABXhJREFUWEfFl72LJFUUxe+r7w7U0GQVI8HEYBFll00MZHdNdhUURDDbQDEQwUATI8XARPB/na6ujye/c9+tqh53xECwh6JnpqveO++cc8+9ne69ZtmSWcVVxZWsqiurqtrqer/4u+JGS7auq83LYvM02TRPNs+zrauWsrqprWtb67rW2razpqkt8Uxedd80TXqONdI799qcUrJUseHxqq3m7wJAm9eVca9l2wDEYg5gBZtAO4BO73XT6IAAnJd5A70uq6UP33vjDgDOwA5qP33O2RYYmCebLpNONAnA4gzUjbVdaz0AutaaurFUJcsHAABmjfTVJw8dQLpm4MhIfM57Nj/9skDlbJfLRReUasErCTrreyRoJZ2AF9mCsfTjt59lS8lPCgi0T5UkCWnQTyub6RQswolj88s4ioUNABLAQN9LhhYZ6koAoJ3NkUIe+P3nr68kQPc4vfSOzdGdBUT9LOrHy2jj6Bd/L+sikJiOjYe+FwgHUOszZFrmRQwKwJ+/fS8AoTU38juSOAB5ztFr80Xaj+NFG5/PZwcwXcSMA2ikfz/0NvSD+6ABAD5APgAsDuCPX77L6CMAOL4YLyQQAG1e9CtlFJsD4CwGHACYAQADp2GwYRiswwd1Ix+wqVhYeF8t/frTi4xD/17zldN/PD0GKtoLwM3Zbs43Np5HuxQGAkDf9XY6OQDJQCkWI7qJFx0s/fDN52LAA6cRVby7DA5g134HoJMfrpCAZ9iMTYfTYKfhVHzga1qREr9g6PTiy8cZ15NeUMcFAACFCUP/Y+lBuwNwBhzAKgkwHQBgABnCiAJg7qW40hfPHmU+YMOmba1tMIwD0APUfqCm/Ertu/udBTfhJFqrlKxpnQFODwgHcM2AACDBp08/EABMwoNkNzcfZdjDxyXYSvA82nk8W+SATAWAIsHuga54oGRBYSDn1dLzx+9nDMhDUEeEwgL5HTLkjHQYZ28mhFBkwOUCAx7FwYByoFQBJcn6RxOulCEMPH/ywBkAQNdaR/dqdxkifjGMd0CayZ6ChBElGAA2BkoSRhqqIx7k3AA8e/IwU//BAACUXGLAAylKkaj1LPeWivG2XlC6ocqwrjcj0gsiCdVIdRDPAUnw8UcPMvH7MgmQZkvDgxHVCwTAQaglRztWN6z2dlwkVStXSa/qB54DtONH9zcJVAWqhMZ7uMqGx/KWho6+mPEwXDgAj2LSFCOzFvMA5vZBBgZKFK+rfk/3333by7Bx2midUYYkJD+ZH6grLKDfDoLpZt4Y4O7NUwUE+pM1kQGEECyoat568/U9BxRE3jiu6D8AALWitHQ1tVaGi9LdSDr6CGvApIcbAEqqlmc3E776ypB5QEHEzWUE25qRSrBIUN5FI0CQYpmv2iunVCXEegXA5qUDAPUC8cIcVzFMeu3vMVyGkNj48E533Ny8+n23X4rlxmfEowc8hjFkOOz2k2gfs4BSSC3x5bv8y/+ynJehLxcvZ+B/fP0DgDIE/lf4NN3FYFlY3Yr8ipDabxRfcWOQVP6vz4ssuof6v8MI/kVhG3Y9U/xZflipWIGvRbV/NaJmj9zwRJyAyVljvN+AGTMBtMxmCiKAsAOfV8xnxdg+9hdbF0sJQJt1Ix9SCiV+owlt5iub+vh+NGlJtnk2YygFRABmqlI5emVpytohCGcy60mOKwAKjdCrPOBfTvbp+aquSx5kgZj3iiF+bwNgHQ/3AwAY0OlDhv2Evn/ZHAD60uos8IoBk1FdALioNT3mABLj3jbuHwC4UJ1LAAtFgs2EQZgI2U9/FwCbJmdg80Ewiwk9jPz7Rrj+6AH5oHYQMuF2VzEgJ/fx3b/EHBigF8yTCcB6BFCMyLeiYEANbn/9BVSOUw4/v0iqAAAAAElFTkSuQmCC",
+		content: () => {
+			return (
+				<p>
+					Meteora is the second studio album by American rock band Linkin Park, released on March 25, 2003, through
+					Warner Bros. Records
+				</p>
+			);
+		},
+	},
+	{
+		uid: nanoid(),
 		description: "Hotline Miami",
 		title: "OST",
 		src: "/dashboard/misc/playlist/hotline-miami-ost.webp",

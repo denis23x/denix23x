@@ -4,7 +4,6 @@ import DashboardSkeleton from "@/components/dashboard/dashboard-skeleton";
 import DashboardMarquee from "@/components/dashboard/dashboard-marquee";
 import DashboardBeams from "@/components/dashboard/dashboard-beams";
 import DashboardWordRotate from "@/components/dashboard/dashboard-word-rotate";
-import DashboardVideo from "@/components/dashboard/dashboard-video";
 
 export default function Page() {
 	return (
@@ -47,14 +46,14 @@ const items = [
 	},
 	{
 		title: "Placeholder",
-		description: "Ut duis nostrud est incididunt duis ea adipisicing velit qui.",
-		url: "/dashboard",
-		header: <DashboardVideo />,
+		description: "Pariatur ea voluptate exercitation nostrud ut et adipisicing duis labore eiusmod ullamco duis.",
+		url: "#",
+		header: <DashboardSkeleton />,
 	},
 	{
 		title: "Placeholder",
-		description: "Ut non amet exercitation aute cillum ea proident quis irure.",
-		url: "/dashboard",
+		description: "Pariatur ea voluptate exercitation nostrud ut et adipisicing duis labore eiusmod ullamco duis.",
+		url: "#",
 		header: <DashboardSkeleton />,
 	},
 	{
@@ -66,7 +65,7 @@ const items = [
 	{
 		title: "Placeholder",
 		description: "Pariatur ea voluptate exercitation nostrud ut et adipisicing duis labore eiusmod ullamco duis.",
-		url: "/dashboard",
+		url: "#",
 		header: <DashboardSkeleton />,
 	},
 ];

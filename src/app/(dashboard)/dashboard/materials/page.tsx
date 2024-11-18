@@ -11,12 +11,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-	const paths = await globby("src/app/(dashboard)/dashboard/materials", {
-		expandDirectories: {
-			files: ["page.mdx"],
-		},
-	}).then(paths => paths.map(p => path.dirname(p).split("/").pop()));
-
+	const pattern: string = "src/app/\\(dashboard\\)/dashboard/materials/**/*.mdx";
+	const paths = await globby(pattern).then(paths => paths.map(p => path.dirname(p).split("/").pop()));
 	const pages = await Promise.all(
 		paths.map(async p => {
 			const { metadata } = await import(`./${p}/page.mdx`);

@@ -114,4 +114,9 @@ const items = [
 		label: "DiceBear",
 		image: "/dashboard/misc/bookmarks/dice-bear.png",
 	},
+	{
+		url: "https://octopus.do/",
+		label: "Octopus",
+		image: "/dashboard/misc/bookmarks/octopus.png",
+	},
 ];

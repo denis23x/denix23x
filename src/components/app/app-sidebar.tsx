@@ -1,6 +1,6 @@
 "use client";
 
-import { House } from "lucide-react";
+import { House, AppWindow } from "lucide-react";
 import { NavMain } from "@/components/nav/nav-main";
 import {
 	Sidebar,
@@ -11,6 +11,7 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { navMainStore } from "@/stores/nav-main.store";
+import { NavSecondary } from "@/components/nav/nav-secondary";
 
 export const data = {
 	// user: {
@@ -19,13 +20,23 @@ export const data = {
 	// 	avatar: "/avatars/shadcn.jpg",
 	// },
 	navMain: navMainStore,
-	// navSecondary: [
-	// 	{
-	// 		title: "TailwindCSS",
-	// 		url: "https://tailwindcss.com/docs/installation",
-	// 		icon: LifeBuoy,
-	// 	},
-	// ],
+	navSecondary: [
+		{
+			title: "Takabase",
+			url: "https://takabase.com",
+			icon: AppWindow,
+		},
+		{
+			title: "Memorease",
+			url: "https://memorease.site",
+			icon: AppWindow,
+		},
+		{
+			title: "Daylik",
+			url: "https://daylik-kw.web.app",
+			icon: AppWindow,
+		},
+	],
 	// projects: [
 	// 	{
 	// 		name: "Design Engineering",
@@ -36,11 +47,6 @@ export const data = {
 	// 		name: "Sales & Marketing",
 	// 		url: "#",
 	// 		icon: PieChart,
-	// 	},
-	// 	{
-	// 		name: "Travel",
-	// 		url: "#",
-	// 		icon: Map,
 	// 	},
 	// ],
 };
@@ -70,7 +76,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 			<SidebarContent>
 				<NavMain items={data.navMain} />
 				{/*<NavProjects projects={data.projects} />*/}
-				{/*<NavSecondary items={data.navSecondary} className={"mt-auto"} />*/}
+				<NavSecondary items={data.navSecondary} className={"mt-auto"} />
 			</SidebarContent>
 			{/*<SidebarFooter>*/}
 			{/*	<NavUser user={data.user} />*/}
