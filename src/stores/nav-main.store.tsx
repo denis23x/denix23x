@@ -42,6 +42,13 @@ export const navMainPlaceholderApi = {
 		"Mock backend API endpoints easily with predefined, free-to-use endpoints for testing. Perfect for front-end developers needing simulated responses without a live backend.",
 };
 
+export const navMainPlaceholderGraphQL = {
+	title: "Placeholder GraphQL",
+	url: "/dashboard/tools/placeholder-graphql",
+	description:
+		"Test and prototype GraphQL APIs effortlessly with this interactive tool. Explore queries, visualize responses, and debug seamlessly—no server setup needed.",
+};
+
 export const navMainPlaceholderImage = {
 	title: "Placeholder Image",
 	url: "/dashboard/tools/placeholder-image",
@@ -101,6 +108,7 @@ export const navMainStore = [
 			navMainLoremIpsum,
 			navMainMarkdownRenderer,
 			navMainPlaceholderApi,
+			navMainPlaceholderGraphQL,
 			navMainPlaceholderImage,
 			navMainSvgToCssEncoder,
 			navMainThumbHashImage,
