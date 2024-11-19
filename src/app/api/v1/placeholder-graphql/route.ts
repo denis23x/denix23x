@@ -1,72 +1,93 @@
-import { ApolloServer } from "@apollo/server";
+import type { demoUser, demoPost, demoComment } from "@prisma/client";
+import { ApolloServer, BaseContext } from "@apollo/server";
 import { startServerAndCreateNextHandler } from "@as-integrations/next";
-import { parseResolveInfo } from "graphql-parse-resolve-info";
+import { FieldsByTypeName, parseResolveInfo, ResolveTree } from "graphql-parse-resolve-info";
 import { query } from "@/lib/database";
 import { GraphQLResolveInfo } from "graphql/type";
-
-type User = {
-	id: number;
-	name: string;
-	email: string;
-};
+import { NextRequest } from "next/server";
 
 // GraphQL type definitions
-const typeDefs = `#graphql
+const typeDefs: string = `#graphql
+  type Post {
+    id: ID!
+    title: String!
+    description: String!
+    cover: String!
+    tags: String!
+    createdAt: String!
+    updatedAt: String!
+    user: User!
+    comments: [Comment!]!
+  }
+
+  type Comment {
+    id: ID!
+    message: String!
+    rating: String!
+    createdAt: String!
+    updatedAt: String!
+    user: User!
+    post: Post!
+  }
+
   type User {
     id: ID!
+    avatar: String!
     name: String!
+    bio: String!
     email: String!
+    createdAt: String!
+    updatedAt: String!
+    posts: [Post!]!
+    comments: [Comment!]!
   }
 
   type Query {
     users: [User!]!
-  }
-
-  type Mutation {
-    createUser(name: String!, email: String!): User!
+    posts: [Post!]!
+    comments: [Comment!]!
   }
 `;
 
-// GraphQL resolvers
 const resolvers = {
 	Query: {
-		users: async (_: unknown, __: unknown, ___: unknown, info: GraphQLResolveInfo): Promise<User[]> => {
-			// Parse requested fields
-			const resolveInfo = parseResolveInfo(info);
-			const fields = resolveInfo?.fieldsByTypeName?.User || {};
+		users: async (_: unknown, __: unknown, ___: unknown, info: GraphQLResolveInfo): Promise<demoUser[]> => {
+			const resolveInfo: ResolveTree | FieldsByTypeName | null | undefined = parseResolveInfo(info);
+			const fields: ResolveTree | { [k: string]: ResolveTree } = resolveInfo?.fieldsByTypeName?.User || {};
+			const req = `SELECT ${Object.keys(fields).join(", ") || "*"} FROM "demoUser"`;
 
-			console.log(info);
-
-			// Determine fields to select
-			const selectFields = Object.keys(fields).join(", ") || "*";
-
-			// Query the database for users
-			const result = await query(`SELECT ${selectFields} FROM "demoUser"`);
-			return result.rows;
+			return (await query(req)).rows;
 		},
-	},
-	Mutation: {
-		createUser: async (_: unknown, { name, email }: { name: string; email: string }): Promise<User> => {
-			const result = await query('INSERT INTO "User" (name, email) VALUES ($1, $2) RETURNING *', [name, email]);
-			return result.rows[0];
+		posts: async (_: unknown, __: unknown, ___: unknown, info: GraphQLResolveInfo): Promise<demoPost[]> => {
+			const resolveInfo: ResolveTree | FieldsByTypeName | null | undefined = parseResolveInfo(info);
+			const fields: ResolveTree | { [k: string]: ResolveTree } = resolveInfo?.fieldsByTypeName?.Post || {};
+			const req = `SELECT ${Object.keys(fields).join(", ") || "*"} FROM "demoPost"`;
+
+			return (await query(req)).rows;
+		},
+		comments: async (_: unknown, __: unknown, ___: unknown, info: GraphQLResolveInfo): Promise<demoComment[]> => {
+			const resolveInfo: ResolveTree | FieldsByTypeName | null | undefined = parseResolveInfo(info);
+			const fields: ResolveTree | { [k: string]: ResolveTree } = resolveInfo?.fieldsByTypeName?.Comment || {};
+			const req = `SELECT ${Object.keys(fields).join(", ") || "*"} FROM "demoComment"`;
+
+			return (await query(req)).rows;
 		},
 	},
 };
 
 // Initialize Apollo Server
-const apolloServer = new ApolloServer({
+const apolloServer: ApolloServer<BaseContext> = new ApolloServer({
 	typeDefs,
 	resolvers,
 });
 
 // Start Apollo Server
-const handler = startServerAndCreateNextHandler(apolloServer);
+const apolloServerHandler = startServerAndCreateNextHandler(apolloServer);
 
-// Wrapper for GET and POST routes to make them compatible with Next.js
-export async function GET(request: Request) {
-	return handler(request);
+export async function GET(req: NextRequest) {
+	return apolloServerHandler(req);
 }
 
-export async function POST(request: Request) {
-	return handler(request);
+export async function POST(req: NextRequest) {
+	return apolloServerHandler(req);
 }
