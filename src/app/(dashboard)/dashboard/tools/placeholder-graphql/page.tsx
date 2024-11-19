@@ -40,14 +40,14 @@ export default async function Page() {
 					rel={"nofollow tag"}
 				>
 					<Safari
-						url="swagger/docs"
+						url="apollo/server"
 						className="size-full object-top dark:hidden block"
-						src={"/dashboard/tools/placeholder-api/swagger.webp"}
+						src={"/dashboard/tools/placeholder-graphql/apollo.png"}
 					/>
 					<Safari
-						url="swagger/docs"
+						url="apollo/server"
 						className="size-full object-top hidden dark:block"
-						src={"/dashboard/tools/placeholder-api/swagger-dark.webp"}
+						src={"/dashboard/tools/placeholder-graphql/apollo-dark.png"}
 					/>
 				</Link>
 				<Link
