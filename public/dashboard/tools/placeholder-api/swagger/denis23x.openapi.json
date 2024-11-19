@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "version": "1.0.0",
-    "description": "This API provides access to a collection of posts, users, and comments, allowing clients to perform CRUD operations.\n\n- **Posts**: Retrieve post details, search for post, and view posts.\n- **Users**: Manage users, view user profiles.\n- **Comments**: Add, view, update, or delete comments for posts.",
+    "description": "This API provides access to a collection of posts, users, and comments, allowing clients to perform CRUD operations.\n\n**The content will be moderated using OpenAI's advanced moderation tools to ensure compliance with safety and ethical guidelines.**\n\n- **Posts**: Retrieve post details, search for post, and view posts.\n- **Users**: Manage users, view user profiles.\n- **Comments**: Add, view, update, or delete comments for posts.",
     "title": "Placeholder API",
     "contact": {
       "email": "denix23x@gmail.com"
@@ -375,6 +375,38 @@
                         }
                       },
                       "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "422": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "ModerationError",
+                        "message": "Content did not pass AI moderation"
+                      },
+                      "status": 422
                     }
                   }
                 }
@@ -879,6 +911,38 @@
             },
             "headers": {}
           },
+          "422": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "ModerationError",
+                        "message": "Content did not pass AI moderation"
+                      },
+                      "status": 422
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
           "500": {
             "description": "",
             "content": {
@@ -1278,6 +1342,38 @@
                         }
                       },
                       "status": 409
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "422": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "ModerationError",
+                        "message": "Content did not pass AI moderation"
+                      },
+                      "status": 422
                     }
                   }
                 }
@@ -1802,6 +1898,38 @@
             },
             "headers": {}
           },
+          "422": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "ModerationError",
+                        "message": "Content did not pass AI moderation"
+                      },
+                      "status": 422
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
           "500": {
             "description": "",
             "content": {
@@ -2169,6 +2297,38 @@
                         }
                       },
                       "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "422": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "ModerationError",
+                        "message": "Content did not pass AI moderation"
+                      },
+                      "status": 422
                     }
                   }
                 }
@@ -2639,6 +2799,38 @@
                         }
                       },
                       "status": 404
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {}
+          },
+          "422": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "1": {
+                    "summary": "Exception",
+                    "value": {
+                      "error": {
+                        "name": "ModerationError",
+                        "message": "Content did not pass AI moderation"
+                      },
+                      "status": 422
                     }
                   }
                 }

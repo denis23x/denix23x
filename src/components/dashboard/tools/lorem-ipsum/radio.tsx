@@ -10,16 +10,34 @@ export default function Radio() {
 	return (
 		<RadioGroup className={"gap-4"} defaultValue="generate-sentences" onValueChange={setLoremGenerate}>
 			<div className="flex items-center space-x-2">
+				<RadioGroupItem value="generate-slug" id="generate-slug" />
+				<Label className={"cursor-pointer"} htmlFor="generate-slug">
+					Generate Slug
+				</Label>
+			</div>
+			<div className="flex items-center space-x-2">
 				<RadioGroupItem value="generate-words" id="generate-words" />
-				<Label htmlFor="generate-words">Generate Words</Label>
+				<Label className={"cursor-pointer"} htmlFor="generate-words">
+					Generate Words
+				</Label>
 			</div>
 			<div className="flex items-center space-x-2">
 				<RadioGroupItem value="generate-sentences" id="generate-sentences" />
-				<Label htmlFor="generate-sentences">Generate Sentences</Label>
+				<Label className={"cursor-pointer"} htmlFor="generate-sentences">
+					Generate Sentences
+				</Label>
 			</div>
 			<div className="flex items-center space-x-2">
 				<RadioGroupItem value="generate-paragraphs" id="generate-paragraphs" />
-				<Label htmlFor="generate-paragraphs">Generate Paragraphs</Label>
+				<Label className={"cursor-pointer"} htmlFor="generate-paragraphs">
+					Generate Paragraphs
+				</Label>
+			</div>
+			<div className="flex items-center space-x-2">
+				<RadioGroupItem value="generate-lines" id="generate-lines" />
+				<Label className={"cursor-pointer"} htmlFor="generate-lines">
+					Generate Lines
+				</Label>
 			</div>
 		</RadioGroup>
 	);

@@ -5,35 +5,30 @@ import { Button } from "@/components/ui/button";
 import { Scroll } from "lucide-react";
 import { Textarea as Textarea1 } from "@/components/ui/textarea";
 import { handleCopy } from "@/lib/browser";
-import { LoremIpsum } from "lorem-ipsum";
 import { useEffect } from "react";
+import { faker } from "@faker-js/faker/locale/en";
 import useStore from "@/stores/lorem-ipsum.store";
 
 export default function Textarea() {
 	const { loremCount, loremGenerate, loremIpsum, setLoremIpsum } = useStore();
 
-	const lorem: LoremIpsum = new LoremIpsum({
-		sentencesPerParagraph: {
-			max: 8,
-			min: 4,
-		},
-		wordsPerSentence: {
-			max: 16,
-			min: 4,
-		},
-	});
-
 	useEffect(() => {
 		const generate = (count: number): string => {
 			switch (loremGenerate) {
+				case "generate-slug": {
+					return faker.lorem.slug(count);
+				}
 				case "generate-words": {
-					return lorem.generateWords(count);
+					return faker.lorem.words(count);
 				}
 				case "generate-sentences": {
-					return lorem.generateSentences(count);
+					return faker.lorem.sentences(count);
 				}
 				case "generate-paragraphs": {
-					return lorem.generateParagraphs(count);
+					return faker.lorem.paragraphs(count);
+				}
+				case "generate-lines": {
+					return faker.lorem.lines(count);
 				}
 				default: {
 					throw new Error("Invalid generate context specified");
