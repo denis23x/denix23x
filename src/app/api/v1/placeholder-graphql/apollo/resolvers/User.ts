@@ -4,11 +4,11 @@ import { GraphQLResolveInfo } from "graphql/type";
 import { query } from "@/lib/database";
 import { getSelect as select, getInsert as insert, getSet as set } from "../helpers/getters";
 
-type CreateUserInput = {
+type CreateUser = {
 	input: demoUser;
 };
 
-type UpdateUserInput = {
+type UpdateUser = {
 	input: Partial<demoUser>;
 };
 
@@ -31,10 +31,10 @@ export const UserResolvers = {
 		},
 	},
 	Mutation: {
-		createUser: async (_: unknown, args: CreateUserInput,  ___: unknown, info: GraphQLResolveInfo) => {
+		createUser: async (_: unknown, args: CreateUser,  ___: unknown, info: GraphQLResolveInfo) => {
 			return await query(`INSERT INTO "demoUser" ${insert<demoUser>(args.input)} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
 		},
-		updateUser: async (_: unknown, args: Id & UpdateUserInput, ___: unknown, info: GraphQLResolveInfo) => {
+		updateUser: async (_: unknown, args: Id & UpdateUser, ___: unknown, info: GraphQLResolveInfo) => {
 			return await query(`UPDATE "demoUser" SET ${set<demoUser>(args.input)}, "updatedAt" = NOW() WHERE "id" = ${args.id} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
 		},
 		deleteUser: async (_: unknown, args: Id, ___: unknown, info: GraphQLResolveInfo) => {

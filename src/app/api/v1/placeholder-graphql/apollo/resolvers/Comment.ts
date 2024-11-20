@@ -1,16 +1,16 @@
 import type { demoUser, demoPost, demoComment } from "@prisma/client";
-// import type { Id } from "../types/id";
+import type { Id } from "../types/id";
 import { GraphQLResolveInfo } from "graphql/type";
 import { query } from "@/lib/database";
-import { getSelect as select } from "../helpers/getters";
+import { getInsert as insert, getSelect as select, getSet as set } from "../helpers/getters";
 
-// type CreateCommentInput = {
-// 	input: demoComment;
-// };
-//
-// type UpdateCommentInput = {
-// 	input: Partial<demoComment>;
-// };
+type CreateComment = {
+	input: demoComment;
+};
+
+type UpdateComment = {
+	input: Partial<demoComment>;
+};
 
 // prettier-ignore
 export const CommentResolvers = {
@@ -31,14 +31,14 @@ export const CommentResolvers = {
 		},
 	},
 	Mutation: {
-		// createComment: async (_: unknown, args: CreateCommentInput, ___: unknown, info: GraphQLResolveInfo) => {
-		// 	return {};
-		// },
-		// updateComment: async (_: unknown, args: Id & UpdateCommentInput, ___: unknown, info: GraphQLResolveInfo) => {
-		// 	return {};
-		// },
-		// deleteComment: async (_: unknown, args: Id, ___: unknown, info: GraphQLResolveInfo) => {
-		// 	return {};
-		// },
+		createComment: async (_: unknown, args: CreateComment, ___: unknown, info: GraphQLResolveInfo) => {
+			return await query(`INSERT INTO "demoComment" ${insert<demoComment>(args.input)} RETURNING ${select(info, "Comment")};`).then(r => r.rows.shift());
+		},
+		updateComment: async (_: unknown, args: Id & UpdateComment, ___: unknown, info: GraphQLResolveInfo) => {
+			return await query(`UPDATE "demoComment" SET ${set<demoComment>(args.input)}, "updatedAt" = NOW() WHERE "id" = ${args.id} RETURNING ${select(info, "Comment")};`).then(r => r.rows.shift());
+		},
+		deleteComment: async (_: unknown, args: Id, ___: unknown, info: GraphQLResolveInfo) => {
+			return await query(`DELETE FROM "demoComment" WHERE "id" = ${args.id} RETURNING ${select(info, "Comment")};`).then(r => r.rows.shift());
+		},
 	},
 };

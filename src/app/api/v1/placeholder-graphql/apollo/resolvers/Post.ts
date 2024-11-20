@@ -1,16 +1,16 @@
 import type { demoUser, demoPost, demoComment } from "@prisma/client";
-// import type { Id } from "../types/id";
+import type { Id } from "../types/id";
 import { GraphQLResolveInfo } from "graphql/type";
 import { query } from "@/lib/database";
-import { getSelect as select } from "../helpers/getters";
+import { getInsert as insert, getSelect as select, getSet as set } from "../helpers/getters";
 
-// type CreatePostInput = {
-// 	input: demoPost;
-// };
-//
-// type UpdatePostInput = {
-// 	input: Partial<demoPost>;
-// };
+type CreatePost = {
+	input: demoPost;
+};
+
+type UpdatePost = {
+	input: Partial<demoPost>;
+};
 
 // prettier-ignore
 export const PostResolvers = {
@@ -31,14 +31,14 @@ export const PostResolvers = {
 		},
 	},
 	Mutation: {
-		// createPost: async (_: unknown, args: CreatePostInput,  ___: unknown, info: GraphQLResolveInfo) => {
-		// 	return {};
-		// },
-		// updatePost: async (_: unknown, args: Id & UpdatePostInput, ___: unknown, info: GraphQLResolveInfo) => {
-		// 	return {};
-		// },
-		// deletePost: async (_: unknown, args: Id, ___: unknown, info: GraphQLResolveInfo) => {
-		// 	return {};
-		// },
+		createPost: async (_: unknown, args: CreatePost,  ___: unknown, info: GraphQLResolveInfo) => {
+			return await query(`INSERT INTO "demoPost" ${insert<demoPost>(args.input)} RETURNING ${select(info, "Post")};`).then(r => r.rows.shift());
+		},
+		updatePost: async (_: unknown, args: Id & UpdatePost, ___: unknown, info: GraphQLResolveInfo) => {
+			return await query(`UPDATE "demoPost" SET ${set<demoPost>(args.input)}, "updatedAt" = NOW() WHERE "id" = ${args.id} RETURNING ${select(info, "Post")};`).then(r => r.rows.shift());
+		},
+		deletePost: async (_: unknown, args: Id, ___: unknown, info: GraphQLResolveInfo) => {
+			return await query(`DELETE FROM "demoPost" WHERE "id" = ${args.id} RETURNING ${select(info, "Post")};`).then(r => r.rows.shift());
+		},
 	}
 }

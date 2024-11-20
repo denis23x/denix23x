@@ -14,9 +14,14 @@ const apolloServer: ApolloServer<BaseContext> = new ApolloServer({
 	typeDefs,
 	resolvers: {
 		Query,
-		...CommentResolvers,
-		...PostResolvers,
-		...UserResolvers,
+		Comment: CommentResolvers.Comment,
+		Post: PostResolvers.Post,
+		User: UserResolvers.User,
+		Mutation: {
+			...CommentResolvers.Mutation,
+			...PostResolvers.Mutation,
+			...UserResolvers.Mutation,
+		},
 	},
 	validationRules: [depthLimit(3)],
 	introspection: true,

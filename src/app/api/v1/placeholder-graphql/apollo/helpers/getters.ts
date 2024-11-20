@@ -22,6 +22,8 @@ export const getSet = <T>(input: Partial<T>) => {
 	Object.entries(input).forEach(([key, value]) => {
 		if (["avatar", "cover"].includes(key)) {
 			fields.push(`"${key}" = ${value ? `'${value}'` : `NULL`}`);
+		} else if (key === "tags") {
+			fields.push(`"${key}" = ARRAY[${(value as string[]).map(t => `'${t}'`).join(", ")}]`);
 		} else {
 			fields.push(`"${key}" = '${value}'`);
 		}
@@ -39,6 +41,8 @@ export const getInsert = <T extends Record<string, unknown>>(input: T) => {
 
 		if (["avatar", "cover"].includes(key)) {
 			values.push(`${value ? `'${value}'` : `NULL`}`);
+		} else if (key === "tags") {
+			values.push(`ARRAY[${(value as string[]).map(t => `'${t}'`).join(", ")}]`);
 		} else {
 			values.push(`'${value}'`);
 		}
