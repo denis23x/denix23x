@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
 		rules: {
 			userAgent: "*",
 			allow: "/",
-			disallow: ["/dashboard/tools/placeholder-api/swagger", "/dashboard/tools/placeholder-api/demo"],
+			disallow: ["/dashboard/tools/placeholder-api/swagger", "/dashboard/tools/placeholder-api/demo", "/api*"],
 		},
 		sitemap: "https://denix23x.vercel.app/sitemap.xml",
 	};
