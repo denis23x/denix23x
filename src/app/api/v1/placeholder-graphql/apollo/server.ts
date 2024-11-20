@@ -19,6 +19,7 @@ const apolloServer: ApolloServer<BaseContext> = new ApolloServer({
 		...UserResolvers,
 	},
 	validationRules: [depthLimit(3)],
+	introspection: true,
 	plugins: [
 		ApolloServerPluginLandingPageLocalDefault({
 			embed: {
