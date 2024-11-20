@@ -35,7 +35,7 @@ export default async function Page() {
 			<div className="relative flex flex-col md:flex-row gap-4">
 				<Link
 					className="relative max-w-1/2"
-					href={"/api/v1/placeholder-graphql"}
+					href={"/dashboard/tools/placeholder-graphql/apollo"}
 					target={"_blank"}
 					rel={"nofollow tag"}
 				>
