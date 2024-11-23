@@ -1,3 +1,3 @@
 export type Id = {
-	id: number;
+	id: string;
 };

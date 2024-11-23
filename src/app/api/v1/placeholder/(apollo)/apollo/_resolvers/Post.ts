@@ -1,5 +1,4 @@
 import type { demoUser, demoPost, demoComment } from "@prisma/client";
-import type { Id } from "@/app/api/v1/placeholder/(apollo)/apollo/_server/types/id";
 import { GraphQLResolveInfo } from "graphql/type";
 import { query } from "@/lib/database";
 import {
@@ -7,6 +6,11 @@ import {
 	getSelect as select,
 	getSet as set,
 } from "@/app/api/v1/placeholder/(apollo)/apollo/_helpers/getters";
+import { postSchema } from "@/app/api/v1/placeholder/_schemas/postsSchema";
+import { GraphQLError } from "graphql/error";
+import { z } from "zod";
+import { idSchema } from "@/app/api/v1/placeholder/_schemas/IdSchema";
+import type { Id } from "@/app/api/v1/placeholder/_types/id";
 
 type CreatePost = {
 	input: demoPost;
@@ -36,13 +40,37 @@ export const PostResolvers = {
 	},
 	Mutation: {
 		createPost: async (_: unknown, args: CreatePost,  ___: unknown, info: GraphQLResolveInfo) => {
-			return await query(`INSERT INTO "demoPost" ${insert<demoPost>(args.input)} RETURNING ${select(info, "Post")};`).then(r => r.rows.shift());
+			try {
+				return await query(`INSERT INTO "demoPost" ${insert<z.infer<typeof postSchema>>(postSchema.parse(args.input))} RETURNING ${select(info, "Post")};`).then(r => r.rows.shift());
+			} catch (error: unknown) {
+				throw new GraphQLError('createPost error', {
+					extensions: {
+						error,
+					},
+				});
+			}
 		},
 		updatePost: async (_: unknown, args: Id & UpdatePost, ___: unknown, info: GraphQLResolveInfo) => {
-			return await query(`UPDATE "demoPost" SET ${set<demoPost>(args.input)}, "updatedAt" = NOW() WHERE "id" = ${args.id} RETURNING ${select(info, "Post")};`).then(r => r.rows.shift());
+			try {
+				return await query(`UPDATE "demoPost" SET ${set<z.infer<typeof postSchema>>(postSchema.omit({ userId: true }).partial().parse(args.input))}, "updatedAt" = NOW() WHERE "id" = ${idSchema.parse(args).id} RETURNING ${select(info, "Post")};`).then(r => r.rows.shift());
+			} catch (error: unknown) {
+				throw new GraphQLError('updatePost error', {
+					extensions: {
+						error,
+					},
+				});
+			}
 		},
 		deletePost: async (_: unknown, args: Id, ___: unknown, info: GraphQLResolveInfo) => {
-			return await query(`DELETE FROM "demoPost" WHERE "id" = ${args.id} RETURNING ${select(info, "Post")};`).then(r => r.rows.shift());
+			try {
+				return await query(`DELETE FROM "demoPost" WHERE "id" = ${idSchema.parse(args).id} RETURNING ${select(info, "Post")};`).then(r => r.rows.shift());
+			} catch (error: unknown) {
+				throw new GraphQLError('deletePost error', {
+					extensions: {
+						error,
+					},
+				});
+			}
 		},
 	}
 }

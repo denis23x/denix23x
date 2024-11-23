@@ -102,8 +102,8 @@ export default function Safari({ src, url, width = 1203, height = 753, ...props 
 				</g>
 				<image
 					href={src}
-					width="100%"
-					height="100%"
+					width="1200"
+					height="700"
 					x="1"
 					y="52"
 					preserveAspectRatio="xMidYMin slice"

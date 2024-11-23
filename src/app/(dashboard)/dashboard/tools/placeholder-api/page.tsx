@@ -18,7 +18,7 @@ export default async function Page() {
 			<p className={"leading-7"}>
 				This tool provides a seamless way to prototype and test database queries using <strong>Swagger</strong> or{" "}
 				<strong>Apollo</strong>. Designed for developers, it offers a ready-to-use environment with mock data and
-				predefined endpoints, enabling quick front-end development and testing workflows. Whether you&#39;re simulating
+				predefined endpoints, enabling quick front-end development and testing workflows. Whether you&#39;re simulating{" "}
 				<strong>API</strong> responses or exploring data structures, this tool makes it easy to prototype without
 				requiring a live backend.
 			</p>
@@ -33,9 +33,9 @@ export default async function Page() {
 					</span>
 				</AlertDescription>
 			</Alert>
-			<div className="relative flex flex-col md:flex-row gap-4">
+			<div className="relative grid md:grid-cols-3 gap-4">
 				<Link
-					className="relative max-w-1/2"
+					className="relative col-span-1"
 					href={"/dashboard/tools/placeholder-api/apollo"}
 					target={"_blank"}
 					rel={"nofollow tag"}
@@ -43,16 +43,16 @@ export default async function Page() {
 					<Safari
 						url="apollo/sandbox"
 						className="size-full object-top dark:hidden block"
-						src={"/dashboard/tools/placeholder-api/apollo.png"}
+						src={"/dashboard/tools/placeholder-api/apollo.webp"}
 					/>
 					<Safari
 						url="apollo/sandbox"
 						className="size-full object-top hidden dark:block"
-						src={"/dashboard/tools/placeholder-graphql/apollo-dark.png"}
+						src={"/dashboard/tools/placeholder-api/apollo-dark.webp"}
 					/>
 				</Link>
 				<Link
-					className="relative max-w-1/2"
+					className="relative col-span-1"
 					href={"/dashboard/tools/placeholder-api/swagger"}
 					target={"_blank"}
 					rel={"nofollow tag"}
@@ -69,7 +69,7 @@ export default async function Page() {
 					/>
 				</Link>
 				<Link
-					className="relative max-w-1/2"
+					className="relative col-span-1"
 					href={"/dashboard/tools/placeholder-api/demo"}
 					target={"_blank"}
 					rel={"nofollow tag"}

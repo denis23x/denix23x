@@ -1,5 +1,4 @@
 import type { demoUser, demoPost, demoComment } from "@prisma/client";
-import type { Id } from "@/app/api/v1/placeholder/(apollo)/apollo/_server/types/id";
 import { GraphQLResolveInfo } from "graphql/type";
 import { query } from "@/lib/database";
 import {
@@ -7,6 +6,11 @@ import {
 	getInsert as insert,
 	getSet as set,
 } from "@/app/api/v1/placeholder/(apollo)/apollo/_helpers/getters";
+import { userSchema } from "@/app/api/v1/placeholder/_schemas/usersSchema";
+import { GraphQLError } from "graphql/error";
+import { z } from "zod";
+import { idSchema } from "@/app/api/v1/placeholder/_schemas/IdSchema";
+import type { Id } from "@/app/api/v1/placeholder/_types/id";
 
 type CreateUser = {
 	input: demoUser;
@@ -36,13 +40,37 @@ export const UserResolvers = {
 	},
 	Mutation: {
 		createUser: async (_: unknown, args: CreateUser,  ___: unknown, info: GraphQLResolveInfo) => {
-			return await query(`INSERT INTO "demoUser" ${insert<demoUser>(args.input)} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
+			try {
+				return await query(`INSERT INTO "demoUser" ${insert<z.infer<typeof userSchema>>(userSchema.parse(args.input))} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
+			} catch (error: unknown) {
+				throw new GraphQLError('createUser error', {
+					extensions: {
+						error,
+					},
+				});
+			}
 		},
 		updateUser: async (_: unknown, args: Id & UpdateUser, ___: unknown, info: GraphQLResolveInfo) => {
-			return await query(`UPDATE "demoUser" SET ${set<demoUser>(args.input)}, "updatedAt" = NOW() WHERE "id" = ${args.id} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
+			try {
+				return await query(`UPDATE "demoUser" SET ${set<z.infer<typeof userSchema>>(userSchema.partial().parse(args.input))}, "updatedAt" = NOW() WHERE "id" = ${idSchema.parse(args).id} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
+			} catch (error: unknown) {
+				throw new GraphQLError('updateUser error', {
+					extensions: {
+						error,
+					},
+				});
+			}
 		},
 		deleteUser: async (_: unknown, args: Id, ___: unknown, info: GraphQLResolveInfo) => {
-			return await query(`DELETE FROM "demoUser" WHERE "id" = ${args.id} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
+			try {
+				return await query(`DELETE FROM "demoUser" WHERE "id" = ${idSchema.parse(args).id} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
+			} catch (error: unknown) {
+				throw new GraphQLError('deleteUser error', {
+					extensions: {
+						error,
+					},
+				});
+			}
 		},
 	}
 };

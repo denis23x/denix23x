@@ -1,9 +1,9 @@
 import type { demoUser, demoPost, demoComment } from "@prisma/client";
-import type { Id } from "@/app/api/v1/placeholder/(apollo)/apollo/_server/types/id";
-import type { List } from "@/app/api/v1/placeholder/(apollo)/apollo/_server/types/list";
 import { GraphQLResolveInfo } from "graphql/type";
 import { query } from "@/lib/database";
 import { getSelect as select, getLike as like } from "@/app/api/v1/placeholder/(apollo)/apollo/_helpers/getters";
+import type { Id } from "@/app/api/v1/placeholder/_types/id";
+import type { List } from "@/app/api/v1/placeholder/_types/list";
 
 // prettier-ignore
 export const Query = {

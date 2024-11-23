@@ -1,6 +1,6 @@
-import type { List } from "@/app/api/v1/placeholder/(apollo)/apollo/_server/types/list";
 import type { GraphQLResolveInfo } from "graphql/type";
 import { parseResolveInfo } from "graphql-parse-resolve-info";
+import type { List } from "@/app/api/v1/placeholder/_types/list";
 
 export const getSelect = (info: GraphQLResolveInfo, name: string): string => {
 	const p = parseResolveInfo(info);

@@ -1,5 +1,4 @@
 import type { demoUser, demoPost, demoComment } from "@prisma/client";
-import type { Id } from "@/app/api/v1/placeholder/(apollo)/apollo/_server/types/id";
 import { GraphQLResolveInfo } from "graphql/type";
 import { query } from "@/lib/database";
 import {
@@ -7,6 +6,11 @@ import {
 	getSelect as select,
 	getSet as set,
 } from "@/app/api/v1/placeholder/(apollo)/apollo/_helpers/getters";
+import { commentSchema } from "@/app/api/v1/placeholder/_schemas/commentSchema";
+import { GraphQLError } from "graphql/error";
+import { z } from "zod";
+import { idSchema } from "@/app/api/v1/placeholder/_schemas/IdSchema";
+import type { Id } from "@/app/api/v1/placeholder/_types/id";
 
 type CreateComment = {
 	input: demoComment;
@@ -36,13 +40,37 @@ export const CommentResolvers = {
 	},
 	Mutation: {
 		createComment: async (_: unknown, args: CreateComment, ___: unknown, info: GraphQLResolveInfo) => {
-			return await query(`INSERT INTO "demoComment" ${insert<demoComment>(args.input)} RETURNING ${select(info, "Comment")};`).then(r => r.rows.shift());
+			try {
+				return await query(`INSERT INTO "demoComment" ${insert<z.infer<typeof commentSchema>>(commentSchema.parse(args.input))} RETURNING ${select(info, "Comment")};`).then(r => r.rows.shift());
+			} catch (error: unknown) {
+				throw new GraphQLError('createComment error', {
+					extensions: {
+						error,
+					},
+				});
+			}
 		},
 		updateComment: async (_: unknown, args: Id & UpdateComment, ___: unknown, info: GraphQLResolveInfo) => {
-			return await query(`UPDATE "demoComment" SET ${set<demoComment>(args.input)}, "updatedAt" = NOW() WHERE "id" = ${args.id} RETURNING ${select(info, "Comment")};`).then(r => r.rows.shift());
+			try {
+				return await query(`UPDATE "demoComment" SET ${set<z.infer<typeof commentSchema>>(commentSchema.omit({ userId: true, postId: true }).partial().parse(args.input))}, "updatedAt" = NOW() WHERE "id" = ${idSchema.parse(args).id} RETURNING ${select(info, "Comment")};`).then(r => r.rows.shift());
+			} catch (error: unknown) {
+				throw new GraphQLError('updateComment error', {
+					extensions: {
+						error,
+					},
+				});
+			}
 		},
 		deleteComment: async (_: unknown, args: Id, ___: unknown, info: GraphQLResolveInfo) => {
-			return await query(`DELETE FROM "demoComment" WHERE "id" = ${args.id} RETURNING ${select(info, "Comment")};`).then(r => r.rows.shift());
+			try {
+				return await query(`DELETE FROM "demoComment" WHERE "id" = ${idSchema.parse(args).id} RETURNING ${select(info, "Comment")};`).then(r => r.rows.shift());
+			} catch (error: unknown) {
+				throw new GraphQLError('deleteComment error', {
+					extensions: {
+						error,
+					},
+				});
+			}
 		},
 	},
 };
