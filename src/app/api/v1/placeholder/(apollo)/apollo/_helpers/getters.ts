@@ -1,4 +1,4 @@
-import type { List } from "../types/list";
+import type { List } from "@/app/api/v1/placeholder/(apollo)/apollo/_server/types/list";
 import type { GraphQLResolveInfo } from "graphql/type";
 import { parseResolveInfo } from "graphql-parse-resolve-info";
 

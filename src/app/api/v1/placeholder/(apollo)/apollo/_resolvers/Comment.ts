@@ -1,8 +1,12 @@
 import type { demoUser, demoPost, demoComment } from "@prisma/client";
-import type { Id } from "../types/id";
+import type { Id } from "@/app/api/v1/placeholder/(apollo)/apollo/_server/types/id";
 import { GraphQLResolveInfo } from "graphql/type";
 import { query } from "@/lib/database";
-import { getInsert as insert, getSelect as select, getSet as set } from "../helpers/getters";
+import {
+	getInsert as insert,
+	getSelect as select,
+	getSet as set,
+} from "@/app/api/v1/placeholder/(apollo)/apollo/_helpers/getters";
 
 type CreateComment = {
 	input: demoComment;

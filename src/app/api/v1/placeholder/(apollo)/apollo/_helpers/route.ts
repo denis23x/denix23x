@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { apolloServerHandler } from "./apollo/server";
+import { apolloServerHandler } from "../_server/server";
 
 export async function GET(req: NextRequest) {
 	return apolloServerHandler(req);

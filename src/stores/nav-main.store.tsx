@@ -39,14 +39,7 @@ export const navMainPlaceholderApi = {
 	title: "Placeholder API",
 	url: "/dashboard/tools/placeholder-api",
 	description:
-		"Mock backend API endpoints easily with predefined, free-to-use endpoints for testing. Perfect for front-end developers needing simulated responses without a live backend.",
-};
-
-export const navMainPlaceholderGraphQL = {
-	title: "Placeholder GraphQL",
-	url: "/dashboard/tools/placeholder-graphql",
-	description:
-		"Test and prototype GraphQL APIs effortlessly with this interactive tool. Explore queries, visualize responses, and debug seamlessly—no server setup needed.",
+		"Easily prototype and test database queries with Swagger or Apollo. Use mock data and predefined endpoints for fast front-end development—no live backend required!",
 };
 
 export const navMainPlaceholderImage = {
@@ -108,7 +101,6 @@ export const navMainStore = [
 			navMainLoremIpsum,
 			navMainMarkdownRenderer,
 			navMainPlaceholderApi,
-			navMainPlaceholderGraphQL,
 			navMainPlaceholderImage,
 			navMainSvgToCssEncoder,
 			navMainThumbHashImage,

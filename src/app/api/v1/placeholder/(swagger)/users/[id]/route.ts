@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { userSchema } from "@/app/api/v1/placeholder/users/schema";
 import { z } from "zod";
 import { Prisma } from "@prisma/client";
 import { handleErr } from "@/lib/server";
 import { moderate, ModerationError } from "@/lib/openai";
 import type { Moderation } from "openai/resources/moderations";
+import { userSchema } from "@/app/api/v1/placeholder/_schemas/usersSchema";
 
 type Id = {
 	id: string;

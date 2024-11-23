@@ -21,6 +21,23 @@ interface StoreState {
 const cards: ExpandableCard[] = [
 	{
 		uid: nanoid(),
+		description: "Sum 41",
+		title: "Does This Look Infected?",
+		src: "/dashboard/misc/playlist/sum-41-does-this-look-infected.webp",
+		link: "https://www.youtube.com/watch?v=AOTjtt9de9A&list=OLAK5uy_k2gRw7pIAyBVzQ6surbdTL8IUs4aBbBmM",
+		blurDataURL:
+			"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAABORJREFUSEtVll1uHUUQhU9Vz4zZAktgBSyAVx6JIiIIvysAJEwEkSIEAqE8BCEFiQhFwVldghM7vvdO/1QXOtVziSP7uOba8nxzqqqrRk5/+NKB8Y0OeAckrgUCQEUgKtAk0IkChEqAq6OrwdzQvKFYQW4Fa8tYy4pDzcgto1qDnN79grcdrD5glFD8EkADpP+DCETyUJcOQ0P1hmp1QCq14lByfObv5fTe5wHy7sORHWESzhQCVUXaHCW6miVcEeQBMlSvKBuITg5lxZ6u2orSCPr5E/dj2myAvAEwupIBEsWUFGlWTDPjSCEmpq+DKILyBiJgVw64KoeArVYgp799HCA6IqA3wCuABogp1AVJUoDmOWEmbNFwpZPDk8Nk1GhtBYeWA/IqU3tcEtYy5PTBrQEyD0ivQC8AikCaQLtiQsKSEuYlYVlGnBaBzCN9XeioxZPvaw7IZd7j5brDy7LHZV0h3z28GaBuhHhAegY8C6QqkilmTAE6mScsJ9QA0RWm0RBMHUG7mnGZDwE5p/IO5/UAufPohrPbWBsjKF8DFUVqCYsTNOGtecLJBppPEpSOJp4EQ8FI3VVdA/Ri3eHfdYdneYfnBH3/mCDfQAPSVwB0VBRTTZh9wokSNL8GsU7LaPOuHcUbDuFoxUWA9nh+HXT3yQ3nGTqmzsORAKtACaKjPmEhaJpwskxRo3lrCKbOpIcjgq621L3Ie/y77vGs7HHOGt07uxkgNgO7LRqBbvJr0EyQJJykCQs7j80w8wBjdN01R1ct47KseJkPOKfKARetQH46+3ADbeeHrV0I2UCWMPeEmZ2nipndFxAZYyg5Gh2x63rFjqCacUFYWXFRM644GX598tEAceRwKjR2m0CrIFHsup4wuWLmwVVB4jhKHISI+rwBsgq6elULLlvBK56t3iD3H98OUAzRgG3npxEimEyRugRock6J46Dl+HFwLjQYMtUb9nRlQ1fGz3RqkAePPt2G6gApx45RA0BY6mwugXL2OYetg2eCTxhzDiN12S2e/uAWAMaD84x1yB8PP3OuA/573MQ1YIRw/Cgh4dahMXipHqDeO1qsCEPxzZV3rDCscKzxAI4Gh/z5+3AUK4Ew/iQsHAxQpLQ7xDpgHd4N3QzWDW1T4U3Bg+vIMlQkRibLDvnr/u03QCIK8Q3LSJd0YVSHm6G3NkDWYMY5R1cdhd0nQBWgqKAqYCIh+fuXW6NGsU+J1uEvEirbIuTkGG56M7i1gB1BI309ALx5DYigqcJU0Al6/OMHY/GNxR3RGV02jfHk/QgxeDgaYvrMe4gpOgJa0msghTy5+76Pmwu6Czo0ormy5jSBHrNwuKIbpi8ia+VUhwk7EGjhhpA0QKLD0T933hsLlhAXtK6h2nktaCYw7qqAkcp9clzFfMGwaPNOkAhaSFFFI1JRo7Nv3419ZBukmqJQTVAar4F2vPdYxVBKOkRGjFLy8BICCUjFUQJjzc++eSdSZ10QkKpYNx2qIldBbePvfCJOhqSOSR0pUewfTgkWne0sqK4oLqFKA+zep1+/7Sw8U1RawloTDjlhH1IcSgpnTCMfnW9D84RNgmnC67mH4ah0CsgRBZWmn361bKCEXCesZcZunbBbGRP26xRw6xpvjdMkWBbFsjASKkh8I2IbsxnohBATZGNEgP4Dn81KD8t5Wq4AAAAASUVORK5CYII=",
+		content: () => {
+			return (
+				<p>
+					Does This Look Infected? is the second studio album by Canadian rock band Sum 41. It was released on November
+					26, 2002.
+				</p>
+			);
+		},
+	},
+	{
+		uid: nanoid(),
 		description: "Linkin Park",
 		title: "Meteora",
 		src: "/dashboard/misc/playlist/linkin-park-meteora.webp",

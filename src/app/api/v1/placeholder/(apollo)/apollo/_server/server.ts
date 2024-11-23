@@ -2,11 +2,11 @@ import { ApolloServer, BaseContext } from "@apollo/server";
 import { startServerAndCreateNextHandler } from "@as-integrations/next";
 import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
 import { typeDefs } from "./typeDefs";
-import { Query } from "./resolvers/Query";
-import { CommentResolvers } from "./resolvers/Comment";
-import { PostResolvers } from "./resolvers/Post";
-import { UserResolvers } from "./resolvers/User";
-import { document, variables } from "./helpers/document";
+import { Query } from "@/app/api/v1/placeholder/(apollo)/apollo/_resolvers/Query";
+import { CommentResolvers } from "@/app/api/v1/placeholder/(apollo)/apollo/_resolvers/Comment";
+import { PostResolvers } from "@/app/api/v1/placeholder/(apollo)/apollo/_resolvers/Post";
+import { UserResolvers } from "@/app/api/v1/placeholder/(apollo)/apollo/_resolvers/User";
+import { document, variables } from "@/app/api/v1/placeholder/(apollo)/apollo/_helpers/document";
 import depthLimit from "graphql-depth-limit";
 
 // Initialize Apollo Server

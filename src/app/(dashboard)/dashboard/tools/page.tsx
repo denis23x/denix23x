@@ -8,7 +8,6 @@ import {
 	navMainLoremIpsum,
 	navMainMarkdownRenderer,
 	navMainPlaceholderApi,
-	navMainPlaceholderGraphQL,
 	navMainPlaceholderImage,
 	navMainSvgToCssEncoder,
 	navMainThumbHashImage,
@@ -58,10 +57,6 @@ const items = [
 	},
 	{
 		...navMainPlaceholderApi,
-		icon: <Code />,
-	},
-	{
-		...navMainPlaceholderGraphQL,
 		icon: <Code />,
 	},
 	{

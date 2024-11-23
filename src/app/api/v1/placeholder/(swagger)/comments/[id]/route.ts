@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
-import { postSchema } from "../schema";
 import { z } from "zod";
 import { handleErr } from "@/lib/server";
 import { moderate, ModerationError } from "@/lib/openai";
 import type { Moderation } from "openai/resources/moderations";
+import { commentSchema } from "@/app/api/v1/placeholder/_schemas/commentSchema";
 
 type Id = {
 	id: string;
@@ -20,7 +20,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<Id> })
 		const { id } = idSchema.parse(await params);
 		const searchParams: URLSearchParams = req.nextUrl.searchParams;
 		const include: string[] = searchParams.getAll("include");
-		const demoPostFindUniqueOrThrowArgs: Prisma.demoPostFindUniqueOrThrowArgs = {
+		const demoCommentFindUniqueOrThrowArgs: Prisma.demoCommentFindUniqueOrThrowArgs = {
 			where: {
 				id,
 			},
@@ -28,15 +28,15 @@ export async function GET(req: NextRequest, { params }: { params: Promise<Id> })
 
 		if (include.length) {
 			include.forEach((i: string) => {
-				demoPostFindUniqueOrThrowArgs.include = {
-					...demoPostFindUniqueOrThrowArgs.include,
+				demoCommentFindUniqueOrThrowArgs.include = {
+					...demoCommentFindUniqueOrThrowArgs.include,
 					[i]: true,
 				};
 			});
 		}
 
 		return NextResponse.json({
-			data: await prisma.demoPost.findUniqueOrThrow(demoPostFindUniqueOrThrowArgs),
+			data: await prisma.demoComment.findUniqueOrThrow(demoCommentFindUniqueOrThrowArgs),
 			status: 200,
 		});
 	} catch (error) {
@@ -47,11 +47,11 @@ export async function GET(req: NextRequest, { params }: { params: Promise<Id> })
 export async function PUT(req: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		const { id } = idSchema.parse(await params);
-		const data = postSchema
-			.omit({ userId: true })
+		const data = commentSchema
+			.omit({ userId: true, postId: true })
 			.partial()
 			.parse(await req.json());
-		const demoPostUpdateArgs: Prisma.demoPostUpdateArgs = {
+		const demoCommentUpdateArgs: Prisma.demoCommentUpdateArgs = {
 			where: {
 				id,
 			},
@@ -63,7 +63,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 		}
 
 		return NextResponse.json({
-			data: await prisma.demoPost.update(demoPostUpdateArgs),
+			data: await prisma.demoComment.update(demoCommentUpdateArgs),
 			status: 200,
 		});
 	} catch (error) {
@@ -74,14 +74,14 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<Id> })
 export async function DELETE(_: NextRequest, { params }: { params: Promise<Id> }) {
 	try {
 		const { id } = idSchema.parse(await params);
-		const demoPostDeleteArgs: Prisma.demoPostDeleteArgs = {
+		const demoCommentDeleteArgs: Prisma.demoCommentDeleteArgs = {
 			where: {
 				id,
 			},
 		};
 
 		return NextResponse.json({
-			data: await prisma.demoPost.delete(demoPostDeleteArgs),
+			data: await prisma.demoComment.delete(demoCommentDeleteArgs),
 			status: 200,
 		});
 	} catch (error) {

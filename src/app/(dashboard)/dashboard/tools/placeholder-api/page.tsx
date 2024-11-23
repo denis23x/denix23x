@@ -16,9 +16,11 @@ export default async function Page() {
 		<div className={"flex flex-1 flex-col gap-4 p-4 pt-0"}>
 			<h1 className={"text-4xl font-extrabold tracking-tight lg:text-5xl"}>Placeholder API</h1>
 			<p className={"leading-7"}>
-				This tool offers a quick and easy way to mock backend <strong>API</strong> endpoints, providing developers with
-				predefined, free-to-use endpoints for testing and prototyping. Ideal for front-end development and testing
-				workflows, it allows you to simulate <strong>API</strong> responses without needing a live backend.
+				This tool provides a seamless way to prototype and test database queries using <strong>Swagger</strong> or{" "}
+				<strong>Apollo</strong>. Designed for developers, it offers a ready-to-use environment with mock data and
+				predefined endpoints, enabling quick front-end development and testing workflows. Whether you&#39;re simulating
+				<strong>API</strong> responses or exploring data structures, this tool makes it easy to prototype without
+				requiring a live backend.
 			</p>
 			<Separator />
 			<Alert variant="destructive">
@@ -32,6 +34,23 @@ export default async function Page() {
 				</AlertDescription>
 			</Alert>
 			<div className="relative flex flex-col md:flex-row gap-4">
+				<Link
+					className="relative max-w-1/2"
+					href={"/dashboard/tools/placeholder-api/apollo"}
+					target={"_blank"}
+					rel={"nofollow tag"}
+				>
+					<Safari
+						url="apollo/sandbox"
+						className="size-full object-top dark:hidden block"
+						src={"/dashboard/tools/placeholder-api/apollo.png"}
+					/>
+					<Safari
+						url="apollo/sandbox"
+						className="size-full object-top hidden dark:block"
+						src={"/dashboard/tools/placeholder-graphql/apollo-dark.png"}
+					/>
+				</Link>
 				<Link
 					className="relative max-w-1/2"
 					href={"/dashboard/tools/placeholder-api/swagger"}

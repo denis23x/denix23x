@@ -1,47 +1,50 @@
 import { NextRequest, NextResponse } from "next/server";
-import { type demoComment, Prisma } from "@prisma/client";
+import { Prisma, type demoPost } from "@prisma/client";
 import type { PageNumberPaginationMeta } from "prisma-extension-pagination";
 import { prisma } from "@/lib/prisma";
-import { commentSchema } from "./schema";
 import { z } from "zod";
 import { handleErr } from "@/lib/server";
 import { moderate, ModerationError } from "@/lib/openai";
 import type { Moderation } from "openai/resources/moderations";
+import { postSchema } from "@/app/api/v1/placeholder/_schemas/postsSchema";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
 	const include: string[] = searchParams.getAll("include");
-	const postId: string | null = searchParams.get("postId");
+	const search: string | null = searchParams.get("search");
 	const userId: string | null = searchParams.get("userId");
 
 	try {
-		const demoCommentFindManyArgs: Prisma.demoCommentFindManyArgs = {};
+		const demoPostFindManyArgs: Prisma.demoPostFindManyArgs = {};
 
 		if (include.length) {
 			include.forEach((i: string) => {
-				demoCommentFindManyArgs.include = {
-					...demoCommentFindManyArgs.include,
+				demoPostFindManyArgs.include = {
+					...demoPostFindManyArgs.include,
 					[i]: true,
 				};
 			});
 		}
 
+		if (search) {
+			demoPostFindManyArgs.where = {
+				...demoPostFindManyArgs.where,
+				title: {
+					contains: search,
+					mode: "insensitive",
+				},
+			};
+		}
+
 		if (userId) {
-			demoCommentFindManyArgs.where = {
-				...demoCommentFindManyArgs.where,
+			demoPostFindManyArgs.where = {
+				...demoPostFindManyArgs.where,
 				userId: z.coerce.number().min(1).parse(userId),
 			};
 		}
 
-		if (postId) {
-			demoCommentFindManyArgs.where = {
-				...demoCommentFindManyArgs.where,
-				postId: z.coerce.number().min(1).parse(postId),
-			};
-		}
-
-		const [comments, meta]: [demoComment[], PageNumberPaginationMeta] = await prisma.demoComment
-			.paginate(demoCommentFindManyArgs)
+		const [posts, meta]: [demoPost[], PageNumberPaginationMeta] = await prisma.demoPost
+			.paginate(demoPostFindManyArgs)
 			.withPages({
 				limit: Number(searchParams.get("pageSize")) || 10,
 				page: Number(searchParams.get("page")) || 1,
@@ -49,7 +52,7 @@ export async function GET(req: NextRequest) {
 			});
 
 		return NextResponse.json({
-			data: comments,
+			data: posts,
 			pagination: meta,
 			status: 200,
 		});
@@ -60,18 +63,13 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
 	try {
-		const { userId, postId, ...data } = commentSchema.parse(await req.json());
-		const demoCommentCreateArgs: Prisma.demoCommentCreateArgs = {
+		const { userId, ...data } = postSchema.parse(await req.json());
+		const demoPostCreateArgs: Prisma.demoPostCreateArgs = {
 			data: {
 				...data,
 				user: {
 					connect: {
 						id: userId,
-					},
-				},
-				post: {
-					connect: {
-						id: postId,
 					},
 				},
 			},
@@ -83,7 +81,7 @@ export async function POST(req: NextRequest) {
 
 		return NextResponse.json(
 			{
-				data: await prisma.demoComment.create(demoCommentCreateArgs),
+				data: await prisma.demoPost.create(demoPostCreateArgs),
 				status: 201,
 			},
 			{

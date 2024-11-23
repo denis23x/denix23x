@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function Page() {
 	return (
 		<div className={"w-full h-screen"}>
-			<iframe src={"/api/v1/placeholder-graphql"} title={"Embedded Website"} className={"w-full h-full border-none"} />
+			<iframe src={"/api/v1/placeholder"} title={"Embedded Website"} className={"w-full h-full border-none"} />
 		</div>
 	);
 }

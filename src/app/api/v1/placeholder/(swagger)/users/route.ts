@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { type demoUser, Prisma } from "@prisma/client";
 import type { PageNumberPaginationMeta } from "prisma-extension-pagination";
 import { prisma } from "@/lib/prisma";
-import { userSchema } from "./schema";
 import { moderate, ModerationError } from "@/lib/openai";
 import type { Moderation } from "openai/resources/moderations";
 import { handleErr } from "@/lib/server";
+import { userSchema } from "@/app/api/v1/placeholder/_schemas/usersSchema";
 
 export async function GET(req: NextRequest) {
 	const searchParams: URLSearchParams = req.nextUrl.searchParams;
