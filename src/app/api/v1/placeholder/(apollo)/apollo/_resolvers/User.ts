@@ -11,6 +11,8 @@ import { GraphQLError } from "graphql/error";
 import { z } from "zod";
 import { idSchema } from "@/app/api/v1/placeholder/_schemas/IdSchema";
 import type { Id } from "@/app/api/v1/placeholder/_types/id";
+import { moderate, ModerationError } from "@/lib/openai";
+import type { Moderation } from "openai/resources/moderations";
 
 type CreateUser = {
 	input: demoUser;
@@ -41,7 +43,13 @@ export const UserResolvers = {
 	Mutation: {
 		createUser: async (_: unknown, args: CreateUser,  ___: unknown, info: GraphQLResolveInfo) => {
 			try {
-				return await query(`INSERT INTO "demoUser" ${insert<z.infer<typeof userSchema>>(userSchema.parse(args.input))} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
+				const data = userSchema.parse(args.input);
+
+				if ((await moderate(data)).results.some((m: Moderation) => m.flagged)) {
+					throw new ModerationError();
+				}
+
+				return await query(`INSERT INTO "demoUser" ${insert<z.infer<typeof userSchema>>(data)} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
 			} catch (error: unknown) {
 				throw new GraphQLError('createUser error', {
 					extensions: {
@@ -52,7 +60,13 @@ export const UserResolvers = {
 		},
 		updateUser: async (_: unknown, args: Id & UpdateUser, ___: unknown, info: GraphQLResolveInfo) => {
 			try {
-				return await query(`UPDATE "demoUser" SET ${set<z.infer<typeof userSchema>>(userSchema.partial().parse(args.input))}, "updatedAt" = NOW() WHERE "id" = ${idSchema.parse(args).id} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
+				const data = userSchema.partial().parse(args.input);
+
+				if ((await moderate(data)).results.some((m: Moderation) => m.flagged)) {
+					throw new ModerationError();
+				}
+
+				return await query(`UPDATE "demoUser" SET ${set<z.infer<typeof userSchema>>(data)}, "updatedAt" = NOW() WHERE "id" = ${idSchema.parse(args).id} RETURNING ${select(info, "User")};`).then(r => r.rows.shift());
 			} catch (error: unknown) {
 				throw new GraphQLError('updateUser error', {
 					extensions: {

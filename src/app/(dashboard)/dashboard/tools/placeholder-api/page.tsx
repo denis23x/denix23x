@@ -27,9 +27,9 @@ export default async function Page() {
 				<AlertDescription className={"flex flex-col sm:flex-row items-start gap-2"}>
 					<CircleAlert className={"min-w-4 size-4 translate-y-0.5"} />
 					<span className={"inline-block"}>
-						<strong>Data is subject to removal at any time</strong>, either due to periodic resets or other operational
-						factors. Use this API exclusively for experimental and testing purposes where data retention is not
-						critical.
+						<strong>All data processed through this API will be moderated using OpenAI&#39;s systems</strong>. Avoid
+						submitting sensitive or personal information. Use this API for experimental and testing purposes only, as
+						data may be subject to removal or modification without notice.
 					</span>
 				</AlertDescription>
 			</Alert>
