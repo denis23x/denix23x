@@ -5,8 +5,12 @@ export default function robots(): MetadataRoute.Robots {
 		rules: {
 			userAgent: "*",
 			allow: "/",
-			disallow: ["/dashboard/tools/placeholder-api/swagger", "/dashboard/tools/placeholder-api/demo", "/api*"],
+			disallow: [
+				"/dashboard/tools/placeholder-api/swagger",
+				"/dashboard/tools/placeholder-api/apollo",
+				"/dashboard/tools/placeholder-api/demo",
+			],
 		},
-		sitemap: "https://denix23x.vercel.app/sitemap.xml",
+		sitemap: "https://denis23x.info/sitemap.xml",
 	};
 }

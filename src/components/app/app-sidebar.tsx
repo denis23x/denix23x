@@ -16,7 +16,7 @@ import { NavSecondary } from "@/components/nav/nav-secondary";
 export const data = {
 	// user: {
 	// 	name: "??",
-	// 	email: "denix23x@gmail.com",
+	// 	email: "xxx@gmail.com",
 	// 	avatar: "/avatars/shadcn.jpg",
 	// },
 	navMain: navMainStore,
