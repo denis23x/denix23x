@@ -3,7 +3,6 @@
 import { useScroll, useTransform } from "framer-motion";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Map } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,6 +18,7 @@ export const ParallaxScroll = ({ images, className }: { images: ParallaxScrollPr
 					// @ts-expect-error probably null
 					container: document?.body, // remove this if your container is not fixed height
 					offset: ["start start", "end start"], // remove this if your container is not fixed height
+					layoutEffect: false,
 				})
 			: useScroll();
 
@@ -37,7 +37,7 @@ export const ParallaxScroll = ({ images, className }: { images: ParallaxScrollPr
 								rel={"noopener noreferrer"}
 							>
 								<Image
-									loading={"lazy"}
+									priority={idx < 4}
 									src={`/dashboard/misc/photos/${image.url}`}
 									className="aspect-[3/4] w-full object-cover object-center rounded-lg gap-10 !m-0 !p-0"
 									height="400"
