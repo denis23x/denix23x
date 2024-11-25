@@ -1,3 +1,4 @@
+import { navMainBlogGitWorkflowWithHuskyAndConventionalCommits } from "@/stores/nav-main.store";
 import BlogLayout from "@/components/dashboard/blog/blog-layout";
 
 # Git workflow with Husky and Conventional Commits
@@ -90,8 +91,8 @@ npx --no -- commitlint --edit $1
 That's all for now! Feel free to play with other hooks, for sure they will be helpful in many projects and many cases, and read [official documentation](https://typicode.github.io/husky) for more info about Husky.
 
 export const metadata = {
-	title: 'Git workflow with Husky and Conventional Commits',
-	description: 'Learn how to improve code quality, automate tasks, and enhance collaboration in your Git projects using Husky and Conventional Commits'
+	title: navMainBlogGitWorkflowWithHuskyAndConventionalCommits.title,
+	description: navMainBlogGitWorkflowWithHuskyAndConventionalCommits.description
 }
 
 export default function MDXPage({ children }) {

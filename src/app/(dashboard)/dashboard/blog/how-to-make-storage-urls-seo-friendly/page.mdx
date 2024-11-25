@@ -1,3 +1,4 @@
+import { navMainBlogHowToMakeStorageUrlsSEOFriendly } from "@/stores/nav-main.store";
 import BlogLayout from "@/components/dashboard/blog/blog-layout";
 
 # How to make storage URLs SEO friendly
@@ -125,8 +126,8 @@ server.use('/images/*', proxy('https://firebasestorage.googleapis.com', {
 So now we got a flexible way to work with images and made them SEO friendly (such a way can be used in any stack and any environment)
 
 export const metadata = {
-	title: 'How to make storage URLs SEO friendly',
-	description: 'Making Firebase Storage images URLs SEO friendly with a proxy in Angular'
+	title: navMainBlogHowToMakeStorageUrlsSEOFriendly.title,
+	description: navMainBlogHowToMakeStorageUrlsSEOFriendly.description
 }
 
 export default function MDXPage({ children }) {

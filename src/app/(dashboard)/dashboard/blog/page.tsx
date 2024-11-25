@@ -1,8 +1,14 @@
-import { globby } from "globby";
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
-import path from "node:path";
 import type { Metadata } from "next";
+import {
+	navMainBlogGitWorkflowWithHuskyAndConventionalCommits,
+	navMainBlogHowToCreateDynamicSitemapForSEO,
+	navMainBlogHowToMakeStorageUrlsSEOFriendly,
+	navMainBlogHowToSummarizeTextInTypeScriptWithoutAI,
+	navMainBlogHowToUseSvgSpriteIconsForDevelopment,
+} from "@/stores/nav-main.store";
+import { Map, Bot, Images, GitMerge, Package } from "lucide-react";
+import { AppGridEffect } from "@/components/app/app-grid-effect";
 
 export const metadata: Metadata = {
 	title: "Blog",
@@ -11,19 +17,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-	const pattern: string = "src/app/\\(dashboard\\)/dashboard/blog/**/*.mdx";
-	const paths = await globby(pattern).then(paths => paths.map(p => path.dirname(p).split("/").pop()));
-	const pages = await Promise.all(
-		paths.map(async p => {
-			const { metadata } = await import(`./${p}/page.mdx`);
-
-			return {
-				url: `/dashboard/blog/${p}`,
-				...metadata,
-			};
-		})
-	);
-
 	return (
 		<div className={"flex flex-1 flex-col gap-4 p-4 pt-0"}>
 			<h1 className={"text-4xl font-extrabold tracking-tight lg:text-5xl"}>Blog</h1>
@@ -33,16 +26,30 @@ export default async function Page() {
 				grow, and implement new strategies with ease.
 			</p>
 			<Separator />
-			<ul className={"grid gap-8"}>
-				{pages.map((item, i) => (
-					<li key={i}>
-						<Link className={"underline font-semibold text-blue-600 dark:text-blue-400"} href={item.url}>
-							{item.title}
-						</Link>
-						<p className={"leading-7"}>{item.description}</p>
-					</li>
-				))}
-			</ul>
+			<AppGridEffect items={items} />
 		</div>
 	);
 }
+
+const items = [
+	{
+		...navMainBlogGitWorkflowWithHuskyAndConventionalCommits,
+		icon: <GitMerge />,
+	},
+	{
+		...navMainBlogHowToCreateDynamicSitemapForSEO,
+		icon: <Map />,
+	},
+	{
+		...navMainBlogHowToMakeStorageUrlsSEOFriendly,
+		icon: <Package />,
+	},
+	{
+		...navMainBlogHowToSummarizeTextInTypeScriptWithoutAI,
+		icon: <Bot />,
+	},
+	{
+		...navMainBlogHowToUseSvgSpriteIconsForDevelopment,
+		icon: <Images />,
+	},
+];

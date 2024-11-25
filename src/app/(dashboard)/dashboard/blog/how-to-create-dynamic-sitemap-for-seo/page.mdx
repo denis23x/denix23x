@@ -1,3 +1,4 @@
+import { navMainBlogHowToCreateDynamicSitemapForSEO } from "@/stores/nav-main.store";
 import BlogLayout from "@/components/dashboard/blog/blog-layout";
 
 # How to create dynamic sitemap for SEO
@@ -179,8 +180,8 @@ One of these could be your new endpoint, which will use the code I shared with y
 ```
 
 export const metadata = {
-	title: 'How to create a dynamic sitemap for SEO',
-	description: 'Learn how to create a dynamic sitemap.xml in web applications using modern frameworks like Nest, Nuxt, or Express'
+	title: navMainBlogHowToCreateDynamicSitemapForSEO.title,
+	description: navMainBlogHowToCreateDynamicSitemapForSEO.description
 }
 
 export default function MDXPage({ children }) {

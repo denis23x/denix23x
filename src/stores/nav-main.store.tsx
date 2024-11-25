@@ -88,6 +88,43 @@ export const navMainPlaylist = {
 
 // --
 
+export const navMainBlogGitWorkflowWithHuskyAndConventionalCommits = {
+	title: "Git workflow with Husky and Conventional Commits",
+	url: "/dashboard/blog/git-workflow-with-husky-and-conventional-commits",
+	description:
+		"Learn how to improve code quality, automate tasks, and enhance collaboration in your Git projects using Husky and Conventional Commits",
+};
+
+export const navMainBlogHowToCreateDynamicSitemapForSEO = {
+	title: "How to create a dynamic sitemap for SEO",
+	url: "/dashboard/blog/how-to-create-dynamic-sitemap-for-seo",
+	description:
+		"Learn how to create a dynamic sitemap.xml in web applications using modern frameworks like Nest, Nuxt, or Express",
+};
+
+export const navMainBlogHowToMakeStorageUrlsSEOFriendly = {
+	title: "How to make storage URLs SEO friendly",
+	url: "/dashboard/blog/how-to-make-storage-urls-seo-friendly",
+	description:
+		"Making Firebase Storage images URLs SEO friendly with a proxy in Angular on Production and while local development",
+};
+
+export const navMainBlogHowToSummarizeTextInTypeScriptWithoutAI = {
+	title: "How to summarize text in TypeScript without AI",
+	url: "/dashboard/blog/how-to-summarize-text-in-typeScript-without-ai",
+	description:
+		"Discover how to efficiently summarize text in JavaScript using a simple, non-AI method. This approach provides accurate text condensation.",
+};
+
+export const navMainBlogHowToUseSvgSpriteIconsForDevelopment = {
+	title: "How to use SVG Sprite Icons for development",
+	url: "/dashboard/blog/how-to-use-svg-sprite-icons-for-development",
+	description:
+		"How to implement SVG sprite icons on Frontend project for optimized web performance. SVG sprites for reducing file requests, optimizing page load speed for modern web applications",
+};
+
+// --
+
 export const navMainStore = [
 	{
 		isActive: true,
@@ -117,5 +154,12 @@ export const navMainStore = [
 		title: "Blog",
 		url: "/dashboard/blog",
 		icon: ScrollText,
+		items: [
+			navMainBlogGitWorkflowWithHuskyAndConventionalCommits,
+			navMainBlogHowToCreateDynamicSitemapForSEO,
+			navMainBlogHowToMakeStorageUrlsSEOFriendly,
+			navMainBlogHowToSummarizeTextInTypeScriptWithoutAI,
+			navMainBlogHowToUseSvgSpriteIconsForDevelopment,
+		],
 	},
 ];

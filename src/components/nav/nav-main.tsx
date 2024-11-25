@@ -32,7 +32,7 @@ export function NavMain({ items }: NavMainProps) {
 			<SidebarMenu>
 				{items.map(item => (
 					<SidebarMenuItem key={item.title}>
-						{item.items ? (
+						{item.items && item.url !== "/dashboard/blog" ? (
 							<Collapsible defaultOpen={item.isActive} className={"group/collapsible"}>
 								<CollapsibleTrigger asChild>
 									<SidebarMenuButton tooltip={item.title}>
