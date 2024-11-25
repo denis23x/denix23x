@@ -5,20 +5,20 @@ import path from "node:path";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Materials",
+	title: "Blog",
 	description:
 		"Discover resources across various topics, with tips, tutorials, and ideas to boost your projects. Find practical solutions, inspiring discussions, and guides to grow and innovate.",
 };
 
 export default async function Page() {
-	const pattern: string = "src/app/\\(dashboard\\)/dashboard/materials/**/*.mdx";
+	const pattern: string = "src/app/\\(dashboard\\)/dashboard/blog/**/*.mdx";
 	const paths = await globby(pattern).then(paths => paths.map(p => path.dirname(p).split("/").pop()));
 	const pages = await Promise.all(
 		paths.map(async p => {
 			const { metadata } = await import(`./${p}/page.mdx`);
 
 			return {
-				url: `/dashboard/materials/${p}`,
+				url: `/dashboard/blog/${p}`,
 				...metadata,
 			};
 		})
@@ -26,7 +26,7 @@ export default async function Page() {
 
 	return (
 		<div className={"flex flex-1 flex-col gap-4 p-4 pt-0"}>
-			<h1 className={"text-4xl font-extrabold tracking-tight lg:text-5xl"}>Materials</h1>
+			<h1 className={"text-4xl font-extrabold tracking-tight lg:text-5xl"}>Blog</h1>
 			<p className={"leading-7"}>
 				This page offers insights and resources on various topics, sharing tips, tutorials, and ideas to support your
 				projects and inspire creativity. Discover practical solutions, and detailed guides that can help you learn,

@@ -1,4 +1,4 @@
-export default function MaterialsFooter() {
+export default function BlogFooter() {
 	return (
 		<div className={"h-4"}>
 			{/*<Separator />*/}

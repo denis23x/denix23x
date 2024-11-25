@@ -1,11 +1,11 @@
 import type { MDXComponents } from "mdx/types";
-import MaterialsPre from "@/components/dashboard/materials/materials-pre";
-import MaterialsA from "@/components/dashboard/materials/materials-a";
+import BlogPre from "@/components/dashboard/blog/blog-pre";
+import BlogA from "@/components/dashboard/blog/blog-a";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
-		a: props => <MaterialsA {...props} />,
-		pre: props => <MaterialsPre {...props} />,
+		a: props => <BlogA {...props} />,
+		pre: props => <BlogPre {...props} />,
 		...components,
 	};
 }

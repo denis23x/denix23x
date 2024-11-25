@@ -57,9 +57,9 @@ const items = [
 		header: <DashboardSkeleton />,
 	},
 	{
-		title: "Materials",
+		title: "Blog",
 		description: "Various topics, sharing tips, tutorials, and ideas to support your projects and inspire creativity",
-		url: "/dashboard/materials",
+		url: "/dashboard/blog",
 		header: <DashboardMarquee />,
 	},
 	{

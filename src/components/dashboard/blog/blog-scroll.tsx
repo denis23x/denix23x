@@ -4,7 +4,7 @@ import React from "react";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface ScrollProgressType {
+interface ScrollType {
 	type?: "circle" | "bar";
 	position?: "top-right" | "bottom-right" | "top-left" | "bottom-left";
 	color?: string;
@@ -12,13 +12,13 @@ interface ScrollProgressType {
 	showPercentage?: boolean;
 }
 
-export default function MaterialsScrollProgress({
+export default function BlogScroll({
 	type = "circle",
 	position = "bottom-right",
 	color = "hsl(var(--primary))",
 	strokeSize = 2,
 	showPercentage = false,
-}: ScrollProgressType) {
+}: ScrollType) {
 	const { scrollYProgress } = useScroll();
 	const scrollPercentage = useTransform(scrollYProgress, [0, 1], [0, 100]);
 	const [percentage, setPercentage] = React.useState(0);

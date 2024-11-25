@@ -114,8 +114,8 @@ export const navMainStore = [
 		items: [navMainBookmarks, navMainPhotos, navMainPlaylist],
 	},
 	{
-		title: "Materials",
-		url: "/dashboard/materials",
+		title: "Blog",
+		url: "/dashboard/blog",
 		icon: ScrollText,
 	},
 ];
