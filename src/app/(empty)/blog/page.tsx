@@ -26,7 +26,7 @@ export default async function Page() {
 				grow, and implement new strategies with ease.
 			</p>
 			<Separator />
-			<AppGridEffect items={items} />
+			<AppGridEffect items={items} className={"sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3"} />
 		</div>
 	);
 }

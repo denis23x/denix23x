@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
-import BlogPre from "@/components/dashboard/blog/blog-pre";
-import BlogA from "@/components/dashboard/blog/blog-a";
+import BlogPre from "@/components/blog/blog-pre";
+import BlogA from "@/components/blog/blog-a";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
 	return {
