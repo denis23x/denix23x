@@ -12,7 +12,9 @@ export default function DemoLayout({ children }: Readonly<{ children: React.Reac
 		<div className={"grid gap-4 md:gap-12 w-full max-w-4xl mx-auto py-4 md:py-12 px-4 text-foreground"}>
 			<div className={"flex items-center justify-between"}>
 				<Link href={"/dashboard/tools/placeholder-api/demo"}>
-					<h1 className={"text-4xl font-extrabold tracking-tight md:text-5xl text-center"}>Placeholder API</h1>
+					<h1 className={"text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl text-center"}>
+						Placeholder API
+					</h1>
 				</Link>
 				<div className={"flex items-center gap-4"}>
 					<Link href={"/dashboard/tools/placeholder-api/swagger"}>

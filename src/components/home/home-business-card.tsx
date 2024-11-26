@@ -30,7 +30,7 @@ export function HomeBusinessCard() {
 						<Link href={"https://github.com/denis23x"} target={"_blank"} rel={"noopener noreferrer"}>
 							<svg
 								className={"size-8 text-foreground"}
-								role="img"
+								fill="currentColor"
 								viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg"
 							>

@@ -8,53 +8,62 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-// import { usePathname } from "next/navigation";
-
-type AppBreadcrumbs = {
-	title: string;
-	url: string;
-};
+import { usePathname } from "next/navigation";
 
 export function AppBreadcrumbs() {
-	// const pathname: string = usePathname();
+	const pathname: string = usePathname();
+	const pathSegments: string[] = pathname.split("/").filter(Boolean);
 
-	const appBreadcrumbs: AppBreadcrumbs[] = [
-		{
-			title: "Dashboard",
-			url: "/dashboard",
-		},
-	];
+	const getValue = (i: number) => {
+		return "/" + pathSegments.slice(0, i + 1).join("/");
+	};
 
-	// navMainStore.forEach(main => {
-	// 	if (pathname.startsWith(main.url)) {
-	// 		appBreadcrumbs.push(main);
-	// 	}
-	//
-	// 	if (main.items) {
-	// 		main.items.forEach(item => {
-	// 			if (pathname.startsWith(item.url)) {
-	// 				appBreadcrumbs.push(item);
-	// 			}
-	// 		});
-	// 	}
-	// });
+	const getLabel = (segment: string) => {
+		const parts: string[] = segment.split("-").map(p => {
+			// Abbreviations
+
+			if (["css", "svg", "api"].includes(p)) {
+				return p.toUpperCase();
+			}
+
+			// Exceptions
+
+			if (p === "thumbhash") {
+				return "ThumbHash";
+			}
+
+			if (p === "blurhash") {
+				return "BlurHash";
+			}
+
+			// Skip prepositions
+
+			if (p.length > 2) {
+				return p.charAt(0).toUpperCase() + p.slice(1);
+			}
+
+			return p;
+		});
+
+		return parts.join(" ");
+	};
 
 	return (
 		<Breadcrumb>
 			<BreadcrumbList>
-				{appBreadcrumbs.map((breadcrumbs: AppBreadcrumbs, i: number) => (
+				{pathSegments.map((segment: string, i: number) => (
 					<ul
-						className={`items-center gap-1.5 sm:gap-2.5 ${appBreadcrumbs.length - i > 2 ? "hidden sm:flex" : "flex"}`}
+						className={`items-center gap-1.5 sm:gap-2.5 ${pathSegments.length - i > 2 ? "hidden sm:flex" : "flex"}`}
 						key={i}
 					>
-						<BreadcrumbItem className={""}>
-							{i !== appBreadcrumbs.length - 1 ? (
-								<BreadcrumbLink href={breadcrumbs.url}>{breadcrumbs.title}</BreadcrumbLink>
+						<BreadcrumbItem>
+							{i !== pathSegments.length - 1 ? (
+								<BreadcrumbLink href={getValue(i)}>{getLabel(segment)}</BreadcrumbLink>
 							) : (
-								<BreadcrumbPage>{breadcrumbs.title}</BreadcrumbPage>
+								<BreadcrumbPage>{getLabel(segment)}</BreadcrumbPage>
 							)}
 						</BreadcrumbItem>
-						{i !== appBreadcrumbs.length - 1 && <BreadcrumbSeparator />}
+						{i !== pathSegments.length - 1 && <BreadcrumbSeparator />}
 					</ul>
 				))}
 			</BreadcrumbList>

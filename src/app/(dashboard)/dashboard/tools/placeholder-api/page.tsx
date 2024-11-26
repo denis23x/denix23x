@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "@/interfaces/metadata";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { CircleAlert, Code } from "lucide-react";
+import { ArrowUpRight, CircleAlert, Code } from "lucide-react";
 import Link from "next/link";
 import Safari from "@/components/ui/safari";
 
@@ -38,7 +38,7 @@ export default async function Page() {
 			</Alert>
 			<div className="relative grid md:grid-cols-3 gap-4">
 				<Link
-					className="relative col-span-1"
+					className="relative flex flex-col col-span-1"
 					href={"/dashboard/tools/placeholder-api/apollo"}
 					target={"_blank"}
 					rel={"nofollow tag"}
@@ -53,9 +53,13 @@ export default async function Page() {
 						className="size-full object-top hidden dark:block"
 						src={"/dashboard/tools/placeholder-api/apollo-dark.webp"}
 					/>
+					<div className={"block mx-auto py-2 text-muted-foreground"}>
+						<span className={"inline-block text-ellipsis"}>Apollo Sandbox</span>
+						<ArrowUpRight className={"inline-block align-baseline size-4"} />
+					</div>
 				</Link>
 				<Link
-					className="relative col-span-1"
+					className="relative flex flex-col col-span-1"
 					href={"/dashboard/tools/placeholder-api/swagger"}
 					target={"_blank"}
 					rel={"nofollow tag"}
@@ -70,9 +74,13 @@ export default async function Page() {
 						className="size-full object-top hidden dark:block"
 						src={"/dashboard/tools/placeholder-api/swagger-dark.webp"}
 					/>
+					<div className={"block mx-auto py-2 text-muted-foreground"}>
+						<span className={"inline-block text-ellipsis"}>Swagger UI</span>
+						<ArrowUpRight className={"inline-block align-baseline size-4"} />
+					</div>
 				</Link>
 				<Link
-					className="relative col-span-1"
+					className="relative flex flex-col col-span-1"
 					href={"/dashboard/tools/placeholder-api/demo"}
 					target={"_blank"}
 					rel={"nofollow tag"}
@@ -87,6 +95,10 @@ export default async function Page() {
 						className="size-full object-top hidden dark:block"
 						src={"/dashboard/tools/placeholder-api/demo-dark.webp"}
 					/>
+					<div className={"block mx-auto py-2 text-muted-foreground"}>
+						<span className={"inline-block text-ellipsis"}>Demo Website</span>
+						<ArrowUpRight className={"inline-block align-baseline size-4"} />
+					</div>
 				</Link>
 			</div>
 		</div>

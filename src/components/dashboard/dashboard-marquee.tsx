@@ -22,7 +22,8 @@ export default async function DashboardMarquee() {
 							)}
 						>
 							<div className="flex flex-row items-center gap-2">
-								<div className="flex flex-col">
+								<div className="flex flex-col gap-4">
+									{b.icon && b.icon}
 									<figcaption className="text-sm font-bold text-foreground">{b.title}</figcaption>
 								</div>
 							</div>

@@ -32,7 +32,7 @@ export default function Page() {
 				<AlertDescription className={"flex flex-col sm:flex-row items-start gap-2"}>
 					<CircleAlert className={"min-w-4 size-4 translate-y-0.5"} />
 					<span className={"inline-block"}>
-						<Link className={"underline"} href={"/dashboard/tools/thumb-hash-image"}>
+						<Link className={"underline"} href={"/dashboard/tools/thumbhash-image"}>
 							ThumbHash
 						</Link>{" "}
 						provides smaller, faster-loading previews with color accuracy, making it more efficient than BlurHash for
