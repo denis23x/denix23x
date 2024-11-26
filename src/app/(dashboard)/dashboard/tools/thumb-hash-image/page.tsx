@@ -1,14 +1,18 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainThumbHashImage } from "@/stores/nav-main.store";
+import type { Metadata } from "@/interfaces/metadata";
 import ThumbHashPreview from "@/components/dashboard/tools/thumb-hash-image/thumb-hash-preview";
 import Input from "@/components/dashboard/tools/thumb-hash-image/input";
 import Textarea from "@/components/dashboard/tools/thumb-hash-image/textarea";
 import ThumbHash from "@/components/dashboard/tools/thumb-hash-image/thumb-hash";
+import { Image } from "lucide-react";
 
 export const metadata: Metadata = {
-	title: navMainThumbHashImage.title,
-	description: navMainThumbHashImage.description,
+	title: "ThumbHash Image",
+	description:
+		"Generate thumb hash image previews in your browser for seamless, blurred placeholders. Perfect for developers optimizing loading visuals on web and mobile apps.",
+	other: {
+		icon: <Image />, // eslint-disable-line jsx-a11y/alt-text
+	},
 };
 
 export default function Page() {

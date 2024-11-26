@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "@/interfaces/metadata";
 import Swagger from "@/components/dashboard/tools/placeholder-api/swagger";
 
 export const metadata: Metadata = {

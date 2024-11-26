@@ -1,11 +1,15 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainMarkdownRenderer } from "@/stores/nav-main.store";
+import type { Metadata } from "@/interfaces/metadata";
 import Editor from "@/components/dashboard/tools/markdown-render/editor";
+import { Type } from "lucide-react";
 
 export const metadata: Metadata = {
-	title: navMainMarkdownRenderer.title,
-	description: navMainMarkdownRenderer.description,
+	title: "Markdown Renderer",
+	description:
+		"Render Markdown content in your browser and download the output. Perfect for developers and writers needing a quick way to preview formatted Markdown without switching apps.",
+	other: {
+		icon: <Type />,
+	},
 };
 
 export default function Page() {

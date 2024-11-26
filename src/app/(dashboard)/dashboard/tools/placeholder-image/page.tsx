@@ -1,15 +1,19 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainPlaceholderImage } from "@/stores/nav-main.store";
+import type { Metadata } from "@/interfaces/metadata";
 import Image from "@/components/dashboard/tools/placeholder-image/image";
 import Text from "@/components/dashboard/tools/placeholder-image/text";
 import Sizes from "@/components/dashboard/tools/placeholder-image/sizes";
 import Colors from "@/components/dashboard/tools/placeholder-image/colors";
 import Download from "@/components/dashboard/tools/placeholder-image/download";
+import { Image as ImageIcon } from "lucide-react";
 
 export const metadata: Metadata = {
-	title: navMainPlaceholderImage.title,
-	description: navMainPlaceholderImage.description,
+	title: "Placeholder Image",
+	description:
+		"Generate customizable placeholder images with specific dimensions, colors, and text for quick visualization and layout testing in web and app development projects.",
+	other: {
+		icon: <ImageIcon />, // eslint-disable-line jsx-a11y/alt-text
+	},
 };
 
 export default function Page() {

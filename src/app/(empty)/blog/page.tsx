@@ -1,14 +1,7 @@
 import { Separator } from "@/components/ui/separator";
-import type { Metadata } from "next";
-import {
-	navMainBlogGitWorkflowWithHuskyAndConventionalCommits,
-	navMainBlogHowToCreateDynamicSitemapForSEO,
-	navMainBlogHowToMakeStorageUrlsSEOFriendly,
-	navMainBlogHowToSummarizeTextInTypeScriptWithoutAI,
-	navMainBlogHowToUseSvgSpriteIconsForDevelopment,
-} from "@/stores/nav-main.store";
-import { Map, Bot, Images, GitMerge, Package } from "lucide-react";
 import { AppGridEffect } from "@/components/app/app-grid-effect";
+import type { Metadata } from "@/interfaces/metadata";
+import { BlogItems } from "@/lib/items";
 
 export const metadata: Metadata = {
 	title: "Blog",
@@ -26,30 +19,10 @@ export default async function Page() {
 				grow, and implement new strategies with ease.
 			</p>
 			<Separator />
-			<AppGridEffect items={items} className={"sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3"} />
+			<AppGridEffect
+				items={await BlogItems()}
+				className={"sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3"}
+			/>
 		</div>
 	);
 }
-
-const items = [
-	{
-		...navMainBlogGitWorkflowWithHuskyAndConventionalCommits,
-		icon: <GitMerge />,
-	},
-	{
-		...navMainBlogHowToCreateDynamicSitemapForSEO,
-		icon: <Map />,
-	},
-	{
-		...navMainBlogHowToMakeStorageUrlsSEOFriendly,
-		icon: <Package />,
-	},
-	{
-		...navMainBlogHowToSummarizeTextInTypeScriptWithoutAI,
-		icon: <Bot />,
-	},
-	{
-		...navMainBlogHowToUseSvgSpriteIconsForDevelopment,
-		icon: <Images />,
-	},
-];

@@ -1,5 +1,5 @@
-import { navMainBlogHowToSummarizeTextInTypeScriptWithoutAI } from "@/stores/nav-main.store";
 import BlogLayout from "@/components/blog/blog-layout";
+import { Bot } from "lucide-react";
 
 # How to summarize text in TypeScript without AI
 
@@ -168,8 +168,12 @@ console.log(getKeywords(article, 5));
 By default, it will return next keywords *in, development, it, and, javascript* but if you add optional methods it will return another set of keywords *javascript, development, language, web, and application* which fits better, so feel free to tune it for your needs.
 
 export const metadata = {
-	title: navMainBlogHowToSummarizeTextInTypeScriptWithoutAI.title,
-	description: navMainBlogHowToSummarizeTextInTypeScriptWithoutAI.description
+	title: "How to summarize text in TypeScript without AI",
+	description:
+		"Discover how to efficiently summarize text in JavaScript using a simple, non-AI method. This approach provides accurate text condensation.",
+	other: {
+		icon: <Bot />
+	},
 }
 
 export default function MDXPage({ children }) {

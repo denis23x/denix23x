@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from "@/interfaces/metadata";
 import localFont from "next/font/local";
 import "@/app/styles/globals.scss";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -17,6 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL("https://denis23x.info"),
 	title: {
 		template: "%s | denis23x",
 		default: "My Website",

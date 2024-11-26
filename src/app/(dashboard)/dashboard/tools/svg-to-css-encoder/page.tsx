@@ -1,12 +1,16 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainSvgToCssEncoder } from "@/stores/nav-main.store";
+import type { Metadata } from "@/interfaces/metadata";
 import Input from "@/components/dashboard/tools/svg-to-css-encoder/textarea";
 import Output from "@/components/dashboard/tools/svg-to-css-encoder/output";
+import { Images } from "lucide-react";
 
 export const metadata: Metadata = {
-	title: navMainSvgToCssEncoder.title,
-	description: navMainSvgToCssEncoder.description,
+	title: "SVG to CSS Encoder",
+	description:
+		"Generate customizable placeholder images with specific dimensions, colors, and text for quick visualization and layout testing in web and app development projects.",
+	other: {
+		icon: <Images />,
+	},
 };
 
 export default function Page() {

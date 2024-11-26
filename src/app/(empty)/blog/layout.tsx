@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from "@/interfaces/metadata";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {

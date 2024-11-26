@@ -1,8 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { AppGridEffect } from "@/components/app/app-grid-effect";
-import { Bookmark, Camera, Music } from "lucide-react";
-import { navMainBookmarks, navMainPhotos, navMainPlaylist } from "@/stores/nav-main.store";
-import type { Metadata } from "next";
+import type { Metadata } from "@/interfaces/metadata";
+import { MiscItems } from "@/lib/items";
 
 export const metadata: Metadata = {
 	title: "Misc",
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
 		"Explore a curated collection of personal favorites, including playlists, movie recommendations, and more. Discover links to explore all the things I enjoy.",
 };
 
-export default function Page() {
+export default async function Page() {
 	return (
 		<div className={"flex flex-1 flex-col gap-4 p-4 pt-0"}>
 			<h1 className={"text-4xl font-extrabold tracking-tight lg:text-5xl"}>Misc</h1>
@@ -20,22 +19,7 @@ export default function Page() {
 				facets of what I enjoy.
 			</p>
 			<Separator />
-			<AppGridEffect items={items} />
+			<AppGridEffect items={await MiscItems()} />
 		</div>
 	);
 }
-
-const items = [
-	{
-		...navMainBookmarks,
-		icon: <Bookmark />,
-	},
-	{
-		...navMainPhotos,
-		icon: <Camera />,
-	},
-	{
-		...navMainPlaylist,
-		icon: <Music />,
-	},
-];

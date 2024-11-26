@@ -1,5 +1,5 @@
-import { navMainBlogHowToCreateDynamicSitemapForSEO } from "@/stores/nav-main.store";
 import BlogLayout from "@/components/blog/blog-layout";
+import { Map } from "lucide-react";
 
 # How to create dynamic sitemap for SEO
 
@@ -180,8 +180,12 @@ One of these could be your new endpoint, which will use the code I shared with y
 ```
 
 export const metadata = {
-	title: navMainBlogHowToCreateDynamicSitemapForSEO.title,
-	description: navMainBlogHowToCreateDynamicSitemapForSEO.description
+	title: "How to create a dynamic sitemap for SEO",
+	description:
+		"Learn how to create a dynamic sitemap.xml in web applications using modern frameworks like Nest, Nuxt, or Express",
+	other: {
+		icon: <Map />
+	},
 }
 
 export default function MDXPage({ children }) {

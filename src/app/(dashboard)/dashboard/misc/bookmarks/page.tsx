@@ -1,12 +1,15 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainBookmarks } from "@/stores/nav-main.store";
 import { LinkPreview } from "@/components/ui/link-preview";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Bookmark } from "lucide-react";
+import type { Metadata } from "@/interfaces/metadata";
 
 export const metadata: Metadata = {
-	title: navMainBookmarks.title,
-	description: navMainBookmarks.description,
+	title: "Bookmarks",
+	description:
+		"Explore a curated collection of developer resources, including guides, coding tips, tools, and tutorials to boost productivity. Perfect for enhancing your dev toolkit.",
+	other: {
+		icon: <Bookmark />,
+	},
 };
 
 export default function Page() {

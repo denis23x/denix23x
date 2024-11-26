@@ -1,5 +1,5 @@
-import { navMainBlogHowToUseSvgSpriteIconsForDevelopment } from "@/stores/nav-main.store";
 import BlogLayout from "@/components/blog/blog-layout";
+import { Images } from "lucide-react";
 
 # How to use SVG Sprite Icons for development
 
@@ -154,8 +154,12 @@ From now at any time anywhere you can display icons from sprite as follows, just
 ```
 
 export const metadata = {
-	title: navMainBlogHowToUseSvgSpriteIconsForDevelopment.title,
-	description: navMainBlogHowToUseSvgSpriteIconsForDevelopment.description
+	title: "How to use SVG Sprite Icons for development",
+	description:
+		"How to implement SVG sprite icons on Frontend project for optimized web performance. SVG sprites for reducing file requests, optimizing page load speed for modern web applications",
+	other: {
+		icon: <Images />
+	},
 }
 
 export default function MDXPage({ children }) {

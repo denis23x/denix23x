@@ -1,13 +1,17 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainColorExtractor } from "@/stores/nav-main.store";
+import type { Metadata } from "@/interfaces/metadata";
 import Preview from "@/components/dashboard/tools/color-extractor/preview";
 import Input from "@/components/dashboard/tools/color-extractor/input";
 import Palette from "@/components/dashboard/tools/color-extractor/palette";
+import { SwatchBook } from "lucide-react";
 
 export const metadata: Metadata = {
-	title: navMainColorExtractor.title,
-	description: navMainColorExtractor.description,
+	title: "Color Extractor",
+	description:
+		"Create a color palette from any image, including average HUE, to match themes across UI components. Ideal for maintaining aesthetic and visual consistency in design.",
+	other: {
+		icon: <SwatchBook />,
+	},
 };
 
 export default function Page() {

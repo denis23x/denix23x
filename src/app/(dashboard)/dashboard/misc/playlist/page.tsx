@@ -1,12 +1,16 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainPlaylist } from "@/stores/nav-main.store";
 import Card from "@/components/dashboard/misc/playlist/card";
 import Grid from "@/components/dashboard/misc/playlist/grid";
+import { Music } from "lucide-react";
+import type { Metadata } from "@/interfaces/metadata";
 
 export const metadata: Metadata = {
-	title: navMainPlaylist.title,
-	description: navMainPlaylist.description,
+	title: "Playlist",
+	description:
+		"Explore a curated selection of my favorite albums across genres and styles. Discover impactful tracks, unique sounds, and insights—perfect for expanding your playlist!",
+	other: {
+		icon: <Music />,
+	},
 };
 
 export default function Page() {

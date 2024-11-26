@@ -1,15 +1,19 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainColorConverter } from "@/stores/nav-main.store";
+import type { Metadata } from "@/interfaces/metadata";
 import Picker from "@/components/dashboard/tools/color-converter/picker";
 import PickerInput from "@/components/dashboard/tools/color-converter/picker-input";
 import Palette from "@/components/dashboard/tools/color-converter/palette";
 import Output from "@/components/dashboard/tools/color-converter/output";
 import Harmony from "@/components/dashboard/tools/color-converter/harmony";
+import { Palette as PaletteIcon } from "lucide-react";
 
 export const metadata: Metadata = {
-	title: navMainColorConverter.title,
-	description: navMainColorConverter.description,
+	title: "Color Converter",
+	description:
+		"Easily convert color values across formats like HEX, RGB, and HSL. Switch between models with a click for flexible styling and precise color matching in projects.",
+	other: {
+		icon: <PaletteIcon />,
+	},
 };
 
 export default function Page() {

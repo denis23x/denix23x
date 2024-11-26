@@ -1,14 +1,17 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainPlaceholderApi } from "@/stores/nav-main.store";
+import type { Metadata } from "@/interfaces/metadata";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { CircleAlert } from "lucide-react";
+import { CircleAlert, Code } from "lucide-react";
 import Link from "next/link";
 import Safari from "@/components/ui/safari";
 
 export const metadata: Metadata = {
-	title: navMainPlaceholderApi.title,
-	description: navMainPlaceholderApi.description,
+	title: "Placeholder API",
+	description:
+		"Easily prototype and test database queries with Swagger or Apollo. Use mock data and predefined endpoints for fast front-end development—no live backend required!",
+	other: {
+		icon: <Code />,
+	},
 };
 
 export default async function Page() {

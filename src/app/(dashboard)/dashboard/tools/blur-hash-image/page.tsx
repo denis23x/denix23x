@@ -1,18 +1,21 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainBlurHashImage } from "@/stores/nav-main.store";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { CircleAlert } from "lucide-react";
+import { CircleAlert, Image } from "lucide-react";
 import Link from "next/link";
 import BlurHashPreview from "@/components/dashboard/tools/blur-hash-image/blur-hash-preview";
 import Input from "@/components/dashboard/tools/blur-hash-image/input";
 import BlurHash from "@/components/dashboard/tools/blur-hash-image/blur-hash";
 import Optimization from "@/components/dashboard/tools/blur-hash-image/optimization";
 import Textarea from "@/components/dashboard/tools/blur-hash-image/textarea";
+import type { Metadata } from "@/interfaces/metadata";
 
 export const metadata: Metadata = {
-	title: navMainBlurHashImage.title,
-	description: navMainBlurHashImage.description,
+	title: "BlurHash Image",
+	description:
+		"Generate BlurHash images directly from your browser with this tool. Perfect for developers and designers needing fast, efficient placeholders for smooth loading effects.",
+	other: {
+		icon: <Image />, // eslint-disable-line jsx-a11y/alt-text
+	},
 };
 
 export default function Page() {

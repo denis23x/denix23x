@@ -1,13 +1,17 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainLoremIpsum } from "@/stores/nav-main.store";
+import type { Metadata } from "@/interfaces/metadata";
 import Radio from "@/components/dashboard/tools/lorem-ipsum/radio";
 import Number from "@/components/dashboard/tools/lorem-ipsum/count";
 import Textarea from "@/components/dashboard/tools/lorem-ipsum/textarea";
+import { Scroll } from "lucide-react";
 
 export const metadata: Metadata = {
-	title: navMainLoremIpsum.title,
-	description: navMainLoremIpsum.description,
+	title: "Lorem Ipsum",
+	description:
+		"Generate customizable Lorem Ipsum text for web design, enabling designers to fill layouts with realistic, non-distracting text that simulates real content for visual testing.",
+	other: {
+		icon: <Scroll />,
+	},
 };
 
 export default function Page() {

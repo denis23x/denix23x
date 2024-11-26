@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from "@/interfaces/metadata";
 import Link from "next/link";
 
 export const metadata: Metadata = {

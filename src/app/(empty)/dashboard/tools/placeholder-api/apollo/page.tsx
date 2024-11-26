@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "@/interfaces/metadata";
 
 export const metadata: Metadata = {
 	title: "Placeholder API - Apollo",

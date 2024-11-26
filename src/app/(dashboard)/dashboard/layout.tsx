@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata } from "@/interfaces/metadata";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app/app-sidebar";
 import { Separator } from "@/components/ui/separator";

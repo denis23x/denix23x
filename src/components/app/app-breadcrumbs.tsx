@@ -8,8 +8,7 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { usePathname } from "next/navigation";
-import { navMainStore } from "@/stores/nav-main.store";
+// import { usePathname } from "next/navigation";
 
 type AppBreadcrumbs = {
 	title: string;
@@ -17,7 +16,7 @@ type AppBreadcrumbs = {
 };
 
 export function AppBreadcrumbs() {
-	const pathname: string = usePathname();
+	// const pathname: string = usePathname();
 
 	const appBreadcrumbs: AppBreadcrumbs[] = [
 		{
@@ -26,19 +25,19 @@ export function AppBreadcrumbs() {
 		},
 	];
 
-	navMainStore.forEach(main => {
-		if (pathname.startsWith(main.url)) {
-			appBreadcrumbs.push(main);
-		}
-
-		if (main.items) {
-			main.items.forEach(item => {
-				if (pathname.startsWith(item.url)) {
-					appBreadcrumbs.push(item);
-				}
-			});
-		}
-	});
+	// navMainStore.forEach(main => {
+	// 	if (pathname.startsWith(main.url)) {
+	// 		appBreadcrumbs.push(main);
+	// 	}
+	//
+	// 	if (main.items) {
+	// 		main.items.forEach(item => {
+	// 			if (pathname.startsWith(item.url)) {
+	// 				appBreadcrumbs.push(item);
+	// 			}
+	// 		});
+	// 	}
+	// });
 
 	return (
 		<Breadcrumb>

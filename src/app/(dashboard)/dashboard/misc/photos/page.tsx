@@ -1,11 +1,15 @@
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
-import { navMainPhotos } from "@/stores/nav-main.store";
 import { ParallaxScroll } from "@/components/ui/parallax-scroll";
+import { Camera } from "lucide-react";
+import type { Metadata } from "@/interfaces/metadata";
 
 export const metadata: Metadata = {
-	title: navMainPhotos.title,
-	description: navMainPhotos.description,
+	title: "Photos",
+	description:
+		"Explore a curated collection of travel photos capturing stunning landscapes, and vibrant cityscapes. Each image invites you to see the world anew.",
+	other: {
+		icon: <Camera />,
+	},
 };
 
 export default function Page() {

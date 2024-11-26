@@ -1,6 +1,4 @@
-"use client";
-
-import { House, AppWindow } from "lucide-react";
+import { House, AppWindow, SquareTerminal, Shapes, ScrollText } from "lucide-react";
 import { NavMain } from "@/components/nav/nav-main";
 import {
 	Sidebar,
@@ -10,8 +8,8 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { navMainStore } from "@/stores/nav-main.store";
 import { NavSecondary } from "@/components/nav/nav-secondary";
+import { MiscItems, ToolsItems } from "@/lib/items";
 
 export const data = {
 	// user: {
@@ -19,7 +17,27 @@ export const data = {
 	// 	email: "xxx@gmail.com",
 	// 	avatar: "/avatars/shadcn.jpg",
 	// },
-	navMain: navMainStore,
+	navMain: [
+		{
+			isActive: true,
+			title: "Tools",
+			url: "/dashboard/tools",
+			icon: SquareTerminal,
+			items: await ToolsItems(),
+		},
+		{
+			isActive: true,
+			title: "Misc",
+			url: "/dashboard/misc",
+			icon: Shapes,
+			items: await MiscItems(),
+		},
+		{
+			title: "Blog",
+			url: "/blog",
+			icon: ScrollText,
+		},
+	],
 	navSecondary: [
 		{
 			title: "Takabase",
