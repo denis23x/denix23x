@@ -34,7 +34,7 @@ First of all, decide on the structure of the files and their names. For names, I
 Let's say you got something like this:
 
 - **UID** automatically generated `a5805698`
-- **Context** `['dog', 'playing', 'with', 'cat']` --> `'dog-playing-with-cat'`
+- **Context** `['dog', 'playing', 'with', 'cat']` &rarr; `'dog-playing-with-cat'`
 
 So, your file name will be `'dog-playing-with-cat-a5805698.png'` you can save it in database, but real file name will be the only `'a5805698.png'` you can upload it to your bucket.
 
@@ -84,18 +84,18 @@ To make the `proxy.conf.mjs` work you can append new parameter for your dev scri
 
 ``` json
 {
-   "projects": {
-     "project-name": {
-       "architect": {
-         "serve": {
-           "options": {
-             "proxyConfig": "src/proxy.conf.mjs"
-           }
-         }
-       }
-     }
-   }
- }
+  "projects": {
+    "project-name": {
+      "architect": {
+        "serve": {
+          "options": {
+            "proxyConfig": "src/proxy.conf.mjs"
+          }
+        }
+      }
+    }
+  }
+}
 ```
 
 ## Production

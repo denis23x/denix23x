@@ -12,8 +12,6 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
 	return (
-		<div className={"bg-background min-h-screen"}>
-			<div className={"flex flex-col gap-4 max-w-4xl mx-auto px-4"}>{children}</div>
-		</div>
+		<div className={"grid gap-4 md:gap-12 w-full max-w-4xl mx-auto py-4 md:py-12 px-4 text-foreground"}>{children}</div>
 	);
 }
