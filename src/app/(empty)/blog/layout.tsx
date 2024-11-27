@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 		default: "Detached Layout",
 	},
 	description:
-		"Frontend developer skilled in JavaScript, TypeScript, SCSS, and more. I create responsive, user-centered designs with an eye for detail, enhancing user experience and functionality.",
+		"Fullstack developer skilled in JavaScript, TypeScript, SCSS, and more. I create responsive, user-centered designs with an eye for detail, enhancing user experience and functionality.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
