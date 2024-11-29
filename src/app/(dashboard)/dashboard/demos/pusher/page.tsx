@@ -1,13 +1,13 @@
 import { Separator } from "@/components/ui/separator";
 import { CircleAlert, Unplug } from "lucide-react";
 import type { Metadata } from "@/interfaces/metadata";
-import Chat from "@/components/dashboard/demos/websocket/chat";
+import Chat from "@/components/dashboard/demos/pusher/chat";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 export const metadata: Metadata = {
-	title: "WebSocket",
+	title: "Pusher",
 	description:
-		"Explore my WebSocket chat demo! Experience real-time messaging and seamless communication powered by WebSocket technology.",
+		"Discover a live demo of Pusher-powered chat showcasing real-time messaging and seamless communication. Dive in to explore interactive functionality in action.",
 	other: {
 		icon: <Unplug />,
 	},
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
 export default function Page() {
 	return (
 		<div className={"flex flex-1 flex-col gap-4 p-4 pt-0"}>
-			<h1 className={"text-4xl font-extrabold tracking-tight lg:text-5xl"}>WebSocket</h1>
+			<h1 className={"text-4xl font-extrabold tracking-tight lg:text-5xl"}>Pusher</h1>
 			<p className={"leading-7"}>
-				This page provides a live demonstration of my WebSocket chat implementation. It showcases real-time messaging
-				functionality, highlighting the seamless communication enabled by WebSocket technology. Dive in to explore how
-				it works and interact with the system in real time.
+				This page provides a live demonstration of Pusher-powered chat implementation. It showcases real-time messaging
+				functionality, highlighting the seamless communication enabled by Pusher&#39;s Channels technology. Dive in to
+				explore how it works and interact with the system in real time.
 			</p>
 			<Separator />
 			<Alert variant="destructive">

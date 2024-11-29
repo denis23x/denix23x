@@ -1,45 +1,45 @@
 "use client";
 
-import { nanoid } from "nanoid";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import useStore from "@/stores/chat.store";
+import { env, constants } from "@/configs/constants/pusher";
 
-export default function ChatConnect() {
+export default function ChatDisconnect() {
 	const [loader, setLoader] = useState<boolean>(false);
-	const { setUserUid } = useStore();
+	const { userUid, setUserUid } = useStore();
 
-	const handleConnect = async () => {
+	const handleDisconnect = async () => {
 		setLoader(true);
 
 		const body = {
-			channel: "pusher",
-			event: "user:connected",
-			uid: nanoid(),
+			channel: constants.CHANNEL,
+			event: constants.USER_DISCONNECTED,
+			uid: userUid,
 		};
 
-		const response: Response = await fetch("/api/v1/websocket", {
+		const response: Response = await fetch(env.apiUrl, {
 			method: "POST",
 			body: JSON.stringify(body),
 		});
 
 		if (!response.ok) {
-			toast.error("Failed to connect");
+			toast.error("Failed to disconnect");
 		} else {
-			toast.error("You have been connected to chat");
+			toast.error("You have been disconnected");
 
-			setUserUid(body.uid);
+			setUserUid(null);
 		}
 
 		setLoader(false);
 	};
 
 	return (
-		<Button className={"m-auto"} onClick={handleConnect}>
+		<Button onClick={handleDisconnect}>
 			{loader && <Loader2 className="animate-spin" />}
-			Connect to Chat
+			Disconnect
 		</Button>
 	);
 }

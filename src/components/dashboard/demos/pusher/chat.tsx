@@ -7,15 +7,16 @@ import { Button } from "@/components/ui/button";
 import useStore from "@/stores/chat.store";
 import type { ChatMessage } from "@/interfaces/dashboard/demos/chat-message";
 import type { ChatUser } from "@/interfaces/dashboard/demos/chat-user";
-import ChatAvatar from "@/components/dashboard/demos/websocket/chat-avatar";
-import ChatConnect from "@/components/dashboard/demos/websocket/chat-connect";
-import ChatDisconnect from "@/components/dashboard/demos/websocket/chat-disconnect";
-import ChatBubble from "@/components/dashboard/demos/websocket/chat-bubble";
-import ChatBackground from "@/components/dashboard/demos/websocket/chat-background";
-import ChatInput from "@/components/dashboard/demos/websocket/chat-input";
+import { env, constants } from "@/configs/constants/pusher";
+import ChatAvatar from "./chat-avatar";
+import ChatConnect from "./chat-connect";
+import ChatDisconnect from "./chat-disconnect";
+import ChatBubble from "./chat-bubble";
+import ChatBackground from "./chat-background";
+import ChatInput from "./chat-input";
 
-const pusher: Pusher = new Pusher("4033f77ec34c54548123", {
-	cluster: "mt1",
+const pusher: Pusher = new Pusher(env.appKey, {
+	cluster: env.cluster,
 });
 
 export default function Chat() {
@@ -28,12 +29,12 @@ export default function Chat() {
 		if (userUid) {
 			const sendBeacon = () => {
 				const body = JSON.stringify({
-					channel: "pusher",
-					event: "user:disconnected",
+					channel: constants.CHANNEL,
+					event: constants.USER_DISCONNECTED,
 					uid: userUid,
 				});
 
-				navigator.sendBeacon("/api/v1/websocket", body);
+				navigator.sendBeacon(env.apiUrl, body);
 
 				// Flush
 
@@ -61,7 +62,7 @@ export default function Chat() {
 	}, [messages]);
 
 	useEffect(() => {
-		fetch("/api/v1/websocket")
+		fetch(env.apiUrl)
 			.then(r => r.json())
 			.then(r => {
 				setUsers(r.data.users);
@@ -70,15 +71,15 @@ export default function Chat() {
 
 		const channel: Channel = pusher.subscribe("pusher");
 
-		channel.bind("user:connected", (user: ChatUser) => {
+		channel.bind(constants.USER_CONNECTED, (user: ChatUser) => {
 			setUsers(users => [...users, user]);
 		});
 
-		channel.bind("user:disconnected", (user: ChatUser) => {
+		channel.bind(constants.USER_DISCONNECTED, (user: ChatUser) => {
 			setUsers(users => users.filter(u => u.uid !== user.uid));
 		});
 
-		channel.bind("message:added", (message: ChatMessage) => {
+		channel.bind(constants.MESSAGE_ADDED, (message: ChatMessage) => {
 			setMessages(messages => [...messages, message]);
 		});
 
@@ -88,7 +89,7 @@ export default function Chat() {
 	}, []);
 
 	const handleReset = async () => {
-		const response: Response = await fetch("/api/v1/websocket", {
+		const response: Response = await fetch(env.apiUrl, {
 			method: "DELETE",
 		});
 

@@ -3,7 +3,7 @@ import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
-import { shikiOptions } from "./src/options/shikiOptions.mjs";
+import { shikiOptions } from "./src/configs/options/shikiOptions.mjs";
 
 const withMDX = nextMDX({
 	extension: /\.mdx?$/,

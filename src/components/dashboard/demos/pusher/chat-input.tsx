@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import useStore from "@/stores/chat.store";
 import { nanoid } from "nanoid";
 import type { ChatMessage } from "@/interfaces/dashboard/demos/chat-message";
+import { env, constants } from "@/configs/constants/pusher";
 
 export default function ChatInput() {
 	const { userUid } = useStore();
@@ -35,11 +36,11 @@ export default function ChatInput() {
 				createdAt: new Date().toString(),
 			};
 
-			const response: Response = await fetch("/api/v1/websocket", {
+			const response: Response = await fetch(env.apiUrl, {
 				method: "POST",
 				body: JSON.stringify({
-					channel: "pusher",
-					event: "message:added",
+					channel: constants.CHANNEL,
+					event: constants.MESSAGE_ADDED,
 					...body,
 				}),
 			});

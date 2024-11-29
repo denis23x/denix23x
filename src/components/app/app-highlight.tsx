@@ -3,7 +3,7 @@ import remarkRehype from "remark-rehype";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
 import { unified } from "unified";
-import { shikiOptions } from "@/options/shikiOptions.mjs";
+import { shikiOptions } from "@/configs/options/shikiOptions.mjs";
 
 type AppHighlightProps = {
 	title?: string;

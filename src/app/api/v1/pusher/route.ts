@@ -2,6 +2,7 @@ import Pusher from "pusher";
 import { NextRequest, NextResponse } from "next/server";
 import { handleErr } from "@/lib/server";
 import { moderate, ModerationError } from "@/lib/openai";
+import { constants } from "@/configs/constants/pusher";
 import type { Moderation } from "openai/resources/moderations";
 
 const pusher: Pusher = new Pusher({
@@ -33,15 +34,15 @@ export async function POST(req: NextRequest) {
 			throw new ModerationError();
 		}
 
-		if (event === "user:connected") {
+		if (event === constants.USER_CONNECTED) {
 			dbUsers.push(data);
 		}
 
-		if (event === "user:disconnected") {
+		if (event === constants.USER_DISCONNECTED) {
 			dbUsers = dbUsers.filter(u => u.uid !== data.uid);
 		}
 
-		if (event === "message:added") {
+		if (event === constants.MESSAGE_ADDED) {
 			dbMessages.push(data);
 		}
 

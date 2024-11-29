@@ -2,7 +2,7 @@
 
 import type { ChatMessage } from "@/interfaces/dashboard/demos/chat-message";
 import useStore from "@/stores/chat.store";
-import ChatAvatar from "@/components/dashboard/demos/websocket/chat-avatar";
+import ChatAvatar from "@/components/dashboard/demos/pusher/chat-avatar";
 
 export default function ChatBubble({ message }: { message: ChatMessage }) {
 	const { userUid } = useStore();
