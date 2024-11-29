@@ -6,7 +6,7 @@ export default function ChatBackground() {
 			width="100%"
 			height="100%"
 		>
-			<pattern id="chat-background" patternUnits="userSpaceOnUse" width="256" height="256" viewBox="0 0 512 512">
+			<pattern id="chat-background" patternUnits="userSpaceOnUse" width="192" height="192" viewBox="0 0 512 512">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					xmlnsXlink="http://www.w3.org/1999/xlink"
