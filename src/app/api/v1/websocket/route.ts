@@ -57,3 +57,16 @@ export async function POST(req: NextRequest) {
 		return NextResponse.json(handleErr(error), handleErr(error));
 	}
 }
+
+export async function DELETE() {
+	dbUsers = [];
+	dbMessages = [];
+
+	return NextResponse.json({
+		data: {
+			users: dbUsers,
+			messages: dbMessages,
+		},
+		status: 200,
+	});
+}

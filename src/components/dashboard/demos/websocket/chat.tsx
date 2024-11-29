@@ -120,17 +120,25 @@ export default function Chat() {
 		toast.error("You have been disconnected");
 	};
 
+	const handleReset = async () => {
+		const response: Response = await fetch("/api/v1/websocket", {
+			method: "DELETE",
+		});
+
+		if (!response.ok) {
+			toast.error("Failed to reset");
+		}
+	};
+
 	return (
 		<div className={"border border-input rounded-xl overflow-hidden relative"}>
-			{!isConnected && (
-				<div className={"flex absolute size-full inset-0 p-4 bg-background/80"}>
-					<Button className={"m-auto z-10"} onClick={handleConnect}>
-						{isConnectedLoader && <Loader2 className="animate-spin" />}
-						Connect to Chat
-					</Button>
-				</div>
-			)}
 			<div className={"flex items-center justify-between gap-4 p-4 bg-sidebar border-b border-input"}>
+				<Button variant={"destructive"} onClick={handleReset}>
+					Reset
+				</Button>
+				{/*<Button variant={"destructive"} onClick={handleDisconnect}>*/}
+				{/*	Disconnect*/}
+				{/*</Button>*/}
 				<span className={""}>Users in room ({users.length})</span>
 				<ul className={"flex gap-4"}>
 					{users.reverse().map((user: ChatUser) => (
@@ -156,6 +164,14 @@ export default function Chat() {
 				</div>
 				<ChatInput />
 			</div>
+			{!isConnected && (
+				<div className={"flex absolute size-full inset-0 p-4 bg-background/80 z-10"}>
+					<Button className={"m-auto"} onClick={handleConnect}>
+						{isConnectedLoader && <Loader2 className="animate-spin" />}
+						Connect to Chat
+					</Button>
+				</div>
+			)}
 		</div>
 	);
 }
