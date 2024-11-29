@@ -36,6 +36,12 @@ const nextConfig = {
 			},
 			{
 				protocol: "https",
+				hostname: "api.dicebear.com",
+				port: "",
+				pathname: "/**/**",
+			},
+			{
+				protocol: "https",
 				hostname: "startup-template-sage.vercel.app",
 				port: "",
 				pathname: "/**/**",

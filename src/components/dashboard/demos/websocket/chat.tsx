@@ -12,43 +12,44 @@ import { Loader2 } from "lucide-react";
 import useStore from "@/stores/chat.store";
 import type { ChatMessage } from "@/interfaces/dashboard/demos/chat-message";
 import type { ChatUser } from "@/interfaces/dashboard/demos/chat-user";
+import { nanoid } from "nanoid";
 
 const pusher: Pusher = new Pusher("4033f77ec34c54548123", {
 	cluster: "mt1",
 });
 
 export default function Chat() {
-	// 	// // Scroll to the bottom
-	// 	//
-	// 	// if (scrollRef.current) {
-	// 	// 	const div: HTMLDivElement = scrollRef.current;
-	// 	//
-	// 	// 	div.scrollTop = div.scrollHeight;
-	// 	// }
-
-	const scrollRef = useRef(null);
-
-	const { userUid } = useStore();
-
-	const [isConnected, setIsConnected] = useState<boolean>(false);
-	const [isConnectedLoader, setIsConnectedLoader] = useState<boolean>(false);
-
+	const chatRef = useRef(null);
+	const { userUid, setUserUid } = useStore();
+	const [loader, setLoader] = useState<boolean>(false);
 	const [messages, setMessages] = useState<ChatMessage[]>([]);
 	const [users, setUsers] = useState<ChatUser[]>([]);
 
 	useEffect(() => {
-		if (isConnected) {
-			toast.error("You have been connected to chat");
+		if (userUid) {
+			const sendBeacon = () => {
+				const body = JSON.stringify({
+					channel: "pusher",
+					event: "user:disconnected",
+					uid: userUid,
+				});
 
-			window.addEventListener("beforeunload", handleDisconnect);
+				navigator.sendBeacon("/api/v1/websocket", body);
+
+				// Flush
+
+				setUserUid(null);
+			};
+
+			window.addEventListener("pagehide", sendBeacon);
 
 			return () => {
-				window.removeEventListener("beforeunload", handleDisconnect);
+				sendBeacon();
 
-				handleDisconnect();
+				window.removeEventListener("pagehide", sendBeacon);
 			};
 		}
-	}, [isConnected]);
+	}, [userUid]);
 
 	useEffect(() => {
 		fetch("/api/v1/websocket")
@@ -58,6 +59,14 @@ export default function Chat() {
 
 				setUsers(users);
 				setMessages(messages);
+
+				// Scroll to the bottom
+
+				if (chatRef.current) {
+					const div: HTMLDivElement = chatRef.current;
+
+					div.scrollTop = div.scrollHeight;
+				}
 			});
 
 		const channel: Channel = pusher.subscribe("pusher");
@@ -84,40 +93,53 @@ export default function Chat() {
 	}, []);
 
 	const handleConnect = async () => {
-		setIsConnectedLoader(true);
+		setLoader(true);
 
-		const body = JSON.stringify({
+		const body = {
 			channel: "pusher",
 			event: "user:connected",
-			uid: userUid,
-		});
+			uid: nanoid(),
+		};
 
 		const response: Response = await fetch("/api/v1/websocket", {
 			method: "POST",
-			body,
+			body: JSON.stringify(body),
 		});
 
 		if (!response.ok) {
 			toast.error("Failed to connect");
 		} else {
-			setIsConnected(true);
+			toast.error("You have been connected to chat");
+
+			setUserUid(body.uid);
 		}
 
-		setIsConnectedLoader(false);
+		setLoader(false);
 	};
 
-	const handleDisconnect = () => {
-		const body = JSON.stringify({
+	const handleDisconnect = async () => {
+		setLoader(true);
+
+		const body = {
 			channel: "pusher",
 			event: "user:disconnected",
 			uid: userUid,
+		};
+
+		const response: Response = await fetch("/api/v1/websocket", {
+			method: "POST",
+			body: JSON.stringify(body),
 		});
 
-		navigator.sendBeacon("/api/v1/websocket", body);
+		if (!response.ok) {
+			toast.error("Failed to disconnect");
+		} else {
+			toast.error("You have been disconnected");
 
-		// Notify
+			setUserUid(null);
+		}
 
-		toast.error("You have been disconnected");
+		setLoader(false);
 	};
 
 	const handleReset = async () => {
@@ -131,28 +153,32 @@ export default function Chat() {
 	};
 
 	return (
-		<div className={"border border-input rounded-xl overflow-hidden relative"}>
+		<div className={"border border-input rounded-xl relative overflow-hidden"}>
 			<div className={"flex items-center justify-between gap-4 p-4 bg-sidebar border-b border-input"}>
-				<Button variant={"destructive"} onClick={handleReset}>
-					Reset
-				</Button>
-				{/*<Button variant={"destructive"} onClick={handleDisconnect}>*/}
-				{/*	Disconnect*/}
-				{/*</Button>*/}
-				<span className={""}>Users in room ({users.length})</span>
-				<ul className={"flex gap-4"}>
+				<ul className={"flex gap-4 min-h-9"}>
 					{users.reverse().map((user: ChatUser) => (
 						<li key={user.uid}>
-							<Avatar>
-								<AvatarImage src={`https://api.dicebear.com/9.x/avataaars-neutral/svg?scale=60&seed=${user.uid}`} />
+							<Avatar className={"size-9"}>
+								<AvatarImage src={`https://api.dicebear.com/9.x/fun-emoji/png?scale=75&seed=${user.uid}`} />
 								<AvatarFallback></AvatarFallback>
 							</Avatar>
 						</li>
 					))}
 				</ul>
+				{userUid && (
+					<div className={"flex items-center gap-4"}>
+						<Button variant={"destructive"} onClick={handleReset}>
+							Reset
+						</Button>
+						<Button onClick={handleDisconnect}>
+							{loader && <Loader2 className="animate-spin" />}
+							Disconnect
+						</Button>
+					</div>
+				)}
 			</div>
 			<div className={"flex flex-col"}>
-				<div className={"relative h-72 overflow-auto"} ref={scrollRef}>
+				<div className={"relative h-72 overflow-auto"} ref={chatRef}>
 					<ul className={"relative z-10 flex flex-col gap-4 p-4"}>
 						{messages.map((message: ChatMessage) => (
 							<li className={"block"} key={message.uid}>
@@ -164,10 +190,10 @@ export default function Chat() {
 				</div>
 				<ChatInput />
 			</div>
-			{!isConnected && (
+			{!userUid && (
 				<div className={"flex absolute size-full inset-0 p-4 bg-background/80 z-10"}>
 					<Button className={"m-auto"} onClick={handleConnect}>
-						{isConnectedLoader && <Loader2 className="animate-spin" />}
+						{loader && <Loader2 className="animate-spin" />}
 						Connect to Chat
 					</Button>
 				</div>

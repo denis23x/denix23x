@@ -11,8 +11,8 @@ export default function ChatBubble({ message }: { message: ChatMessage }) {
 		<div
 			className={`flex items-end gap-4 w-full h-full overflow-hidden ${message.userUid === userUid ? "flex-row-reverse self-end" : "flex-row self-start"}`}
 		>
-			<Avatar>
-				<AvatarImage src={`https://api.dicebear.com/9.x/avataaars-neutral/svg?scale=60&seed=${message.userUid}`} />
+			<Avatar className={"size-9"}>
+				<AvatarImage src={`https://api.dicebear.com/9.x/fun-emoji/png?scale=75&seed=${message.userUid}`} />
 				<AvatarFallback></AvatarFallback>
 			</Avatar>
 			<div

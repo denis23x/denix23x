@@ -27,26 +27,28 @@ export default function ChatInput() {
 	});
 
 	async function onSubmit(values: z.infer<typeof formSchema>) {
-		const body: ChatMessage = {
-			uid: nanoid(),
-			userUid,
-			message: values.message,
-			createdAt: new Date().toString(),
-		};
+		if (userUid) {
+			const body: ChatMessage = {
+				uid: nanoid(),
+				userUid,
+				message: values.message,
+				createdAt: new Date().toString(),
+			};
 
-		const response: Response = await fetch("/api/v1/websocket", {
-			method: "POST",
-			body: JSON.stringify({
-				channel: "pusher",
-				event: "message:added",
-				...body,
-			}),
-		});
+			const response: Response = await fetch("/api/v1/websocket", {
+				method: "POST",
+				body: JSON.stringify({
+					channel: "pusher",
+					event: "message:added",
+					...body,
+				}),
+			});
 
-		if (!response.ok) {
-			toast.error("Failed to push data");
-		} else {
-			form.reset();
+			if (!response.ok) {
+				toast.error("Failed to push data");
+			} else {
+				form.reset();
+			}
 		}
 	}
 
