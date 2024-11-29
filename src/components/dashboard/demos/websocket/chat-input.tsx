@@ -54,7 +54,10 @@ export default function ChatInput() {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className={"flex items-center gap-4 p-4 border-t border-input"}>
+			<form
+				onSubmit={form.handleSubmit(onSubmit)}
+				className={"flex items-center gap-4 p-4 border-t border-input bg-background relative"}
+			>
 				<FormField
 					control={form.control}
 					name="message"

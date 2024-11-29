@@ -45,10 +45,6 @@ export async function POST(req: NextRequest) {
 			dbMessages.push(data);
 		}
 
-		if (event === "message:deleted") {
-			dbMessages = dbMessages.filter(m => m.uid !== data.uid);
-		}
-
 		return NextResponse.json({
 			data: await pusher.trigger(channel, event, data),
 			status: 200,

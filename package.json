@@ -20,6 +20,8 @@
   "dependencies": {
     "@apollo/server": "^4.11.2",
     "@as-integrations/next": "^3.2.0",
+    "@dicebear/collection": "^9.2.2",
+    "@dicebear/core": "^9.2.2",
     "@giscus/react": "^3.0.0",
     "@hookform/resolvers": "^3.9.1",
     "@mdx-js/loader": "^3.1.0",

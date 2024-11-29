@@ -1,8 +1,8 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import type { ChatMessage } from "@/interfaces/dashboard/demos/chat-message";
 import useStore from "@/stores/chat.store";
+import ChatAvatar from "@/components/dashboard/demos/websocket/chat-avatar";
 
 export default function ChatBubble({ message }: { message: ChatMessage }) {
 	const { userUid } = useStore();
@@ -11,10 +11,7 @@ export default function ChatBubble({ message }: { message: ChatMessage }) {
 		<div
 			className={`flex items-end gap-4 w-full h-full overflow-hidden ${message.userUid === userUid ? "flex-row-reverse self-end" : "flex-row self-start"}`}
 		>
-			<Avatar className={"size-9"}>
-				<AvatarImage src={`https://api.dicebear.com/9.x/fun-emoji/png?scale=75&seed=${message.userUid}`} />
-				<AvatarFallback></AvatarFallback>
-			</Avatar>
+			<ChatAvatar uid={message.userUid} />
 			<div
 				className={`relative flex flex-col gap-2 py-2 px-4 rounded-3xl max-w-sm overflow-hidden ${message.userUid === userUid ? "bg-slate-200 dark:bg-slate-800 rounded-br-none" : "bg-sky-100 dark:bg-sky-900 rounded-bl-none"}`}
 			>
