@@ -18,8 +18,8 @@ const nextConfig = {
 	async rewrites() {
 		return [
 			{
-				source: '/pusher/:path*',
-				destination: 'https://sockjs-mt1.pusher.com/:path*',
+				source: '/pusher-ws/:path*',
+				destination: 'https://ws-mt1.pusher.com/:path*',
 			},
 		];
 	},

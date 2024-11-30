@@ -17,9 +17,11 @@ import ChatInput from "./chat-input";
 
 const pusher: Pusher = new Pusher(env.appKey, {
 	cluster: env.cluster,
-	httpHost: "denis23x.info",
-	httpPath: "/pusher",
-	enabledTransports: ["xhr_streaming", "xhr_polling", "sockjs"],
+	forceTLS: false,
+	wsHost: process.env.NODE_ENV === "development" ? "localhost" : "denis23.info",
+	wsPort: process.env.NODE_ENV === "development" ? 3000 : undefined,
+	wsPath: "/pusher-ws",
+	enabledTransports: ["ws"],
 });
 
 export default function Chat() {
@@ -72,7 +74,7 @@ export default function Chat() {
 				setMessages(r.data.messages);
 			});
 
-		const channel: Channel = pusher.subscribe("pusher");
+		const channel: Channel = pusher.subscribe(constants.CHANNEL);
 
 		channel.bind(constants.USER_CONNECTED, (user: ChatUser) => {
 			setUsers(users => [...users, user]);
