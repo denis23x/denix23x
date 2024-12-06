@@ -1,0 +1,116 @@
+import BlogLayout from "@/components/blog/blog-layout";
+import { Bot } from "lucide-react";
+
+# How to use AI properly in daily working routine
+
+## Contents
+
+# Intro
+
+Artificial Intelligence has become a powerful tool for enhancing productivity, particularly in coding and content creation. However, using **AI** effectively requires understanding its strengths and limitations. This guide outlines practical ways to integrate **AI** into your daily work while avoiding common pitfalls.
+
+# Code Generation
+
+✅ Use **AI** for code generation, sometimes you need to write a long boilerplate to use some of the technologies or patterns, and in these cases **AI** will fit you well. Another way to use it is to write utility functions.
+
+> Generate **Redux** boilerplate, with local storage sync, use **TypeScript**
+
+> Generate **SASS 7-1 Architecture** boilerplate, fill it with basic **UI-Kit**
+
+> Generate **Bash** script which recursively scan specified folder and output file tree with file size in **JSON**
+
+❌ Do not abuse this method, write most part of code by yourself, use code generations as helper for some code blocks.
+
+# Code Transformation
+
+✅ Use **AI** for code transformation, have awesome **CSS** with **HEX** colors and want to have it with **RGB** or **HSL**? Found a useful code snippet in **JavaScript** and want to have it in **TypeScript**? Easy.
+
+> Remake this code in **TypeScript** and **ES6** ...
+
+> Remake this code in **CSS** and replace **HEX** to **HSL** colors ...
+
+**SCSS Input**
+
+``` scss
+$primary-background: #FFF;
+$primary-color: #000;
+
+body {
+  background: $primary-background;
+  color: $primary-color;
+}
+```
+
+**CSS Output**
+
+``` css
+:root {
+  --primary-background: hsl(0, 0%, 100%);
+  --primary-color: hsl(0, 0%, 0%);
+}
+
+body {
+  background: var(--primary-background);
+  color: var(--primary-color);
+}
+```
+
+It's also working in opposite side! Another way to use code transformation is for typification your code, ask **AI** to create types or interfaces. One more thing is try to generate code from different language (only if the functional is the same!), as example if you're working with file system in **Node.js** you can ask **AI** to generate same code as yours but in **Python** or **PHP**, just check and test everything carefully.
+
+❌ Be realistic and do not ask **AI** to make something what is not existing one of your target languages, keep in mind platform and language specific differences.
+
+# RegExp
+
+✅ Use **AI** to generate Regular Expressions, as example for password or **URL** (or path) validation with custom rules. Don't forget to specify the language for which you need a regular expression.
+
+> Create a **JavaScript** password RegExp which must include (1 capital letter OR 1 special character), AND must include at least 1 number, AND not contain whitespaces. The password should be 8-16 characters long.
+
+``` javascript
+const regex = /^(?=(.*[A-Z]|.*[\W_]))(?=.*\d)(?!.*\s).{8,16}$/;
+
+console.log(regex.test("Test1234!"));   // true
+console.log(regex.test("12345678"));    // false (no uppercase or special character)
+console.log(regex.test("NoNumber!"));   // false (no number)
+console.log(regex.test("Short1!"));     // false (too short)
+```
+
+❌ Test every regular expression with many data as possible (tell **AI** to generate mock data for test), some cases can work wrong, so do not miss them. Received results you can easily test in services like https://regex101.com/
+
+# SEO Meta Tags
+
+✅ Use **AI** to generate text for meta tags (this is my favourite thing!), just explain the details about text what you want to have and add some rules for **SEO**.
+
+> There is a page with my **Japan Winter** trip photos gallery, generate **SEO** friendly text for it. Title should be 20-60 characters long, description should be 150-160 characters long, and generate 2-5 keywords. Everything should be related to each other.
+
+**Title**:
+
+Japan Winter Trip Photo Gallery | Snowy Adventures
+
+**Description**:
+
+Explore stunning photos from my Japan winter trip. Experience serene snowy landscapes, vibrant festivals, and cultural wonders captured in breathtaking moments.
+
+**Keywords**:
+
+Japan winter trip\
+snowy landscapes\
+Japanese culture\
+winter photography\
+travel gallery
+
+> ...and generate separate text for **OpenGraph** and **Twitter**
+
+❌ Avoid auto-generating full blog posts, use it as helper and focus on high quality and user value.
+
+export const metadata = {
+	title: "How to use AI properly in daily working routine",
+	description:
+		"Enhance productivity with AI by mastering its strengths in coding and content creation. Learn practical integration tips and avoid common pitfalls for effective use.",
+	other: {
+		icon: <Bot />
+	},
+}
+
+export default function MDXPage({ children }) {
+	return <BlogLayout>{children}</BlogLayout>
+}

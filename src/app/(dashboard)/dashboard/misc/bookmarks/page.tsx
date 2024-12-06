@@ -122,4 +122,9 @@ const items = [
 		label: "Octopus",
 		image: "/dashboard/misc/bookmarks/octopus.png",
 	},
+	{
+		url: "https://sass-guidelin.es/",
+		label: "Sass Guidelines",
+		image: "/dashboard/misc/bookmarks/sass-guidelines.png",
+	},
 ];
