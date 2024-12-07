@@ -127,4 +127,9 @@ const items = [
 		label: "Sass Guidelines",
 		image: "/dashboard/misc/bookmarks/sass-guidelines.png",
 	},
+	{
+		url: "https://frontendchecklist.io",
+		label: "Frontend Checklist",
+		image: "/dashboard/misc/bookmarks/frontend-checklist.png",
+	},
 ];
