@@ -15,14 +15,6 @@ const withMDX = nextMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	async rewrites() {
-		return [
-			{
-				source: '/pusher-ws/:path*',
-				destination: 'https://ws-mt1.pusher.com/:path*',
-			},
-		];
-	},
 	reactStrictMode: true,
 	pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 	sassOptions: {

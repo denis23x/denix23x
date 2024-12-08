@@ -27,22 +27,25 @@ export default function Page() {
 				<div className="absolute pointer-events-none inset-0 bg-background [mask-image:radial-gradient(ellipse_at_right,transparent_20%,black)]"></div>
 				<ul className="relative grid gap-6">
 					{items.map((item, i: number) => (
-						<li className={"flex items-center justify-start"} key={i}>
+						<li className={"inline"} key={i}>
 							{item.image ? (
 								<LinkPreview
 									url={item.url}
 									imageSrc={item.image}
 									isStatic={true}
-									className={"font-normal text-lg sm:text-2xl whitespace-nowrap"}
+									className={"inline-block align-bottom font-normal text-lg sm:text-2xl whitespace-nowrap"}
 								>
 									{item.label}
 								</LinkPreview>
 							) : (
-								<LinkPreview url={item.url} className={"font-normal text-lg sm:text-2xl whitespace-nowrap"}>
+								<LinkPreview
+									url={item.url}
+									className={"inline-block align-bottom font-normal text-lg sm:text-2xl whitespace-nowrap"}
+								>
 									{item.label}
 								</LinkPreview>
 							)}
-							<ArrowUpRight className={"inline-block align-baseline min-w-4 size-4"} />
+							<ArrowUpRight className={"inline-block align-super min-w-4 size-4"} />
 						</li>
 					))}
 				</ul>

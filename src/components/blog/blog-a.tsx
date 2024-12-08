@@ -10,14 +10,14 @@ export default function BlogA({
 }: DetailedHTMLProps<HTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) {
 	const preRef: RefObject<HTMLAnchorElement> = useRef<HTMLAnchorElement>(null);
 
-	// @ts-expect-error href is not exist
+	// @ts-expect-error href is not exists
 	const target = props.href.startsWith("http") ? "_blank" : "_self";
 
 	return (
 		// @ts-expect-error href is required
 		<Link className={"inline"} ref={preRef} {...props} target={target}>
 			<span className={"inline-block text-ellipsis overflow-hidden align-bottom underline max-w-full"}>{children}</span>
-			{target === "_blank" && <ArrowUpRight className={"inline-block align-baseline size-4"} />}
+			{target === "_blank" && <ArrowUpRight className={"inline-block align-baseline min-w-4 size-4"} />}
 		</Link>
 	);
 }
