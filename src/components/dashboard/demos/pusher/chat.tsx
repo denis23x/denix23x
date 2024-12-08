@@ -15,6 +15,11 @@ import ChatBubble from "./chat-bubble";
 import ChatBackground from "./chat-background";
 import ChatInput from "./chat-input";
 
+const pusher: Pusher = new Pusher(env.appKey, {
+	cluster: env.cluster,
+	forceTLS: true,
+});
+
 export default function Chat() {
 	const chatRef = useRef(null);
 	const { userUid, setUserUid } = useStore();
@@ -64,12 +69,6 @@ export default function Chat() {
 				setUsers(r.data.users);
 				setMessages(r.data.messages);
 			});
-
-		const pusher: Pusher = new Pusher(env.appKey, {
-			cluster: env.cluster,
-			forceTLS: true,
-			disabledTransports: ["ws", "wss"],
-		});
 
 		const channel: Channel = pusher.subscribe(constants.CHANNEL);
 
