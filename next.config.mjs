@@ -15,6 +15,15 @@ const withMDX = nextMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+	async rewrites() {
+		return [
+			{
+				source: '/pusher/:path*',
+				destination: 'https://sockjs-mt1.pusher.com/:path*',
+				// 'https://sockjs-mt1.pusher.com/pusher/app/4033f77ec34c54548123/979/nj4o46e2/xhr_streaming?protocol=7&client=js&version=8.4.0-rc2&t=1733646027467&n=13'
+			},
+		];
+	},
 	reactStrictMode: true,
 	pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 	sassOptions: {
