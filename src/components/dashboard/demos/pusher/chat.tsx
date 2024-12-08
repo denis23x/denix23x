@@ -15,14 +15,6 @@ import ChatBubble from "./chat-bubble";
 import ChatBackground from "./chat-background";
 import ChatInput from "./chat-input";
 
-const pusher: Pusher = new Pusher(env.appKey, {
-	cluster: env.cluster,
-	forceTLS: true,
-	// httpHost: process.env.NODE_ENV === "development" ? "localhost" : "denis23x.info",
-	// httpPath: "/pusher",
-	enabledTransports: ["ws", "xhr_streaming", "xhr_polling"],
-});
-
 export default function Chat() {
 	const chatRef = useRef(null);
 	const { userUid, setUserUid } = useStore();
@@ -72,6 +64,12 @@ export default function Chat() {
 				setUsers(r.data.users);
 				setMessages(r.data.messages);
 			});
+
+		const pusher: Pusher = new Pusher(env.appKey, {
+			cluster: env.cluster,
+			forceTLS: true,
+			disabledTransports: ["ws", "wss"],
+		});
 
 		const channel: Channel = pusher.subscribe(constants.CHANNEL);
 
