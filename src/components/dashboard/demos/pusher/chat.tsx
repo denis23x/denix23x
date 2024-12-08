@@ -18,8 +18,9 @@ import ChatInput from "./chat-input";
 const pusher: Pusher = new Pusher(env.appKey, {
 	cluster: env.cluster,
 	forceTLS: true,
-	httpHost: process.env.NODE_ENV === "development" ? "localhost" : "denis23x.info",
-	httpPath: "/pusher",
+	// httpHost: process.env.NODE_ENV === "development" ? "localhost" : "denis23x.info",
+	// httpPath: "/pusher",
+	enabledTransports: ["ws", "xhr_streaming", "xhr_polling"],
 });
 
 export default function Chat() {
