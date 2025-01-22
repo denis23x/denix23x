@@ -45,9 +45,9 @@ const items = [
 		header: <DashboardWordRotate />,
 	},
 	{
-		title: "Placeholder",
-		description: "Pariatur ea voluptate exercitation nostrud ut et adipisicing duis labore eiusmod ullamco duis.",
-		url: "#",
+		title: "Cheat Sheets",
+		description: "A curated collection of modern web development cheat sheets, covering HTML, CSS, JavaScript",
+		url: "/dashboard/cheatsheets",
 		header: <DashboardSkeleton />,
 	},
 	{

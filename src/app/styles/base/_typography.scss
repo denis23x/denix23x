@@ -1,3 +1,19 @@
 .inline-code {
 	@apply text-sm rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono font-semibold;
 }
+
+.font-fast-sans {
+	font-family: var(--font-fast-sans), sans-serif;
+}
+
+.font-fast-mono {
+	font-family: var(--font-fast-mono), sans-serif;
+}
+
+.font-geist-sans {
+	font-family: var(--font-geist-sans), sans-serif;
+}
+
+.font-geist-mono {
+	font-family: var(--font-geist-mono), sans-serif;
+}

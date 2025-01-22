@@ -1,4 +1,4 @@
-import { House, AppWindow, SquareTerminal, Shapes, ScrollText, Star } from "lucide-react";
+import { House, AppWindow, Gamepad2, Cpu, SquareTerminal, Shapes, ScrollText, Star } from "lucide-react";
 import { NavMain } from "@/components/nav/nav-main";
 import {
 	Sidebar,
@@ -9,7 +9,7 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { NavSecondary } from "@/components/nav/nav-secondary";
-import { DemosItems, MiscItems, ToolsItems } from "@/lib/items";
+import { CheatSheetsItems, DemosItems, MiscItems, ToolsItems } from "@/lib/items";
 
 export const data = {
 	// user: {
@@ -20,9 +20,16 @@ export const data = {
 	navMain: [
 		{
 			isActive: true,
+			title: "Cheat Sheets",
+			url: "/dashboard/cheatsheets",
+			icon: Star,
+			items: await CheatSheetsItems(),
+		},
+		{
+			isActive: true,
 			title: "Demos",
 			url: "/dashboard/demos",
-			icon: Star,
+			icon: Cpu,
 			items: await DemosItems(),
 		},
 		{
@@ -47,13 +54,18 @@ export const data = {
 	],
 	navSecondary: [
 		{
-			title: "Takabase",
-			url: "https://takabase.com",
-			icon: AppWindow,
+			title: "Deepwood",
+			url: "https://denis23x.itch.io/deepwood",
+			icon: Gamepad2,
 		},
 		{
 			title: "Memorease",
 			url: "https://memorease.site",
+			icon: AppWindow,
+		},
+		{
+			title: "Takabase",
+			url: "https://takabase.com",
 			icon: AppWindow,
 		},
 		{

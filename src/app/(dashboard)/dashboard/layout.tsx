@@ -21,7 +21,7 @@ export default function DashboardLayout({ children }: Readonly<{ children: React
 		<SidebarProvider defaultOpen={false}>
 			<AppSidebar />
 			<SidebarInset>
-				<div className={"grid"}>
+				<div className={"grid font-geist-sans"}>
 					<header className="flex h-16 items-center justify-between gap-2">
 						<div className="flex items-center gap-2 px-4">
 							<SidebarTrigger className="-ml-1" />

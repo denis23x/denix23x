@@ -15,6 +15,16 @@ const geistMono = localFont({
 	variable: "--font-geist-mono",
 	weight: "100 900",
 });
+const fastSans = localFont({
+	src: "./fonts/FastSans.ttf",
+	variable: "--font-fast-sans",
+	weight: "100 900",
+});
+const fastMono = localFont({
+	src: "./fonts/FastMono.ttf",
+	variable: "--font-fast-mono",
+	weight: "100 900",
+});
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://denis23x.info"),
@@ -29,7 +39,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+			<body
+				className={`${geistSans.variable} ${geistMono.variable} ${fastSans.variable} ${fastMono.variable} antialiased`}
+			>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 					<div className={"overflow-auto"}>{children}</div>
 					<Toaster />
