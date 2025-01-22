@@ -1,8 +1,8 @@
 import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "@/interfaces/metadata";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
 	title: "Nuxt",
@@ -200,18 +200,16 @@ export default function Page() {
 							<ul className={"flex flex-wrap gap-4"}>
 								{x.questions.map((y: QList) => (
 									<li key={y.id}>
-										<TooltipProvider>
-											<Tooltip>
-												<TooltipTrigger asChild>
-													<Button className={"font-fast-sans"} variant="outline">
-														{y.question}
-													</Button>
-												</TooltipTrigger>
-												<TooltipContent>
-													<p className={"max-w-96 py-2"}>{y.answer}</p>
-												</TooltipContent>
-											</Tooltip>
-										</TooltipProvider>
+										<Popover>
+											<PopoverTrigger asChild>
+												<Button className={""} variant="outline">
+													{y.question}
+												</Button>
+											</PopoverTrigger>
+											<PopoverContent>
+												<p className={"max-w-96 font-fast-sans text-sm py-2"}>{y.answer}</p>
+											</PopoverContent>
+										</Popover>
 									</li>
 								))}
 							</ul>

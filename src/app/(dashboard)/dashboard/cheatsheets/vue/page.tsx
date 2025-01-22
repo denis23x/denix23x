@@ -1,8 +1,8 @@
 import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "@/interfaces/metadata";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 export const metadata: Metadata = {
 	title: "Vue",
@@ -221,24 +221,22 @@ export default function Page() {
 			<Separator />
 			<Accordion type="single" className={"w-full"} collapsible>
 				{list.map((x: CList) => (
-					<AccordionItem key={x.id} value={x.name}>
+					<AccordionItem key={x.id} value={String(x.id)}>
 						<AccordionTrigger>{x.name}</AccordionTrigger>
 						<AccordionContent>
-							<ul className={"flex flex-wrap gap-4"}>
+							<ul className={"flex flex-wrap font-fast-sans gap-4"}>
 								{x.questions.map((y: QList) => (
 									<li key={y.id}>
-										<TooltipProvider>
-											<Tooltip>
-												<TooltipTrigger asChild>
-													<Button className={"font-fast-sans"} variant="outline">
-														{y.question}
-													</Button>
-												</TooltipTrigger>
-												<TooltipContent>
-													<p className={"max-w-96 py-2"}>{y.answer}</p>
-												</TooltipContent>
-											</Tooltip>
-										</TooltipProvider>
+										<Popover>
+											<PopoverTrigger asChild>
+												<Button className={""} variant="outline">
+													{y.question}
+												</Button>
+											</PopoverTrigger>
+											<PopoverContent>
+												<p className={"max-w-96 font-fast-sans text-sm py-2"}>{y.answer}</p>
+											</PopoverContent>
+										</Popover>
 									</li>
 								))}
 							</ul>
