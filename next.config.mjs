@@ -42,6 +42,12 @@ const nextConfig = {
 			},
 			{
 				protocol: "https",
+				hostname: "img.itch.zone",
+				port: "",
+				pathname: "/**/**",
+			},
+			{
+				protocol: "https",
 				hostname: "startup-template-sage.vercel.app",
 				port: "",
 				pathname: "/**/**",

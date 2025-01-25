@@ -22,7 +22,13 @@ export const Screenshot = React.memo(({ screenshot, index, hovered, setHovered }
 		)}
 	>
 		<Link href={screenshot.url} target={"_blank"} rel={"noopener noreferrer"}>
-			<Image src={screenshot.src} alt={screenshot.url} fill className="object-cover object-top absolute inset-0" />
+			<Image
+				src={screenshot.src}
+				alt={screenshot.url}
+				width={172}
+				height={172}
+				className="object-cover object-top absolute inset-0"
+			/>
 		</Link>
 	</li>
 ));
