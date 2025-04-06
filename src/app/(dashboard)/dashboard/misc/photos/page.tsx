@@ -10,6 +10,9 @@ export const metadata: Metadata = {
 	other: {
 		icon: <Camera />,
 	},
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/misc/photos`,
+	},
 };
 
 export default function Page() {

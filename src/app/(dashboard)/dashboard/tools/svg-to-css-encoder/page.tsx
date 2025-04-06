@@ -11,6 +11,9 @@ export const metadata: Metadata = {
 	other: {
 		icon: <Images />,
 	},
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/svg-to-css-encoder`,
+	},
 };
 
 export default function Page() {

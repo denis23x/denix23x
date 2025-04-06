@@ -14,6 +14,9 @@ export const metadata: Metadata = {
 	other: {
 		icon: <PaletteIcon />,
 	},
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/color-converter`,
+	},
 };
 
 export default function Page() {

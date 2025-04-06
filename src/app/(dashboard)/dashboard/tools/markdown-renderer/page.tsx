@@ -10,6 +10,9 @@ export const metadata: Metadata = {
 	other: {
 		icon: <Type />,
 	},
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/markdown-renderer`,
+	},
 };
 
 export default function Page() {

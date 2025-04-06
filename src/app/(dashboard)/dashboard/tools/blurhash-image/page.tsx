@@ -16,6 +16,9 @@ export const metadata: Metadata = {
 	other: {
 		icon: <Image />, // eslint-disable-line jsx-a11y/alt-text
 	},
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/blurhash-image`,
+	},
 };
 
 export default function Page() {

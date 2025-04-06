@@ -12,6 +12,9 @@ export const metadata: Metadata = {
 	other: {
 		icon: <Scroll />,
 	},
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/lorem-ipsum`,
+	},
 };
 
 export default function Page() {

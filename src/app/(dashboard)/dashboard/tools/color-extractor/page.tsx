@@ -12,6 +12,9 @@ export const metadata: Metadata = {
 	other: {
 		icon: <SwatchBook />,
 	},
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/color-extractor`,
+	},
 };
 
 export default function Page() {

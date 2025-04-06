@@ -11,6 +11,9 @@ export const metadata: Metadata = {
 	other: {
 		icon: <Music />,
 	},
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/misc/playlist`,
+	},
 };
 
 export default function Page() {

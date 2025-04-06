@@ -7,6 +7,9 @@ export const metadata: Metadata = {
 	title: "Misc",
 	description:
 		"Explore a curated collection of personal favorites, including playlists, movie recommendations, and more. Discover links to explore all the things I enjoy.",
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/misc`,
+	},
 };
 
 export default async function Page() {

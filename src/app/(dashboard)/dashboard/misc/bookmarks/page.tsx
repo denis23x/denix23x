@@ -10,6 +10,9 @@ export const metadata: Metadata = {
 	other: {
 		icon: <Bookmark />,
 	},
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/misc/bookmarks`,
+	},
 };
 
 export default function Page() {

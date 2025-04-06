@@ -4,6 +4,13 @@ import DashboardSkeleton from "@/components/dashboard/dashboard-skeleton";
 import DashboardMarquee from "@/components/dashboard/dashboard-marquee";
 import DashboardBeams from "@/components/dashboard/dashboard-beams";
 import DashboardWordRotate from "@/components/dashboard/dashboard-word-rotate";
+import type { Metadata } from "@/interfaces/metadata";
+
+export const metadata: Metadata = {
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/dashboard`,
+	},
+};
 
 export default function Page() {
 	return (

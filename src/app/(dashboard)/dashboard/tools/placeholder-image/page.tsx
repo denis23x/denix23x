@@ -14,6 +14,9 @@ export const metadata: Metadata = {
 	other: {
 		icon: <ImageIcon />, // eslint-disable-line jsx-a11y/alt-text
 	},
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/placeholder-image`,
+	},
 };
 
 export default function Page() {

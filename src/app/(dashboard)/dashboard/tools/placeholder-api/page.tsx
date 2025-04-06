@@ -12,6 +12,9 @@ export const metadata: Metadata = {
 	other: {
 		icon: <Code />,
 	},
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/placeholder-api`,
+	},
 };
 
 export default async function Page() {
