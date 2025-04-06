@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { BlogItems, DemosItems, MiscItems, ToolsItems } from "@/lib/items";
+import { BlogItems, MiscItems, ToolsItems } from "@/lib/items";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const host: string = "https://denis23x.info/";
@@ -15,10 +15,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		{
 			url: "/blog",
 			items: await BlogItems(),
-		},
-		{
-			url: "/dashboard/demos",
-			items: await DemosItems(),
 		},
 		{
 			url: "/dashboard/misc",

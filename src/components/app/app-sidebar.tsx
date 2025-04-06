@@ -1,4 +1,4 @@
-import { House, AppWindow, Gamepad2, Cpu, SquareTerminal, Shapes, ScrollText } from "lucide-react";
+import { House, AppWindow, Gamepad2, SquareTerminal, Shapes, ScrollText } from "lucide-react";
 import { NavMain } from "@/components/nav/nav-main";
 import {
 	Sidebar,
@@ -9,7 +9,7 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { NavSecondary } from "@/components/nav/nav-secondary";
-import { DemosItems, MiscItems, ToolsItems } from "@/lib/items";
+import { MiscItems, ToolsItems } from "@/lib/items";
 
 export const data = {
 	// user: {
@@ -18,13 +18,6 @@ export const data = {
 	// 	avatar: "/avatars/shadcn.jpg",
 	// },
 	navMain: [
-		{
-			isActive: true,
-			title: "Demos",
-			url: "/dashboard/demos",
-			icon: Cpu,
-			items: await DemosItems(),
-		},
 		{
 			isActive: true,
 			title: "Tools",

@@ -26,22 +26,6 @@ export async function BlogItems() {
 	);
 }
 
-export async function DemosItems() {
-	const items: string[] = await GetItems("src/app/\\(dashboard\\)/dashboard/demos/**/*.tsx");
-
-	return Promise.all(
-		items.map(async p => {
-			const { metadata } = await import(`../app/(dashboard)/dashboard/demos/${p}/page.tsx`);
-
-			return {
-				url: `/dashboard/demos/${p}`,
-				icon: metadata.other?.icon,
-				...metadata,
-			};
-		})
-	);
-}
-
 export async function ToolsItems() {
 	const items: string[] = await GetItems("src/app/\\(dashboard\\)/dashboard/tools/**/*.tsx");
 
