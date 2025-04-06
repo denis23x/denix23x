@@ -7,6 +7,9 @@ export const metadata: Metadata = {
 	title: "Mastering Modern Web Development",
 	description:
 		"Discover resources across various topics, with tips, tutorials, and ideas to boost your projects. Find practical solutions, inspiring discussions, and guides to grow and innovate.",
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/blog`,
+	},
 };
 
 export default async function Page() {

@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { headers } from "next/headers";
 import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/headers";
+import type { Metadata } from "@/interfaces/metadata";
 
 type Params = {
 	page: string;
@@ -33,6 +34,12 @@ type PaginationT = {
 interface demoPostWU<U> extends demoPost {
 	user: U;
 }
+
+export const metadata: Metadata = {
+	alternates: {
+		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/placeholder-api/demo`,
+	},
+};
 
 export default async function Page({ searchParams }: { searchParams: Promise<Params> }) {
 	const headersList: ReadonlyHeaders = await headers();
