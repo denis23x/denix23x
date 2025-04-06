@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 		icon: <Scroll />,
 	},
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/lorem-ipsum`,
+		canonical: `https://denis23x.info/dashboard/tools/lorem-ipsum`,
 	},
 };
 

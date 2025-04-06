@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 	description:
 		"Explore a curated collection of personal favorites, including playlists, movie recommendations, and more. Discover links to explore all the things I enjoy.",
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/misc`,
+		canonical: `https://denis23x.info/misc`,
 	},
 };
 

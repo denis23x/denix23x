@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 		icon: <Code />,
 	},
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/placeholder-api`,
+		canonical: `https://denis23x.info/dashboard/tools/placeholder-api`,
 	},
 };
 

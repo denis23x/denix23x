@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 		icon: <Images />,
 	},
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/svg-to-css-encoder`,
+		canonical: `https://denis23x.info/dashboard/tools/svg-to-css-encoder`,
 	},
 };
 

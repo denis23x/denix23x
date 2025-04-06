@@ -8,7 +8,7 @@ import type { Metadata } from "@/interfaces/metadata";
 
 export const metadata: Metadata = {
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/dashboard`,
+		canonical: `https://denis23x.info/dashboard`,
 	},
 };
 

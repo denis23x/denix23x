@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 		icon: <Bookmark />,
 	},
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/misc/bookmarks`,
+		canonical: `https://denis23x.info/misc/bookmarks`,
 	},
 };
 

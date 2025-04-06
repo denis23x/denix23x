@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 	description:
 		"Explore the Placeholder API Swagger page: A comprehensive mock API documentation for testing, prototyping, and showcasing demo. Perfect for developers!",
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/placeholder-api/swagger`,
+		canonical: `https://denis23x.info/dashboard/tools/placeholder-api/swagger`,
 	},
 };
 

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 		icon: <Type />,
 	},
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/markdown-renderer`,
+		canonical: `https://denis23x.info/dashboard/tools/markdown-renderer`,
 	},
 };
 

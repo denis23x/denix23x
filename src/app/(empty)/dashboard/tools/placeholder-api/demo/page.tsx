@@ -37,7 +37,7 @@ interface demoPostWU<U> extends demoPost {
 
 export const metadata: Metadata = {
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/placeholder-api/demo`,
+		canonical: `https://denis23x.info/dashboard/tools/placeholder-api/demo`,
 	},
 };
 

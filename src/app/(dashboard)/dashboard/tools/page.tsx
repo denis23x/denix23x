@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 	description:
 		"Discover a curated collection of tools to streamline your workflow. Access quick color converters, code generators, and more—each tool designed for efficient results.",
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools`,
+		canonical: `https://denis23x.info/dashboard/tools`,
 	},
 };
 

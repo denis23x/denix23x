@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 	description:
 		"Discover resources across various topics, with tips, tutorials, and ideas to boost your projects. Find practical solutions, inspiring discussions, and guides to grow and innovate.",
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/blog`,
+		canonical: `https://denis23x.info/blog`,
 	},
 };
 

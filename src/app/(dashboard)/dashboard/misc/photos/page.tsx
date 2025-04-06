@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 		icon: <Camera />,
 	},
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/misc/photos`,
+		canonical: `https://denis23x.info/misc/photos`,
 	},
 };
 

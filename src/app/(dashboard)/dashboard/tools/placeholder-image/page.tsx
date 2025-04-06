@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 		icon: <ImageIcon />, // eslint-disable-line jsx-a11y/alt-text
 	},
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/placeholder-image`,
+		canonical: `https://denis23x.info/dashboard/tools/placeholder-image`,
 	},
 };
 

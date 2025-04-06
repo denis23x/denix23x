@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 		icon: <Music />,
 	},
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/misc/playlist`,
+		canonical: `https://denis23x.info/misc/playlist`,
 	},
 };
 

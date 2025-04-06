@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 		icon: <PaletteIcon />,
 	},
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/color-converter`,
+		canonical: `https://denis23x.info/dashboard/tools/color-converter`,
 	},
 };
 

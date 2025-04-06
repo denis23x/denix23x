@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 		icon: <SwatchBook />,
 	},
 	alternates: {
-		canonical: `${process.env.PUBLIC_URL!}/dashboard/tools/color-extractor`,
+		canonical: `https://denis23x.info/dashboard/tools/color-extractor`,
 	},
 };
 
