@@ -2,8 +2,6 @@
 
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Mouse } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 export function HomeAuroraBackground() {

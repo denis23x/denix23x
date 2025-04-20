@@ -7,8 +7,5 @@ export const shikiOptions = {
 		dark: "github-dark",
 		light: "github-light",
 	},
-	transformers: [
-		transformerMetaHighlight()
-	],
+	transformers: [transformerMetaHighlight()],
 };
-
