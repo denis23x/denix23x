@@ -9,7 +9,7 @@ export function HomeRetro() {
 			<div className="text-4xl mx-auto font-extralight text-muted-foreground z-10">
 				Build
 				<FlipWords words={words} duration={1500} /> <br />
-				websites with love ❤️
+				websites wisely ❤️
 			</div>
 			<RetroGrid />
 		</div>

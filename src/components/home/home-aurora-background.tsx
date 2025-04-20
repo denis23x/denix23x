@@ -22,7 +22,7 @@ export function HomeAuroraBackground() {
 				<div className="text-5xl md:text-7xl font-bold text-foreground text-center">Hi 👋</div>
 				<div className="font-extralight text-2xl md:text-4xl text-foreground md:py-4">And this, is My Website.</div>
 				<div className={"grid gap-10"}>
-					<div className={"flex gap-4 text-foreground"}>
+					{/* <div className={"flex gap-4 text-foreground"}>
 						<Link href={"/dashboard"}>
 							<Button className={"rounded-full"}>Dashboard</Button>
 						</Link>
@@ -31,7 +31,7 @@ export function HomeAuroraBackground() {
 								Blog
 							</Button>
 						</Link>
-					</div>
+					</div> */}
 					<Mouse className={"mx-auto text-foreground animate-bounce"} />
 				</div>
 			</motion.div>
